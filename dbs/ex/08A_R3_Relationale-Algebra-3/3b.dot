@@ -1,0 +1,16 @@
+digraph {
+    edge[arrowhead="none"];
+    "join1" [label="⋈"];
+    "join2" [label="⋈"];
+    "B1" [label="B"];
+    "B2" [label="B"];
+    "land" [label="∧"];
+
+    "Π(sid)" -> "join1";
+    "join1" -> "land";
+    "join1" -> "join2";
+    "land" -> "color='red'" -> "ρ(redBoat)" -> "B1";
+    "land" -> "color='green'" -> "ρ(greenBoat)" -> "B2";
+    "join2" -> "R";
+    "join2" -> "S";
+}

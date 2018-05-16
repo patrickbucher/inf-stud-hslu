@@ -1,0 +1,28 @@
+digraph {
+   rankdir=LR; 
+
+   "" [shape=none];
+   z7 [shape=doublecircle];
+
+    "" -> z0;
+    z0 -> z1 [label=E];
+    z0 -> z0 [label="I,S,B,N"];
+    z1 -> z1 [label=E];
+    z1 -> z2 [label=I];
+    z1 -> z0 [label="S,B,N"]
+    z2 -> z3 [label=S];
+    z2 -> z1 [label=E];
+    z2 -> z0 [label="I,B,N"];
+    z3 -> z4 [label=B];
+    z3 -> z1 [label=E];
+    z3 -> z0 [label="I,S,N"];
+    z4 -> z5 [label=E];
+    z4 -> z1 [label="I,S,B,N"];
+    z5 -> z6 [label=I];
+    z5 -> z1 [label=E];
+    z5 -> z0 [label="B,N,S"];
+    z6 -> z7 [label=N];
+    z6 -> z3 [label=S];
+    z6 -> z1 [label=E];
+    z6 -> z0 [label="I,B"];
+}

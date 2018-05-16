@@ -1,0 +1,7 @@
+digraph HeapReorg {
+    node [fontsize=8];
+    edge [fontsize=8];
+    graph [fontsize=8];
+    "10" -> "7";
+    "10" -> "5";
+}

@@ -1,0 +1,8 @@
+digraph {
+    edge[arrowhead="none"];
+    "join" [label="⋈"];
+
+    "Π(sname)" -> "join";
+    "join" -> "R";
+    "join" -> "S";
+}

@@ -1,0 +1,21 @@
+digraph T {
+    graph [fontname="times";fontsize=12];
+    node [fontname="times";fontsize=12];
+    edge [fontname="times";fontsize=12];
+    "D1" -> "D1,D2" [label="D1<D2"];
+    "D1" -> "D2,D1" [label="D1>D2"];
+    "D1,D2,D3" [shape=box];
+    "D1,D2" -> "D1,D2,D3" [label="D2<D3"];
+    "D1,D2" -> "?,?,D2" [label="D2>D3"];
+    "D2,D1" -> "D2,?,?" [label="D2<D3"];
+    "D3,D2,D1" [shape=box];
+    "D2,D1" -> "D3,D2,D1" [label="D2>D3"];
+    "D1,D3,D2" [shape=box];
+    "?,?,D2" -> "D1,D3,D2" [label="D1<D3"];
+    "D3,D1,D2" [shape=box];
+    "?,?,D2" -> "D3,D1,D2" [label="D1>D3"];
+    "D2,D1,D3" [shape=box];
+    "D2,?,?" -> "D2,D1,D3" [label="D1<D3"];
+    "D2,D3,D1" [shape=box];
+    "D2,?,?" -> "D2,D3,D1" [label="D1>D3"];
+}

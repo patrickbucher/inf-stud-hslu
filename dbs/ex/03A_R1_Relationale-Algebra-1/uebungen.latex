@@ -1,0 +1,106 @@
+\documentclass[a4paper,11pt]{scrartcl}
+
+\usepackage{ebgaramond}
+\usepackage{helvet}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+\setcounter{secnumdepth}{0}
+
+\begin{document}
+
+\section{Relationale Algebra I}
+
+\subsection{Aufgabe 1}
+
+$A \times B = \{(b,3),(b,1),(b,5),(z,3),(z,1),(z,5)\}$
+
+$B \times A = \{(3,b),(3,z),(1,b),(1,z),(5,b),(5,z)\}$
+
+Das Kommutativgesetz gilt nicht, da $A \times B$ und $B \times A$ andere Tupeln zum Ergebnis haben, und die Reihenfolge innerhalb von Tupeln nicht beliebig ist. Bei $A=\{a,b\}$ und $B=\{a,b\}$, also zwei gleichen Mengen, würde $A \times B = B \times A$ gelten.
+
+\subsection{Aufgabe 2}
+
+$A \times A \times B = \{$
+\\
+$\text{\quad}(b,b,3),(b,b,1),(b,b,5),(b,z,3),(b,z,1),(b,z,5),$
+\\
+$\text{\quad}(z,b,3),(z,b,1),(z,b,5),(z,z,3),(z,z,1),(z,z,5)$
+\\
+$\}$
+
+$(b,z,1) \in A \times A \times B$
+
+$(z,z,5) \in A \times A \times B$
+
+$(1,z,1) \notin A \times A \times B$
+
+\subsection{Aufgabe 3}
+
+$n \text{Elemente} \rightarrow n^{2} \text{Teilmengen} \rightarrow 2^{n^{2}} \text{Relationen}$
+
+\subsection{Aufgabe 4}
+
+Es handelt sich um die Funktion $y=f(x)=3x$, die jedem $x$ ein $y$ zuordnet.
+
+\subsection{Aufgabe 5}
+
+$R_1 = \{(1,1),(1,2),(1,3),\ldots,(2,1),(2,2),(2,4),\ldots\}$
+\\
+$R_2 = \{(1,1),(2,1),(3,1),\ldots,(2,2),(4,2),(6,2),\ldots\}$
+
+$R_1 \cap R_2$
+\\
+$\text{\quad}= \{(1,1),(1,2),(1,3),\ldots,(2,1),(2,2),(2,4),\ldots,(4,2),(6,2),\ldots\}$
+\\
+$\text{\quad}= \{(a,b) | a \mid b \lor b \mid a\}$
+\\
+$R_1 \cup R_2 = \{(1,1),(2,2),(3,3),\ldots\} = \{(a,b) | a=b\}$
+\\
+$R_1 \setminus R_2 = \{(1,2),(1,3),(2,4),(2,6),\ldots\} = R_1 \setminus (R_1 \cap R_2)$
+\\
+$R_2 \setminus R_1 = \{(2,1),(3,1),(4,2),(6,2),\ldots\} = R_2 \setminus (R_1 \cap R_2)$
+
+\subsection{Aufgabe 6}
+
+$a R b$: $a$ ist Elternteil von $b$
+\\
+$b S c$: $b$ ist Geschwister von $c$
+
+$S \circ R = \{(a,c)\}$
+\\
+$R \circ S = \{\}$
+
+\subsection{Aufgabe 7}
+
+$a R b$: $a$ ist Elternteil von $b$
+
+$a R^2 b$: $a$ ist Grosselternteil von $b$
+\\
+$a R^3 b$ $a$ ist Urgrosselternteil von $b$
+
+\subsection{Aufgabe 8}
+
+\begin{itemize}
+    \item{reflexiv: Schleife/Schlinge vorhanden}
+    \item{symmetrisch: bidirektionale Verbindung vorhanden}
+    \item{transitiv: $a \rightarrow b \land b \rightarrow c \Rightarrow a \rightarrow c$}
+\end{itemize}
+
+\subsection{Aufgabe 9}
+
+\begin{figure}
+    \includegraphics{equivalence-relation.png}
+    \caption{Äquivalenzrelation gleicher Rest bei Division mit 2}
+    \label{fig:equi}
+\end{figure}
+
+Siehe Abbildung \ref{fig:equi}.
+
+\end{document}

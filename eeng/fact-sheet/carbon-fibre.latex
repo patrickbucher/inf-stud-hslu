@@ -1,0 +1,123 @@
+\documentclass[a4paper,11pt,twocolumn]{scrartcl}
+
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{droid}
+\usepackage{apacite}
+\usepackage[hyphens]{url}
+\usepackage[top=1.5cm,right=1.5cm,bottom=3cm,left=1.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{gensymb}
+
+\setcounter{secnumdepth}{0}
+\setlength{\columnsep}{1.5cm}
+
+\begin{document}
+
+\title{Carbon Fibre}
+\subtitle{Fact Sheet}
+\author{Patrick Bucher}
+\date{\today}
+\maketitle
+
+\section{What is it?}
+\begin{itemize}
+    \item{Consists of 90\% polyacrylonitrile (PAN) and 10\% petroleum pitch \cite{zoltek}}
+    \item{Made of carbon crystals aligned in a long axis \cite{christinedemerchant}}
+    \item{Consists of very thin strands of the element carbon \cite{thoughtco}}
+    \item{Only 5-10 micrometres in diameter \cite{thoughtco}, human hair: 50 micrometres}
+\end{itemize}
+
+\section{How is it made?}
+\begin{enumerate}
+    \item{Spinning: polyacrylonitrile and other ingredients are spun into fibres, washed and stretched}
+    \item{Stabilizing: heating up to 200-300$\degree$C to let the fibres pick up oxygen molecules}
+    \item{Carbonizing: heating up to 1000-3000$\degree$C under oxygen seclusion to get rid of non-carbon atoms}
+    \item{Treating the surface: oxidize surface slightly to reach better bounding properties}
+    \item{Coating: protect the fibres from damage with a thin film of polyester, nylon or urethane etc.}
+    \item{Winding: fibres are wound onto bobbins (cylinders) and twisted into yarns of various sizes}
+\end{enumerate}
+
+\begin{figure}
+    \includegraphics[width=\columnwidth]{production.jpg}
+    \caption{The production of carbon fibre}
+\end{figure}
+
+\section{Applications}
+
+\begin{itemize}
+    \item{Cars
+        \begin{itemize}
+            \item{Electrically powered cars like BMWi3 \cite{telegraph}}
+            \item{Racing cars (Formula 1, Formula E, Indy Cars etc.)}
+            \item{Bicycles (mountain bikes, racing cycles)}
+        \end{itemize}
+    }
+    \item{Sports equipment
+        \begin{itemize}
+            \item{Tennis rackets}
+            \item{Rawing boats}
+            \item{Arches}
+        \end{itemize}
+    }
+    \item{Aeronautics}
+    \item{Musical instruments
+        \begin{itemize}
+            \item{Violins \cite{mezzoforte} and bows}
+            \item{Guitars}
+            \item{Drums}
+        \end{itemize}
+    }
+\end{itemize}
+
+\section{Properties}
+
+\begin{itemize}
+    \item{High strength to weight ratio}
+    \item{Rigid}
+    \item{Corrosion resistant}
+    \item{Electrical conductive}
+    \item{Twice as stiff and five times as strong as steel \cite{thoughtco}}
+    \item{Tolerant to high temperatures}
+    \item{Low thermal expansion}
+    \item{Biologically inert}
+\end{itemize}
+
+\section{Advantages}
+
+\begin{figure}
+    \includegraphics[width=\columnwidth]{structure.jpg}
+    \caption{The structure of carbon fibre}
+\end{figure}
+
+\begin{itemize}
+    \item{Low weight}
+    \item{Good tensile strength}
+    \item{Inflammable}
+    \item{Not poisonous}
+    \item{Fatigue resistant}
+\end{itemize}
+
+\section{Disadvantages}
+
+\begin{itemize}
+    \item{Brittle}
+    \item{Expensive}
+    \item{Energy-intensive production}
+    \item{Hard to dispose of \cite{guardian}}
+    \item{Speciel equipment required for processing}
+    \item{Sharp edged when refracted (dangerous)}
+\end{itemize}
+
+\begin{figure}
+    \includegraphics[width=\columnwidth]{wheel-rim.jpg}
+    \caption{A wheel rim made of carbon fibre}
+\end{figure}
+
+\bibliography{carbon-fibre.bib}
+\bibliographystyle{apacite}
+
+\listoffigures
+
+\end{document}

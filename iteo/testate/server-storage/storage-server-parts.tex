@@ -1,0 +1,113 @@
+\documentclass[11pt,a4paper,landscape]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[left=1.50cm, right=1.50cm, top=1.50cm, bottom=1.50cm]{geometry}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{times}
+
+\newcolumntype{L}[1]{>{\hsize=#1\hsize\raggedright\arraybackslash}X}%
+\newcolumntype{R}[1]{>{\hsize=#1\hsize\raggedleft\arraybackslash}X}%
+\newcolumntype{C}[1]{>{\hsize=#1\hsize\centering\arraybackslash}X}%
+
+\begin{document}
+
+\section {Server}
+
+    \subsection{"Grosse" Server}
+
+    Zusammen: 24 Cores, 3 TB Memory, 1600 W, 4+4 U (Server + USV) = 8U
+
+	\begin{tabularx}{\textwidth}{ | L{0.4} | L{0.7} | L{2.6} | R{0.3} | }
+		\hline \textbf{Anzahl} & \textbf{Beschreibung} & \textbf{Link} & \textbf{Preis} \\ \hline 
+        2+1 & Server mit min. 1.5 TB RAM & \url{https://www.brack.ch/hpe-proliant-dl360-gen9-818209-433818} & 16167.- \\ \hline
+        2x2+1 & Harddisk 1TB & \url{https://www.brack.ch/hpe-harddisk-765464-b21-1-409871} & 1545.- \\ \hline
+        2x24+1 & Memory 64GB & \url{https://www.brack.ch/kingston-memory-64gb-kcp424lq464-533314} & 43071.- \\ \hline
+        2+1 & USV 900 W & \url{https://www.brack.ch/sicotec-usv-salicru-sps-1000-413626} & 1587.- \\ \hline \hline
+        & & & 62'370.- \\ \hline
+	\end{tabularx} 
+
+    \subsection{"Kleine" Server}
+
+    Zusammen: 112 Cores, 5.25 TB Memory, 10500 W, 14+14 U (Server + USV) = 28U
+
+	\begin{tabularx}{\textwidth}{ | L{0.4} | L{0.7} | L{2.6} | R{0.3} | }
+		\hline \textbf{Anzahl} & \textbf{Beschreibung} & \textbf{Link} & \textbf{Preis} \\ \hline 
+        14+1 & Server mit 384 GB RAM/8 Cores & \url{https://www.brack.ch/dell-poweredge-r630-0725-1x-457925} & 23085.- \\ \hline
+        2*14+1 & Harddisk 300 GB & \url{https://www.brack.ch/dell-harddisk-400-ajoq-300-420045} & 4901.- \\ \hline
+        12*14+1 & Memory 32 GB & \url{https://www.brack.ch/dell-memory-32gb-a8711888-457776} & 109681.- \\ \hline
+        14+1 & USV 770 W & \url{https://www.brack.ch/eaton-usv-5p-1150ir-1150va770w-269271} & 9135.- \\ \hline \hline
+        & & & 146'802.- \\ \hline
+	\end{tabularx} 
+
+\section{Storage}
+
+	\subsection*{30 TB SSD} 
+	\begin{tabularx}{\textwidth}{ | L{0.4} | L{0.7} | L{2.6} | R{0.3} | }
+		\hline \textbf{Anzahl} & \textbf{Beschreibung} & \textbf{Link} & \textbf{Preis} \\ \hline 
+		3 & Server 24 Slots & \url{https://www.brack.ch/hpe-proliant-dl380-gen9-q0j73a-479724} & 8997.- \\ \hline 
+		72 & SSD 800GB & \url{https://www.brack.ch/hpe-ssd-804625-b21-496987} & 65448.- \\ \hline \hline 
+		 & & & 74'445.- \\ \hline 
+	\end{tabularx} 
+
+	\subsection*{30 TB SAS} 
+	\begin{tabularx}{\textwidth}{ | L{0.4} | L{0.7} | L{2.6} | R{0.3} | }
+		\hline \textbf{Anzahl} & \textbf{Beschreibung} & \textbf{Link} & \textbf{Preis} \\ \hline 
+		3 & Server 24 Slots & \url{https://www.brack.ch/hpe-proliant-dl380-gen9-q0j73a-479724} & 8997.- \\ \hline 
+		48 & SAS 1.2TB & \url{https://www.brack.ch/hpe-harddisk-781518-b21-1-359820} & 19152.- \\ \hline \hline 
+		& & & 28'149.- \\ \hline 
+	\end{tabularx} 
+
+	\subsection*{40 TB SATA} 
+	\begin{tabularx}{\textwidth}{ | L{0.4} | L{0.7} | L{2.6} | R{0.3} | }
+		\hline \textbf{Anzahl} & \textbf{Beschreibung} & \textbf{Link} & \textbf{Preis} \\ \hline 
+		2 & Server 12 Slots & \url{https://www.brack.ch/hpe-proliant-dl380-gen9-860806-479723} & 5658.- \\ \hline 
+		24 & SATA 2TB & \url{https://www.brack.ch/hpe-harddisk-658079-b21-2-265591} & 7176.- \\ \hline \hline 
+		& & & 12'834.- \\ \hline 
+	\end{tabularx} 
+
+	\subsection*{30 TB NAS} 
+	\begin{tabularx}{\textwidth}{ | L{0.4} | L{0.7} | L{2.6} | R{0.3} | }
+		\hline \textbf{Anzahl} & \textbf{Beschreibung} & \textbf{Link} & \textbf{Preis} \\ \hline 
+		2 & NAS 36TB & \url{https://www.brack.ch/netgear-nas-readynas-4312x-469212} & 15538.- \\ \hline \hline 
+		& & & 15'538.- \\ \hline 
+	\end{tabularx} 
+
+	\subsection*{Passendes Backupgerät} 
+	\begin{tabularx}{\textwidth}{ | L{0.4} | L{0.7} | L{2.6} | R{0.3} | }
+		\hline \textbf{Anzahl} & \textbf{Beschreibung} & \textbf{Link} & \textbf{Preis} \\ \hline 
+		2 & Tape machine & \url{https://www.brack.ch/hpe-storeever-msl2024-lto-416281} & 22858.- \\ \hline 
+		48 & LTO7 Tape & \url{https://www.brack.ch/hpe-lto-7-tape-c7977a-1pack-403814} & 7152.- \\ \hline \hline 
+		& & & 30'010.- \\ \hline 
+	\end{tabularx} 
+
+\section{Übriges}
+
+    \subsection{Server-Rack}
+	\begin{tabularx}{\textwidth}{ | L{0.4} | L{0.7} | L{2.6} | R{0.3} | }
+		\hline \textbf{Anzahl} & \textbf{Beschreibung} & \textbf{Link} & \textbf{Preis} \\ \hline 
+        2 & Server-Rack 42U & \url{https://www.brack.ch/triton-serverschrank-19-42u-10306} & 1638.- \\ \hline \hline
+        & & & 1638.- \\ \hline
+	\end{tabularx} 
+        
+    \subsection{Kühlsystem}
+	\begin{tabularx}{\textwidth}{ | L{0.4} | L{0.7} | L{2.6} | R{0.3} | }
+		\hline \textbf{Anzahl} & \textbf{Beschreibung} & \textbf{Link} & \textbf{Preis} \\ \hline 
+        4 & Serverschranklüftung & \url{https://www.brack.ch/triton-lueftereinheit-rac-10336} & 676.- \\ \hline \hline
+        & & & 676.- \\ \hline
+	\end{tabularx} 
+
+    \subsection{Netzwerk-Komponenten}
+    \begin{tabularx}{\textwidth}{ | L{0.4} | L{0.7} | L{2.6} | R{0.3} | }
+		\hline \textbf{Anzahl} & \textbf{Beschreibung} & \textbf{Link} & \textbf{Preis} \\ \hline 
+		2+1 & Switch 48 Ports & \url{https://www.brack.ch/zyxel-48-port-poe-switch-gs2210-344540} & 3327.- \\ \hline 
+        2+1 & Cisco Meraki Firewall MX400 & \url{https://www.brack.ch/cisco-meraki-firewall-mx400-284208} & 37887.- \\ \hline
+        100 & Patchkabel 1.5m Cat6A & \url{https://www.brack.ch/daetwyler-cables-patchkabel-271772} & 1690.- \\ \hline
+        10 & Patchkabel 10m Cat6A & \url{https://www.brack.ch/daetwyler-cables-patchkabel-147475} & 3600.- \\ \hline \hline
+        & & & 46'504.- \\ \hline
+	\end{tabularx} 
+
+\section{Total}
+
+CHF 418'966.- + Versandkosten = ca. CHF 420'000.-
+
+\end{document}

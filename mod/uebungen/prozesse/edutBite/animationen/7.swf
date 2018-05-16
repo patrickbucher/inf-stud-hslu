@@ -1,0 +1,79 @@
+<TABLE BORDER="0" WIDTH="100%">
+<TR VALIGN="TOP">
+
+<TD WIDTH="10%" ALIGN="CENTER">
+&nbsp;
+</TD>
+
+<TD WIDTH="90%">
+  <H2>Site Error</H2>
+  <P>An error was encountered while publishing this resource.
+  </P>
+  <P><STRONG>NotFound</STRONG></P>
+  
+  <TABLE BORDER="0" WIDTH="100%">
+<TR VALIGN="TOP">
+
+<TD WIDTH="10%" ALIGN="CENTER">
+&nbsp;
+</TD>
+
+<TD WIDTH="90%">
+  <H2>Site Error</H2>
+  <P>An error was encountered while publishing this resource.
+  </P>
+  <P><STRONG>Resource not found</STRONG></P>
+  
+  Sorry, the requested resource does not exist.<p>Check the URL and try again.</p><p><b>Resource:</b> http://www.ifi.uni-klu.ac.at/IWAS/HM/Staff/Claudia.Steinberger/eduBITE/m1_lo001_Beispielfirma%20deBite/animationen/7.swf</p>
+  <HR NOSHADE>
+
+  <P>Troubleshooting Suggestions</P>
+
+  <UL>
+  <LI>The URL may be incorrect.</LI>
+  <LI>The parameters passed to this resource may be incorrect.</LI>
+  <LI>A resource that this resource relies on may be
+      encountering an error.</LI>
+  </UL>
+
+  <P>For more detailed information about the error, please
+  refer to the HTML source for this page.
+  </P>
+
+  <P>If the error persists please contact the site maintainer.
+  Thank you for your patience.
+  </P>
+</TD></TR>
+</TABLE>
+<!--
+Traceback (innermost last):
+  File /usr/lib/zope/lib/python/ZPublisher/Publish.py, line 150, in publish_module
+  File /usr/lib/zope/lib/python/ZPublisher/Publish.py, line 114, in publish
+  File /usr/lib/zope/lib/python/Zope/__init__.py, line 159, in zpublisher_exception_hook
+    (Object: animationen)
+  File /usr/lib/zope/lib/python/ZPublisher/Publish.py, line 89, in publish
+  File /usr/lib/zope/lib/python/ZPublisher/BaseRequest.py, line 311, in traverse
+  File /usr/lib/zope/lib/python/ZPublisher/HTTPResponse.py, line 492, in notFoundError
+NotFound: (see above)
+
+-->
+  <HR NOSHADE>
+
+  <P>Troubleshooting Suggestions</P>
+
+  <UL>
+  <LI>The URL may be incorrect.</LI>
+  <LI>The parameters passed to this resource may be incorrect.</LI>
+  <LI>A resource that this resource relies on may be
+      encountering an error.</LI>
+  </UL>
+
+  <P>For more detailed information about the error, please
+  refer to the HTML source for this page.
+  </P>
+
+  <P>If the error persists please contact the site maintainer.
+  Thank you for your patience.
+  </P>
+</TD></TR>
+</TABLE>

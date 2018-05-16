@@ -1,0 +1,27 @@
+digraph EME {
+    rankdir=LB;
+    node [fontname="sans"];
+    edge [fontname="sans"];
+
+    "Browser" [shape="Msquare"];
+    "MediaKeySession" [shape="box3d";fontname="Monospace"];
+    "CDM" [shape="cds"];
+    "Web Application" [shape="tab"];
+    "Encrypted Media" [shape="signature"];
+    "License Server" [shape="cylinder"];
+
+    "Browser" -> "Web Application" [label="1a: loads"];
+    "Web Application" -> "Encrypted Media" [label="1b: contains"];
+    "Browser" -> "Encrypted Media" [label="2a: reads metadata"];
+    "Encrypted Media" -> "Browser" [label="2b: is encrypted"];
+    "Browser" -> "Web Application" [label="2c: encrypted event"];
+    "Web Application" -> "MediaKeySession" [label="3: creates"];
+    "Web Application" -> "CDM" [label="4: sends media metadata"];
+    "CDM" -> "MediaKeySession" [label="5: message event"];
+    "Web Application" -> "License Server" [label="6: requests key"];
+    "License Server" -> "Web Application" [label="7a: responds with key"];
+    "Web Application" -> "MediaKeySession" [label="7b: updates key"];
+    "MediaKeySession" -> "CDM" [label="7c: provides license key"];
+    "Encrypted Media" -> "CDM" [label="8a: reads encrypted media"];
+    "CDM" -> "Browser" [label="8b: sends decrypted media"];
+}

@@ -1,0 +1,53 @@
+<style type="text/css">
+body {
+    font-family: sans-serif;
+    margin: 0 auto;
+    padding: 1em;
+    max-width: 40em;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+p {
+    text-align: justify;
+    hyphens: auto;
+}
+
+li {
+    hyphens: auto;
+}
+
+pre {
+    font-size: 90%;
+}
+
+h1.title {
+    font-size: 200%;
+    text-align: center;
+}
+
+h1.subtitle {
+    font-size: 130%;
+    text-align: center;
+}
+
+h2.author {
+    font-size: 100%;
+    text-align: center;
+    font-weight: normal;
+}
+
+h3.date {
+    font-size: 100%;
+    text-align: center;
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 130%;
+}
+
+sup a {
+    text-decoration: none;
+}
+</style>

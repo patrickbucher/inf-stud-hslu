@@ -1,0 +1,166 @@
+\documentclass[a4paper,11pt]{scrartcl}
+
+\usepackage{ebgaramond}
+\usepackage{helvet}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+\setcounter{secnumdepth}{0}
+
+\begin{document}
+
+\section{Relationale Algebra II}
+
+\subsection{Aufgabe 1}
+
+a) $\Pi_{\text{Titel}}\sigma_{\text{KP}=4}(Vorlesungen)$
+
+b) $\rho_{\text{Matrix}\leftarrow\text{Legi}}\Pi_{\text{Legi}}{\sigma_{\text{Name}=\text{Jonas}}(\text{Studenten})}$
+
+c) $|\text{Vorlesungen}| = 10, |\text{Assistenten}| = 6, |\text{Vorlesungen} \times \text{Assistenten}| = 10 \cdot 6 = 60$
+
+d) $\Pi_{\text{Thema}}\rho_{\text{Thema}\leftarrow\text{Titel}}\sigma_{\text{VorlNr}=4052}(\text{Vorlesungen})$
+
+\subsection{Aufgabe 2}
+
+a) $\Pi_{\text{VorlNr},\text{Titel},\text{Nachfolger}}[\sigma_{\text{VorlNr}=\text{Vorgänger}}(\text{Vorlesungen} \times \text{voraussetzen})]$
+
+b) $\Pi_{\text{Assistenten.Name},\text{Boss.Name}}\text{Assistenten} \bowtie_{\text{Boss}=\text{Professor.PersNr}}\text{Professoren}$
+
+c) $\Pi_{\text{Assistenten.Name},\text{Boss.Name}}[\sigma_{\text{Assistenten.Boss}=\text{Professoren.PersNr}}(\text{Assistenten} \times \text{Professoren})]$
+
+\subsection{Aufgabe 3}
+
+Es handelt sich um einen Right Outer Join: Es werden alle Studenten angezeigt, selbst wenn ihnen kein Professor zugerodnet ist.
+
+\subsection{Aufgabe 4}
+
+\subsubsection{a)}
+
+$S_1 \cup S_2$
+
+\begin{tabular}{r|l|r|r}
+sid & sname & rating & age \\
+\hline
+$22$ & Dustin & $7$ & $45.0$ \\
+$31$ & Lubber & $8$ & $55.5$ \\
+$58$ & Rusty & $10$ & $35.0$ \\
+$44$ & Guppy & $5$ & $35.0$ \\
+\end{tabular}
+
+$S_1 \cap S_2$
+
+\begin{tabular}{r|l|r|r}
+sid & sname & rating & age \\
+\hline
+$31$ & Lubber & $8$ & $55.5$ \\
+$58$ & Rusty & $10$ & $35.0$ \\
+\end{tabular}
+
+$S_1 \setminus S_2$
+
+\begin{tabular}{r|l|r|r}
+sid & sname & rating & age \\
+\hline
+$22$ & Dustin & $7$ & $45.0$ \\
+\end{tabular}
+
+\subsubsection{b)}
+
+$\Pi_{\text{sname},\text{rating}}(S_2)$
+
+\begin{tabular}{l|r}
+sname & rating \\
+\hline
+Yuppy & $9$ \\
+Lubber & $8$ \\
+Guppy & $5$ \\
+Rusty & $10$ \\
+\end{tabular}
+
+$\Pi_{\text{age}}(S_2)$
+
+\begin{tabular}{r}
+age \\
+\hline
+$35.0$ \\
+$55.5$ \\
+$35.0$ \\
+$35.0$ \\
+\end{tabular}
+
+\subsubsection{c)}
+
+$\sigma_{\text{rating}>8}(S_2)$
+
+\begin{tabular}{r|l|r|r}
+sid & sname & rating & age \\
+\hline
+$28$ & Yuppy & $9$ & $35.0$ \\
+$58$ & Rusty & $10$ & $35.0$ \\
+\end{tabular}
+
+$\Pi_{\text{sname},\text{rating}}[\sigma_{\text{rating}>8}(S_2)]$
+
+\begin{tabular}{l|r}
+sname & rating \\
+\hline
+Yuppy & $9$ \\
+Rusty & $10$ \\
+\end{tabular}
+
+
+\subsection{Aufgabe 5}
+
+\subsection{a)}
+
+$S_1 \times R_1 = \rho_{\text{sid}\rightarrow{S_1.\text{sid}}}(S_1) \times \rho_{\text{sid}\rightarrow{R_1.\text{sid}}}(R_1)$
+
+\begin{tabular}{r|r|r|r|l|r|r}
+sid & bid & day & sid & sname & rating & age \\
+\hline
+$22$ & $101$ & $10.10.06$ & $22$ & Dustin & $7$ & $45.0$ \\
+$22$ & $101$ & $10.10.06$ & $31$ & Lubber & $8$ & $55.5$ \\
+$22$ & $101$ & $10.10.06$ & $58$ & Rusty & $10$ & $35.0$ \\
+$58$ & $103$ & $11.12.06$ & $22$ & Dustin & $7$ & $45.0$ \\
+$58$ & $103$ & $11.12.06$ & $31$ & Lubber & $8$ & $55.5$ \\
+$58$ & $103$ & $11.12.06$ & $58$ & Rusty & $10$ & $35.0$ \\
+\end{tabular}
+
+\subsection{b)}
+
+$S_1 \bowtie_{S_1.\text{sid}<R_1.\text{sid}} R_1$
+
+\begin{tabular}{r|l|r|r|r|r|r}
+$S_1$.sid & sname & rating & age & $R_1$.sid & bid & day \\
+\hline
+$22$ & Dustin & $7$ & $45.0$ & $58$ & $103$ & $11.12.06$ \\
+$58$ & Lubber & $8$ & $55.5$ & $58$ & $103$ & $11.12.06$ \\
+\end{tabular}
+
+\subsection{c)}
+
+$S_1 \bowtie_{\text{sid}} R_1$
+
+\begin{tabular}{r|l|r|r|r|r}
+sid & sname & rating & age & bid & day \\
+\hline
+$22$ & Dustin & $7$ & $45.0$ & $101$ & $10.10.06$ \\
+$58$ & Rusty & $10$ & $35.0$ & $103$ & $11.12.06$ \\
+\end{tabular}
+
+\subsection{Aufgabe 6}
+
+Alle Ausdrücke liefern das gewünschte Resultat.
+
+\subsection{Aufgabe 7}
+
+b) ist effizienter, da nicht zuerst sämtliche Reservationen zu sämtlichen Seglern zugeordnet werden, sondern nur diejenigen Reservationen, die sich auf ein rotes Boot beziehen.
+
+\end{document}

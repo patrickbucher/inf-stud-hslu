@@ -1,0 +1,11 @@
+digraph {
+    edge[arrowhead="none"];
+    "join1" [label="⋈"];
+    "join2" [label="⋈"];
+
+    "Π(color)" -> "join1";
+    "join1" -> "sname='Lubber'" -> "S";
+    "join1" -> "join2";
+    "join2" -> "R";
+    "join2" -> "B";
+}

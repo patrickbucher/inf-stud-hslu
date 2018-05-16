@@ -1,0 +1,9 @@
+digraph {
+    "zu" -> "öffnend" [label="befehl_auf"];
+    "offen" -> "schliessend" [label="offenzeit_abgelaufen"];
+    "schliessend" -> "zu" [label="tor_ist_zu"];
+    "öffnend" -> "offen" [label="tor_ist_offen"];
+    "öffnend" -> "stop" [label="türe_geöffnet"];
+    "schliessend" -> "stop" [label="türe_geöffnet"];
+    "stop" -> "schliessend" [label="türe_geschlossen"];
+}

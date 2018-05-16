@@ -1,0 +1,299 @@
+ /************* Navigations Definitionen *************/
+
+.glossareintrag {
+	text-decoration: underline;
+	}
+
+.aktiveSeite { 
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #cc3c0b;
+	text-decoration: underline; }
+
+a.kopfnavigation:link {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #0091ac; }
+
+a.kopfnavigation:visited {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #0091ac; }
+
+a.kopfnavigation:focus, a.kopfnavigation:active {
+	color: #cc3c0b;
+	text-decoration: underline;
+	font-size: 12px; }
+
+a.kopfnavigation:hover {
+	color: #cc3c0b;
+	text-decoration: underline;
+	font-size: 12px; }
+	
+
+
+ /************* Body Definition *************/ 
+
+body   {
+	color: black; font-size: 12px; 
+	line-height: 150%; 
+	font-family: Verdana, Arial, Geneva, Helvetica, sans-serif 
+}
+
+td    {
+	color: black; font-size: 12px; 
+	line-height: 150%; 
+	font-family: Verdana, Arial, Geneva, Helvetica, sans-serif 
+}
+
+/************* Allgemeine Anker Definitionen *************/
+
+.linkbeschreibung {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #999999;
+}
+
+a:link   {
+	color: #293d8b;
+	font-weight: normal;
+	font-size: 12px;
+	font-family: Verdana, Arial, Geneva, Helvetica, sans-serif;
+	text-decoration: none
+}
+
+a:visited   {
+	color: #293d8b;
+	font-weight: normal;
+	font-size: 12px;
+	font-family: Verdana, Arial, Geneva, Helvetica, sans-serif;
+	text-decoration: none
+}
+
+a:active   {
+	color: #FA2C2C;
+	font-weight: normal;
+	font-size: 12px;
+	font-family: Verdana, Arial, Geneva, Helvetica, sans-serif;
+	text-decoration: none
+}
+
+
+a.sup	{
+	font-family: Verdana, Arial, Geneva, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: bold;
+	color: #0091ac;
+	text-decoration: none;
+}
+
+a:hover  {
+	color: #cc3c0b;
+	font-weight: normal;
+	font-size: 12px;
+	font-family: Verdana, Arial, Geneva, Helvetica, sans-serif;
+	text-decoration: underline
+}
+
+/************* Überschrift Definitionen *************/
+
+h1 { color:black; font-weight:bold; font-size:16px; font-family:verdana, arial, geneva, helvetica, sans-serif; }
+
+h2 { color: black; font-weight: bold; font-size: 14px; font-family: Verdana, Arial, Geneva, Helvetica, sans-serif; }
+
+h3 { color: black; font-weight: bold; font-size: 12px; font-family: Verdana, Arial, Geneva, Helvetica, sans-serif; }
+
+
+/************* Literatur Definitionen *************/
+
+.literatur {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	color: #999999;
+	text-decoration: none
+}
+
+a.literatur:link, a.literatur:visited {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-style: normal;
+	color: #999999;
+	text-decoration: underline
+}
+
+a.literatur:active	{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-style: bold;
+	color: #999999;
+	text-decoration: underline
+}
+
+a.literatur:hover, a.literatur:focus {
+	color: #009999
+}
+
+sup.literatur	{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-style: bold;
+	color: #999999;
+	text-decoration: none;
+}
+
+/************* Table Uebersicht Definitionen *************/
+
+table.inhalt	{
+	width:680px;
+	background-color:#F3F5FB;
+}
+
+.tabellenbeschriftung {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	text-align: left;
+	font-style: normal;
+	color: #999999;
+	text-decoration: none;
+	text-align: center;
+}
+
+td.tableheader {
+	background-color: #293d8b;
+	font-size: 14px; 
+	color: #ffffff;
+	line-height: 150%; 
+	font-weight: bold;
+	vertical-align: center;
+	font-family: Verdana, Arial, Geneva, Helvetica, sans-serif
+	}
+
+td.spaltehell {
+	background-color: #F3F5FB;
+	font-size: 12px; 
+	font-weight: normal;
+	vertical-align: center;
+	font-family: Verdana, Arial, Geneva, Helvetica, sans-serif
+	}
+
+td.spaltedunkel {
+	background-color: #dfe4f7;
+	font-size: 12px; 
+	font-weight: normal;
+	vertical-align: center;
+	font-family: Verdana, Arial, Geneva, Helvetica, sans-serif
+	}
+
+table.tableborder {
+	border:1px #293d8b solid; 
+	}
+
+table.vor_nachteilerahmen {
+	border-top: 4px solid #efffe8;
+	border-bottom: 4px solid #fff0f0;
+	border-left: 4px solid #efffe8;
+	border-right: 4px solid #fff0f0;
+	}
+	
+td.tableheadergrau { 
+	background-color: #ADADAD;
+	font-size: 12px; 
+	color: #000000;
+	line-height: 150%; 
+	font-weight: bold;
+	vertical-align: center;
+	font-family: Verdana, Arial, Geneva, Helvetica, sans-serif;
+	padding-left:2px;
+	padding-right:2px; }
+
+td.spaltehellgrau {
+	background-color: #eeeeee;
+	font-size: 12px; 
+	font-weight: normal;
+	vertical-align: center;
+	font-family: Verdana, Arial, Geneva, Helvetica, sans-serif
+	}
+
+td.spaltedunkelgrau {
+	background-color: #dddddd;
+	font-size: 12px; 
+	font-weight: normal;
+	vertical-align: center;
+	font-family: Verdana, Arial, Geneva, Helvetica, sans-serif
+	}
+
+td.formel {
+	border:1px #cc3c0b solid; 
+	}
+	
+
+/************* Medien Definitionen *************/ 
+
+table.video {
+	border: 1px solid #D7D7EA;
+	background-color: #F3F5FB;
+	}
+
+td.video {
+	background-color:#ffffff;
+}
+
+table.medien {
+	background-color: #dfe4f7;
+	}
+	
+/************* Textstrukturierungs Definitionen *************/ 
+
+hr	{
+	width:25%; color:#293d8b; height:1px; background-position: left
+	}
+	
+
+/************* Formular Definitionen *************/	
+.schriftstil { 
+ 	font-size:13px; 
+ 	font-family:Verdana,sans-serif; 
+ 	font-weight:bold; 
+ 	color:#293d8b; 
+}
+
+table.formular {
+	background-color:#FF99FF; 
+	padding:20px; 
+	border:1px solid #95A9F4; 
+}
+
+input, select, textarea  { 
+	color:#293d8b; 
+	}
+	
+.Bereich, .Feld	{
+	background-color:#FFFFff;
+	width:300px;
+	border:1px solid #95A9F4;
+}
+
+.Auswahl	{
+	background-color:#ffFFFF;
+	width:300px;
+	border:1px solid #95A9F4;
+}
+
+.Check, .Radio	{
+	background-color:#ffFFFF;
+	border:1px solid #95A9F4;
+}
+
+.Button	{
+	background-color:#F3F5FB;
+	color:#293d8b;
+	width:200px;
+	border:3px solid #95A9F4;
+}
+	
+
+.anmerkung {  background-color: #FFFF00}

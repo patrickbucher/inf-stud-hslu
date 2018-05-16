@@ -1,0 +1,11 @@
+digraph T {
+    rankdir="LR";
+    graph [fontname="courier"];
+    node[fontname="courier"];
+    edge[fontname="courier"];
+    "wc -w" [shape=box];
+    "sort -n -r" [shape=box];
+    "*.txt" -> "wc -w";
+    "wc -w" -> "sort -n -r" [label="Pipe"];
+    "sort -n -r" -> "[Ausgabe]";
+}

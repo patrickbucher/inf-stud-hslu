@@ -1,0 +1,691 @@
+\documentclass[a4paper,10pt,smallheadings,twocolumn]{scrartcl}
+
+\usepackage{times}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatimbox}
+\usepackage[autostyle=true,german=quotes]{csquotes}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[top=2cm,right=2cm,bottom=3cm,left=2cm]{geometry}
+
+\setlength{\columnsep}{1cm}
+
+\begin{document}
+
+\author{Patrick Bucher}
+\title{Diskrete Mathematik}
+\maketitle
+
+\tableofcontents
+
+\section{Logik und Beweise}
+
+Proposition: eine Aussage oder ein Satz ist:
+\begin{itemize}
+\item{wahr (w: wahr, t: true, 1)}
+\item{falsch (f: falsch/false, 0)}
+\end{itemize}
+Fragen und Gleichungen mit einer Unbekannten sind keine Aussagen. Aussagen werden meist mit $p$, $q$, $r$, $s$ bezeichnet. Beispiele für Propositionen
+\begin{itemize}
+\item{$p$ = \enquote{Es regnet draussen.}}
+\item{$q$ = \enquote{Der Platz draussen ist nass.}}
+\end{itemize}
+
+\subsection{Logische Operationen}
+
+\subsubsection{Negation}
+
+$\neg p$: \enquote{Es ist nicht der Fall, dass $p$ gilt.} Wahrheitstabelle:
+
+\addvbuffer[9pt 0pt]{
+\begin{tabular}{c|c}
+$p$ & $\neg p$ \\
+\hline
+$w$ & $f$ \\
+$f$ & $w$ \\
+\end{tabular}
+}
+
+\subsubsection{Konjunktion}
+
+$p \land q$: \enquote{Es gelten $p$ und $q$.} Wahrheitstabelle:
+
+\addvbuffer[9pt 0pt]{
+\begin{tabular}{c|c|c}
+$p$ & $q$ & $p \land q$ \\
+\hline
+$w$ & $w$ & $w$ \\
+$w$ & $f$ & $f$ \\
+$f$ & $w$ & $f$ \\
+$f$ & $f$ & $f$ \\
+\end{tabular}
+}
+
+\subsubsection{Disjunktion}
+
+$p \lor q$: \enquote{Es gilt $p$ oder $q$ oder es gelten beide.} Wahrheitstabelle:
+
+\addvbuffer[9pt 0pt]{
+\begin{tabular}{c|c|c}
+$p$ & $q$ & $p \lor q$ \\
+\hline
+$w$ & $w$ & $w$ \\
+$w$ & $f$ & $w$ \\
+$f$ & $w$ & $w$ \\
+$f$ & $f$ & $f$ \\
+\end{tabular}
+}
+
+\subsubsection{Exklusives Oder (EXOR)}
+
+$p \oplus q$: \enquote{Es gilt $p$ oder $q$ aber nicht $p$ und $q$.} Wahrheitstabelle:
+
+\addvbuffer[9pt 0pt]{
+\begin{tabular}{c|c|c}
+$p$ & $q$ & $p \oplus q$ \\
+\hline
+$w$ & $w$ & $f$ \\
+$w$ & $f$ & $w$ \\
+$f$ & $w$ & $w$ \\
+$f$ & $f$ & $f$ \\
+\end{tabular}
+}
+
+\subsubsection{Implikation}
+
+$p \rightarrow q$: \enquote{Wenn $p$ gilt, dann gilt $q$.} Wahrheitstabelle:
+
+\addvbuffer[9pt]{
+\begin{tabular}{c|c|c}
+$p$ & $q$ & $p \rightarrow q$ \\
+\hline
+$w$ & $w$ & $w$ \\
+$w$ & $f$ & $f$ \\
+$f$ & $w$ & $w$ \\
+$f$ & $f$ & $w$ \\
+\end{tabular}
+}
+
+Aus einem Falschen kann etwas Beliebiges gefolgert werden! Beispiel: Ein Politiker sagt: \enquote{Wenn ich gewählt werde, senke ich die Steuern.}
+
+\begin{itemize}
+\item{$p$: Politiker wird gewählt}
+\item{$q$: Politiker senkt die Steuern.}
+\end{itemize}
+$p \rightarrow q$
+\begin{enumerate}
+\item{Der Politiker wird gewählt und senkt die Steuern: die Aussage trifft zu.}
+\item{Der Politiker wird gewählt, senkt aber die Steuern nicht: die Aussage trifft nicht zu.}
+\item{Der Politiker wird nicht gewählt; es ist egal, was er in diesem Fall tun will: die Aussage trifft zu.}
+\end{enumerate}
+
+\subsubsection{Bikonditional}
+
+$p \leftrightarrow q$: \enquote{Es gilt $p$ genau dann, wann $q$ gilt.} Wahrheitstabelle:
+
+\addvbuffer[9pt]{
+\begin{tabular}{c|c|c}
+$p$ & $q$ & $p \leftrightarrow q$ \\
+\hline
+$w$ & $w$ & $w$ \\
+$w$ & $f$ & $f$ \\
+$f$ & $w$ & $f$ \\
+$f$ & $f$ & $w$ \\
+\end{tabular}
+}
+
+Eine bikonditionale Präposition ist dann wahr, wenn $p$ und $q$ den gleichen Wahrheitswert haben, also das Gegenteil von EXOR:
+
+$p \leftrightarrow q \equiv \neg(p \oplus q)$
+
+\subsection{Priorität logischer Operationen}
+
+\begin{enumerate}
+\item{$\neg$ (Negation)}
+\item{$\land$ (Konjunktion), $\lor$ (Disjunktion)}
+\item{$\rightarrow$ (Implikation), $\leftrightarrow$ (Bikonditional)}
+\end{enumerate}
+
+\subsection{Präpositionale Äquivalenzen}
+
+\subsubsection{Tautologie}
+
+Die Aussage ist immer wahr. Beispiel: $p \lor \neg q$
+
+\subsubsection{Kontradiktion (Widerspruch)}
+
+Die Aussage ist immer falsch. Beispiel: $p \land \neg q$
+
+\subsection{Logische Äquivalenz}
+
+Zwei Aussagen ($p$ und $q$) sind logisch äquivalent, wenn $p \leftrightarrow q$ eine Tautologie ist. Schreibweisen: $p \equiv q$, $p \sim  q$, $p \Leftrightarrow q$
+
+\subsection{Logische Äquivalenzgesetze}
+
+$T$: True (wahr), $F$: False (falsch)
+
+\subsubsection{Identität}
+
+$p \land T \equiv p$
+\\
+$p \lor F \equiv p$
+
+\subsubsection{Dominanz}
+
+$p \lor T \equiv T$
+\\
+$p \land F \equiv F$
+
+\subsubsection{Idempotenz}
+
+$p \lor p \equiv p$
+\\
+$p \land p \equiv p$
+
+\subsubsection{Doppelnegation}
+
+$\neg(\neg p) \equiv p$
+
+\subsubsection{Negation}
+
+$p \lor \neg p \equiv T$
+\\
+$p \land \neg p \equiv F$
+
+\subsubsection{Kommutativität}
+
+$p \lor q \equiv q \lor p$
+\\
+$p \land q \equiv q \land p$
+
+\subsubsection{Absorption}
+
+$p \lor (p \land q) \equiv p$
+\\
+$p \land (p \lor q) \equiv p$
+
+\subsubsection{Assoziativ 1 und 2}
+
+$(p \lor q) \lor r \equiv p \lor (q \lor r)$
+\\
+$(p \land q) \land r \equiv p \land (q \land r)$
+
+\subsubsection{Distributiv 1 und 2}
+
+$p \lor (q \land r) \equiv (p \lor q) \land (p \lor r)$
+\\
+$p \land (q \lor r) \equiv (p \land q) \lor (p \land r)$
+
+\subsubsection{De Morgan 1 und 2}
+
+$\neg(p \land q) \equiv \neg p \lor \neg q$
+\\
+$\neg(p \lor q) \equiv \neg p \land \neg q$
+
+\subsubsection{Weitere Equivalenzgesetze}
+
+$p \rightarrow q \equiv \neg p \lor q$
+\\
+$p \rightarrow q \equiv \neg q \rightarrow \neg p$
+\\
+$p \lor q \equiv \neg p \rightarrow q$
+\\
+$p \land q \equiv \neg(p \rightarrow \neg q)$
+\\
+$\neg(p \rightarrow q) \equiv p \land \neg q$
+\\
+\\
+$p \leftrightarrow q \equiv (p \rightarrow q) \land (q \rightarrow p)$
+\\
+$p \leftrightarrow q \equiv \neg p \leftrightarrow \neg q$
+\\
+$p \leftrightarrow q \equiv (p \land q) \lor (\neg p \land \neg q)$
+\\
+$\neg(p \leftrightarrow q) \equiv p \leftrightarrow \neg q$
+\\
+\\
+$(p \rightarrow q) \land (p \rightarrow r) \equiv p \rightarrow (q \land r)$
+\\
+$(p \rightarrow r) \land (q \rightarrow r) \equiv (p \lor q) \rightarrow r$
+\\
+$(p \rightarrow q) \lor (p \rightarrow r) \equiv p \rightarrow (q \lor r)$
+\\
+$(p \rightarrow r) \land (q \rightarrow r) \equiv (p \land q) \rightarrow r$
+\\
+\\
+$p \oplus q \equiv (p \lor q) \land (\neg p \lor \neg q)$
+\\
+$\neg (p \oplus q) \equiv (p \land q) \lor (\neg p \land \neg q)$
+\\
+$\neg (p \oplus q) \equiv p \leftrightarrow q$
+
+\subsection{Prädikate und Quantoren}
+
+Prädikat: eine Folge von Wörtern, die Variablen enthalten, und für jede (erlaubte) Belegung dieser Variablen zu einer Aussage werden. Die Aussage hat nur dann einen eindeutigen Wahrheitswert, wenn für die Variable ein eindeutiger Wahrheitswert eingesetzt wird. Beispiel:
+\\
+\\
+$P(x) = "`x > 3"'$
+\\
+$P(4) = "`4 > 3"'$ (wahr)
+\\
+$P(2) = "`2 > 3"'$ (falsch)
+\\
+\\
+Aussage $P(x)$: Wert der propositionalen Funktion $P$ für $x$. 
+
+\subsubsection{Der Allquantor}
+
+Ist $P(x)$ wahr für \textit{alle} $x$ aus einer bestimmten Universalmenge, schreibt man:
+\\
+\\
+$\forall x P(x)$
+\\
+\\
+\enquote{Für alle $x$ aus der Universalmenge gilt $P(x)$.}
+
+\subsection{Der Existenzquantor}
+
+Ist $(P(x)$ wahr für \textit{mindestens ein} $x$ aus einer bestimmten Universalmenge, schreibt man:
+\\
+\\
+$\exists x P(x)$
+\\
+\\
+\enquote{Es existiert ein $x$ in der Universalmenge, für das $P(x)$ gilt.}
+
+\subsection{Freie und gebundene Variablen}
+
+Wird ein Quantor auf eine Variable angewandt, so ist diese Variable \textit{gebunden}. Wird ein Quantor nicht auf eine Variable angewendt, so ist diese Variable \textit{frei}. Beispiel:
+\\
+\\
+Bei $\forall x Q(x,y)$ ist die Variable $x$ gebunden, die Variable $y$ frei.
+
+\subsection{Negation}
+
+Für die Negierung der Quantoren gelten folgende Regeln:
+
+\begin{itemize}
+\item{$\neg \forall P(x)$ bedeutet: $P(x)$ gilt nicht für alle $x$.
+    \begin{itemize}
+    \item{Das Äquivalent $\exists x \neg P(x)$ bedeutet: Es existiert mindestens ein $x$, für das $P(x)$ nicht gilt.}
+    \end{itemize}}
+\item{$\neg \exists P(x)$ bedeutet: Es gibt kein $x$, für das $P(x)$ gilt.
+    \begin{itemize}
+    \item{Das Äquivalent $\forall x \neg P(x)$ bedeutet: Für alle $x$ gilt $P(x)$ nicht.}
+    \end{itemize}}
+\end{itemize}
+
+\subsection{Verschachtelte Quantoren}
+
+Werden mehrere unterschiedliche Quantoren verwendet, ist deren Reihenfolge zu beachten. Beispiel:
+\\
+\\
+$\forall x \exists y (xy = 1)$: Für jedes $x$ der Universalmenge existiert ein $y$, das mit $x$ multipliziert $1$ ergibt.
+\\
+\\
+Negation des Ausdrucks (ohne Negationszeichen):
+\\
+\\
+$\neg \forall x \exists y (xy = 1)$
+\\
+$\exists x \neg \exists y (xy = 1)$
+\\
+$\exists x \forall y \neg (xy = 1)$
+\\
+$\exists x \forall y \neg (xy \neq 1)$
+
+\subsection{Beweise}
+
+\begin{itemize}
+\item{Satz/Theorem: Aussage, von der man zeigen kann, dass sie wahr ist}
+\item{Beweis: Abfolge (Sequenz) von Aussagen zum Zeigen, dass ein Satz/Theorem wahr ist}
+\item{Axiom/Postulat: grundlegende Annahmen, die in Aussagen verwendet werden können, ohne sie weiter begründen zu müssen}
+\item{logisches Schliessen: Folgerungen nach bestimmten Regeln machen, die einen Beweis ergeben}
+\item{Lemma: einfacher Satz, der in Beweisen von komplizierteren Sätzen verwendet wird}
+\item{Korollar: einfache Folgerung eines Satzes}
+\end{itemize}
+
+\subsubsection{Direkter Beweis}
+
+Die Implikation $p \rightarrow q$ kann bewiesen werden, indem man zeigt, dass aus der Richtigkeit von $p$ die von $q$ folgt. Beispiel:
+\\
+\\
+Behauptung: Das Quadrat einer geraden natürlichen Zahl $n$ ist gerade.
+\\
+\\
+Beweis: Ist $n$ eine gerade natürliche Zahl, existiert genau eine natürliche Zahl $k$, sodass gilt: $n = 2k$. Daraus folgt:
+\\
+\\
+$n^{2} = (2k)^{2} = 4k^{2} = 2\cdot2k^{2}$
+\\
+\\
+Und $n^{2}$ ist das Doppelte einer natürlichen Zahl, also gerade. q.e.d.
+
+\subsubsection{Indirekter Beweis}
+
+Beim indirekten Beweis (dem Beweis durch Kontraposition) der Aussage $p \rightarrow q$ verwendet man deren logisch äquivalente Aussage $\neg q \rightarrow \neg p$. Beispiel:
+\\
+\\
+Behauptung: Ist das Quadrat einer natürlichen Zahl ($n^{2}$) gerade, ist auch $n$ gerade.
+\\
+\\
+Beweis: $n^{2} \text{ gerade } \rightarrow n \text{ gerade } \equiv n \text{ nicht gerade } \rightarrow n^{2} \text{ nicht gerade }$ Ist $n$ eine ungerade natürliche Zahl, existiert genau eine ungerade natürliche Zahl $k$, sodass gilt: $2(2k^{2}+2k)+1$. Daraus folgt:
+\\
+\\
+$n^{2} = (2k+1)^{2} = 4k^{2}+4k+1=2(2k^{2}+2k)+1$
+\\
+\\
+$2(2k^{2}+2k)$ ist gerade und wird durch die Addition von $1$ gerade, also ist $n^{2}$ ist ungerade. q.e.d.
+
+\subsubsection{Beweis durch Kontradiktion}
+
+Beim Beweis durch Kontradiktion (Widerspruch) wird für die Aussage $\neg p \rightarrow q$ eine widersprüchliche Aussage $q$ gefunden, sodass $\neg p \rightarrow F$ gilt, $\neg p$ falsch und somit $p$ wahr ist.
+\\
+\\
+Behauptung: Schwere Objekte fallen schneller als leichte Objekte.
+\\
+\\
+Beweis: Wenn man ein schweres und ein leichtes Objekt zusammenklebt, dann müsste dieses Objekt:
+\begin{itemize}
+\item{einerseits eine Fallgeschwindigkeit haben, die zwischen der Fallgeschwindigkeit der Ausgangsobjekte liegt (das leichte Objekt bremst den Fall des schweren Objekts ab)}
+\item{andererseits aufgrund des höheren Gesamtgewichts eine höhere Fallgeschwindigkeit als das schwerere Objekt haben}
+\end{itemize}
+Beide (logischen) Überlegungen widersprechen sich, die Annahme muss falsch sein.
+
+\section{Mengen, Funktionen, Folgen und Reihen}
+
+\subsection{Mengen}
+
+Eine \textit{Menge} ist eine ungeordnete Zusammenfassung, wohldefinierter, unterscheidbarer Objekte, genannt \textit{Elemente}, zu einem Ganzen. Für ein beliebiges Objekt $x$ gilt bezüglich der Menge $A$ entweder $x \in A$ oder $x \not \in A$.
+\\
+\\
+Beispiel: Für $A=\{1,2,\ldots,99,100\}$ gilt $99 \in A$ aber $101 \not \in A$.
+\\
+\\
+Alternative Schreibweise: $A = \{n \in \mathbb{N} | n < 101\}$ (\enquote{$A$ ist die Menge aller natürlicher Zahlen $n$, für die gilt, dass $n$ kleiner als $101$ ist.}) 
+\\
+\\
+Zwei Mengen $A$ und $B$ sind gleich ($A=B$), falls sie die selben Elemente enthalten.
+
+\subsubsection{Beispiele bekannter Mengen}
+
+\begin{itemize}
+\item{$\mathbb{N}=\{1,2,\ldots\}, \mathbb{N}_0=\{0,1,2,\ldots\}$}
+\item{$\mathbb{Z}=\{\ldots,-1,0,1,2,\ldots\}$}
+\item{$\mathbb{Z}^+\{1,2,\ldots\}$}
+\item{$\mathbb{Q}=\{p/q|p \in \mathbb{Z} \land q \in \mathbb{N}\}$}
+\item{$\mathbb{R}$: Menge der reellen Zahlen (z.B. Lösung der Gleichung $x=\sqrt{2}$}
+\item{$\mathbb{C}$: Menge der komplexen Zahlen (z.B. Lösung der Gleichung $x=\sqrt{-1}$}
+\end{itemize}
+
+\subsubsection{Teilmengen}
+
+$A$ ist \textit{Teilmenge} von $B$ ($A \subset B$) wenn $\forall x (x \in A \rightarrow x \in B)$ gilt. Jede Menge ist Teilmenge von sich selber ($A \subset A$).
+
+\subsubsection{Leere Menge}
+
+Die \textit{leere Menge} $\emptyset$ enthält keine Elemente. Für jede Menge $A$ gilt $\emptyset \subset A$.
+
+\subsubsection{Kardinalität}
+
+Bei einer endlichen Menge $S$ bezeichnet $|S|$ \textit{Kardinalität} (die Anzahl Elemente) der Menge.
+
+\subsubsection{Potenzmenge}
+
+Die \textit{Potenzmenge} $P(S)$ oder $2^S$ der Menge $S$ besteht aus der Menge aller möglichen Teilmengen (inkl. der leeren Menge) $A \subset S$.  
+\\
+\\
+Beispiel:Die Menge $S = \{1,2\}$ hat die Potenzmenge $P(S)=2^S=\{\emptyset,\{1\},\{2\},\{1,2\}\}$ Es gilt: $|2^S|=2^{|S|}$
+
+\subsubsection{Kreuzprodukt}
+
+Das \textit{Kreuzprodukt} oder \textit{kartesische Produkt} $A \times B$ zweier Mengen $A$ und $B$ ist die Menge aller geordneten Paare $(a,b)$, wobei $a \in A$ und $b \in B$, d.h. $A \times B = \{(a,b)|a \in A \land b \in B\}$.  
+\\
+\\
+Beispiel: $A=\{1,2,3\}$, $B=\{a,b\}$ 
+\\
+\\
+$A \times B = \{(1,a),(2,a),(3,a),(1,b),(2,b),(3,b) \}$
+\\
+$B \times A = \{(a,1),(a,2),(a,3),(b,1),(b,2),(b,3) \}$ 
+\\
+\\
+Es gilt $A \times B \neq B \times A$, da bei Tupeln die Reihenfolge wesentlich ist: $(1,a) \neq (a,1)$
+
+\subsubsection{Mengenoperationen}
+
+\begin{itemize}
+\item{Ist $A \subset M$, ist $A^C$ das \textit{Komplement} von $A$ in $M$: $A^C=\overline A=\{m \in M | m \not \in A \}$}
+\item{Sind $A$ und $B$ Teilmengen von $M$, ist $A \cap B$ der \textit{Durchschnitt} (die Schnittmenge) von $A$ und $B$: $A \cap B = \{m \in M | m \in A \land m \in B\}$}
+\item{Sind $A$ und $B$ Teilmengen von $M$, ist $A \cup B$ die \textit{Vereinigung} von $A$ und $B$: $A \cup B = \{m \in M | m \in A \lor m in B\}$}
+\item{Sind $A$ und $B$ Teilmengen von $M$, ist $B - A$ die \textit{Differenz} von $A$ und $B$: $B-A=\{m \in M | m \in B \land m \not \in A\}$}
+\end{itemize}
+
+\subsubsection{Rechenregeln}
+
+Für das Rechnen mit den Mengen $A, B, C \subset M$ gelten folgende Regeln:
+\\
+\\
+Kommutativgesetz:
+\\
+$A \cup B = B \cup A$
+\\
+$A \cap B = B \cap A$ 
+\\
+\\
+Assoziativgesetz:
+\\
+$A \cup (B \cup C) = (A \cup B) \cup C)$
+\\
+$A \cap (B \cap C) = (A \cap B) \cap C)$
+\\
+\\
+Distributivgesetz:
+\\
+$A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$
+\\
+$A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$
+\\
+\\
+De Morgan:
+\\
+$\overline{A \cup B} = \overline A \cap \overline B$ 
+\\
+$\overline{A \cap B} = \overline A \cup \overline B$
+
+\subsection{Funktionen}
+
+Wird jedem Element $x$ einer Menge $X$ (Definitionsbereich) genau ein Element $y$ einer Menge $Y$ zugeordnet, so heisst diese Zuordnung \textit{Funktion}.
+\\
+\\
+\textit{Wertebereich} oder \textit{Bildbereich}:
+\\
+\\
+$W = \{y \in Y | f(x) = y \text{ für ein } x \in X\}$
+\\
+$f:X \rightarrow Y$
+\\
+$x \mapsto f(x)$ oder $f:x \mapsto f(x)$
+
+\subsubsection{Injektive Funktionen}
+
+Bei einer \textit{injektiven} Funktion werden verschiedene $x_1,x_2 \in X$ stets auf verschiedene Werte im Bildbereich abgebildet.
+\\
+\\
+Für alle $x_1,x_2 \in X \text{ mit } x_1 \neq x_2 \text{ gilt } f(x_1) \neq f(x_2)$.
+\\
+Für alle $x_1,x_2 \in X \text{ mit } f(x_1) = f(x_2) \text{ gilt } x_1 = x_2$.
+\\
+\\
+\enquote{Auf jedes $y$ zeigt \textit{höchstens} ein $x$.}
+\\
+\\
+Beispiele:
+\begin{itemize}
+\item{injektiv: $f:\mathbb{R} \rightarrow \mathbb{R}, x \mapsto 2x + 3$, da für alle $x_1,x_2 \in \mathbb{R}$ gilt $f(x_1)=f(x_2) \leftrightarrow 2x_1 + 3 = 2x_2 + 3 \leftrightarrow x_1 = x_2$ (nur gleiche $x$ haben gleiche $f(x)$)}
+\item{\textit{nicht} injektiv: $f:\mathbb{R} \rightarrow \mathbb{R}, x \mapsto x^2$, da $f(-2)=f(2)=4$ (ungleiche $x$ haben das gleiche $f(x)$)}
+\end{itemize}
+
+\subsubsection{Surjektive Funktionen}
+
+Bei einer \textit{surjektiven} Funktion existiert für jedes Element $y \in Y$ (mindestens) ein Element $x \in X$, sodass $f(x)=y$ gilt.
+\\
+\\
+\enquote{Auf jedes $y$ zeigt \textit{mindestens} ein $x$.}
+
+\subsubsection{Bijektive Funktionen}
+
+Eine {bijektive} Funktion ist sowohl injektiv als auch surjektiv.
+\\
+\\
+\enquote{Auf jedes $y$ zeigt \textit{genau} ein $x$.}
+
+\subsubsection{Zusammenfassung}
+\begin{itemize}
+\item{injektiv: auf jedes $y$ zeigen $[0,1]$ $x$}
+\item{surjektiv: auf jedes $y$ zeigen $[1,\infty[$ $x$}
+\item{bijektiv: auf jedes $y$ zeigt $1$ $x$}
+\end{itemize}
+
+\subsubsection{Zusammengesetzte Funktionen}
+
+Liegt der Wertebereich ($U$) der Funktion $g$ im Definitionsbereich von $f$, \ldots
+\begin{align*}
+g:X & \rightarrow U
+\\
+x & \mapsto g(x)
+\\
+\\
+f:U & \rightarrow Y
+\\
+u & \mapsto f(u)
+\end{align*}
+\ldots kann die \textit{zusammengesetzte Funktion} oder \textit{Komposition} von $f$ und $g$ gebildet werden:
+\begin{align*}
+F = f \circ g : X & \rightarrow Y
+\\
+x & \mapsto f(g(x))
+\end{align*}
+
+\subsubsection{Die Umkehrfunktion}
+
+Von einer bijektiven Funktion $f$ kann die \textit{Umkehrfunktion} $f^{-1}$ gebildet werden, die jedem $y$ des Wertebereichts von $f$ ein eindeutig bestimmtes $x$ zuordnet. Beispiel: Gesucht ist die Umkehrfunktion von $f$, sowie ihr Definitions- und Wertebereich.
+\begin{align*}
+f:\mathbb{R} \setminus \{-2\} & \rightarrow \mathbb{R}
+\\
+x & \mapsto \frac{3x+4}{x+2}
+\\
+y = f(x) & = \frac{3x+4}{x+2}
+\end{align*}
+Die Funktion muss nach $x$ aufgelöst werden:
+\begin{align*}
+y & = \frac{3x+4}{x+2} &|& \cdot (x+2) \\
+y(x+2) & = 3x+4 &|& \text{ ausmultiplizieren } \\
+xy+2y &= 3x+4 &|& -3x, -2y \\
+xy-3x &= 4-2y &|& \text{ x ausklammern } \\
+x(y-3) &= 4-2y &|& :(y-3) \\
+x &= \frac{4-2y}{y-3}, & & \text{ falls } y \neq 3
+\end{align*}
+Zum Schluss können $x$ und $y$ vertauscht werden:
+\begin{align*}
+f^{-1}:\mathbb{R}\setminus \{3\} & \rightarrow \mathbb{R} \\
+y & \mapsto \frac{4-2y}{y-3}
+\end{align*}
+Wendet man auf ein $x$ zunächst eine umkehrbare Funktion $f$ und dann deren Umkehrfunktion $f^{-1}$ auf $f(x)$ an, erhält man wieder $x$:
+\begin{align*}
+(f^{-1} \circ f)(x) & = f^{-1}(f(x)) = x \\
+(f \circ f^{-1})(y) & = f(f^{-1}(y)) = y
+\end{align*}
+
+\subsection{Folgen}
+
+Definition: Eine \textit{Folge} ist eine Bbildung von $\mathbb{N}$ oder $\mathbb{N}_0$ in eine Menge $A$: $\{\dot\}:\mathbb{N} \rightarrow A, n \mapsto a_n$. $a_n$ ist das $n$-te Glied der Folge, die man auch mit $\{a_n\}$ oder $(a_n)$ bezeichnet. Beispiel: die ersten sechs Glieder der Folge, deren $k$-tes Glied gegeben ist durch $a_k=1/k$:
+\begin{align*}
+(a_k)=(1,\frac{1}{2},\frac{1}{3},\frac{1}{4},\frac{1}{5},\frac{1}{6},\ldots)
+\end{align*}
+
+\subsubsection{Die geometrische Folge}
+
+Bei einer \textit{geometrischen Folge} $\{a_k\}$ ist der Quotient zweier aufeinander folgender Glieder immer gleich, nämlich $q$, und das $k$-te Glied ist gegeben durch:
+\begin{align*}
+a_k=q_0 \cdot q^k, k = 0,1,2,\ldots
+\end{align*}
+Wobei $a_0$ und $q$ beliebige, reelle Zahlen sind.
+
+\subsubsection{Die arithmetische Folge}
+
+Bei einer \textit{arithmetichen Folge} $\{a_k\}$ ist die Differenz zweier aufeinander folgender Glieder immer gleich, nämlich $d$, und das $k$-te Glied ist gegeben durch:
+\begin{align*}
+a_k=a_0+k \cdot d, k = 0,1,2,\ldots
+\end{align*}
+
+Wobei $a_0$ und $d$ beliebige, reelle Zahlen sind.
+
+\subsection{Reihen}
+
+\subsubsection{Das Summenzeichen}
+
+Mithilfe des Summenzeichens lassen sich Summen einfacher schreiben:
+\begin{align*}
+a_m+a_{m+1}+a_{m+2}+\ldots+a_n = \sum \limits_{j=m} ^n a_j
+\end{align*}
+$j$: Summationsindex, $m$: untere Grenze, $n$: obere Grenze (es gilt $n \geq m$), $n-m$: Anzahl Elemente. Mittels \textit{Indextransformation} kann die obige Summe auch folgendermassen geschrieben werden:
+\begin{align*}
+\sum \limits_{j=m} ^n a_j = \sum \limits_{i=0} ^{n-m} a_{m+1} = \sum \limits_{k=1} ^{n-m+1} a_{m+k-1}
+\end{align*}
+
+\subsubsection{Die endliche arithmetische Reihe}
+
+Addiert man die Gleider einer arithmetischen Folge $(a_k)$, entsteht die \textit{arithmetische Reihe}:
+\begin{align*}
+& \sum \limits_{k=0} ^{n-1} a_k \\
+= & \sum \limits_{k=0} ^{n-1} (a_0+k \cdot d) \\
+= & \sum \limits_{k=0} ^{n-1} a_0 + d \cdot \sum \limits_{k=0} ^{n-1} k \\
+= & n \cdot a_0+d \cdot \frac{(n-1) \cdot n}{2}
+\end{align*}
+Die Summe ergibt sich durch die Berechnung des durchschnittlichen Glieds (dem Mittelwert des ersten und letzten Gliedes) und dessen Multiplikation mit der Anzahl Glieder $n$.
+\begin{align*}
+= & \frac{n}{2}\cdot(a_0+a_0+(n-1)\cdot d) \\
+= & n\cdot \frac{a_0+a_{n-1}}{2}
+\end{align*}
+Da $a_0 + (n-1)\cdot d = a_{n-1}$.
+
+\subsubsection{Die endliche geometrische Reihe}
+Addiert man die Glieder einer geometrischen Folge $(a_k)$, entsteht eine \textit{geometrische Reihe}:
+\begin{align*}
+& \sum \limits_{k=0} ^{n-1} a_k \\
+= & \sum \limits_{k=0} ^{n-1} a_0 \cdot q^k \\
+= & \sum \limits_{k=0} ^{n-1} q^k \\
+= & a_0 \cdot \frac{q^n-1}{q-1}
+\end{align*}
+Wobei $q \neq 1$ gelten muss (bei $q=1$ wäre es eine arithmetische Reihe).
+
+\subsubsection{Einige Summenformeln}
+\begin{tabular}{l|c}
+Summe & geschlossene Form \\
+\hline
+$\sum \limits_{k=1} ^n k$ & $\frac{n(n+1)}{2}$ \\
+$\sum \limits_{k=1} ^n k^2$ & $\frac{n(n+1)(2n+1)}{6}$ \\
+$\sum \limits_{k=1} ^n k^3$ & $\frac{n^2(n+1)^2}{4}$ \\
+$\sum \limits_{k=1} ^{\infty} x^k, |x| < 1$ & $\frac{1}{1-x}$ \\
+$\sum \limits_{k=1} ^{\infty} k \cdot x^{k-1}, |x| < 1$ & $\frac{1}{(1-x)^2}$
+\end{tabular}
+
+\subsubsection{Das Produktzeichen}
+
+Mithilfe des Produktzeichens lassen sich Produkte einfacher schreiben:
+\begin{align*}
+a_m \cdot a_{m+1} \cdot a_{m+2} \cdot \ldots \cdot a_n = \prod \limits_{j=m} ^n a_j
+\end{align*}
+$j$: Produktindex, $m$: untere Grenze, $n$: obere Grente (es gilt $n \geq m$), $n-m$: Anzahl Elemente. Mittels \textit{Indextransformation} kann das obige Produkt auch folgendermassen geschrieben werden:
+\begin{align*}
+\prod \limits_{j=m} ^n a_j = \prod \limits_{i=0} ^{n-m} a_{m+1} = \prod \limits_{k=1} ^{n-m+1} a_{m+k-1}
+\end{align*}
+Mit dem Produktzeichen lässt sich die Fakultät von $n$ folgendermassen schreiben:
+\begin{align*}
+n!=n(n-1)(n-2) \cdot \ldots \cdot 2 \cdot 1 = \prod \limits_{k=1} ^n k
+\end{align*}
+
+\end{document}

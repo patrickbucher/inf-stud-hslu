@@ -1,0 +1,6 @@
+digraph {
+    rankdir=LR;
+    "Botschaft" [shape=signature];
+    "Sender" -> "Botschaft" [label="schickt"];
+    "Botschaft" -> "Rezipient" [label="empfängt"];
+}

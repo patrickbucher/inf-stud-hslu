@@ -1,0 +1,63 @@
+This is BibTeX, Version 0.99d (TeX Live 2016/Arch Linux)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: text.aux
+The style file: apacite.bst
+Reallocated glb_str_ptr (elt_size=8) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=8) to 20 items from 10.
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+Reallocated wiz_functions (elt_size=8) to 6000 items from 3000.
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+Reallocated wiz_functions (elt_size=8) to 9000 items from 6000.
+Reallocated singl_function (elt_size=8) to 100 items from 50.
+Database file #1: bibliographie.bib
+Warning--entry type for "afp" isn't style-file defined
+--line 7 of file bibliographie.bib
+Warning--entry type for "blablacar" isn't style-file defined
+--line 15 of file bibliographie.bib
+Warning--entry type for "zeit" isn't style-file defined
+--line 23 of file bibliographie.bib
+apacite.bst [2013/07/21 v6.03 APA bibliography style]
+You've used 4 entries,
+            6951 wiz_defined-function locations,
+            1285 strings with 11086 characters,
+and the built_in function-call counts, 6020 in all, are:
+= -- 875
+> -- 40
+< -- 187
++ -- 151
+- -- 12
+* -- 274
+:= -- 880
+add.period$ -- 16
+call.type$ -- 4
+change.case$ -- 67
+chr.to.int$ -- 0
+cite$ -- 8
+duplicate$ -- 114
+empty$ -- 269
+format.name$ -- 56
+if$ -- 1316
+int.to.chr$ -- 0
+int.to.str$ -- 12
+missing$ -- 0
+newline$ -- 89
+num.names$ -- 32
+pop$ -- 131
+preamble$ -- 1
+purify$ -- 16
+quote$ -- 0
+skip$ -- 584
+stack$ -- 0
+substring$ -- 169
+swap$ -- 54
+text.length$ -- 10
+text.prefix$ -- 0
+top$ -- 1
+type$ -- 536
+warning$ -- 0
+while$ -- 20
+width$ -- 0
+write$ -- 96
+(There were 3 warnings)

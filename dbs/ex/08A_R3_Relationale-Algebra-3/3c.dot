@@ -1,0 +1,8 @@
+digraph {
+    edge[arrowhead="none"];
+    "join1" [label="⋈"];
+
+    "Π(sname)" -> "join1";
+    "join1" -> "count(sid)>=2" -> "R";
+    "join1" -> "S";
+}

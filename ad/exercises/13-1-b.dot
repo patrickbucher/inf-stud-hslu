@@ -1,0 +1,14 @@
+graph {
+    rankdir=LR;
+
+    A -- B;
+    A -- G;
+    A -- F;
+    B -- G;
+    B -- F;
+    F -- G;
+
+    C -- D;
+    D -- E;
+    C -- E;
+}

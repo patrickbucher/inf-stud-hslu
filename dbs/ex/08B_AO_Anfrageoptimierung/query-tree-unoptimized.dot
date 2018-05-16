@@ -1,0 +1,14 @@
+digraph {
+    edge [arrowheads="none"];
+    node [fontname="Fira Mono"];
+
+    "join1" [label="⋈"];
+    "join2" [label="⋈"];
+    "join3" [label="⋈"];
+
+    "Π(s.Name,v.titel,p.Name)" -> "σ(s.Name='Studentin_12400')" -> "join1" -> "σ(s.MatrNr>555555)" -> "moreStudenten";
+
+    "join1" -> "join2" -> "moreProfessoren";
+    "join2" -> "join3" -> "moreVorlesungen";
+    "join3" -> "moreHoeren";
+}

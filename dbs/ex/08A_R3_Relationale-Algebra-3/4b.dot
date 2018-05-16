@@ -1,0 +1,11 @@
+digraph {
+    edge[arrowhead="none"];
+    "join" [label="⋈"];
+    "div" [label="÷"];
+
+    "Π(sname)" -> "join";
+    "join" -> "div";
+    "div" -> "R";
+    "div" -> "B";
+    "join" -> "S";
+}

@@ -1,0 +1,12 @@
+digraph {
+    edge[arrowhead="none"];
+    "join" [label="⋈"];
+    "div" [label="÷"];
+
+    "Π(bname)" -> "join";
+    "join" -> "div";
+    "div" -> "R";
+    "div" -> "name='Interlake'" -> "B";
+    "join" -> "S";
+}
+

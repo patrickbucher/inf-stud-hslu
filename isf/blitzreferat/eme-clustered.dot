@@ -1,0 +1,48 @@
+digraph EME {
+    rankdir="LR";
+    node [fontname="sans",fontsize=20];
+    edge [fontname="sans",fontsize=16];
+
+    subgraph cluster_local {
+        fontname="sans";
+        fontsize=24;
+        label="Local";
+        style=filled;
+        fillcolor="#eeeeee";
+        color="#eeeeee";
+
+        "CDM" [shape="component"];
+        "Browser" [shape="Msquare"];
+        "MediaKeySession" [shape="box3d";fontname="Monospace"];
+
+        "CDM" -> "MediaKeySession" [label="5: message event"];
+        "MediaKeySession" -> "CDM" [label="7c: provides license key"];
+        "CDM" -> "Browser" [label="8b: sends decrypted media"];
+    }
+
+    subgraph cluster_remote {
+        fontname="sans";
+        fontsize=24;
+        label="Remote";
+        style=filled;
+        fillcolor="#dddddd";
+        color="#dddddd";
+
+        "Web Application" [shape="square"];
+        "Encrypted Media" [shape="note"];
+        "License Server" [shape="cylinder"];
+
+        "Web Application" -> "Encrypted Media" [label="1b: contains"];
+        "Web Application" -> "License Server" [label="6: requests key"];
+        "License Server" -> "Web Application" [label="7a: responds with key"];
+    }
+
+    "Browser" -> "Web Application" [label="1a: loads"];
+    "Browser" -> "Encrypted Media" [label="2a: reads metadata"];
+    "Encrypted Media" -> "Browser" [label="2b: is encrypted"];
+    "Browser" -> "Web Application" [label="2c: encrypted event"];
+    "Web Application" -> "MediaKeySession" [label="3: creates"];
+    "Web Application" -> "CDM" [label="4: sends media metadata"];
+    "Web Application" -> "MediaKeySession" [label="7b: updates key"];
+    "Encrypted Media" -> "CDM" [label="8a: reads encrypted media"];
+}

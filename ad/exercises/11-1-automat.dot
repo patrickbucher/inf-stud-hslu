@@ -1,0 +1,8 @@
+digraph {
+    "init" -> "running" [label="start"];
+    "running" -> "running" [label="okay"];
+    "running" -> "repair" [label="problem"];
+    "repair" -> "failure" [label="problem"];
+    "running" -> "failure" [label="failure"];
+    "failure" -> "init" [label="reset"];
+}

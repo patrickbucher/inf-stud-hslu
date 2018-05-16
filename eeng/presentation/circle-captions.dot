@@ -1,0 +1,6 @@
+digraph circle {
+    "Oil" -> "Plastic" [label="Production"];
+    "Plastic" -> "Plastic" [label="Recycling"];
+    "Plastic" -> "Carbon Dioxide" [label="Incineration"];
+    "Carbon Dioxide" -> "Oil" [label="Absorption, Decay"];
+}

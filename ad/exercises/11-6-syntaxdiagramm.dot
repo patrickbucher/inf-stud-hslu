@@ -1,0 +1,24 @@
+digraph {
+    rankdir=LR;
+
+    start [shape=circle];
+    end [shape=circle];
+
+    0 [shape=circle];
+    11 [shape=circle];
+    00 [shape=circle];
+
+    start -> 11;
+    start -> 0;
+
+    11 -> 11;
+    11 -> 0;
+
+    0 -> 00;
+    0 -> 11;
+    00 -> 11;
+
+    11 -> end;
+    00 -> end;
+    0 -> end;
+}

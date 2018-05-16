@@ -1,0 +1,10 @@
+digraph Heap {
+    node [fontsize=8];
+    edge [fontsize=8];
+    graph [fontsize=8];
+    "50" -> "12";
+    "50" -> "20";
+    "12" -> "10";
+    "12" -> "7";
+    "20" -> "5";
+}

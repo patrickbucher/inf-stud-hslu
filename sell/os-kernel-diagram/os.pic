@@ -1,0 +1,12 @@
+.PS
+A: box width 2 "Applications"
+box same "Kernel = Operating System" at last box .s - (0, 0.4)
+box same "Hardware" at last box .s - (0, 0.4)
+
+B: box width 3 "Applications" at A .e + (1.7, 0)
+box width 2 "Kernel" at last box .s - (0.5, 0.4)
+box same "Hardware" at last box .s - (0.0, 0.4)
+
+C: box width 2.2 height 1.8 dashed at B - (0.5, 0.075)
+box width 2 dotted 0 "Operating System" at C + (0, 0.6)
+.PE

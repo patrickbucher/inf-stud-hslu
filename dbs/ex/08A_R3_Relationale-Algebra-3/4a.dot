@@ -1,0 +1,13 @@
+digraph {
+    edge[arrowhead="none"];
+    "join" [label="⋈"];
+    "setminus" [label="∖"];
+
+    "Π(sid)" -> "setminus";
+    "setminus" -> "join";
+    "join" -> "color='red'";
+    "color='red'" -> "B";
+    "join" -> "R";
+    "setminus" -> "age>20";
+    "age>20" -> "S";
+}

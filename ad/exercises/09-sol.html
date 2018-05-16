@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">Übung A2: Höhere Sortieralgorithmen</h1>
+<p class="author">Patrick Bucher</p>
+<p class="date">17.05.2017</p>
+</header>
+<h1 id="quicksort-theoretisch-durchgespielt">1 Quicksort ‒ theoretisch durchgespielt</h1>
+<h2 id="a">a)</h2>
+<p>Erster Durchgang:</p>
+<p>12 10 52<sub>1</sub> 9 77 23 18 52<sub>2</sub> 11 25 8 5 <em>17</em></p>
+<p>12 10 5 9 8 11 <em>17</em> 52<sub>2</sub> 23 25 77 52<sub>1</sub> 18</p>
+<p>Zweiter Durchgang:</p>
+<p>12 10 5 9 8 <em>11</em> | 17 | 52<sub>2</sub> 23 25 77 52<sub>1</sub> <em>18</em></p>
+<p>8 10 5 9 <em>11</em> 12 | 17 | <em>18</em> 23 25 77 52<sub>1</sub> 52<sub>2</sub></p>
+<p>Dritter Durchgang:</p>
+<p>9 10 5 <em>9</em> | 11 12 17 18 | 23 25 77 52<sub>1</sub> <em>52<sub>2</sub></em></p>
+<p>8 5 <em>9</em> 10 | 11 12 17 18 | 23 25 52<sub>1</sub> <em>52<sub>2</sub></em> 77</p>
+<p>Vierter Durchgang:</p>
+<p>8 <em>5</em> | 9 10 11 12 17 18 | 23 25 <em>52<sub>1</sub></em> | 52<sub>2</sub> 77</p>
+<p><em>5</em> 8 | 9 10 11 12 17 18 | 23 25 <em>52<sub>1</sub></em> | 52<sub>2</sub> 77</p>
+<p>Fünfter Durchgang</p>
+<p>5 8 9 10 11 12 17 18 | 23 <em>25</em> | 52<sub>1</sub> 52<sub>2</sub> 77</p>
+<p>5 8 9 10 11 12 17 18 23 <em>25</em> 52<sub>1</sub> 52<sub>2</sub> 77</p>
+<h2 id="b">b)</h2>
+<p>Die Zahl 52<sub>1</sub> war nach dem ersten Durchgang rechts von 52<sub>2</sub>. Dass die Reihenfolge im zweiten Durchgang noch einmal (und zwar endgültig) änderte, ist reiner Zufall. Quicksort arbeitet <em>instabil</em>.</p>
+<h2 id="c">c)</h2>
+<p>Beim ersten Durchgang kämen 12 (Index 0), 18 (Index 6) und 17 (Index 12) in Frage. Dadurch würde erneut 17 als Trennelement fungieren.</p>
+<p>Beim zweiten Durchgang würde es links wiederum genau gleich ablaufen, rechts würde aber mit 25 ein anderes Element verwendet werden. Das könnte die Sortierung etwas beschleunigen und evtl. einen fünften Durchgang ersparen.</p>
+<h1 id="quicksort-klassisch-programmiert">2 Quicksort ‒ klassisch programmiert</h1>
+<h2 id="a-1">a)</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">quickSort</span>(<span class="bu">Character</span>[] data, <span class="dt">int</span> left, <span class="dt">int</span> right) {
+    <span class="dt">int</span> up = left;
+    <span class="dt">int</span> down = right - <span class="dv">1</span>;
+    <span class="dt">char</span> t = data[right];
+    <span class="kw">do</span> {
+        <span class="kw">while</span> (data[up] &lt; t) {
+            up++;
+        }
+        <span class="kw">while</span> (data[down] &gt;= t &amp;&amp; down &gt; up) {
+            down--;
+        }
+        <span class="kw">if</span> (up &lt; down) {
+            <span class="fu">swap</span>(data, up, down);
+        }
+    } <span class="kw">while</span> (up &lt; down);
+    <span class="fu">swap</span>(data, up, right);
+    <span class="kw">if</span> (left &lt; up - <span class="dv">1</span>) {
+        <span class="fu">quickSort</span>(data, left, up - <span class="dv">1</span>);
+    }
+    <span class="kw">if</span> (right &gt; up + <span class="dv">1</span>) {
+        <span class="fu">quickSort</span>(data, up + <span class="dv">1</span>, right);
+    }
+}</code></pre></div>
+<p>Testfall:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="at">@Test</span>
+<span class="kw">public</span> <span class="dt">void</span> <span class="fu">testQuickSort</span>() {
+    <span class="dt">final</span> <span class="dt">int</span> n = 200_<span class="dv">000</span>;
+    <span class="bu">Character</span> data[] = SortingUtils.<span class="fu">generateRandomCharArray</span>(n, <span class="ch">&#39;A&#39;</span>, <span class="ch">&#39;Z&#39;</span>);
+    Sort.<span class="fu">quickSort</span>(data, <span class="dv">0</span>, data.<span class="fu">length</span> - <span class="dv">1</span>);
+    <span class="dt">boolean</span> sorted = SortingUtils.<span class="fu">isSorted</span>(<span class="bu">Arrays</span>.<span class="fu">asList</span>(data), <span class="kw">true</span>);
+    Assert.<span class="fu">assertTrue</span>(sorted);
+}</code></pre></div>
+<p>Für grössere <code>n</code> ist es wichtig die Stackgrösse zu erhöhen. Dies erreicht man mit dem JVM-Parameter <code>-Xss10M</code> (stellt die Stackgrösse auf 10 Megabyte).</p>
+<h2 id="b-1">b)</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">quickSort</span>(<span class="bu">Character</span>[] data) {
+    <span class="fu">quickSort</span>(data, <span class="dv">0</span>, data.<span class="fu">length</span> - <span class="dv">1</span>);
+}</code></pre></div>
+<h2 id="c-1">c)</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> <span class="bu">Character</span>[] <span class="fu">randomChars</span>(<span class="dt">int</span> size, <span class="dt">int</span> min, <span class="dt">int</span> max) {
+    <span class="bu">Random</span> random = <span class="kw">new</span> <span class="bu">Random</span>(<span class="bu">System</span>.<span class="fu">currentTimeMillis</span>());
+    <span class="bu">Character</span> array[] = <span class="kw">new</span> <span class="bu">Character</span>[size];
+    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; size; i++) {
+        array[i] = (<span class="dt">char</span>) (random.<span class="fu">nextInt</span>(max - min + <span class="dv">1</span>) + min);
+    }
+    <span class="kw">return</span> array;
+}</code></pre></div>
+<h2 id="d">d)</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Elemente (<code>n</code>)</th>
+<th style="text-align: right;">Messung (ms)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1000</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5000</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10’000</td>
+<td style="text-align: right;">12</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">50’000</td>
+<td style="text-align: right;">35</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">100’000</td>
+<td style="text-align: right;">133</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">500’000</td>
+<td style="text-align: right;">2993</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1’000’000</td>
+<td style="text-align: right;">11’888</td>
+</tr>
+</tbody>
+</table>
+<p>Beispiel: Um welchen Faktor müsste eine Sortierung mit 1’000’000 Elementen länger dauern als eine Sortierung mit 500’000 bzw. 100’000 Elementen?</p>
+<pre><code>(1&#39;000&#39;000 * log 1&#39;000&#39;000) / (500&#39;000 * log 500&#39;000) = 2.1
+(1&#39;000&#39;000 * log 1&#39;000&#39;000) / (100&#39;000 * log 100&#39;000) = 12</code></pre>
+<p>Realität:</p>
+<pre><code>11&#39;888 / 2993 = 3.97
+11&#39;888 / 133 = 89.4</code></pre>
+<p>Das Laufzeitverhalten scheint eher <code>O(n²)</code> zu entsprechen (eine Verdoppelung der Elemente führt zu einer Verfierfachung der Laufzeit; eine Verzehnfachung der Elemente erhöht die Laufzeit ca. um Faktor 90).</p>
+<h1 id="quick-insertion-sort">3 Quick-Insertion-Sort</h1>
+<h2 id="a-2">a)</h2>
+<p>Zur eigentlichen Methode, die zusätzlich einen Parameter <code>m</code> hat (Schwellenwert, unter dem der Insertion-Sort verwendet werden soll), implementiere ich wiederum eine Hilfsmethode.</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">quickInsertionSort</span>(<span class="bu">Character</span>[] data, <span class="dt">int</span> m) {
+    <span class="fu">quickInsertionSort</span>(data, <span class="dv">0</span>, data.<span class="fu">length</span> - <span class="dv">1</span>, m);
+}
+
+<span class="dt">static</span> <span class="dt">void</span> <span class="fu">quickInsertionSort</span>(<span class="bu">Character</span>[] data, <span class="dt">int</span> l, <span class="dt">int</span> r, <span class="dt">int</span> m) {
+    <span class="co">// bestehender Algorithmus</span>
+    <span class="co">// ...</span>
+    <span class="co">// veränderte Rekursionsanweisungen:</span>
+    <span class="kw">if</span> (left &lt; up - <span class="dv">1</span>) {
+        <span class="dt">int</span> from = left;
+        <span class="dt">int</span> to = up - <span class="dv">1</span>;
+        <span class="kw">if</span> (to - from + <span class="dv">1</span> &gt; m) {
+            <span class="fu">quickInsertionSort</span>(data, from, to, m);
+        } <span class="kw">else</span> {
+            SimpleSorting.<span class="fu">insertionSort</span>(data, from, to);
+        }
+    }
+    <span class="kw">if</span> (right &gt; up + <span class="dv">1</span>) {
+        <span class="dt">int</span> from = up + <span class="dv">1</span>;
+        <span class="dt">int</span> to = right;
+        <span class="kw">if</span> (to - from + <span class="dv">1</span> &gt; m) {
+            <span class="fu">quickInsertionSort</span>(data, from, to, m);
+        } <span class="kw">else</span> {
+            SimpleSorting.<span class="fu">insertionSort</span>(data, from, to);
+        }
+    }
+}</code></pre></div>
+<h2 id="b-2">b)</h2>
+<p>Ich sortiere eine Million Zeichen mit verschiedenen <code>m</code>-Werten. Dabei erhalte ich folgende Laufzeiten:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">m</th>
+<th style="text-align: right;">Zeit (ms)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">9420</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">9278</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">9259</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">9361</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">9269</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">9258</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">9267</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">9263</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">9267</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">9289</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">125</td>
+<td style="text-align: right;">9265</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">9260</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">200</td>
+<td style="text-align: right;">9300</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">250</td>
+<td style="text-align: right;">9259</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">500</td>
+<td style="text-align: right;">9255</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1000</td>
+<td style="text-align: right;">9410</td>
+</tr>
+</tbody>
+</table>
+<p>Bei einer Datenmenge von einer Million Zeichen scheinen sinnvolle <code>m</code>-Werte von 10 bis 500 zu liegen.</p>
+<h2 id="c-2">c)</h2>
+<p>Mit <code>m = 25</code> kann ich beim Quick-Insertion-Sort (QIS) gegenüber dem Quick-Sort (QS) keinen Laufzeitvorteil feststellen:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">QS (ms)</th>
+<th style="text-align: right;">QIS (ms)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1000</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5000</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10000</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">50000</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">33</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">100000</td>
+<td style="text-align: right;">134</td>
+<td style="text-align: right;">126</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">500000</td>
+<td style="text-align: right;">3080</td>
+<td style="text-align: right;">3043</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1000000</td>
+<td style="text-align: right;">11866</td>
+<td style="text-align: right;">12101</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2000000</td>
+<td style="text-align: right;">47465</td>
+<td style="text-align: right;">48360</td>
+</tr>
+</tbody>
+</table>
+<h1 id="datenstruktur-heap">4 Datenstruktur Heap</h1>
+<p>Ich habe den Heap gleich generisch und mit dynamischer Grösse implementiert.</p>
+<h2 id="a-3">a)</h2>
+<figure>
+<img src="09-heaps.png" alt="Heap nach dem Auffüllen und nach dem Entfernen" /><figcaption>Heap nach dem Auffüllen und nach dem Entfernen</figcaption>
+</figure>
+<h2 id="b-3">b)</h2>
+<p>Das Interface <code>GenericHeap</code>:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">interface</span> GenericHeap&lt;T <span class="kw">extends</span> <span class="bu">Comparable</span>&lt;T&gt;&gt; {
+    <span class="kw">public</span> T <span class="fu">getMax</span>();
+    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">insert</span>(T element);
+    <span class="kw">public</span> <span class="dt">int</span> <span class="fu">getSize</span>();
+}</code></pre></div>
+<h2 id="c-3">c)</h2>
+<p>Die Klasse <code>Heap</code>:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> Heap&lt;T <span class="kw">extends</span> <span class="bu">Comparable</span>&lt;T&gt;&gt; <span class="kw">implements</span> GenericHeap&lt;T&gt; {
+
+    <span class="kw">private</span> <span class="dt">final</span> <span class="bu">List</span>&lt;T&gt; heap = <span class="kw">new</span> <span class="bu">ArrayList</span>&lt;&gt;();
+
+    <span class="at">@Override</span>
+    <span class="kw">public</span> T <span class="fu">getMax</span>() {
+        <span class="kw">if</span> (heap.<span class="fu">isEmpty</span>()) {
+            <span class="kw">throw</span> <span class="kw">new</span> <span class="bu">IllegalStateException</span>(<span class="st">&quot;Heap is empty.&quot;</span>);
+        }
+        T max = heap.<span class="fu">get</span>(<span class="dv">0</span>);
+        heap.<span class="fu">set</span>(<span class="dv">0</span>, heap.<span class="fu">get</span>(heap.<span class="fu">size</span>() - <span class="dv">1</span>));
+        heap.<span class="fu">remove</span>(heap.<span class="fu">size</span>() - <span class="dv">1</span>);
+        <span class="fu">sink</span>();
+        <span class="kw">return</span> max;
+    }
+
+    <span class="at">@Override</span>
+    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">insert</span>(T element) {
+        heap.<span class="fu">add</span>(element);
+        <span class="dt">int</span> newElementIndex = heap.<span class="fu">size</span>() - <span class="dv">1</span>;
+        <span class="fu">raise</span>(newElementIndex);
+    }
+
+    <span class="at">@Override</span>
+    <span class="kw">public</span> <span class="dt">int</span> <span class="fu">getSize</span>() {
+        <span class="kw">return</span> heap.<span class="fu">size</span>();
+    }
+
+    <span class="kw">private</span> <span class="dt">void</span> <span class="fu">sink</span>() {
+        <span class="dt">final</span> <span class="dt">int</span> size = heap.<span class="fu">size</span>();
+        <span class="dt">boolean</span> sunk = <span class="kw">false</span>;
+        <span class="dt">int</span> l = <span class="dv">1</span>, f = <span class="dv">0</span>, r = <span class="dv">2</span>;
+        <span class="kw">while</span> (!sunk &amp;&amp; (l &lt; size || r &lt; size)) {
+            T father = heap.<span class="fu">get</span>(f);
+            T left = l &lt; size ? heap.<span class="fu">get</span>(l) : father;
+            T right = r &lt; size ? heap.<span class="fu">get</span>(r) : father;
+            <span class="kw">if</span> (father.<span class="fu">compareTo</span>(left) &lt; <span class="dv">0</span> || father.<span class="fu">compareTo</span>(right) &lt; <span class="dv">0</span>) {
+                <span class="dt">int</span> biggerChildIndex = left.<span class="fu">compareTo</span>(right) &gt; <span class="dv">0</span> ? l : r;
+                <span class="fu">swap</span>(f, biggerChildIndex);
+                f = biggerChildIndex;
+                l = (<span class="dv">2</span> * f) + <span class="dv">1</span>;
+                r = <span class="dv">2</span> * (f + <span class="dv">1</span>);
+            } <span class="kw">else</span> {
+                sunk = <span class="kw">true</span>;
+            }
+        }
+    }
+
+    <span class="kw">private</span> <span class="dt">void</span> <span class="fu">raise</span>(<span class="dt">int</span> i) {
+        <span class="dt">boolean</span> risen = <span class="kw">false</span>;
+        <span class="kw">while</span> (!risen) {
+            <span class="dt">int</span> father = (i - <span class="dv">1</span>) / <span class="dv">2</span>;
+            <span class="kw">if</span> (heap.<span class="fu">get</span>(i).<span class="fu">compareTo</span>(heap.<span class="fu">get</span>(father)) &gt; <span class="dv">0</span>) {
+                <span class="fu">swap</span>(i, father);
+                i = father;
+                <span class="kw">if</span> (i == <span class="dv">0</span>) {
+                    risen = <span class="kw">true</span>;
+                }
+            } <span class="kw">else</span> {
+                risen = <span class="kw">true</span>;
+            }
+        }
+    }
+
+    <span class="kw">private</span> <span class="dt">void</span> <span class="fu">swap</span>(<span class="dt">int</span> a, <span class="dt">int</span> b) {
+        T tmp = heap.<span class="fu">get</span>(a);
+        heap.<span class="fu">set</span>(a, heap.<span class="fu">get</span>(b));
+        heap.<span class="fu">set</span>(b, tmp);
+    }
+}</code></pre></div>
+<h2 id="d-1">d)</h2>
+<p>Aus der Testklasse <code>GenericSortTest</code>:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">private</span> <span class="dt">static</span> <span class="dt">final</span> <span class="dt">int</span> TEST_SIZE = <span class="dv">100</span>;
+<span class="kw">private</span> <span class="dt">static</span> <span class="dt">final</span> <span class="dt">int</span> STRING_LENGTH = <span class="dv">30</span>;
+
+<span class="kw">private</span> <span class="bu">Integer</span> integers[] = <span class="kw">new</span> <span class="bu">Integer</span>[TEST_SIZE];
+<span class="kw">private</span> <span class="bu">Double</span> doubles[] = <span class="kw">new</span> <span class="bu">Double</span>[TEST_SIZE];
+<span class="kw">private</span> <span class="bu">String</span> strings[] = <span class="kw">new</span> <span class="bu">String</span>[TEST_SIZE];
+
+<span class="at">@Before</span>
+<span class="kw">public</span> <span class="dt">void</span> <span class="fu">initializeRandomArray</span>() {
+    <span class="bu">Random</span> random = <span class="kw">new</span> <span class="bu">Random</span>(<span class="bu">System</span>.<span class="fu">currentTimeMillis</span>());
+    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; TEST_SIZE; i++) {
+        integers[i] = random.<span class="fu">nextInt</span>();
+        doubles[i] = random.<span class="fu">nextDouble</span>();
+        strings[i] = <span class="fu">randomString</span>(random);
+    }
+}
+
+<span class="at">@Test</span>
+<span class="kw">public</span> <span class="dt">void</span> <span class="fu">testIntegerHeapSort</span>() {
+    GenericSort.<span class="fu">heapSort</span>(integers);
+    Assert.<span class="fu">assertTrue</span>(SortingUtils.<span class="fu">isSorted</span>(<span class="bu">Arrays</span>.<span class="fu">asList</span>(integers), <span class="kw">true</span>));
+}
+
+<span class="at">@Test</span>
+<span class="kw">public</span> <span class="dt">void</span> <span class="fu">testDoubleHeapSort</span>() {
+    GenericSort.<span class="fu">heapSort</span>(doubles);
+    Assert.<span class="fu">assertTrue</span>(SortingUtils.<span class="fu">isSorted</span>(<span class="bu">Arrays</span>.<span class="fu">asList</span>(doubles), <span class="kw">true</span>));
+}
+
+<span class="at">@Test</span>
+<span class="kw">public</span> <span class="dt">void</span> <span class="fu">testStringHeapSort</span>() {
+    GenericSort.<span class="fu">heapSort</span>(strings);
+    Assert.<span class="fu">assertTrue</span>(SortingUtils.<span class="fu">isSorted</span>(<span class="bu">Arrays</span>.<span class="fu">asList</span>(strings), <span class="kw">true</span>));
+}
+
+<span class="kw">private</span> <span class="bu">String</span> <span class="fu">randomString</span>(<span class="bu">Random</span> random) {
+    <span class="bu">StringBuilder</span> randomString = <span class="kw">new</span> <span class="bu">StringBuilder</span>();
+    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; STRING_LENGTH; i++) {
+        randomString.<span class="fu">append</span>((<span class="dt">char</span>) (random.<span class="fu">nextInt</span>(<span class="ch">&#39;Z&#39;</span> - <span class="ch">&#39;A&#39;</span> + <span class="dv">1</span>) + <span class="ch">&#39;A&#39;</span>));
+    }
+    <span class="kw">return</span> randomString.<span class="fu">toString</span>();
+}</code></pre></div>
+<h2 id="e">e)</h2>
+<p>Ich habe der <code>GenericSort</code>-Klasse folgende Methode (für eine <em>aufsteigende</em> Sortierung) als API für den Heap hinzugefügt:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> &lt;T <span class="kw">extends</span> <span class="bu">Comparable</span>&lt;T&gt;&gt; <span class="dt">void</span> <span class="fu">heapSort</span>(T items[]) {
+    GenericHeap&lt;T&gt; heap = <span class="kw">new</span> Heap&lt;&gt;();
+    <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; items.<span class="fu">length</span>; i++) {
+        heap.<span class="fu">insert</span>(items[i]);
+    }
+    <span class="kw">for</span> (<span class="dt">int</span> i = items.<span class="fu">length</span> - <span class="dv">1</span>; i &gt;= <span class="dv">0</span>; i--) {
+        items[i] = heap.<span class="fu">getMax</span>();
+    }
+}</code></pre></div>
+<h1 id="übersicht-sortieralgorithmen">5 Übersicht Sortieralgorithmen</h1>
+<h2 id="a-und-b">a) und b)</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Algorithmus</th>
+<th style="text-align: left;">O avg</th>
+<th style="text-align: left;">O worst</th>
+<th style="text-align: left;">O best</th>
+<th style="text-align: left;">stabil</th>
+<th style="text-align: left;">parallel</th>
+<th style="text-align: left;">Merkmale</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Direktes Einfügen (Insertion Sort)</td>
+<td style="text-align: left;">O(n²)</td>
+<td style="text-align: left;">O(n²)</td>
+<td style="text-align: left;">O(n)</td>
+<td style="text-align: left;">ja</td>
+<td style="text-align: left;">nein</td>
+<td style="text-align: left;">sortierter/unsortierter Teil; benachbartes Vertauschen</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Direktes Auswählen (Selection Sort)</td>
+<td style="text-align: left;">O(n²)</td>
+<td style="text-align: left;">O(n²)</td>
+<td style="text-align: left;">O(n²)</td>
+<td style="text-align: left;">nein</td>
+<td style="text-align: left;">nein</td>
+<td style="text-align: left;">sortierter/unsortierter Teil; Vertauschen über weite Entfernungen</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Direktes Austauschen (Bubble Sort)</td>
+<td style="text-align: left;">O(n²)</td>
+<td style="text-align: left;">O(n²)</td>
+<td style="text-align: left;">O(n)</td>
+<td style="text-align: left;">ja</td>
+<td style="text-align: left;">nein</td>
+<td style="text-align: left;">Vergleich von jedem Element mit jedem</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Shellsort</td>
+<td style="text-align: left;">O(n*log²n)</td>
+<td style="text-align: left;">O(n*log²n)</td>
+<td style="text-align: left;">O(n*log n)</td>
+<td style="text-align: left;">nein</td>
+<td style="text-align: left;">nein</td>
+<td style="text-align: left;">Insertion Sort mit verschiedenen Schrittweiten</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Quicksort (<code>Arrays.sort()</code>)</td>
+<td style="text-align: left;">O(n*log n)</td>
+<td style="text-align: left;">O(n²)</td>
+<td style="text-align: left;">O(n*log n)</td>
+<td style="text-align: left;">ja</td>
+<td style="text-align: left;">ja</td>
+<td style="text-align: left;">Divide &amp; Conquer; Sortierung um Teilerelement</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mergesort (<code>Collections.sort()</code>)</td>
+<td style="text-align: left;">O(n*log n)</td>
+<td style="text-align: left;">O(n*log n)</td>
+<td style="text-align: left;">O(n*log n)</td>
+<td style="text-align: left;">nein</td>
+<td style="text-align: left;">ja</td>
+<td style="text-align: left;">Divide &amp; Conquer; Reissverschlussprinzip</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Heapsort</td>
+<td style="text-align: left;">O(n*log n)</td>
+<td style="text-align: left;">O(n*log n)</td>
+<td style="text-align: left;">O(n*log n)</td>
+<td style="text-align: left;">ja</td>
+<td style="text-align: left;">nein</td>
+<td style="text-align: left;">basiert auf Heap-Datenstruktur</td>
+</tr>
+</tbody>
+</table>
+<h1 id="optional-quicksort-generisch-programmiert">6 Optional: Quicksort ‒ generisch programmiert</h1>
+<h2 id="a-und-b-1">a) und b)</h2>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> &lt;T <span class="kw">extends</span> <span class="bu">Comparable</span>&lt;T&gt;&gt; <span class="dt">void</span> <span class="fu">quickSort</span>(T[] data) {
+    <span class="fu">quickSort</span>(data, <span class="dv">0</span>, data.<span class="fu">length</span> - <span class="dv">1</span>);
+}
+
+<span class="kw">public</span> <span class="dt">static</span> &lt;T <span class="kw">extends</span> <span class="bu">Comparable</span>&lt;T&gt;&gt; <span class="dt">void</span> <span class="fu">quickSort</span>(T[] data, <span class="dt">int</span> left, <span class="dt">int</span> right) {
+    <span class="kw">if</span> (right - left == <span class="dv">0</span>) {
+        <span class="kw">return</span>;
+    }
+    <span class="dt">int</span> up = left;
+    <span class="dt">int</span> down = right - <span class="dv">1</span>;
+    T t = data[right];
+    <span class="kw">do</span> {
+        <span class="kw">while</span> (data[up].<span class="fu">compareTo</span>(t) &lt; <span class="dv">0</span>) {
+            up++;
+        }
+        <span class="kw">while</span> (data[down].<span class="fu">compareTo</span>(t) &gt;= <span class="dv">0</span> &amp;&amp; down &gt; up) {
+            down--;
+        }
+        <span class="kw">if</span> (up &lt; down) {
+            <span class="fu">swap</span>(data, up, down);
+        }
+    } <span class="kw">while</span> (up &lt; down);
+    <span class="fu">swap</span>(data, up, right);
+    <span class="kw">if</span> (left &lt; up - <span class="dv">1</span>) {
+        <span class="fu">quickSort</span>(data, left, up - <span class="dv">1</span>);
+    }
+    <span class="kw">if</span> (right &gt; up + <span class="dv">1</span>) {
+        <span class="fu">quickSort</span>(data, up + <span class="dv">1</span>, right);
+    }
+}</code></pre></div>
+<h2 id="c-und-d">c) und d)</h2>
+<p>Die Methode <code>medianOfThree()</code> ermittelt das mittlere Element im angegebenen Bereich:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> &lt;T <span class="kw">extends</span> <span class="bu">Comparable</span>&lt;T&gt;&gt; <span class="dt">int</span> <span class="fu">medianOfThree</span>(T items[], <span class="dt">int</span> left, <span class="dt">int</span> right) {
+    <span class="dt">int</span> middle = left + ((right - left) / <span class="dv">2</span>);
+    T l = items[left];
+    T m = items[middle];
+    T r = items[right];
+    <span class="kw">if</span> (l.<span class="fu">compareTo</span>(r) &gt; <span class="dv">0</span> &amp;&amp; l.<span class="fu">compareTo</span>(m) &lt; <span class="dv">0</span> || l.<span class="fu">compareTo</span>(r) &lt; <span class="dv">0</span> &amp;&amp; l.<span class="fu">compareTo</span>(m) &gt; <span class="dv">0</span>) {
+        <span class="kw">return</span> left;
+    } <span class="kw">else</span> <span class="kw">if</span> (m.<span class="fu">compareTo</span>(r) &gt; <span class="dv">0</span> &amp;&amp; m.<span class="fu">compareTo</span>(l) &lt; <span class="dv">0</span> || m.<span class="fu">compareTo</span>(r) &lt; <span class="dv">0</span> &amp;&amp; m.<span class="fu">compareTo</span>(l) &gt; <span class="dv">0</span>) {
+        <span class="kw">return</span> middle;
+    } <span class="kw">else</span> {
+        <span class="kw">return</span> right;
+    }
+}</code></pre></div>
+<p>Das ermittelte Element muss dann ans rechte Ende des zu sortierenden Bereiches verschoben werden:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">int</span> tIndex = <span class="fu">medianOfThree</span>(data, left, right);
+<span class="fu">swap</span>(data, tIndex, right);</code></pre></div>
+<p>Dieser Testfall testet Heapsort, Quicksort und Median-of-Three-Quicksort:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> GenericSortBenchmark {
+
+    <span class="kw">private</span> <span class="dt">static</span> <span class="dt">final</span> <span class="dt">int</span> TEST_SIZES[] = <span class="kw">new</span> <span class="dt">int</span>[] { 100_<span class="dv">000</span>, 200_<span class="dv">000</span>, 500_<span class="dv">000</span>, 1_000_<span class="dv">000</span>, 2_000_<span class="dv">000</span>, 5_000_<span class="dv">000</span>, };
+
+    <span class="kw">private</span> <span class="bu">Random</span> random;
+
+    <span class="at">@Before</span>
+    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">initialize</span>() {
+        random = <span class="kw">new</span> <span class="bu">Random</span>(<span class="bu">System</span>.<span class="fu">currentTimeMillis</span>());
+    }
+
+    <span class="at">@Test</span>
+    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">benchmarkHeapVsQuickSort</span>() {
+        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;   Items    HS    QS  QS Mo3&quot;</span>);
+        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;-------- ----- ----- -------&quot;</span>);
+        <span class="kw">for</span> (<span class="dt">int</span> testSize : TEST_SIZES) {
+            <span class="bu">Integer</span> hItems[] = <span class="fu">randomIntegerArray</span>(testSize);
+            <span class="bu">Integer</span> qItems[] = <span class="bu">Arrays</span>.<span class="fu">copyOf</span>(hItems, hItems.<span class="fu">length</span>);
+            <span class="bu">Integer</span> qItemsMo3[] = <span class="bu">Arrays</span>.<span class="fu">copyOf</span>(hItems, hItems.<span class="fu">length</span>);
+
+            <span class="dt">long</span> hStart = <span class="bu">System</span>.<span class="fu">currentTimeMillis</span>();
+            GenericSort.<span class="fu">heapSort</span>(hItems);
+            <span class="dt">long</span> hEnd = <span class="bu">System</span>.<span class="fu">currentTimeMillis</span>();
+            Assert.<span class="fu">assertTrue</span>(<span class="fu">sorted</span>(hItems));
+
+            <span class="dt">long</span> qStart = <span class="bu">System</span>.<span class="fu">currentTimeMillis</span>();
+            GenericSort.<span class="fu">quickSort</span>(qItems);
+            <span class="dt">long</span> qEnd = <span class="bu">System</span>.<span class="fu">currentTimeMillis</span>();
+            Assert.<span class="fu">assertTrue</span>(<span class="fu">sorted</span>(qItems));
+
+            <span class="dt">long</span> qStartMo3 = <span class="bu">System</span>.<span class="fu">currentTimeMillis</span>();
+            GenericSort.<span class="fu">quickSortMedianOfThree</span>(qItemsMo3);
+            <span class="dt">long</span> qEndMo3 = <span class="bu">System</span>.<span class="fu">currentTimeMillis</span>();
+            Assert.<span class="fu">assertTrue</span>(<span class="fu">sorted</span>(qItemsMo3));
+
+            <span class="bu">System</span>.<span class="fu">out.printf</span>(<span class="st">&quot;</span><span class="sc">%8d</span><span class="st"> </span><span class="sc">%5d</span><span class="st"> </span><span class="sc">%5d</span><span class="st"> </span><span class="sc">%7d\n</span><span class="st">&quot;</span>, testSize, hEnd - hStart, qEnd - qStart, qEndMo3 - qStartMo3);
+        }
+    }
+
+    <span class="kw">private</span> &lt;T <span class="kw">extends</span> <span class="bu">Comparable</span>&lt;T&gt;&gt; <span class="dt">boolean</span> <span class="fu">sorted</span>(T items[]) {
+        T last = items[<span class="dv">0</span>], current;
+        <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">1</span>; i &lt; items.<span class="fu">length</span>; i++) {
+            current = items[i];
+            <span class="kw">if</span> (current.<span class="fu">compareTo</span>(last) &lt; <span class="dv">0</span>) {
+                <span class="kw">return</span> <span class="kw">false</span>;
+            }
+            last = current;
+        }
+        <span class="kw">return</span> <span class="kw">true</span>;
+    }
+
+    <span class="kw">private</span> <span class="bu">Integer</span>[] <span class="fu">randomIntegerArray</span>(<span class="dt">int</span> size) {
+        <span class="bu">Integer</span> integers[] = <span class="kw">new</span> <span class="bu">Integer</span>[size];
+        <span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; size; i++) {
+            integers[i] = random.<span class="fu">nextInt</span>(<span class="bu">Integer</span>.<span class="fu">MAX_VALUE</span>);
+        }
+        <span class="kw">return</span> integers;
+    }
+}</code></pre></div>
+<p>Die ermittelten Laufzeiten (in Millisekunden):</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Items</th>
+<th style="text-align: right;">HS</th>
+<th style="text-align: right;">QS</th>
+<th style="text-align: right;">QS Mo3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">100000</td>
+<td style="text-align: right;">117</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">76</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">200000</td>
+<td style="text-align: right;">114</td>
+<td style="text-align: right;">76</td>
+<td style="text-align: right;">42</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">500000</td>
+<td style="text-align: right;">308</td>
+<td style="text-align: right;">115</td>
+<td style="text-align: right;">114</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1000000</td>
+<td style="text-align: right;">620</td>
+<td style="text-align: right;">265</td>
+<td style="text-align: right;">273</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2000000</td>
+<td style="text-align: right;">1383</td>
+<td style="text-align: right;">563</td>
+<td style="text-align: right;">571</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5000000</td>
+<td style="text-align: right;">4261</td>
+<td style="text-align: right;">1580</td>
+<td style="text-align: right;">1634</td>
+</tr>
+</tbody>
+</table>
+<h1 id="fazit">Fazit</h1>
+<h2 id="optimierungen">Optimierungen</h2>
+<p>Für Quicksort wurden folgende beiden Optimierungen vorgenommen:</p>
+<ol type="1">
+<li>Sortierung mittels Insertion-Sort für kleine Teillisten</li>
+<li>Ermittlung eines Teilerelements mittels <em>median of three</em>-Verfahren</li>
+</ol>
+<p>Keine der beiden Optimierungen hatte für <code>n &gt;= 1'000'000</code> einen messbaren Performancegewinn zur Folge. Die Optimierungen mögen für (sehr) grosse <code>n</code> durchaus angebracht sein; für “kleine” <code>n</code> scheinen sie aber eher nachteilig, da der Code komplizierter wird. Dadurch liefen die Sortierungen tendenziell sogar langsamer.</p>
+<h2 id="heap">Heap</h2>
+<p>Der Heap liess sich erstaunlich einfach iterativ implementieren. Diese Datenstruktur kapselt das Heap-Sort-Verfahren; die Datenstruktur beinhaltet quasi den Sortieralgorithmus.</p>
+<h2 id="laufzeitkomplexität-vs.performancemessung">Laufzeitkomplexität vs. Performancemessung</h2>
+<p>Die theoretische Laufzeitkomplexität und die gemessene Performance unterschieden sich teils deutlich. So arbeitete der Selection-Sort bei mir wesentlich schneller als der Insertion-Sort. Bei Quick-Sort deuten meine Messungen eher auf eine Laufzeitkomplexität von <code>O(n²)</code> als <code>O(n*log n)</code> hin.</p>
+<p>Konstante Faktoren mögen für sehr grosse <code>n</code> nicht relevant sein. In der Praxis hat man es aber auch oft mit eher kleinen <code>n</code> zu tun.</p>
+<h2 id="benchmark">Benchmark</h2>
+<p>Zum Schluss noch eine Übersicht über die Laufzeiten der verschiedenen Sortieralgorithmen.</p>
+<p>Einfache Sortieralgorithmen:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Items</th>
+<th style="text-align: right;">BS</th>
+<th style="text-align: right;">IS</th>
+<th style="text-align: right;">SS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1000</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">11</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2000</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5000</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10000</td>
+<td style="text-align: right;">300</td>
+<td style="text-align: right;">127</td>
+<td style="text-align: right;">65</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">20000</td>
+<td style="text-align: right;">1226</td>
+<td style="text-align: right;">558</td>
+<td style="text-align: right;">294</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">50000</td>
+<td style="text-align: right;">8768</td>
+<td style="text-align: right;">3652</td>
+<td style="text-align: right;">1996</td>
+</tr>
+</tbody>
+</table>
+<p>Höhere Sortieralgorithmen:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Items</th>
+<th style="text-align: right;">HS</th>
+<th style="text-align: right;">QS</th>
+<th style="text-align: right;">QS Mo3</th>
+<th style="text-align: right;">QIS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">100000</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">63</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">200000</td>
+<td style="text-align: right;">128</td>
+<td style="text-align: right;">82</td>
+<td style="text-align: right;">116</td>
+<td style="text-align: right;">133</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">500000</td>
+<td style="text-align: right;">298</td>
+<td style="text-align: right;">112</td>
+<td style="text-align: right;">124</td>
+<td style="text-align: right;">230</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1000000</td>
+<td style="text-align: right;">706</td>
+<td style="text-align: right;">267</td>
+<td style="text-align: right;">272</td>
+<td style="text-align: right;">254</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2000000</td>
+<td style="text-align: right;">1645</td>
+<td style="text-align: right;">579</td>
+<td style="text-align: right;">606</td>
+<td style="text-align: right;">570</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5000000</td>
+<td style="text-align: right;">4757</td>
+<td style="text-align: right;">1673</td>
+<td style="text-align: right;">1747</td>
+<td style="text-align: right;">1648</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10000000</td>
+<td style="text-align: right;">10665</td>
+<td style="text-align: right;">3757</td>
+<td style="text-align: right;">3901</td>
+<td style="text-align: right;">3681</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20000000</td>
+<td style="text-align: right;">24049</td>
+<td style="text-align: right;">8013</td>
+<td style="text-align: right;">8357</td>
+<td style="text-align: right;">7867</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">50000000</td>
+<td style="text-align: right;">66566</td>
+<td style="text-align: right;">21582</td>
+<td style="text-align: right;">22231</td>
+<td style="text-align: right;">22378</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

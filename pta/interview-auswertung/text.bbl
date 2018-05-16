@@ -1,0 +1,95 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+AFP%
+}{%
+AFP%
+}{%
+{\protect \APACyear {2015}}%
+}]{%
+afp}
+\APACinsertmetastar {%
+afp}%
+\begin{APACrefauthors}%
+AFP.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2015}{}{}.
+\newblock
+\APACrefbtitle {BlaBlaCar kauft mitfahrgelegenheit.de und mitfahrzentrale.de.}
+  {Blablacar kauft mitfahrgelegenheit.de und mitfahrzentrale.de.}
+\newblock
+\begin{APACrefURL}
+  [{14.11.2016}]\url{http://www.zeit.de/news/2015-04/15/deutschland-blablacar-kauft-mitfahrgelegenheitde-und-mitfahrzentralede-15111021}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+B.%
+}{%
+B.%
+}{%
+{\protect \APACyear {2016}}%
+}]{%
+interview}
+\APACinsertmetastar {%
+interview}%
+\begin{APACrefauthors}%
+B., R.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2016}{}{}.
+\newblock
+\APAChowpublished {Persönliches Gespräch}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Blablacar%
+}{%
+Blablacar%
+}{%
+{\protect \APACyear {2016}}%
+}]{%
+blablacar}
+\APACinsertmetastar {%
+blablacar}%
+\begin{APACrefauthors}%
+Blablacar.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2016}{}{}.
+\newblock
+\APACrefbtitle {Über uns.} {Über uns.}
+\newblock
+\begin{APACrefURL} [{14.11.2016}]\url{https://www.blablacar.de/ueber-uns}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Strathmann%
+}{%
+Strathmann%
+}{%
+{\protect \APACyear {2016}}%
+}]{%
+zeit}
+\APACinsertmetastar {%
+zeit}%
+\begin{APACrefauthors}%
+Strathmann, M.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2016}{}{}.
+\newblock
+\APACrefbtitle {Gegen die Wand gefahren.} {Gegen die wand gefahren.}
+\newblock
+\begin{APACrefURL}
+  [{14.11.2016}]\url{http://www.zeit.de/digital/internet/2016-03/mitfahrgelegenheit-31-maerz-blablacar/komplettansicht}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}
