@@ -1,0 +1,16 @@
+@startuml
+
+skinparam monochrome true
+skinparam defaultFontName Droid Sans
+skinparam dpi 150
+skinparam componentStyle uml2
+
+package "Shared Data" {
+    component A
+    database DB
+    component B
+    A <-> DB
+    DB <-> B
+}
+
+@enduml

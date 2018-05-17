@@ -1,0 +1,15 @@
+@startuml
+
+skinparam monochrome true
+skinparam defaultFontName Droid Sans
+skinparam dpi 150
+skinparam componentStyle uml2
+
+package "Client-Server" {
+    component Client
+    component Server
+    Client -> Server: request
+    Server -> Client: service
+}
+
+@enduml

@@ -1,13 +1,15 @@
 PARAMS=--pdf-engine=xelatex -V documentclass=scrartcl -V papersize=a4 -V lang=de
-FONTS=-V mainfont='EB Garamond' -V sansfont='Open Sans' -V monofont='Fira Mono'
+FONTS=-V mainfont='Droid Serif' -V sansfont='Droid Sans' -V monofont='Droid Sans Mono'
 DATE=-V date="`date +'%d.%m.%Y'`"
 
 vsk.pdf: 00-vsk.md 01-komponenten.md .pics
 	pandoc -s -N --toc  $(PARAMS) $(FONTS) $(DATE) *.md -o vsk.pdf
 
-.pics: komponentendiagramm.png
-	plantuml komponentendiagramm.uml
+.pics: komponentendiagramm.png pipe-and-filter.png shared-data.png publish-subscribe.png client-server.png peer-to-peer.png
 	touch .pics
+
+%.png: %.uml
+	plantuml $<
 
 clean:
 	rm -f .pics

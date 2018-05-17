@@ -1,0 +1,16 @@
+@startuml
+
+skinparam monochrome true
+skinparam defaultFontName Droid Sans
+skinparam dpi 150
+skinparam componentStyle uml2
+
+package "Pipe and Filter" {
+    component A
+    component B
+    component C
+    A -> B
+    B -> C
+}
+
+@enduml
