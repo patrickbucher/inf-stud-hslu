@@ -115,3 +115,19 @@ Architekturmuster:
         - `jdbc-mysql-3.2.1.jar` enthält die MySQL-Implementierung
         - `jdbc-postgres-4.5.7.jar` enthält die PostgreSQL-Implementierung
         - Versionierung idealserweise im Manifest und im Dateinamen (Konsistenz beachten!)
+
+## Schnittstellen
+
+### Begriff und Konzept
+
+- Metapher: Beim Zerschneiden eines Apfels entstehen zwei spiegelsymmetrische Oberflächen.
+- Die Komponenten müssen so definiert werden, damit sie an der Schnittstelle zusammenpassen, als ob sie vorher auseinandergeschnitten worden wären.
+- Tatsächlich werden _Verbindungsstellen_ erstellt, welche Kombinierbarkeit sicherstellen.
+- Eine Schnittstelle tut nichts und kann nichts.
+- Schnittstellen trennen nichts, sie verbinden etwas:
+    - Komponenten untereinander (Programmschnittstellen)
+    - Komponenten mit dem Benutzer 
+
+### Dienstleistungsperspektive
+
+### Spezifikation von Schnittstellen
