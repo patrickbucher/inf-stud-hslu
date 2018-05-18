@@ -2,7 +2,7 @@
 
 Dokumente zu meinem Informatik-Studium an der Hochschule Luzern ‒ Informatik (2016-20??)
 
-## Module
+## Inhalt (nach Modulen)
 
 - `ad`: Algorithmen und Datenstrukturen
     - Übungen, fast vollständig
@@ -43,4 +43,21 @@ Dokumente zu meinem Informatik-Studium an der Hochschule Luzern ‒ Informatik (
 - `plab`: Programmier Labor
     - Präsentation zum Thema GUI-Programmierung in Java
 - `pmb`: Project Management Basics
-    - TODO
+    - Testatübungen
+- `pta`: Projekt- und Teamarbeit (a.k.a _Pointless Team Assignment)
+    - Präsentation
+    - Interview mit Auswertung
+- `sell`: Self Directed English Language Learning
+    - Präsentation mit Glossar
+- `vsk`: Verteilte Systeme und Komponenten
+    - Interface-Vorschlag
+    - Zusammenfassung (in Arbeit)
+
+## Weitere Repositories
+
+- [vsk-team5](https://github.com/patrickbucher/vsk-team5): Dokumentation und Java-Projekt zum Logger-Projekt
+- [pren-zielfeld](https://github.com/patrickbucher/pren-zielfeld): Zielfelderkennung für das Modul PREN (Herbstsemester 2017/Frühlingssemester 2018) mit Beispielbildern
+- [chefe-at-hslu/dbs-project](https://github.com/chefe-at-hslu/dbs-project): Gemeinsam gelöste Aufgaben für das Modul Datenbanksysteme (Herbstsemester 2017)
+- [mongomir-pytkovic](https://github.com/patrickbucher/mongomir-pytkovic): Projektarbeit für das Modul Datenbanksysteme mit MongoDB, Python, Docker und nginx
+- [ad_exercises](https://github.com/patrickbucher/ad_exercises): Java-Code zu den Übungen im Modul Algorithmen & Datenstrukturen
+- [struggling-at-hslu/observations](https://github.com/struggling-at-hslu/observations): Beobachtungen und Betrachtungen rund um das Informatik-Studium der Hochschule Luzern

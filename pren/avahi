@@ -1,4 +1,0 @@
-sudo apt-get install avahi-daemon insserv
-sudo insserv avahi-daemon
-sudo /etc/init.d/avahi-daemon restart
-# ssh pi@pren7.local (from other host)

@@ -1,8 +1,0 @@
-- Raspberry Pi Zero W
-- Stromversorgung mit Batterie
-    - eigene Batterie?
-    - gemeinsame Batterie?
-- Ultraschall-Sensor für Hinderniserkennung/Distanzmessung
-- Kamera für Zielanvisierung
-- Mikrofon für Startbefehl-Erkennung
-- Knopf zum manuellen Start
