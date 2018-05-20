@@ -5,7 +5,7 @@ DATE=-V date="`date +'%d.%m.%Y'`"
 vsk.pdf: 00-vsk.md 01-komponenten.md .pics
 	pandoc -s -N --toc  $(PARAMS) $(FONTS) $(DATE) *.md -o vsk.pdf
 
-.pics: komponentendiagramm.png pipe-and-filter.png shared-data.png publish-subscribe.png client-server.png peer-to-peer.png
+.pics: komponentendiagramm.png
 	touch .pics
 
 %.png: %.uml

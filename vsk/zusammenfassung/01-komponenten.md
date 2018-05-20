@@ -2,7 +2,7 @@
 
 Herkunft: _componere_ (lat.) = zusammensetzen
 
-![Komponentendiagramm (UML2)](komponentendiagramm.png){width=80%}
+![Komponentendiagramm (UML2)](komponentendiagramm.png){width=360px}
 
 ## Begriffe und Architekturen
 
@@ -72,14 +72,6 @@ Herkunft: _componere_ (lat.) = zusammensetzen
     - Import: benötigte/verwendete Interfaces von anderen Komponenten
     - Kontext: Rahmenbedingungen für den Betrieb der Komponente
     - Verhalten der Komponente
-
-Architekturmuster:
-
-![Pipe and Filter](pipe-and-filter.png){width=50%}
-![Shared Data](shared-data.png){width=50%}
-![Publish-Subscribe](publish-subscribe.png){width=50%}
-![Client-Server](client-server.png){width=50%}
-![Peer-to-Peer](peer-to-peer.png){width=50%}
 
 ### Komponenten in Java
 
