@@ -112,14 +112,61 @@ Herkunft: _componere_ (lat.) = zusammensetzen
 
 ### Begriff und Konzept
 
-- Metapher: Beim Zerschneiden eines Apfels entstehen zwei spiegelsymmetrische Oberflächen.
-- Die Komponenten müssen so definiert werden, damit sie an der Schnittstelle zusammenpassen, als ob sie vorher auseinandergeschnitten worden wären.
-- Tatsächlich werden _Verbindungsstellen_ erstellt, welche Kombinierbarkeit sicherstellen.
-- Eine Schnittstelle tut nichts und kann nichts.
-- Schnittstellen trennen nichts, sie verbinden etwas:
-    - Komponenten untereinander (Programmschnittstellen)
-    - Komponenten mit dem Benutzer 
+- Der Begriff _Schnittstelle_ als Metapher
+    - Beim Zerschneiden eines Apfels entstehen zwei spiegelsymmetrische Oberflächen.
+    - Die Komponenten müssen so definiert werden, damit sie an der Schnittstelle zusammenpassen, als ob sie vorher auseinandergeschnitten worden wären.
+    - Tatsächlich werden _Verbindungsstellen_ erstellt, welche Kombinierbarkeit sicherstellen.
+    - Eine Schnittstelle tut nichts und kann nichts.
+    - Schnittstellen trennen nichts, sie verbinden etwas:
+        - Komponenten untereinander (Programmschnittstellen)
+        - Komponenten mit dem Benutzer 
+- Die Bedeutung von Schnittstellen (bei korrektem Gebrauch):
+    1. machen Software leichter verständlich (man braucht nur die Schnittstelle und nicht die Implementierung zu kennen)
+    2. helfen uns Abhängigkeiten zu reduzieren (Abhängigkeit nur von einer Schnittstelle, nicht von einer Implementierung)
+    3. erleichtern die Wiederverwendbarkeit (bei der Verwendung bewährter Schnittstellen statt Eigenentwicklung)
+- Die Beziehung zwischen Schnittstellen und Architektur:
+    - System > Summe seiner Teile (Beziehungen zwischen den Teilen: durch Schnittstellen ermöglicht)
+        - Schnittstellen & Beziehungen zwischen den Komponenten: wichtigste Architekturaspekte!
+        - Mehrwert des Systems gegenüber Einzelkomponenten liegt in den Schnittstellen & Beziehungen der Komponenten zueinander
+    - Spezialisten für Teilsysteme konzentrieren sich auf ihr Zeilproblem
+        - Architekten halten das Gesamtsystem über Schnittstellen zusammen
+        - Schnittstellen verbinden ein System mit der Aussenwelt und ermöglichen die Interaktion damit
+- Kriterien für gute Schnittstellen
+    1. Schnittstellen sollen _minimal_ sein:
+        - wenige Methoden (mit möglichst geringen Überschneidungen in ihren Aufgaben)
+        - geringe Anzahl von Parameters
+        - setzen möglichst keine oder nur wenige globale Daten voraus
+    2. Schnittstellen sollen _einfach zu verstehen_ sein
+    3. Schnittstellen sollen _gut dokumentiert_ sein
 
 ### Dienstleistungsperspektive
 
+- Die Schnittstelle als Vertrag:
+    - Ein _Service Consumer_ schliesst einen Vertrag mit einem _Service Provider_ für eine _Dienstleistung_ ab
+- Design by Contract (DbC): Das Zusammenspiel zwischen den Komponenten wir mit einem Vertrag geregelt
+    - _Preconditions_: Zusicherungen, die der Aufrufer einhalten muss
+        - Nutzer: Prüfen der Vorbedingungen vor der Ausführung
+        - Anbieter: Überprüfung mittels Assertions
+    - _Postconditions_: Nachbedingungen, die der Aufgerufene garantiert
+        - Nutzer: Überprüfung mittels Assertions
+        - Anbieter: Prüfen der Nachbedingungen nach der Ausführung
+    - _Invarianten_: Über alle Instanzen einer Klasse geltende Grundannahmen ab deren Erzeugung
+        - Anbieter: Überprüfung mittels Assertions
+
 ### Spezifikation von Schnittstellen
+
+- Dokumentation von Schnittstellen
+    - Umfang:
+        - was ist wichtig für die Benutzung der Komponente
+        - was muss der Programmierer versethen und beachten
+    - Eigenschaften der Methoden:
+        - Syntax (Rückgabewerte, Argumente, Typen, call by value/reference)
+        - Semantik (was bewirkt die Methode)
+        - Protokoll (synchron/asynchron)
+        - Nichtfunktionale Eigenschaften (Performance, Robustheit, Verfügbarkeit)
+    - Schnittstellen an der Systemgrenze fliessen in die Systemspezifikation ein
+- öffentliche Schnittstellen werden als _API_ bezeichnet (Application Programming Interface)
+    - objektorientierte API (sprachabhängig, z.B. API der JSE)
+    - REST-API (Representational State Transfer, sprach- und plattformunabhängig, datenzentriert)
+    - Messaging-API (sprach- und plattformunabhängig, z.B. Push-Notifications für Mobile Apps)
+    - dateibasierte API (Informationsaustausch, Konfigurationsdateien)
