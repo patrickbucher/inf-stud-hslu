@@ -1,0 +1,26 @@
+@startuml
+
+skinparam monochrome true
+skinparam defaultFontName DejaVu Sans
+
+node Datenbankserver {
+    database Oracle
+    rectangle Analytics
+    Analytics -> Oracle
+}
+
+node Applikationsserver {
+    component JBoss
+    storage Logfiles
+}
+
+node Client {
+    rectangle RichClient
+}
+
+RichClient -> JBoss
+JBoss -> Oracle
+JBoss -> Logfiles
+RichClient -> Analytics
+
+@enduml

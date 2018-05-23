@@ -2,7 +2,7 @@
 
 Herkunft: _componere_ (lat.) = zusammensetzen
 
-![Komponentendiagramm (UML2)](komponentendiagramm.png){width=360px}
+![Komponentendiagramm (UML2)](pics/komponentendiagramm.png){width=360px}
 
 ## Begriffe und Architekturen
 
@@ -170,3 +170,5 @@ Herkunft: _componere_ (lat.) = zusammensetzen
     - REST-API (Representational State Transfer, sprach- und plattformunabhängig, datenzentriert)
     - Messaging-API (sprach- und plattformunabhängig, z.B. Push-Notifications für Mobile Apps)
     - dateibasierte API (Informationsaustausch, Konfigurationsdateien)
+
+## Modularisierungskriterien

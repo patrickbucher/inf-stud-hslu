@@ -1,0 +1,2 @@
+%.png: %.uml
+	plantuml $<
