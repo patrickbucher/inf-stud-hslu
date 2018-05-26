@@ -2,7 +2,7 @@
 
 ## Projektplanung
 
-## Source Code Management, Build und Dependency-Management
+## Source-Code-Management, Build und Dependency-Management
 
 ## Build-Server
 
