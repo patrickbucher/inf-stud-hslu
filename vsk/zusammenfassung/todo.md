@@ -1,10 +1,10 @@
-# TODO (2½/20)
+# TODO (3/20)
 
-## Komponenten (2/3)
+## Komponenten (2/½3)
 
 - [✓] Begriffe und Architekturen
 - [✓] Schnittstellen
-- [ ] Modularisierungskriterien
+- [½] Modularisierung
 
 ## Entwicklungsprozess (½/11)
 
