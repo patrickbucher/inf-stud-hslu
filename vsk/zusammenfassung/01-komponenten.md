@@ -300,21 +300,13 @@ Verarbeitungsschritten und Datenstrukturen
     - Interpretation:
         - Mit dem traditionellen Ansatz (_Flowchart-Analyse_) wird ein
           _Algorithmus_ in einzelne Verarbeitungsschritte zerlegt.
-        - Mit dem neuen Ansatz (_information hiding_) werden die
+        - Mit dem neuen Ansatz (_Information Hiding_) werden die
           _Datenstrukturen_ herausgearbeitet. (Datenstruktur =
           Design-Entscheidung)
-        - Die einzelnen Schritte eines Algorithmus sind nicht austauschbar.
+        - Die einzelnen Schritte eines Algorithmus sind _nicht_ beliebig
+          austauschbar.
         - Datenstrukturen können abstrahiert und über ein einfaches Interface
           angeboten werden.
-        - _“Data dominates. If you’ve chosen the right data structures and
-          organized things well, the algorithms will almost always be
-          self-evident. Data structures, not algorithms, are central to
-          programming.”_ (Rob Pike, Notes on C Programming)
-        - _“I will, in fact, claim that the difference between a bad programmer
-          and a good one is whether he considers his code or his data
-          structures more important. Bad programmers worry about the code. Good
-          programmers worry about data structures and their relationships.”_
-          (Linus Torvalds)
 
 ### Layers, Tiers & Packages
 
