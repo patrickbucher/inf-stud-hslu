@@ -137,10 +137,19 @@
           RGBBuilder().red(255).green(153).blue(153).build()` («schöner» aber
           schwerer lesbar, gerade wenn eine ungebräuchliche Reihenfolge wie
           «BRG» oder «GBR» gewählt wird)
-    - Auf Flag-Argumente sollte verzichtet werden; besser mehrere Funktionen
-      mit sprechenden Namen.
-        - `openFile("foo.txt", true)` -- was bedeutet `true`?
-        - `openFileCreateIfNotExists("foo.txt");`
+    - Heuristik: Die Funktion soll unter Beibehaltung der Parametertypen und
+      Weglassung der Parameternamen noch verständlich sein.
+        - Gut: `createPoint3D(int, int, int);` -- x, y und z sind intuitiv
+        - Schlecht: `createFile(String, int, boolean);` -- Dateiname intuitiv,
+          andere Parameter nicht
+        - Besser: `createFileIfNotExists(String, Permissions);`
+            - `boolean`-Flag als zusätzliche Funktion mit sprechendem Namen
+            - `int`-Dateiberechtigungen (`0x664` für `rw-rw-r--`) als
+              Parameterobjekt mit entsprechendem Typnamen
+- Auf Flag-Argumente sollte verzichtet werden; besser mehrere Funktionen mit
+  sprechenden Namen.
+    - `openFile("foo.txt", true)` -- was bedeutet `true`?
+    - `openFileCreateIfNotExists("foo.txt");`
 - Auf ungewollte Nebeneffekte sollte verzichtet werden.
     - Beispiel: `checkPassword(username, password)` erstellt eine Session, wenn
       die Credentials korrekt sind.
@@ -182,11 +191,13 @@
     - Lange Namen sind sprechender, jedoch mühsamer in der Handhabung.
     - Faustregel (Rob Pike): Lange Namen für grosse Gültigkeitsbereiche, kurze
       Namen für kleine Gültigkeitsbereiche:
-        - `absolutePathToFileSystemTableFile` ist für den globalen Scope sinnvoll.
+        - `absolutePathToFileSystemTableFile` ist für den globalen Scope
+          sinnvoll.
         - `i` für den Arrayindex und `n` für die Anzahl Elemente sind in einem
           `for`-Loop völlig ausreichend, da konventionell. 
-- Code Smells für Funktionen (_Clean Code): «When it stinks, change it.»
-    1. Zu viele Argumente: Können zu Verwechslung und Unübersichtlichkeit führen.
+- Code Smells für Funktionen (_Clean Code_): «When it stinks, change it.»
+    1. Zu viele Argumente: Können zu Verwechslung und Unübersichtlichkeit
+    führen.
     2. Output-Argumente: Entsprechen nicht der Erwartung des Aufrufers.
     3. Flag-Argumente: Deuten auf Funktionen mit mehreren Aufgaben hin.
     4. Tote Funkeionen: Was nicht aufgerufen wird, soll gleich gelöscht werden.
