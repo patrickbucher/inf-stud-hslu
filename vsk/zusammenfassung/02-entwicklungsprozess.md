@@ -202,9 +202,85 @@
     3. Flag-Argumente: Deuten auf Funktionen mit mehreren Aufgaben hin.
     4. Tote Funkeionen: Was nicht aufgerufen wird, soll gleich gelöscht werden.
 
-### Unit Tests
+### Unit-Tests
 
-TODO
+- Grundlagen des Unit-Testings
+    - Definition _Unit Test_: «A unit test is an automated piece of code that
+      invokes a unit of work in the system and then checks a single assumption
+      about the behaviour of that unit of work.»
+    - Unit-Tests geben ein schnelles Feedback, ob etwas grundsätzlich
+      funktioniert.
+    - Unit-Tests sind die Basis für jedes Refactoring: Was vorher funktioniert,
+      muss auch nachher noch funktionieren.
+- Qualität von Testcode
+    - Testcode ist kein Wegwerfcode und sollte die gleich hohe Qualität wie der
+      getestete Code haben (Namensgebung, Struktur, Verständlichkeit).
+        - Testcode lebt oft länger als Produktivcode, da Produktivcode
+          refactored wird, aber anschliessend immer noch die gleichen Testfälle
+          bestehen muss.
+        - Testcode ist auch eine Form von Dokumentation des Produktivcodes.
+    - Testcode muss gut lesbar sein. Es soll mit möglichst wenig Code möglichst
+      viel ausgesagt werden. Eigenschaften für guten Testcode sind:
+        1. Klarheit
+        2. Einfachheit
+        3. Ausdrucksdichte
+- Test Driven Development
+    - Test- und Produktivcode werden in kurzen, aufeinanderfolgenden Zyklen
+      (Sekunden bis Minuten) geschrieben. Der Testcode eilt dem Produktivcode
+      immer nur wenig voraus.
+    - Gesetze des Test Drive Development:
+        1. Produktiver Code darf erst implementiert werden, wenn es dafür einen
+        Unit-Test gibt.
+        2. Dieser Unit-Test darf nur gerade so viel Code enthalten, dass er
+        fehlerfrei kompiliert, aber der Test scheitert.
+        3. Man ergänzt jeweils nur gerade so viel produktiven Code, bis dass
+        der Test erfolgreich durchläuft.
+- Aufbau und Organisation von Tests
+    - Domänenspezifische Testsprache: durch Schreiben eigener Assert-Methoden
+        - der Name der Assert-Methode soll möglichst aussagekräftig sein
+    - Pro Testfall sollte möglichst nur eine Assertion verwendet werden
+    - Pro Testfall sollte nur eine Sache getestet werden. Es gelten die
+      Prinzipien:
+        - SOC: Separation of Concerns (Verschiedene Klassen werden durch
+          verschiedene Tests abgedeckt.)
+        - SRP: Single Responsibility Principle (Jeder Testfall kümmert sich um
+          genau eine Sache.)
+        - SLA: Single Level of Abstraction (Ein Testfall operiert nicht auf
+          verschiedenen Abstraktionsstufen.)
+    - Viele kleine Testfälle mit wenig Assertions erlauben eine gezieltere --
+      und schnellere -- Ausführung von Tests.
+    - BOC-Pattern:
+        - Build: Erstellen der Testdaten
+        - Operate: Manipulieren der Testdaten
+        - Check: Verifizieren der Ergebnisse
+    - AAA-Pattern:
+        - Arrange: Ausgangssituation schaffen
+        - Act: Aktion ausführen
+        - Assert: Ergebnis überprüfen
+    - FIRST-Prinzip:
+        - Fast: Tests sollen schnell sein.
+        - Independent: Tests sollen unabhängig voneinander ausführbar sein.
+        - Repeatable: Tests sollen immer auf jeder Umgebung ausführbar sein.
+        - Self-Validating: Das Testergebnis muss sofort ersichtlich sein
+          (failure/success).
+        - Timely: Tests sollten rechtzeitig und möglichst vor dem Produktivcode
+          geschrieben werden.
+- Test-Heuristiken von Clean Code:
+    1. Unzureichende Tests vermeiden: Eine möglichst hohe Testabdeckung
+    anstreben.
+    2. Coverage-Werkzeug verwenden: Nicht abgedeckte Codeteile ermitteln.
+    3. Triviale Tests umsetzen: Nichts ist zu trivial, um nicht getestet zu
+    werden.
+    4. Ignorieren von Tests: Nur temporär und mit `@Ignore` statt
+    auskommentieren.
+    5. Grenzbedingungen testen: Damit der ganze Wertebereich abgedeckt wird.
+    6. Fehler-Nachbarschaft testen: Wo ein Fehler ist, ist auch oft ein
+    zweiter.
+    7. Muster des Scheiterns analysieren: Anhang Gemeinsamkeiten auf Ursachen
+    schliessen.
+    8. Coverage im Fehlerfall analysieren: Branch möglicherweise aufgrund von
+    Tippfehler verpasst.
+    9. Schnelle Tests: Damit sie oft und gerne ausgeführt werden.
 
 ### Weitere Massnahmen
 
