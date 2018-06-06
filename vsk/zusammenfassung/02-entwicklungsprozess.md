@@ -49,7 +49,8 @@
     - Zuschreibungen und Nebenbemerkungen: `created by XYZ (xyz@foo.com)`
     - Auskommentierter Code: Kann dank Versionskontrolle gelöscht werden
     - HTML-formatierte Kommentare: Im Code schlecht lesbar
-    - Zu viele und unnötige Informationen: `// written on my balcony at 5:00 am`
+    - Zu viele und unnötige Informationen: `// written on my balcony at 5:00
+      am`
 
 ### Namensgebung
 
@@ -63,8 +64,10 @@
         - schlecht: `int a; float b; char c;`
         - gut: `int divisor; float dividend; char decimalSeparator;`
     - gut aussprechbar und suchbar sein
-        - schlecht: `int n_pâtés_mangées; String достопримечательность; float l0lOl0lOl0lOfAc70r; double schnäderegägs;`
-        - gut: `int pates_eaten; String attraction; float lolFactor; double babble;`
+        - schlecht: `int n_pâtés_mangées; String достопримечательность; float
+          l0lOl0lOl0lOfAc70r; double schnäderegägs;`
+        - gut: `int pates_eaten; String attraction; float lolFactor; double
+          babble;`
     - möglichst keine Codierungen enthalten
         - schlecht: `int range_0x00_0xff; int clr00ff00;`
         - gut: `int rangeFirstByte; int rgbGreen;`
@@ -76,6 +79,121 @@
     5. Namenlänge abhängig von Geltungsbereich
     6. Codierungen vermeiden
     7. Nebeneffekte in Namen miteinbeziehen
+
+### Funktionen
+
+- Funktionen sollen klein sein.
+    - Faustregel: Eine Bildschirmhöhe nicht überschreiten (mit vernünftiger
+      Schriftgrösse)
+    - Vorteil: Kleine Funktionen sind schneller verständlich.
+    - Konsequenz: Es gibt mehr Funktionen und evtl. auch mehr Klassen, da
+      Klassen nicht zu viele Methoden haben sollen. Dies wirkt sich positiv auf
+      die Testbarkeit aus.
+- Jede Funktion hat nur eine Aufgabe, welche sie gut erledigt
+  (Unix-Philosophie).
+    - Finden der Aufgabe: mit einen «to»-Satz: «to sort an array», «to
+      establish a connection»
+    - Abschnitte in Funktionen deuten auf die Verletzung dieses Prinzips hin.
+- Jede Funktion arbeitet auf nur einer Abstraktionsebene (_Single Level of
+  Abstraction_).
+    - Eine Funktion, die Zeilen zählt, sollte sich nicht mit Encodings
+      befassen.
+    - Eine Funktion, die Zahlen rundet, sollte sich nicht mit Little- und
+      Big-Endian kümmern.
+    - Verletzung dieses Prinzips: Codeerosion/Zerfall (schlechter Code als
+      Magnet für mehr schlechten Code)
+- Die `switch`-Anweisung sollte vermieden werden.
+    - `switch` deutet auf mehrere Aufgaben hin (verletzt
+      Single-Responsibility-Prinzip)
+    - `switch` muss bei jeder Erweiterung angepasst werden (verletzt
+      Open-Closed-Prinzip)
+    - `switch`-Konstrukte treten im Code oft mehrmals auf (verletzt
+      Dont-Repeat-Yourself-Prinzip)
+    - Lösung: Polymorphe Konstrukte (z.B. Strategy-Pattern, Funktionsreferenz)
+- Die Anzahl der Funktionsargumente sollte klein gehalten werden.
+    - Vertauschungsgefahr bereits ab zwei Argumenten
+    - Lesbarkeit verschlechtert sich mit Anzahl Funktionsargumente
+      (Zeilenumbrüche oder horizontales Scrolling)
+    - Je mehr Funktionsargumente übergeben werden müssen, desto eher wird eines
+      falsch gesetzt.
+        - Ausprobieren von Kombinationen ist die Folge.
+        - Die Dokumentation muss konsultiert werden.
+    - Die eindimensionale Metrik aus _Clean Code_ («je weniger
+      Funktionsargumente, desto besser») ist mit Vorsicht zu geniessen!
+        - `summe = addiere(summand1, summand2);` (strukturierte bzw.
+          funktionale Lösung)
+        - `summe = summand1.addiere(summand2);` (objektorientierte Lösung)
+        - `summierer.a = summand1; summierer.b = summand2; summe =
+          summierer.summiere()`
+        - Bei der dritten «Lösung» gibt es _keine_ Funktionsparameter, sie ist
+          aber die denkbar schlechteste, da sie einen bestimmten Kontext
+          voraussetzt.
+    - Es gibt Funktionen, die _aus fachlicher Sicht_ viele Parameter benötigen:
+        - `Point p1 = new Point(13, 27);` (x- und y-Koordinate)
+        - `Color salmon = new RGB(255, 153, 153);` (RGB-Farbe)
+        - `Color translucentSalmon = new RGBA(255, 153, 153, 0.5);` (mit
+          Alphakanal)
+        - `Color salmon = new
+          RGBBuilder().red(255).green(153).blue(153).build()` («schöner» aber
+          schwerer lesbar, gerade wenn eine ungebräuchliche Reihenfolge wie
+          «BRG» oder «GBR» gewählt wird)
+    - Auf Flag-Argumente sollte verzichtet werden; besser mehrere Funktionen
+      mit sprechenden Namen.
+        - `openFile("foo.txt", true)` -- was bedeutet `true`?
+        - `openFileCreateIfNotExists("foo.txt");`
+- Auf ungewollte Nebeneffekte sollte verzichtet werden.
+    - Beispiel: `checkPassword(username, password)` erstellt eine Session, wenn
+      die Credentials korrekt sind.
+    - Die Funktion führt eine zusätzliche, verborgene Aufgabe aus (Verletzung
+      _Single Responsibility Principle_)
+    - Nebeneffekte können zu Race-Conditions führen, was bei der Fehlersuche
+      problematisch ist.
+    - Nebeneffekte sollen über den Funktionsnamen «kommuniziert» werden (z.B.
+      `tryLogin` für obiges Beispiel).
+- Output-Argumente sollen vermieden werden.
+    - Der Rückgabewert sollte das Ergebnis einer Funktion beinhalten.
+    - Verletzung: `writeInto(buffer, text)` -- Der Parameter `buffer` enthält
+      das Ergebnis der Operation, nicht der Rückgabewert.
+    - Bei objektorientierten Sprachen sind Output-Argumente einfach vermeidbar.
+- Funktionen sollen entweder «etwas tun» (einen Seiteneffekt haben) oder
+  «antworten» (Informationen von einem Objekt liefern), nie beides.
+    - Beispiel `map.set(key, val)` liefert `boolean` zurück
+        - `true`, wenn das Attribut gesetzt wurde
+        - `false`, wenn es das Attribut `key` _nicht_ gibt (nicht, wenn es
+          nicht geklappt hat!)
+        - Der Code ist schwer zu verstehen und kann zu Missverständnissen
+          führen.
+    - Rückgabewerte von Funktionen verleiten zum Aufruf innerhalb einer
+      Bedingung:
+        - `if (!map.set("x", 42))` -- ist schwer zu interpretieren
+    - Lösung: Aufteilung in zwei Methoden!
+        1. `map.hasAttribute(key):boolean` (Rückgabewert)
+        2. `map.setAttribute(key, val):void` (Seiteneffekt)
+- Exceptions sind Fehlercodes vorzuziehen.
+    - Trennung Programmablauf und Fehlerbehandlung
+    - Fehlercodes verleiten zum Aufrufen von Funktionen an Orten, wo
+      Bedingungen verlangt werden.
+    - Fehlercodes können zu tief verschachteltem Code führen.
+    - Fehlerbehandlung ist eine Aufgabe, eine Funktion sollte nur eine Aufgabe
+      erfüllen.
+        - Die eine Funktion wirft eine Exception.
+        - Die andere Funktion beginnt mit `try` und ruft erstere auf.
+- Eine gute Namensgebung ist wichtig, aber schwer.
+    - Lange Namen sind sprechender, jedoch mühsamer in der Handhabung.
+    - Faustregel (Rob Pike): Lange Namen für grosse Gültigkeitsbereiche, kurze
+      Namen für kleine Gültigkeitsbereiche:
+        - `absolutePathToFileSystemTableFile` ist für den globalen Scope sinnvoll.
+        - `i` für den Arrayindex und `n` für die Anzahl Elemente sind in einem
+          `for`-Loop völlig ausreichend, da konventionell. 
+- Code Smells für Funktionen (_Clean Code): «When it stinks, change it.»
+    1. Zu viele Argumente: Können zu Verwechslung und Unübersichtlichkeit führen.
+    2. Output-Argumente: Entsprechen nicht der Erwartung des Aufrufers.
+    3. Flag-Argumente: Deuten auf Funktionen mit mehreren Aufgaben hin.
+    4. Tote Funkeionen: Was nicht aufgerufen wird, soll gleich gelöscht werden.
+
+### Unit Tests
+
+TODO
 
 ### Weitere Massnahmen
 
