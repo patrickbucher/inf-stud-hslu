@@ -20,7 +20,88 @@
 
 ## Deployment
 
-![Deploymentdiagramm](pics/deploymentdiagramm.png)
+- Beim Deployment geht es um folgende Aspekte:
+    1. Verteilung von Software und Dokumentation per Datenträger oder Web
+    2. Installation: Software auf Zielsystem kopieren
+    3. Konfiguration: Einstellung der Software auf jeweilige Anforderungen
+    4. Organisation: Informatin, Schulung, Support, Planung, Produktion
+- Wann findet Deployment statt?
+    - Am Ende eines (erfolgreichen) Projekts.
+    - Bei iterativen Entwicklungsmodellen öfters (Continuous Delivery erfordert
+      Continuous Deployment)
+    - Fortlaufendes Deployment einzelner Iterationsergebnisse (Build, Sprint,
+      Meilenstein) auf Entwicklungs- und Testsysteme (Staging)
+- Die Deployment-Dokumentation umfasst:
+    - Technische Aspekte
+        - [Deploymentdiagramme](#deploymentdiagramm): Zuordnung der Komponenten
+          zu Systemen/Hardware (Zeigt Nodes, Komponenten pro Node und deren
+          Verbindungen miteinander)
+        - Installations- und Deinstallationsprogramme bzw. -skripte
+        - Konfigurationen (Standardkonfiguration, Beispiele, kunden- und
+          umgebungsspezifisch)
+        - Installationsmedium/Bezugsquelle (physischer Datenträger, URL, Login)
+        - Repositories zur Ablage der Binaries
+    - Organisatorische Aspekte
+        - Konfigurationsmanagement: Aus welchen Komponenten wird der Release
+          gebildet?
+        - Installations- und Bedienungsanleitung
+        - Erwartungsmanagement: Welche Funktionalität ist vorhanden?
+        - Bereitstellung von Support (intern/extern, 1st Level/2nd Level etc.)
+- Installation und Deinstallation
+    - Möglichst automatisierbar und dadurch reproduzierbar
+    - Vollständige und saubere Deinstallation muss möglich sein
+    - Vollautomatische Softwareverteilung (setzt bestimmte Merkmale voraus)
+    - Unterschiedliche Bedürfnisse nach Benutzergruppe:
+        - Endbenutzer: Interaktive Installation mit Setup-Wizard
+        - Administrator: Möglichst automatisierbare Installation
+        - Entwickler/Tester: Auf eigene Bedürfnisse zugeschnittene Installation
+- Konfiguration von Anwendungen
+    - Zielkonflikt: Software soll out-of-the-box laufen, aber möglichst auf die
+      eigenen Bedürfnisse anpassbar sein (am liebsten out-of-the-box auf eigene
+      Bedürfnisse konfiguriert)
+    - Konfigurationsmanagement: Wer hat welche Version, welche Lizenzen, welche
+      Umgebung? Welche Kombinationen sind lauffähig? Welche Update-Schritte
+      funktionieren? Welche Szenarien wurden getestet?
+- Deployment-Manuals
+    - Installationsanleitung (möglichst klein mit automatisierter Installation)
+        - Gehen auf verschiedene Konfigurationsvarianten und Voraussetzungen
+          (Hardware/Software) ein
+        - Behandelt einzuhaltende Abfolgen
+    - Bedienungsanleitung (Release Notes)
+        - neue Funktionen
+        - neue Bedingungen zum Betreiben der Software
+        - neue Datenformate und Protokolle
+        - Manuell aus verschiedenen Quellen zusammengestellt: Commit-Messages,
+          Bugfix-Meldungen, Feature-Beschriebe (User Stories) etc.
+- Deployment-Support: Muss in jedem Fall bereitgestellt werden!
+- Release und Versionierung
+    - Eindeutige Versionsbezeichnung (technische Version, Tag im
+      Versionskontrollsystem, evtl. zusätzliche «Marketing-Versionierung»)
+    - Semantic Versioning: x.y.z [Semver.org](https://semver.org)
+        - x: Major (bei inkompatiblen Änderungen hochgezählt)
+        - y: Minor (beim Hinzufügen rückwärtskompatibler Funktionalität
+          hochgezählt)
+        - z: Patch (bei Fehlerkorrekturen hochgezählt)
+    - Ein Blick auf die neue Versionsnummer soll Klarheit geben, was sich
+      geändert hat.
+    - Zeitbasierte Modelle: Ubuntu, Gnome: alle 6 Monate, Arch: monatlicher
+      Snapshot
+- Technisches Deployment: Beispiel Java
+    - Verteilung einzelner `.class`-Dateien: inakzeptabel, fehleranfällig
+    - Verteilung von `.jar`-Archiven (Java Archive): gezippte `.class`-Dateien
+      mit zusätzlichen Ressourcen und Meta-Daten (`META-INF/MANIFEST.MF`, u.a.
+      für `CLASSPATH`-Angaben)
+        - `.war`-Dateien (Web Archive) für Webcontainer (`META-INF/web.xml`)
+        - `.ear`-Dateien (Enterprise Archive) für Applikationsserver
+          (`META-INF/application.xml`)
+    - Einzelne (kombiniert zu Shadow-Archiven) oder mehrere `.jar`-Dateien
+      (erfordert `CLASSPATH`-Angabe)
+    - Zusätzliche `.jar`-Dateien für Quellcode und Dokumentation möglich:
+        - `foobar.jar`: Ausführbar (`.class`-Dateien)
+        - `foobar-doc.jar`: Dokumentation (JavaDoc)
+        - `foobar-src.jar`: Quellcode (`.java`-Dateien), v.a. bei Open Source
+
+![Deploymentdiagramm](pics/deploymentdiagramm.png){#deploymentdiagramm}
 
 ## Code-Qualität
 

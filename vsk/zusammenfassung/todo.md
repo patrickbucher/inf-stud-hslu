@@ -1,4 +1,4 @@
-# TODO (4½/20)
+# TODO (5/20)
 
 ## Komponenten (3/3)
 
@@ -6,7 +6,7 @@
 - [✓] Schnittstellen
 - [✓] Modularisierung
 
-## Entwicklungsprozess (1½/11)
+## Entwicklungsprozess (2/11)
 
 - [ ] Projektplanung
 - [ ] Source-Code-Management, Build und Dependency-Management
@@ -17,8 +17,8 @@
 - [ ] Continuous Integration
 - [ ] Review
 - [ ] Konfigurationsmanagement
-- [½] Deployment
-- [1] Code-Qualität
+- [✓] Deployment
+- [✓] Code-Qualität
 
 ## Verteilte Systeme (0/6)
 
