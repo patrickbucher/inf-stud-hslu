@@ -1,4 +1,4 @@
-# TODO (5½/20)
+# TODO (6/20)
 
 ## Komponenten (3/3)
 
@@ -20,9 +20,9 @@
 - [✓] Deployment
 - [✓] Code-Qualität
 
-## Verteilte Systeme (½/6)
+## Verteilte Systeme (1/6)
 
-- [½] Socket-Kommunikation
+- [✓] Socket-Kommunikation
 - [ ] Serialisierung
 - [ ] Message-Passing
 - [ ] Verteilung & Kommunikation: RMI

@@ -39,16 +39,24 @@ Package `java.net.*` mit Klassen:
     - `boolean isSiteLocalAddress()`: Prüft, ob es sich um den lokalen Host
       handelt
 - `Socket`
-    - `Socket(String host, int port)`
+    - `Socket(String host, int port)`: Socket-Verbindung zu `host:port`
+      erstellen
+    - `OutputStream getOutputStream()`: zum schreibenden Zugriff
+    - `InputStream getInputStream()`: zum lesenden Zugriff
 - `ServerSocket`
-- `SocketAddress` 
-
-TODO: Seite 23 (Portsuche)
+    - `ServerSocket(int port)`: Socket, der auf `port` hört
+    - `ServerSocket(int port, int backlog, InetAddress addr)`: mit Grösse der
+      Warteschlange und spezifischer IP-Adresse
+    - `Socket accept()`: Verbindung entgegennehmen (blockierend)
+- `NetworkInterface`
+    - `static Enumeration<NetworkInterface> getNetworkInterfaces()`
+    - `String getDisplayName()`
+    - `Enumeration<InetAddress> getInetAddresses()`
 
 ### Socket-Lebenszyklus
 
-1. Server: Socket erzeugen
-2. Server: Socket an lokalen Port binden
+1. Server: Socket erzeugen und an lokalen Port binden
+2. Server: Mit `accept` auf eingehende Verbindung warten
 3. Client: Verbindung mit Server herstellen (mit IP-Adresse und Port-Nummer)
 4. Client/Server: Daten über Socket lesen/schreiben
 5. Client: Verbindung schliessen
