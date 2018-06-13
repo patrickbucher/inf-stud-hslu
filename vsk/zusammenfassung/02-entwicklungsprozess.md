@@ -2,7 +2,84 @@
 
 ## Projektplanung
 
-## Source-Code-Management, Build und Dependency-Management
+## Versionskontrolle
+
+- SCM: Source Code Management
+- Aufgaben/Vorteile von SCM (Source Code Management)
+    - hält zeitliche Entwicklung von Artefakten fest
+    - erlaubt Rückgriff auf frühere Revisionen (Änderungsstände)
+    - ermöglicht Zusammenarbeit an gemeinsamen Quellen im Team
+    - automatisiertes Zusammenfügen von Änderungen (Merging) -- soweit möglich
+      (Konflikte)
+    - zentrale oder verteilte Datenhaltung -- oder beides
+    - können fehlende Koordinaten _nicht_ ersetzen
+    - machen Änderungen an Artefakten nachvollziehbar
+        - als _Changesets_ innerhalb einer Transaktion gespeichert
+        - $1..n$ Dateiartefakte werden vom konsistentem Zustand $z_1$ in den
+          konsistenten Zustand $z_2$ überführt
+    - sind _keine_ Backupsysteme
+- Arbeit mit einem SCM
+    - Grundlegende Operationen:
+        - `checkout`: lokale Arbeitskopie von Repository erstellen
+        - `update`: Änderungen von Repository in der lokalen Arbeitskopie
+          aktualisieren
+        - `log`: Revisionen von Artefakten einsehen
+        - `diff`: Vergleich verschiedener Revisionen zweier Artefakte
+        - `commit`: Änderungen in das Repository schreiben
+    - Operationen verteilter SCM:
+        - `clone`: lokale Kopie eines entfernten Repositories erzeugen
+        - `fetch`: Änderungen eines entfernten Repositories herunterladen
+        - `pull`: Änderungen eines entfernten Repositories lokal
+          nachtragen/einpflegen
+        - `push`: Lokale Änderungen auf entferntes Repository schreiben
+    - Tagging: Markieren eines bestimmten Revisionsstands mit Namen oder
+      Versionsnummer
+        - CVS: Markierung auf Dateiebene
+        - Subversion (SVN): Kopie in ein Verzeichnis
+        - `git`, Mercurial (`hg`): Identifikation der Revision über das ganze
+          Dateisystem des Repositories
+    - Branching: Voneinander unabhängig bearbeitbare Entwicklungszweige
+        - für Bugfixing, Prototypen (Tests, Experimente), neue Features
+        - Branch wird entweder verworfen (abgebrochene Experimente) …
+        - … oder in den Hauptzweig eingepflegt (Merge)
+    - Inhalte: Was gehört ins Repository?
+        - Ja: Quellcode (`*.java`), Konfigurationsdateien (`*.xml`),
+          Dokumentation (`*.md`, `*.txt`)
+        - Nein: Kompilate (`*.class`), generierte Dokumente (HTML-Reports)
+        - Filterregeln: `.gitignore` (`git`) bestimmt, was ins Repository kommt
+- Unterschiede zwischen verschiedenen SCM
+    - zentral oder verteilt
+    - optimistische oder pessimistische Lockverfahren
+    - Versionierung anhand Datei, Verzeichnisstruktur oder Changeset
+    - mit oder ohne Transaktionsunterstützung
+    - weitere Features: Zugriffsprotokolle, Sicherheitsmassnahmen,
+      Webserver-Integration
+- Beispiele bekannter SCM:
+    - CVS: zentral, robust, stabil, alt, Verbreitung rückläufig
+    - Subversion: zentral, transaktionsorientiert, Versionierung auf
+      Verzeichnisebene, flexibler und anspruchsvoller als CVS, als
+      CVS-Nachfolger angetreten (bereits wieder rückläufig)
+    - `git`: dezentral, weit verbreitet, «billiges» Branching (schnell und
+      einfach), skalierbar (einfach und schnell bei kleinen Repositories,
+      funktioniert auch für gigantische  Repositories -- Linux-Kernel),
+      aufgrund dezentraler Struktur nicht ganz einfach zu verstehen
+- Code-Hosting-Plattformen: GitLab, GitHub
+    - Verwaltung von Teams (Berechtigungen), Projekten (Issue-Tracking)
+    - Werkzeuge zur Bearbeitung von Merge-Requests (GitLab), Pull-Requests
+      (GitHub)
+    - Webseiten, Wikis, Durchsuchen des Source-Trees
+    - Community-Gedanke (GitHub), Social Network für Nerds
+- Praktische Empfehlungen für die Arbeit mit SCM
+    - Vor Arbeitsbeginn das lokale Repository auf den neuesten Stand bringen
+      (`pull` bzw. `checkout`)
+    - Aussagekräftige `commit`-Messages verwenden, am besten mit Verweis auf
+      Issue-/Tasknummer
+    - Lieber öfters kleinere Änderungen als selten grössere Änderungen
+      schreiben (weniger und kleinere Merge-Konflikte)
+
+## Build 
+
+## Dependency-Management
 
 ## Build-Server
 
