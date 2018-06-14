@@ -2,14 +2,14 @@
 
 ## Komponenten (3/3)
 
-- [✓] Begriffe und Architekturen
-- [✓] Schnittstellen
-- [✓] Modularisierung
+- [x] Begriffe und Architekturen
+- [x] Schnittstellen
+- [x] Modularisierung
 
 ## Entwicklungsprozess (4/12)
 
-- [✓] Versionskontrolle
-- [✓] Build
+- [x] Versionskontrolle
+- [x] Build
 - [ ] Dependency-Management
 - [ ] Build-Server
 - [ ] Integrations- und Systemtesting
@@ -18,12 +18,12 @@
 - [ ] Continuous Integration
 - [ ] Review
 - [ ] Konfigurationsmanagement
-- [✓] Deployment
-- [✓] Code-Qualität
+- [x] Deployment
+- [x] Code-Qualität
 
 ## Verteilte Systeme (1/6)
 
-- [✓] Socket-Kommunikation
+- [x] Socket-Kommunikation
 - [ ] Serialisierung
 - [ ] Message-Passing
 - [ ] Verteilung & Kommunikation: RMI
