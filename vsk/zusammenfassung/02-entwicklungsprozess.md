@@ -1,53 +1,55 @@
 # Entwicklungsprozess
 
-## Projektplanung
-
 ## Versionskontrolle
 
 SCM: Source Code Management
 
-- Aufgaben/Vorteile von SCM (Source Code Management)
-    - hält zeitliche Entwicklung von Artefakten fest
-    - erlaubt Rückgriff auf frühere Revisionen (Änderungsstände)
-    - ermöglicht Zusammenarbeit an gemeinsamen Quellen im Team
-    - automatisiertes Zusammenfügen von Änderungen (Merging) -- soweit möglich
-      (Konflikte)
-    - zentrale oder verteilte Datenhaltung -- oder beides
-    - können fehlende Koordinaten _nicht_ ersetzen
-    - machen Änderungen an Artefakten nachvollziehbar
-        - als _Changesets_ innerhalb einer Transaktion gespeichert
-        - $1..n$ Dateiartefakte werden vom konsistentem Zustand $z_1$ in den
-          konsistenten Zustand $z_2$ überführt
-    - sind _keine_ Backupsysteme
-- Arbeit mit einem SCM
-    - Grundlegende Operationen:
-        - `checkout`: lokale Arbeitskopie von Repository erstellen
-        - `update`: Änderungen von Repository in der lokalen Arbeitskopie
-          aktualisieren
-        - `log`: Revisionen von Artefakten einsehen
-        - `diff`: Vergleich verschiedener Revisionen zweier Artefakte
-        - `commit`: Änderungen in das Repository schreiben
-    - Operationen verteilter SCM:
-        - `clone`: lokale Kopie eines entfernten Repositories erzeugen
-        - `fetch`: Änderungen eines entfernten Repositories herunterladen
-        - `pull`: Änderungen eines entfernten Repositories lokal
-          nachtragen/einpflegen
-        - `push`: Lokale Änderungen auf entferntes Repository schreiben
-    - Tagging: Markieren eines bestimmten Revisionsstands mit Namen oder
-      Versionsnummer
-        - CVS: Markierung auf Dateiebene
-        - Subversion (SVN): Kopie in ein Verzeichnis
-        - `git`, Mercurial (`hg`): Identifikation der Revision über das ganze
-          Dateisystem des Repositories
-    - Branching: Voneinander unabhängig bearbeitbare Entwicklungszweige
-        - für Bugfixing, Prototypen (Tests, Experimente), neue Features
-        - Branch wird entweder verworfen (abgebrochene Experimente) …
-        - … oder in den Hauptzweig eingepflegt (Merge)
-    - Inhalte: Was gehört ins Repository?
-        - Ja: Quellcode (`*.java`), Konfigurationsdateien (`*.xml`),
-          Dokumentation (`*.md`, `*.txt`)
-        - Nein: Kompilate (`*.class`), generierte Dokumente (HTML-Reports)
-        - Filterregeln: `.gitignore` (`git`) bestimmt, was ins Repository kommt
+- hält zeitliche Entwicklung von Artefakten fest
+- erlaubt Rückgriff auf frühere Revisionen (Änderungsstände)
+- ermöglicht Zusammenarbeit an gemeinsamen Quellen im Team
+- automatisiertes Zusammenfügen von Änderungen (Merging) -- soweit möglich
+  (Konflikte)
+- zentrale oder verteilte Datenhaltung -- oder beides
+- können fehlende Koordinaten _nicht_ ersetzen
+- machen Änderungen an Artefakten nachvollziehbar
+    - als _Changesets_ innerhalb einer Transaktion gespeichert
+    - $1..n$ Dateiartefakte werden vom konsistentem Zustand $z_1$ in den
+      konsistenten Zustand $z_2$ überführt
+- sind _keine_ Backupsysteme
+
+### Arbeiten mit SCM
+
+- Grundlegende Operationen:
+    - `checkout`: lokale Arbeitskopie von Repository erstellen
+    - `update`: Änderungen von Repository in der lokalen Arbeitskopie
+      aktualisieren
+    - `log`: Revisionen von Artefakten einsehen
+    - `diff`: Vergleich verschiedener Revisionen zweier Artefakte
+    - `commit`: Änderungen in das Repository schreiben
+- Operationen verteilter SCM:
+    - `clone`: lokale Kopie eines entfernten Repositories erzeugen
+    - `fetch`: Änderungen eines entfernten Repositories herunterladen
+    - `pull`: Änderungen eines entfernten Repositories lokal
+      nachtragen/einpflegen
+    - `push`: Lokale Änderungen auf entferntes Repository schreiben
+- Tagging: Markieren eines bestimmten Revisionsstands mit Namen oder
+  Versionsnummer
+    - CVS: Markierung auf Dateiebene
+    - Subversion (SVN): Kopie in ein Verzeichnis
+    - `git`, Mercurial (`hg`): Identifikation der Revision über das ganze
+      Dateisystem des Repositories
+- Branching: Voneinander unabhängig bearbeitbare Entwicklungszweige
+    - für Bugfixing, Prototypen (Tests, Experimente), neue Features
+    - Branch wird entweder verworfen (abgebrochene Experimente) …
+    - … oder in den Hauptzweig eingepflegt (Merge)
+- Inhalte: Was gehört ins Repository?
+    - Ja: Quellcode (`*.java`), Konfigurationsdateien (`*.xml`), Dokumentation
+      (`*.md`, `*.txt`)
+    - Nein: Kompilate (`*.class`), generierte Dokumente (HTML-Reports)
+    - Filterregeln: `.gitignore` (`git`) bestimmt, was ins Repository kommt
+
+### Verschiedene SCM
+
 - Unterschiede zwischen verschiedenen SCM
     - zentral oder verteilt
     - optimistische oder pessimistische Lockverfahren
@@ -97,12 +99,6 @@ Buildprozess: aus Quellartefakten ein fertiges Produkt erstellen
     - automatische Prüfung von und Steuerung durch Abhängigkeiten
     - Abstraktion der plattformspezifischen Eigenheiten: plattformübergreifend
       funktionierend
-- Beispiele für Build-Werkzeuge
-    - `make`: Urvater der Build-Tools, v.a. für C/C++ verwendet, sehr flexibel
-      einsetzbar
-    - Ant: alt und bewährt, für Java mit XML
-    - Maven: populär und etabliert, für Java mit XML
-    - Gradle: populär und junges, mit Groovy-Script und DSL
 - Unterschiedliche Ansätze: imperativ vs. deklarativ -- Vorgeben der Schritte
   oder Beschreibung des Resultats?
 - Vorteile von Build-Werkzeugen
@@ -113,31 +109,36 @@ Buildprozess: aus Quellartefakten ein fertiges Produkt erstellen
     - Erweiterbarkeit für neue Aspekte und projektspezifische Bedürfnisse
     - geringer Ressourcenverbrauch (ohne GUI, auf Server ausführbar)
     - reproduzierbarer Ablauf mit reproduzierbaren Ergebnissen
-- Apache Maven: deklaratives (XML), in Java entwickeltes und weit verbreitetes
-  Build-Werkzeug
-    - schlank: Funktionalität aus dynamisch geladenen Plugins
-      (Maven-Core-Plugins und grosse Auswahl von Drittanbietern)
-    - zentrales Binär-Repository [search.maven.org](https://search.maven.org)
-      zum Einbinden von Libraries
-    - Project Object Model: in `pom.xml` deklarierte Metainformationen
-      (Targets, Plugins, Dependencies) für das Projekt
-    - Lifecycle-Phasen: generalisierter Ablauf mit typischen Build-Phasen
-        - `validate`: Projektdefinition (`pom.xml`) überprüfen
-        - `compile`: Quellen kompilieren
-        - `test`: Ausführung der Unit-Tests
-        - `package`: Packen der Distribution (`.jar`, `.ear`, `.war`)
-        - `verify`: Ausführen der Integrationstests
-        - `install`: Deployment (lokales Repository)
-        - `deploy`: Deployment (zentrales Repository)
-    - Lokales Repository: `$HOME/.m2/repository` mit `$HOME/.m2/settings.xml`
-      (Repository-Konfiguration)
-    - Module: Aufteilung des Projekts in Untermodule, Definition ihrer
-      Abhängigkeiten, Vererbung von Modulkonfigurationen an Untermodule
+- Beispiele für Build-Werkzeuge
+    - `make`: Urvater der Build-Tools, v.a. für C/C++ verwendet, sehr flexibel
+      einsetzbar
+    - Ant: alt und bewährt, für Java mit XML
+    - Maven: populär und etabliert, für Java mit XML
+    - Gradle: populär und junges, mit Groovy-Script und DSL
 
+### Apache Maven
 
+Apache Maven: deklaratives (XML), in Java entwickeltes und weit verbreitetes
+Build-Werkzeug
 
-+ Anwendung (Maven)
-+ Konzepte (Maven)
+- schlank: Funktionalität aus dynamisch geladenen Plugins (Maven-Core-Plugins
+  und grosse Auswahl von Drittanbietern)
+- zentrales Binär-Repository [search.maven.org](https://search.maven.org) zum
+  Einbinden von Libraries
+- Project Object Model: in `pom.xml` deklarierte Metainformationen (Targets,
+  Plugins, Dependencies) für das Projekt
+- Lifecycle-Phasen: generalisierter Ablauf mit typischen Build-Phasen
+    - `validate`: Projektdefinition (`pom.xml`) überprüfen
+    - `compile`: Quellen kompilieren
+    - `test`: Ausführung der Unit-Tests
+    - `package`: Packen der Distribution (`.jar`, `.ear`, `.war`)
+    - `verify`: Ausführen der Integrationstests
+    - `install`: Deployment (lokales Repository)
+    - `deploy`: Deployment (zentrales Repository)
+- Lokales Repository: `$HOME/.m2/repository` mit `$HOME/.m2/settings.xml`
+  (Repository-Konfiguration)
+- Module: Aufteilung des Projekts in Untermodule, Definition ihrer
+  Abhängigkeiten, Vererbung von Modulkonfigurationen an Untermodule
 
 ## Dependency-Management
 
@@ -186,6 +187,9 @@ Deployment: Bereitstellung, Auslieferung von Software
         - Installations- und Bedienungsanleitung
         - Erwartungsmanagement: Welche Funktionalität ist vorhanden?
         - Bereitstellung von Support (intern/extern, 1st Level/2nd Level etc.)
+
+### Aspekte des Deployments
+
 - Installation und Deinstallation
     - Möglichst automatisierbar und dadurch reproduzierbar
     - Vollständige und saubere Deinstallation muss möglich sein
@@ -225,20 +229,22 @@ Deployment: Bereitstellung, Auslieferung von Software
       geändert hat.
     - Zeitbasierte Modelle: Ubuntu, Gnome: alle 6 Monate, Arch: monatlicher
       Snapshot
-- Technisches Deployment: Beispiel Java
-    - Verteilung einzelner `.class`-Dateien: inakzeptabel, fehleranfällig
-    - Verteilung von `.jar`-Archiven (Java Archive): gezippte `.class`-Dateien
-      mit zusätzlichen Ressourcen und Meta-Daten (`META-INF/MANIFEST.MF`, u.a.
-      für `CLASSPATH`-Angaben)
-        - `.war`-Dateien (Web Archive) für Webcontainer (`META-INF/web.xml`)
-        - `.ear`-Dateien (Enterprise Archive) für Applikationsserver
-          (`META-INF/application.xml`)
-    - Einzelne (kombiniert zu Shadow-Archiven) oder mehrere `.jar`-Dateien
-      (erfordert `CLASSPATH`-Angabe)
-    - Zusätzliche `.jar`-Dateien für Quellcode und Dokumentation möglich:
-        - `foobar.jar`: Ausführbar (`.class`-Dateien)
-        - `foobar-doc.jar`: Dokumentation (JavaDoc)
-        - `foobar-src.jar`: Quellcode (`.java`-Dateien), v.a. bei Open Source
+
+### Deployment in Java
+
+- Verteilung einzelner `.class`-Dateien: inakzeptabel, fehleranfällig
+- Verteilung von `.jar`-Archiven (Java Archive): gezippte `.class`-Dateien
+  mit zusätzlichen Ressourcen und Meta-Daten (`META-INF/MANIFEST.MF`, u.a.
+  für `CLASSPATH`-Angaben)
+    - `.war`-Dateien (Web Archive) für Webcontainer (`META-INF/web.xml`)
+    - `.ear`-Dateien (Enterprise Archive) für Applikationsserver
+      (`META-INF/application.xml`)
+- Einzelne (kombiniert zu Shadow-Archiven) oder mehrere `.jar`-Dateien
+  (erfordert `CLASSPATH`-Angabe)
+- Zusätzliche `.jar`-Dateien für Quellcode und Dokumentation möglich:
+    - `foobar.jar`: Ausführbar (`.class`-Dateien)
+    - `foobar-doc.jar`: Dokumentation (JavaDoc)
+    - `foobar-src.jar`: Quellcode (`.java`-Dateien), v.a. bei Open Source
 
 ![Deploymentdiagramm](pics/deploymentdiagramm.png){#deploymentdiagramm}
 
