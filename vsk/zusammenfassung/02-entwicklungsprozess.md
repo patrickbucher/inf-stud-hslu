@@ -4,7 +4,8 @@
 
 ## Versionskontrolle
 
-- SCM: Source Code Management
+SCM: Source Code Management
+
 - Aufgaben/Vorteile von SCM (Source Code Management)
     - hält zeitliche Entwicklung von Artefakten fest
     - erlaubt Rückgriff auf frühere Revisionen (Änderungsstände)
@@ -77,7 +78,66 @@
     - Lieber öfters kleinere Änderungen als selten grössere Änderungen
       schreiben (weniger und kleinere Merge-Konflikte)
 
-## Build 
+## Buildautomatisierung
+
+Buildprozess: aus Quellartefakten ein fertiges Produkt erstellen
+
+- Generieren, Kompilieren, Testen, Packen, JavaDoc erzeugen etc.
+- Per IDE möglich (manuell), mühsam und fehleranfällig bei mehreren
+  Buildvorgängen pro Tag
+- Per Skript
+    - Vorteile: automatisierter Ablauf, reproduzierbare Ergebnisse, nächtlich
+      getriggerte Ausführung möglich, Unabhängigkeit von der IDE
+    - Nachteile: unflexibler Ablauf -- oder aufwändige Skripte, Abhängigkeit
+      von Shell und Plattform, aufwändige Wartung und Erweiterung
+- Per Build-Werkzeug: spezialisiertes Werkzeug mit eigener Skript- oder
+  Definitionssprache
+    - für Build-Aufgaben (Generieren, Kompilieren etc.) optimiert
+    - vereinfachte Handhabung von Ressourcen (Dateimengen)
+    - automatische Prüfung von und Steuerung durch Abhängigkeiten
+    - Abstraktion der plattformspezifischen Eigenheiten: plattformübergreifend
+      funktionierend
+- Beispiele für Build-Werkzeuge
+    - `make`: Urvater der Build-Tools, v.a. für C/C++ verwendet, sehr flexibel
+      einsetzbar
+    - Ant: alt und bewährt, für Java mit XML
+    - Maven: populär und etabliert, für Java mit XML
+    - Gradle: populär und junges, mit Groovy-Script und DSL
+- Unterschiedliche Ansätze: imperativ vs. deklarativ -- Vorgeben der Schritte
+  oder Beschreibung des Resultats?
+- Vorteile von Build-Werkzeugen
+    - einfache und einheitliche Definition des Builds
+    - einfache Handhabung mit Build-Targets
+    - optimierte Abläufe: nur bei Änderungen neu kompilieren/generieren etc.
+      (Auflösung des Abhängigkeitenbaums)
+    - Erweiterbarkeit für neue Aspekte und projektspezifische Bedürfnisse
+    - geringer Ressourcenverbrauch (ohne GUI, auf Server ausführbar)
+    - reproduzierbarer Ablauf mit reproduzierbaren Ergebnissen
+- Apache Maven: deklaratives (XML), in Java entwickeltes und weit verbreitetes
+  Build-Werkzeug
+    - schlank: Funktionalität aus dynamisch geladenen Plugins
+      (Maven-Core-Plugins und grosse Auswahl von Drittanbietern)
+    - zentrales Binär-Repository [search.maven.org](https://search.maven.org)
+      zum Einbinden von Libraries
+    - Project Object Model: in `pom.xml` deklarierte Metainformationen
+      (Targets, Plugins, Dependencies) für das Projekt
+    - Lifecycle-Phasen: generalisierter Ablauf mit typischen Build-Phasen
+        - `validate`: Projektdefinition (`pom.xml`) überprüfen
+        - `compile`: Quellen kompilieren
+        - `test`: Ausführung der Unit-Tests
+        - `package`: Packen der Distribution (`.jar`, `.ear`, `.war`)
+        - `verify`: Ausführen der Integrationstests
+        - `install`: Deployment (lokales Repository)
+        - `deploy`: Deployment (zentrales Repository)
+    - Lokales Repository: `$HOME/.m2/repository` mit `$HOME/.m2/settings.xml`
+      (Repository-Konfiguration)
+    - Module: Aufteilung des Projekts in Untermodule, Definition ihrer
+      Abhängigkeiten, Vererbung von Modulkonfigurationen an Untermodule
+
+
+
++ Anwendung (Maven)
++ Konzepte (Maven)
 
 ## Dependency-Management
 
@@ -96,6 +156,8 @@
 ## Konfigurationsmanagement
 
 ## Deployment
+
+Deployment: Bereitstellung, Auslieferung von Software
 
 - Beim Deployment geht es um folgende Aspekte:
     1. Verteilung von Software und Dokumentation per Datenträger oder Web
