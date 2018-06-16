@@ -140,7 +140,121 @@ Build-Werkzeug
 - Module: Aufteilung des Projekts in Untermodule, Definition ihrer
   Abhängigkeiten, Vererbung von Modulkonfigurationen an Untermodule
 
-## Dependency-Management
+## Dependency Management
+
+Dependency Management: Organisation und Techniken für den Umgang mit
+Abhängigkeiten zu anderen Modulen
+
+- Abhängigkeiten: meist in Binärform (kompiliert), Zugriff über
+  Binär-Repositories mit Paketmanagern
+    - intern: Modul im selben Projekt
+    - extern: Modul aus einem anderen Projekt, evtl. von anderer Organisation
+- Merkmale von Dependency-Management-Software:
+    - zentrale Ablage auf Server (oftmals mit verschiedenen Mirrors)
+    - standardisiertes Paketformat
+    - zusätzliche Metainformationen
+    - definierte Abhängigkeiten
+    - Konsistenzsicherung (automatisches überprüfen von Prüfsummen)
+    - Suchfunktion und weitere Hilfswerkzeuge
+- Beispiele für Dependency-Management-Software:
+    - apt: Adcanced Packaging Tool (für Debian GNU/Linux und Derivate)
+    - pip: Pip Installs Packages (Paketverwaltung für Python)
+    - npm: Node Package Manager (Paketverwaltung für Node.js/JavaScript)
+- Java Dependency Management
+    - binäre Module: `.jar`, `.ear`, `.war` 
+    - kein Verfahren zur Definition von Abhängigkeiten, keine Modulverwaltung
+    - Modularisierung ab Java 9, ohne Versionierung
+    - Manuelles Verwalten von `CLASSPATH` und `.jar`-Dateien im
+      `lib/`-Verzeichnis: _JAR Hell_
+    - ab 2001: Maven als Buildsystem mit Dependency Management
+
+### Apache Maven
+
+- Maven Repository
+    - zahlreiche öffentliche Repositories mit Leserechten (z.B. Maven Central)
+        - schreibrechte für ausgewählte Personen gemäss definierten Prozessen
+    - interne Repositories bei professionellen Organisationen
+        - diverse Produkte: Apache Archiva, Sonatype Nexus
+        - HSLU: [RepuHub Nexus](https://repohub.enterpriselab.ch)
+    - Zwischenspeicherung (Caching) in lokalem Repository
+      `$HOME/.m2/repository`
+- Weltweit eindeutige Identifikation: über _Maven Coordinates_, drei Attribute:
+    1. GroupId: _Reverse Domain Name_ der Organisation mit Zusatz:
+    `ch.hslu.vsk.g05`
+    2. ArtifactId: Projektname, Modulname: `logger-server`, `logger-viewer`
+    3. Version: Empfohlen nach _Semantic Versioning_: `4.0.1`
+    - Identifikation: `ch.hslu.vsk.g05:logger-server:1.1.3`
+    - Deklaraton von Dependencies
+- Dependency Scopes: Geltungsbereich (Scope) kann pro Abhängigkeit angegeben
+  werden
+    - `compile`: für die Kompilierung und Programmlaufzeit (Standard)
+    - `test`: für die Kompilierung und Ausführung der Testfälle
+    - `runtime`: für die Laufzeit, aber nicht für die Kompilierung
+    - in IDEs mehr oder weniger gut umgesetzt (Referenzprüfung)
+- Transitive Abhängigkeiten ($\rightarrow$: hängt ab von): $m_a \rightarrow m_b
+  \rightarrow m_c$
+    - $m_a$ hängt direkt von $m_b$ ab
+    - $m_b$ hängt direkt von $m_c$ ab
+    - $m_a$ hängt _transitiv_ von $m_c$ ab
+    - Maven erstellt einen Dependency-Graph, um die Abhängigkeiten aufzulösen;
+      Konflikte und Zyklen zu erkennen und -- soweit möglich -- automatisch
+      aufzulösen
+- Versionierung und Snapshots: Dependencies sind grundsätzlich versioniert,
+  dies ermöglicht:
+    - Erkennung neuer Versionen
+    - Automatische Verwendung von Aktualisierungen (Verbesserungen, Bugfixes)
+    - Angabe kompatibler Versionsbereiche
+    - Versionen sollen nicht überschrieben werden können (Nachvollziehbarkeit)
+- Snapshots: erneuerbare, nicht stabile Version während Entwicklungsphase
+    - mit dem Suffix `-SNAPSHOT` markierte Abhängigkeiten werden bei jedem
+      Build aufgelöst und aktualisiert
+    - Beispiel: `1.0.0-SNAPSHOT` ist die Weiterentwicklung von Version `1.0.0`,
+      die noch nicht stabil ist und später als `2.0.0`, `1.1.0` oder `1.0.1`
+      freigegeben wird.
+- Multimodul-Projekte: Projekte, die aus mehreren Submodulen bestehen
+    - Submodule haben gleiche Dependencies (`log4j`, `JUnit`) und sollten
+      unbedingt die gleiche Version davon verwenden!
+    - Problem: Konfiguration des Dependencies in jedem Submodul (Konflikte,
+      mühsam nachzutragen)
+    - Lösung: Übergeordnetes Master-POM mit `dependencyManagement` als
+      Grundeinstellung für Version und Scope
+
+Beispiel für `pom.xml`:
+
+```xml
+<project>
+    <groupId>ch.hslu.vsk.g05</groupId>
+    <artifactId>logger-server</artifactId> 
+    <version>1.1.3</version>
+    <dependencyManagement> 
+        <!-- nur in Parent-POM --> 
+        <dependencies> 
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId> 
+                <artifactId>log4j-api</artifactId>
+                <version>2.10.0</version> 
+                <scope>compile</scope> 
+            </dependency> 
+        </dependencies>
+    </dependencyManagement> 
+    <dependencies> 
+        <dependency>
+            <groupId>ch.hslu.vsk.g05</groupId> 
+            <artifactId>logger-common</artifactId>
+            <version>1.1.0</version> 
+            <scope>compile</scope> 
+        </dependency> 
+        <dependency> 
+            <!-- in Child-POM ohne Version und Scope -->
+            <groupId>org.apache.logging.log4j</groupId> 
+            <artifactId>log4j-api</artifactId>
+        </dependency> 
+    </dependencies> 
+</project>
+
+```
+
+
 
 ## Build-Server
 
@@ -233,9 +347,9 @@ Deployment: Bereitstellung, Auslieferung von Software
 ### Deployment in Java
 
 - Verteilung einzelner `.class`-Dateien: inakzeptabel, fehleranfällig
-- Verteilung von `.jar`-Archiven (Java Archive): gezippte `.class`-Dateien
-  mit zusätzlichen Ressourcen und Meta-Daten (`META-INF/MANIFEST.MF`, u.a.
-  für `CLASSPATH`-Angaben)
+- Verteilung von `.jar`-Archiven (Java Archive): gezippte `.class`-Dateien mit
+  zusätzlichen Ressourcen und Meta-Daten (`META-INF/MANIFEST.MF`, u.a.  für
+  `CLASSPATH`-Angaben)
     - `.war`-Dateien (Web Archive) für Webcontainer (`META-INF/web.xml`)
     - `.ear`-Dateien (Enterprise Archive) für Applikationsserver
       (`META-INF/application.xml`)
