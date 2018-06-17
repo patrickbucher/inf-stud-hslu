@@ -12,10 +12,10 @@
 - [x] Build
 - [x] Dependency-Management
 - [x] Build-Server
+- [ ] Continuous Integration
 - [ ] Integrations- und Systemtesting
 - [ ] Entwurfsmuster
 - [ ] Testing
-- [ ] Continuous Integration
 - [ ] Review
 - [ ] Konfigurationsmanagement
 - [x] Deployment

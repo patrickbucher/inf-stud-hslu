@@ -304,13 +304,46 @@ den Entwicklern zur Verfügung stellt
     - Auswertungen, Visualisierungen (auch für IDEs)
     - mit Issue-Tracking- und Code-Review-Systemen
 
+## Continuous Integration
+
+- Ziele von Continuous Integration
+    - lauffähiges Buildresultat immer vorhanden (kontinuierliche Tests möglich)
+    - schnelles Feedback bei Fehlern (Unit- und Integrationstests,
+      Kompilierung, Codeprüfung)
+    - parallele Entwicklung im Team (gemeinsamer, aktueller Stand und
+      Überblick)
+    - agile Software-Entwicklung ermöglichen
+
+### 10 Praktiken der Continuous Integration
+
+1. Eines eines zentralen Versionskontrollsystems
+    - alles, was für einen Build benötigt wird, aber nichts, was mit einem Build erstellt werden kann, liegt im SCM vor
+    - sinnvolle Commit-Kommentare mit Referenz auf Issue
+    - Tagging von Versionen zur Identifikation eines Release
+    - temporäre Branches für parallele Entwicklung von Features und bei Bugs
+2. Automatisierter Buildprozess
+    - auf einer kontrollierten, stabilen, «sauberen» Umgebung
+    - nur auf Basis der aktuellen Quellen aus dem SCM
+    - inklusive Ausführung der automatischen Testfälle
+3. Automatisierte Testfälle
+    - möglichst hohe Abdeckung durch automatisierte Tests anstreben (möglichst mit Unit-Tests, sekundär mit Integrationstests)
+    - schnelles Erkennen fehlerhafter und unvollständiger Implementierungen
+    - ständige Performance-Tests zur Erkennung imperformanter Neuentwicklungen
+    - Tests müssen immer laufen und sollen im Fehlerfall als erstes korrigiert werden
+4. Änderungen des Quellcodes auf dem Hauptzweig
+    - TODO
+5. Automatischer Build bei Änderungen
+6. Schneller Build-Prozess
+7. Tests auf Produktivumgebungen (oder mit Kopien davon)
+8. Einfacher Zugriff auf Buildartefakte
+9. Offensive Information über den aktuellen Zustand
+10. Automatisches Deployment
+
 ## Integrations- und Systemtesting
 
 ## Entwurfsmuster
 
 ## Testing
-
-## Continuous Integration
 
 ## Review
 
