@@ -256,7 +256,53 @@ Beispiel für `pom.xml`:
 
 
 
-## Build-Server
+## Buildserver
+
+Buildserver: Serversoftware, die Builds automatisch erstellt und das Resultat
+den Entwicklern zur Verfügung stellt
+
+- Auslösung des Builds
+    - automatisch aufgrund von Änderungen im SCM
+    - automatisch zu bestimmten Zeitpunkten
+    - manuell durch Anwender
+- Vorteile von Buildservern
+    - Entlastung der Entwickler und ihrer Rechner von repetitiven Aufgaben
+    - regelmässige und häufige Verifikation (Build, Test, Deployment)
+    - statistische Informationen über Entwicklungsprozess
+    - automatische Informationen über den Projektzustand
+- Produkte und Dienste
+    - Jenkins/Hudson: sehr verbreitet, Open Source
+    - Continuum: speziell für Maven-Projekte, Open Source
+    - Bamboo: mit JIRA verknüpft, kommerziell
+    - GitLab: Kombination von SCM und CI, Cloud
+    - Travis: Mit GitHub und anderen Diensten kombinierbar, Cloud
+- Konfiguration
+    1. klassisch: Konfiguration von Projekt getrennt, vom Server vorgegeben
+    2. DevOps-Ansatz: Konfiguration im Projekt (`.yml`-Datei) durch Entwickler
+- Voraussetzungen
+    - Automatisierung des Builds (Ant, Maven, Gradle)
+    - Einsatz eines Versionskontrollsystems (Git, Subversion, CVS)
+- Aufgabentrennung im CI-Prozess
+    - _Wann_ wird ein Build durchgeführt: Buildserver, Anwender
+    - _Was_ wird gebaut: Versionskontrollsystem
+    - _Wie_ wird gebaut: Buildautomatisierung (Ant, Maven, Gradle)
+    - _Wohin_ gelangen die Artefakte: Binary-Repo, Roll-Out auf Testsystem
+    - Das _wie_ sollte nicht mit dem Buildserver sondern mit der
+      Buildautomatisierung umgesetzt werden, damit auch auf anderen Umgebungen
+      (Entwicklerrechner) ein gleichwertiger Build durchgeführt werden kann.
+- Verschiedene Buildszenarien
+    - Continuous Build: automatisch bei Änderungen im SCM für schnelles
+      Feedback
+    - Nightly Build: zeizlich gesteuert (meistens nachts) für vollumfängliches
+      Feedback
+    - Release Build: manuell oder durch Versionstag ausgelöst für
+      auslieferbares Produkt
+- Integration und Verknüpfung von Buildservern
+    - Buildtools
+    - Versionskontrollsysteme
+    - Kommunikationstechnologien für Notifikation
+    - Auswertungen, Visualisierungen (auch für IDEs)
+    - mit Issue-Tracking- und Code-Review-Systemen
 
 ## Integrations- und Systemtesting
 

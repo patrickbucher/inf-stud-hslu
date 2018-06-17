@@ -1,4 +1,4 @@
-# TODO (9/21)
+# TODO (10/21)
 
 ## Komponenten (3/3)
 
@@ -6,12 +6,12 @@
 - [x] Schnittstellen
 - [x] Modularisierung
 
-## Entwicklungsprozess (5/12)
+## Entwicklungsprozess (6/12)
 
 - [x] Versionskontrolle
 - [x] Build
 - [x] Dependency-Management
-- [ ] Build-Server
+- [x] Build-Server
 - [ ] Integrations- und Systemtesting
 - [ ] Entwurfsmuster
 - [ ] Testing
