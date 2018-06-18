@@ -1,4 +1,4 @@
-# TODO (12/21)
+# TODO (12½/21)
 
 ## Komponenten (3/3)
 
@@ -21,11 +21,11 @@
 - [x] Deployment
 - [x] Code-Qualität
 
-## Verteilte Systeme (2/6)
+## Verteilte Systeme (2½/6)
 
 - [x] Socket-Kommunikation
 - [x] Serialisierung
-- [ ] Message-Passing
+- [½] Message-Passing
 - [ ] Verteilung & Kommunikation: RMI
 - [ ] Uhrensynchronisation
 - [ ] Verteilung: Data Grid

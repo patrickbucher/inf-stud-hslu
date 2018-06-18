@@ -144,7 +144,48 @@ Objektzustand später wiederhergestellt werden kann
       Version hat, wie sie die zugrundeliegende Klasse des serialisierten
       Objekts bei der Serialisierung hatte.
 
-## Message-Passing
+## Message Passing
+
+Message Passing: Kommunikationsparadigma zum Versenden einer Nachricht von
+einem Sender zu einem oder zu mehreren Empfängern.
+
+- Arten von Nachrichten: (Remote) Method Invocation, Signale, Datenpakete
+- Designentscheide bei der Entwicklung eines Message-Passing-Systems:
+    1. zuverlässige oder unzuverlässige Nachrichtenübertragung
+    2. garantierte oder beliebige Übertragungsreihenfolge der Nachrichten
+    3. Sender-Empfänger-Beziehungen:
+        - Unicast: ein Sender, ein Empfänger
+        - Multicast/Broadcast: ein Sender, mehrere Empfänger
+        - Client-Server: mehrere Sender, ein Empfänger
+        - All-to-all: mehrer Sender, mehrere Empfänger
+    4. synchrone oder asynchrone Kommunikation
+        - synchron: Sender blockiert, bis der Empfänger die Nachricht
+          entgegengenommen hat (Telefonie, Instant Messaging)
+        - asynchron: Sender führt seine Aufgabe nach Versenden einer Nachricht
+          fort (E-Mail, Diskussionsforum)
+    5. persistente oder transiente Kommunikation
+        - persistent: Nachricht bis zur Bereitschaft des Empfängers
+          zwischenspeichern (E-Mail)
+        - transient: Nachricht während Ausführung von sendender und
+          empfangender Applikation zwischengespeichert (Router, Socket)
+- Kommunikationsformen: TODO: Seite 8 bis 10
+    - persistent und asynchron
+    - persistent und synchron
+    - transient und asynchron
+    - transient und synchron (empfangsbasiert)
+    - transient und synchron (auslieferungsbasiert)
+    - transient und synchron (antwortbasiert)
+- Message Passing Interface (MPI): TODO: Seite 11
+
+### Nachrichtenverarbeitung
+
+- Definition _Nachricht_: TODO: Seite 13 ff.
+
+- Entwurfsmuster _Fabrikmethode_ und _Prototyp_ im entsprechenden Kapitel zusammenfassen
+
+### Protokollarten
+
+- fixe und adaptive Protokolle: Seite 21 ff. bzw. 25 ff.
 
 ## Verteilung & Kommunikation: RMI
 
