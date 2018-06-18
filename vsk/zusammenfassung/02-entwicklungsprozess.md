@@ -254,8 +254,6 @@ Beispiel für `pom.xml`:
 
 ```
 
-
-
 ## Buildserver
 
 Buildserver: Serversoftware, die Builds automatisch erstellt und das Resultat
@@ -306,18 +304,20 @@ den Entwicklern zur Verfügung stellt
 
 ## Continuous Integration
 
-- Ziele von Continuous Integration
-    - lauffähiges Buildresultat immer vorhanden (kontinuierliche Tests möglich)
-    - schnelles Feedback bei Fehlern (Unit- und Integrationstests,
-      Kompilierung, Codeprüfung)
-    - parallele Entwicklung im Team (gemeinsamer, aktueller Stand und
-      Überblick)
-    - agile Software-Entwicklung ermöglichen
+Ziele von Continuous Integration:
+
+- lauffähiges Buildresultat immer vorhanden (kontinuierliche Tests möglich)
+- schnelles Feedback bei Fehlern (Unit- und Integrationstests,
+  Kompilierung, Codeprüfung)
+- parallele Entwicklung im Team (gemeinsamer, aktueller Stand und
+  Überblick)
+- agile Software-Entwicklung ermöglichen
 
 ### 10 Praktiken der Continuous Integration
 
-1. Eines eines zentralen Versionskontrollsystems
-    - alles, was für einen Build benötigt wird, aber nichts, was mit einem Build erstellt werden kann, liegt im SCM vor
+1. Einsatz eines zentralen Versionskontrollsystems
+    - alles, was für einen Build benötigt wird, aber nichts, was mit einem
+      Build erstellt werden kann, liegt im SCM vor
     - sinnvolle Commit-Kommentare mit Referenz auf Issue
     - Tagging von Versionen zur Identifikation eines Release
     - temporäre Branches für parallele Entwicklung von Features und bei Bugs
@@ -326,18 +326,50 @@ den Entwicklern zur Verfügung stellt
     - nur auf Basis der aktuellen Quellen aus dem SCM
     - inklusive Ausführung der automatischen Testfälle
 3. Automatisierte Testfälle
-    - möglichst hohe Abdeckung durch automatisierte Tests anstreben (möglichst mit Unit-Tests, sekundär mit Integrationstests)
+    - möglichst hohe Abdeckung durch automatisierte Tests anstreben (möglichst
+      mit Unit-Tests, sekundär mit Integrationstests)
     - schnelles Erkennen fehlerhafter und unvollständiger Implementierungen
     - ständige Performance-Tests zur Erkennung imperformanter Neuentwicklungen
-    - Tests müssen immer laufen und sollen im Fehlerfall als erstes korrigiert werden
+    - Tests müssen immer laufen und sollen im Fehlerfall als erstes korrigiert
+      werden
 4. Änderungen des Quellcodes auf dem Hauptzweig
-    - TODO
+    - Feature-Branches oft in den Hauptzweig mergen
+    - oft kleine statt selten grosse Changesets mergen
 5. Automatischer Build bei Änderungen
+    - Änderungen im SCM per push-Verfahren (hook) oder polling ermitteln und
+      sofort ein Build aufgrund der neuesten Revision starten
+    - Kommunikation der Buildergebnisse inkl. Metriken
+    - Build sollte immer funktionieren; Buildfehler sollten als erstes
+      korrigiert werden
+    - Zielkonflikt: umfassender Build (inkl. Integrationstests) vs. schneller
+      Build (kompilieren, Unit-Tests)
 6. Schneller Build-Prozess
+    - Entwickler bekommen sofort Feedback, gerade im Fehlerfall
+    - nicht alle Tests werden lokal vor dem Commit ausgeführt (zeitintensive
+      Integrationstests)
+    - möglichst viele Tests sollen auf dem Buildserver ausgeführt werden
+    - gestaffelte Builds: kleiner, sofortiger Build; grosser, nächtlicher Build
 7. Tests auf Produktivumgebungen (oder mit Kopien davon)
+    - Build- und Testumgebungen möglichst ähnlich zur Produktivumgebung
+      (Hardware, Betriebssystem, Laufzeitumgebung, Netzwerkzugriff, Datenmenge,
+      Datenqualität, Berechtigungen)
+    - finanzieller Aspekt: Produktivsysteme oft besser ausgestattet
 8. Einfacher Zugriff auf Buildartefakte
+    - Bereitstellung der aktuellen Buildresultate für weitere (manuelle) Tests
+    - Archivierung von Buildartefakten auf Buildserver (Tests mit _bestimmter_
+      Version)
+    - zusätzliches Deployment in binäres Repository (z.B. Maven-Repository)
 9. Offensive Information über den aktuellen Zustand
+    - Urheber und Zeitpunkt jeder Änderung sowie deren Auswirkung sind
+      jederzeit für jeden einsehbar
+    - nicht als Kontrollinstrument, sondern zur gegenseitigen Unterstützung
+    - gemeinsames Ziel: funktionierender Build und fehlerfreie Software
 10. Automatisches Deployment
+    - erfolgreiche Buildergebnisse auf repräsentative Zielsysteme verteilen
+    - abgestuftes Deployment: jeder Build auf Entwicklungssystem, nächtlicher
+      Build auf Testsystem, versionierter Build auf Staging-System
+    - Ziel: aktueller Build für manuelle Tests auf repräsentativer Umgebung
+      bereitstellen
 
 ## Integrations- und Systemtesting
 
