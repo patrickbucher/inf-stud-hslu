@@ -4,33 +4,35 @@ skinparam monochrome true
 skinparam defaultFontName Droid Sans
 skinparam dpi 150
 
-package document {
-    interface Document {
-        + getMimeType():String
-        + getExtension():String
-    }
-    class JSONDocument {
-    }
-    class XMLDocument {
-    }
-    class YAMLDocument {
-    }
+interface Document {
+    + getMimeType():String
+    + getExtension():String
+}
+
+class JSONDocument {
+}
+
+class XMLDocument {
+}
+
+class YAMLDocument {
 }
 
 Document <|.. JSONDocument
 Document <|.. XMLDocument
 Document <|.. YAMLDocument
 
-package creator {
-    interface DocumentCreator {
-        + createDocument():Document
-    }
-    class JSONDocumentCreator {
-    }
-    class XMLDocumentCreator {
-    }
-    class YAMLDocumentCreator {
-    }
+interface DocumentCreator {
+    + createDocument():Document
+}
+
+class JSONDocumentCreator {
+}
+
+class XMLDocumentCreator {
+}
+
+class YAMLDocumentCreator {
 }
 
 DocumentCreator <|.. JSONDocumentCreator

@@ -187,6 +187,14 @@ einem Sender zu einem oder zu mehreren Empfängern.
 
 - fixe und adaptive Protokolle: Seite 21 ff. bzw. 25 ff.
 
+### Fabrikmethode (Factory Method)
+
+![Fabrikmethode (Design Pattern)](pics/factorymethod.png)
+
+### Prototyp
+
+![Prototyp (Design Pattern)](pics/prototype.png){width=350px}
+
 ## Verteilung & Kommunikation: RMI
 
 ## Uhrensynchronisation
