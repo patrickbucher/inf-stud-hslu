@@ -1,0 +1,26 @@
+@startuml
+
+skinparam monochrome true
+skinparam defaultFontName Droid Sans
+skinparam dpi 150
+
+interface MessagePrototype {
+    + getPayload():String
+    + clone():MessagePrototype
+}
+class TextMessage {
+    + clone():TextMessage
+}
+class EmailMessage {
+    + clone():EmailMessage
+}
+
+MessagePrototype <|.. TextMessage
+MessagePrototype <|.. EmailMessage 
+
+class MessageClient {
+}
+
+MessageClient --> MessagePrototype
+
+@enduml
