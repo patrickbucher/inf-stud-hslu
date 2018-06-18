@@ -64,6 +64,86 @@ Package `java.net.*` mit Klassen:
 
 ## Serialisierung
 
+Serialisierung: Objekte in eine persistente Form bringen, damit der
+Objektzustand später wiederhergestellt werden kann
+
+- Anforderungen an Objektpersistenz
+    - Transparenz: gleiche Handhabung von persistenten und transienten Objekten
+      durch den Entwickler
+    - Interoperabilität: Verwendung persistenter Objekte unabhängig von
+      Laufzeitumgebung
+    - Wiederauffindbarkeit: Auffinden von persistenten Objekten ohne explizite
+      Suche (transparent)
+- Grundidee: Umwandlung eines  Objekts in Bytestrom zur persistenten
+  Abspeicherung
+
+### Serialisierung in Java
+
+- Java-Serialisierungsverfahren: Ablauf und Umfang
+    1. Metadaten (voll qualifizierter Klassenname, Signatur, Versionsnummer) in
+    den Bytestrom schreiben
+    2. Rekursive Serialisierung nicht-statischer, nicht-transienter Attribute
+    (`private`, `protected`, `public`) und aus Oberklassen geerbte Attribute
+    3. Zusammenfassen der entstandenen Byteströme zu einem bestimmten Format
+    - alle verwendeten Klassen müssen vollständig im `CLASSPATH` vorliegen!
+- Objektserialisierung in Java
+    - Java Object Serialization (JOS): binäres Format
+    - Java Bean Persistence (JBP): Abspeicherung von Java Beans als XML
+    - Java Architecture for XML Binding (JAXB): Abbilden von Objektstrukturen
+      auf XML
+- Standard-Serialisierung: Java-Klassen, Interfaces und Methoden
+    - Idee: Dekoration eines Input- oder Output-Streams (`FileInputStream`,
+      `BufferedOutputStream`, etc.)
+    - Interface `java.io.ObjectOutput`
+        - `void ObjectOutputStream.writeObject(Object obj)`: rekursives
+          Abarbeiten des Objekt-Parameters
+    - Interface `java.io.ObjectInput`
+        - `Object ObjectInputStream.readObject()`: Aufbauen der
+          Objekthierarchie aus Bytestrom (Cast notwendig)
+    - Marker-Interface `java.io.Serializable` (keine Methoden): muss
+      implementiert werden, damit Objekte der jeweiligen Klasse serialisiert
+      werden können
+        - dadurch automatische Serialisierbarkeit von erbenden Klassen gegeben
+    - spezielle Methoden Auf dem jeweiligen Objekt:
+    - `Object readResolve()`: erlaubt Manipulation des deserialisierten Objekts
+        - zur Wiederherstellung transienter Objekte
+        - zum Garantieren der Eindeutigkeit bei Singleton-Objekten
+    - `void writeObject(final ObjectOutputStream oos)`
+        - eigens definierte Serialisierung anhand von Bytestrom
+        - Aufruf von `oos.defaultWriteObject()` zum Erweitern der
+          Serialisierung
+    - `void readObject(final ObjectInputStream ois)`
+        - eigens definierte Deserialisierung anhand von Bytestrom
+        - Aufruf von `ois.defaultReadObject()` zum Erweitern der
+          Deserialisierung
+- Klonen von beliebigen Objekten per Serialisierung und anschliessender
+  Deserialisierung
+    - `ByteArrayOutputStream` $\rightarrow$ `ObjectOutputStream` $\rightarrow$
+      `ByteArrayInputStream` $\rightarrow$ `ObjectInputStream`
+- Transiente Attribute: für «berechnete», zwischengespeicherte Felder
+    - Schlüsselwort `transient`: `private transient String fullName;`
+    - Deserialisierung: Implementierung der Methode `readResolve()` 
+- Serialisierung und Vererbung
+    - private Felder nicht-serialisierbarer Oberklassen werden nicht
+      serialisiert
+    - Deserialisierung: Suche und Aufruf des parameterlosen Konstruktors der
+      ersten nicht-serialisierbaren Oberklasse: es muss ein solcher existieren!
+    - Implementierung von `readObject()` und `writeObject()` muss sich um
+      Zustand der Oberklasse kümmern
+    - Verhinderung von Serialisierung bei Unterklassen durch Überschreibung von
+      `writeObject()` und `readObject()` möglich
+- Versionierung: aufgrund langer Zeitspannen zwischen Serialisierung und
+  Deserialisierung mit wechselnden Umgebungen (Laufzeitumgebung,
+  Softwareversion) unbedingt nötig
+    - Angabe über Attribut: `public static long serialVersionUID = ...`;
+    - Andernfalls automatische Berechnung eines Hash-Werts zur Laufzeit anhand
+      verschiedener Klassenparameter (nicht empfohlen).
+    - Neuerstellung der `serialVersionUID` bei inkompatiblen Änderungen der
+      Klasse.
+    - Ein Objekt kann nur deserialisiert werden, wenn seine Klasse die gleiche
+      Version hat, wie sie die zugrundeliegende Klasse des serialisierten
+      Objekts bei der Serialisierung hatte.
+
 ## Message-Passing
 
 ## Verteilung & Kommunikation: RMI
