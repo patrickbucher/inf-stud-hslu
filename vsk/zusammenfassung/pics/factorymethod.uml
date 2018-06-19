@@ -15,12 +15,8 @@ class JSONDocument {
 class XMLDocument {
 }
 
-class YAMLDocument {
-}
-
 Document <|.. JSONDocument
 Document <|.. XMLDocument
-Document <|.. YAMLDocument
 
 interface DocumentCreator {
     + createDocument():Document
@@ -32,15 +28,11 @@ class JSONDocumentCreator {
 class XMLDocumentCreator {
 }
 
-class YAMLDocumentCreator {
-}
 
 DocumentCreator <|.. JSONDocumentCreator
 DocumentCreator <|.. XMLDocumentCreator
-DocumentCreator <|.. YAMLDocumentCreator
 
 JSONDocumentCreator ..> JSONDocument : create
 XMLDocumentCreator ..> XMLDocument : create
-YAMLDocumentCreator ..> YAMLDocument : create
 
 @enduml

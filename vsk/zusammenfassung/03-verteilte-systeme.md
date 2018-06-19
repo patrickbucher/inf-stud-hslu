@@ -168,32 +168,165 @@ einem Sender zu einem oder zu mehreren Empfängern.
           zwischenspeichern (E-Mail)
         - transient: Nachricht während Ausführung von sendender und
           empfangender Applikation zwischengespeichert (Router, Socket)
-- Kommunikationsformen: TODO: Seite 8 bis 10
-    - persistent und asynchron
-    - persistent und synchron
-    - transient und asynchron
-    - transient und synchron (empfangsbasiert)
-    - transient und synchron (auslieferungsbasiert)
-    - transient und synchron (antwortbasiert)
-- Message Passing Interface (MPI): TODO: Seite 11
+- Kommunikationsformen: Nachricht $A \rightarrow B$
+    - persistent und asynchron: HTTP/REST
+        1. A sendet eine Nachricht und wird fortgesetzt
+        2. B läuft nicht
+        3. B wird gestartet und empfängt die Nachricht
+        4. A ist fertig
+    - persistent und synchron: E-Mail
+        1. A sendet eine Nachricht und wartet, bis diese akzeptiert wurde
+        2. B speichert die Nachricht für die spätere Auslieferung ab
+        3. B meldet A, dass die Nachricht akzeptiert wurde
+        4. B wird gestartet und empfängt die Nachricht
+    - transient und asynchron: UDP
+        1. A sendet eine Nachricht und wird fortgesetzt
+        2. B muss laufen, damit Die Nachricht gesendet werden kann
+        3. B empfängt die Nachricht
+    - transient und synchron (empfangsbasiert): TCP
+        1. A sendet eine Nachricht und wartet auf die Empfangsbestätigung
+        2. B läuft, macht aber gerade etwas anderes
+        3. B nimmt die Nachricht entgegen und bestätigt dies A
+        4. B verarbeitet die Nachricht später
+    - transient und synchron (auslieferungsbasiert): asynchroner RPC
+        1. A sendet eine Nachricht und wartet, bis diese akzeptiert wurde
+        2. B empfängt die Nachricht, macht aber gerade etwas anderes
+        3. B bestätigt die Annahme der Nachricht
+        4. B verarbeitet die Nachricht später
+    - transient und synchron (antwortbasiert): RMI
+        1. A sendet eine Nachricht und wartet auf eine Antwort
+        2. B läuft, macht aber gerade etwas anderes
+        3. B nimmt die Nachricht entgegen
+        4. B verarbeitet die Nachricht und sendet eine Antwort
+- Message Passing Interface (MPI): Standard für den Nachrichtenaustausch
+    - definiert eine API, ist kein konkretes Protokoll und keine Implementierung
 
 ### Nachrichtenverarbeitung
 
-- Definition _Nachricht_: TODO: Seite 13 ff.
-
-- Entwurfsmuster _Fabrikmethode_ und _Prototyp_ im entsprechenden Kapitel zusammenfassen
-
-### Protokollarten
-
-- fixe und adaptive Protokolle: Seite 21 ff. bzw. 25 ff.
+- Nachrichten
+    - werden über einen Kommunikationskanal gesendet
+    - enthalten eine Anzahl Elemente von bestimmten Datentypen
+        - ID: Identifikation der Nachricht, nicht immer nötig
+        - Argumente: einfache Datentypen (Integer, String) oder mit
+          zusätzlichen Informationen/Instruktionen versehen
+    - Solche Nachrichten sind Protokollen wie HTTP, RMI etc. vorzuziehen, wenn:
+        - die Kommunikation und zu übermittelnden die Datenstrukturen simpel
+          sind
+        - der Transaktionsdurchsatz kritisch ist (Echtzeit-Anwendungen)
+        - die Entwicklungsressourcen limitiert sind (schnelle Entwicklung
+          wichtiger als Flexibilität)
+        - spezielle Protokolle benötigt werden
+        - andere Protokolle (HTTP, RMI etc.) nicht verfügbar sind
+- Prinzipien der Nachrichtenverarbeitung
+    - Trennung zwischen Kommunikations- und Applikationsdetails
+    - Kommunikation scheint auf Applikationsebene vonstatten zu gehen (untere
+      Layer transparent)
 
 ### Fabrikmethode (Factory Method)
 
-![Fabrikmethode (Design Pattern)](pics/factorymethod.png)
+Zweck: Definiere eine Klassenschnittstelle mit Operationen zum Erzeugen eines
+Objekts. Lasse die Unterklassen entscheiden, von welcher Klasse das zu
+erzeugende Objekt ist. Siehe [UML-Diagramm Fabrikmethode](#factorymethod).
+
+![Fabrikmethode (Design Pattern)](pics/factorymethod.png){#factorymethod}
+
+Implementierung:
+
+```java
+public interface Document {
+    public String getMimeType();
+    public String getExtension();
+}
+public class JSONDocument implements Document {
+    public String getMimeType() {
+        return "application/json";
+    }
+    public String getExtension() {
+        return ".json";
+    }
+}
+public class XMLDocument implements Document {
+    public String getMimeType() {
+        return "application/xml";
+    }
+    public String getExtension() {
+        return ".xml";
+    }
+}
+public interface DocumentCreator {
+    public Document createDocument();
+}
+public class JSONDocumentCreator {
+    public Document createDocument() {
+        return new JSONDocument();
+    }
+}
+public class XMLDocumentCreator {
+    public Document createDocument() {
+        return new XMLDocument();
+    }
+}
+```
+
+Anwendung für Message Handling: Transparente Erzeugung von Nachrichten
+unterschiedlicher Arten.
+
+### Protokollarten
+
+- Fixe Protokolle: Parameter zu Beginn der Sitzung bekannt, keine Änderungen
+  während der Kommunikation
+    - Menge möglicher Kennungen (IDs)
+    - mögliche Argumente (Anzahl und Typ)
+- Adaptive Protokolle: Parameter können während einer Sitzung ändern (Länge der
+  Argumentliste, Argumenttypen, Nachrichttypen)
+    - Änderungen per anpassbarem Message Handler zur Laufzeit bewältigt
+    - Kann mit dem Prototyp-Design-Pattern umgesetzt werden: Neue Arten von
+      Nachrichten müssen nicht als Klassen umgesetzt, sondern können über die
+      Erweiterung von Prototyp-Objekten erzeugt werden.
+    - Die Liste bekannter Nachrichtentypen wird zur Laufzeit erweitert.
 
 ### Prototyp
 
-![Prototyp (Design Pattern)](pics/prototype.png){width=350px}
+Zweck: Entkopple die Objekterzeugung vom eigentlichen System. Gibt die
+Möglichkeit beliebig komplexe Prototypen aus einzelnen, einfachen Prototypen
+zusammenzubauen. Siehe [UML-Diagramm Prototyp](#prototype).
+
+![Prototyp (Design Pattern)](pics/prototype.png){#prototype width=350px}
+
+Implementierung:
+
+```java
+public interface MessagePrototype {
+    public String getPayload();
+    public MessagePrototype clone();
+}
+public class TextMessage implements MessagePrototype {
+    public String getPayload() {
+        // ...
+        return payload;
+    }
+    public MessagePrototype clone() {
+        return super.clone();
+    }
+}
+public class EmailMessage implements MessagePrototype {
+    public String getPayload() {
+        // ...
+        return payload;
+    }
+    public MessagePrototype clone() {
+        return super.clone();
+    }
+}
+public MessageClient() {
+    // provide new instances of MessagePrototype by cloning the existing ones
+}
+```
+
+Die Prototypobjekte werden oft in einem Cache gehalten und zum Klonen daraus
+gelesen. Das Prototyp-Pattern ist dann sinnvoll, wenn die Erzeugung neuer
+Objekte sehr aufwändig ist bzw. das Klonen bestehender Objekte einfacher als
+das Erstellen neuer Objekte.
 
 ## Verteilung & Kommunikation: RMI
 
