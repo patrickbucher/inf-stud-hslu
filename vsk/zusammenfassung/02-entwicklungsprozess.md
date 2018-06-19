@@ -373,6 +373,134 @@ Ziele von Continuous Integration:
 
 ## Integrations- und Systemtesting
 
+- Testen und das V-Modell: Zu jeder Disziplin (absteigende Flanke im V) gibt es
+  eine bestimmte Art von Tests (aufsteigende Flanke im V)
+    1. Customer Requirements: Acceptance Tests
+    2. Detailed Requirements: System Tests
+    3. System Design: Integration Tests
+    4. Detailed Design: Unit Tests
+- Test-Design: Nur dokumentierte oder automatisierte Tests lassen sich
+  wiederholen (Regressionstests)
+    - Die Komplexität von Software erfordert einen Testentwurf nach Modellen.
+    - _«Testing by poking around is a waste of time.»_ (Robert Binder)
+- Mit keiner Testart können alle Fehler gefunden werden:
+    - Unit Test: Überprüfung konkreter Implementierungen.
+    - Integrationstest: Spielen die Implementierungen richtig zusammen?
+    - Systemtest: Arbeiten die einzelnen Systemkomponenten richtig zusammen?
+    - Aktepzanztest: Wurde überhaupt das entwickelt, was der Kunde wollte?
+    - Vollständiges Testen ist nicht machbar: Mit welcher Kombination von Tests
+      wird das optimale Verhältnis von entdeckten Fehlern gegenüber Aufwand und
+      Kosten erreicht?
+
+### Integrationstests
+
+- Integrationstests prüfen die Schnittstellen und das Zusammenspiel von
+  Systemkomponenten.
+    - iterative Entwicklung = iterative Integration
+    - Anstreben eines stabilen Systems und stabiler Teilsysteme
+    - einzelne Komponenten sollten nach Möglichkeit schon getestet sein
+      (Unit-Tests)
+    - gewisse Fehler können nur statistisch geprüft werden (Race Conditions,
+      Performance)
+- Durch Integrationstests abzudeckende Aspekte:
+    - Schnittstellen
+        - Kompatibilität der Objekte: Typen, Wertbereiche
+        - Aufruf-Sequenzen
+        - Validierung von Inputs
+    - Datenabhängigkeiten der Komponenten
+    - Abdeckung (Call Graph, verschiedene Aufrufvarianten)
+- Integrationsstrategien
+    - Bottom-Up the Small: Integration kleinerer Teilsysteme
+    - Top-Down the Controls: Integration aufwändiger Kontrollstrukturen
+      (mithilfe von Stubs)
+    - Bing-Bang the Backbone: Alles weitere in einem grossen Schritt
+    - Continuous Integration: Bei iterativ-inkrementeller Entwicklung
+- Platzhalter: Ersetzen (noch) fehlender Komponenten durch Test Doubles
+     - Stubs: Ersatzbaustein mit identischem Interface und statischem Verhalten
+     - Mocks: Intelligenter Stub mit zusätzlicher Logik
+
+### Systemtests
+
+- Systemtests prüfen die gesamte Wirkungskette im Softwareprodukt.
+    - Ziel: potenziell auslieferbares Softwareprodukt am Ende jedes Sprints
+        - ausserhalb der Entwicklungsumgebung lauffähig
+        - mit funktionierender Benutzerschnittstelle
+        - Interaktion mit anderen Applikationen/Systemen möglich
+    - benötigen Testfälle, die in einer möglichst realitätsnahen Testumgebung
+      ausgeführt werden 
+    - Testen mit verschiedenen Konfigurationen nötig (Konfigurationsmanagement)
+- Systemtestfälle: können abgeleitet werden aus
+    - dem Backlog (formulierte Anforderungen und Abnahmekriterien)
+    - den Use-Case-Beschreibungen
+    - der Definition of Done
+- Testen nicht funktionaler Anforderungen
+    - Last-, Performance-, Stress-, Sicherheit-, Robustheitstests
+    - Anforderungen werden oft gar nicht oder zu wenig spezifisch festgehalten
+    - sollen auch mit Systemtests abgedeckt werden
+- Test-First-Ansatz: Formulieren der Systemtests zu Beginn fördert das
+  Verständnis der Anforderungen und deren Testbarkeit
+
+### Regressionstests
+
+Regressionstest: Wiederholtes Ausführen bestehender (und erfolgreich
+durchlaufener) Testfälle zu einem späteren Zeitpunkt, um sicherzustellen, dass
+durch die Neuentwicklung keine bestehende Funktionalität beeinträchtigt wurde.
+
+- Regressionstests beschreiben keine bestimmte Art von Tests, sondern das
+  wiederholte Ausführen bestehender Tests.
+- Wiederholbarkeit von Tests erfordert nachvollziehbare Dokumentation der
+  Testfälle:
+    - Vorbedingungen für die Testausführung (_given_)
+    - Handlungen und Eingaben bei der Testdurchführung (_when_)
+    - erwartete Ergebnisse und Nachbedingungen (_then_)
+    - Die beste Dokumentation von Tests liegt bei automatischen Tests vor: Code
+      lügt nicht -- kann aber auch falsch sein (falsche Vorbedingungen, falsche
+      Handlungen/Eingaben, falsche Erwartugen).
+
+### Agiles Testing
+
+- Die vier Quadranten des agilen Testens:
+    1. Unit- und Komponententests (automatisiert)
+        - Ziel: Vertrauen in den Code
+        - Verifikation: Code funktioniert, Komponenten spielen zusammen
+        - Tests: automatische Testfälle, liegen im SCM vor
+        - Werkzeuge: JUnit, Stubs, Mocks
+        - Wer: Team
+        - Wann: bei jeder Änderung, in jedem Sprint
+    2. Funktionale Tests (automatisiert und manuell)
+        - Ziel: Vertrauen in den Weg
+        - Verifikation: Software macht, was Kunde erwartet
+        - Tests: teilweise automatisiert, dokumentiert und protokolliert
+        - Werkzeuge: Prototypen, Mockups
+        - Wer: Team und Product Owner
+        - Wann: in jedem Sprint
+    3. Abnahmetests (manuell)
+        - Ziel: Vertrauen in das Produkt
+        - Verifikation: Software macht, was Kunde erwartet
+        - Tests: manuell, dokumentiert (Testplan) und protokolliert (Test- und
+          Abnahmeprotokoll)
+        - Werkzeuge: Testdaten, Logs
+        - Wer: Team und Product Owner, Kunde bei Abnahme
+        - Wann: nach einem Sprint, vor einem Release
+    4. Performance-, Last-, Sicherheitstests (mit speziellen Tools)
+        - Ziel: Vertrauen in Performance, Sicherheit etc.
+        - Verifikation: Code läuft stabil und ist leistungsfähig
+        - Tests: Tool-gestützte, teilweise automatisierte Testfälle
+
+### Testing in SoDa
+
+- Testplanung und -Organisation
+    - Ziel: Abnahmetests am Ende des Sprints
+    - Einplanung von Tests zu jeder User Story
+    - Durchführung ständig zunehmender Regressionstests
+- Testaufgaben im Scrum-Team
+    - Planning-Meeting: Aufwandsschätzung für das Testing
+    - Sprint: Tests möglichst bald durchführen (Anhäufung vermeiden)
+    - Sprint-Abnahme: Demonstration getesteter Features (inkrementelle
+      Validierung)
+    - Retrospektive: Stolpersteine ermitteln, Verbesserungsvorschläge
+      erarbeiten
+
 ## Entwurfsmuster
 
 ## Testing
