@@ -605,6 +605,95 @@ TODO: p. 41 ff.
 
 TODO: p. 48 ff.
 
+### Factory Method {#sec-factorymethod}
+
+Zweck: Definiere eine Klassenschnittstelle mit Operationen zum Erzeugen eines
+Objekts. Lasse die Unterklassen entscheiden, von welcher Klasse das zu
+erzeugende Objekt ist. Siehe [UML-Diagramm Fabrikmethode](#factorymethod).
+
+![Fabrikmethode (Design Pattern)](pics/factorymethod.png){#factorymethod}
+
+Implementierung:
+
+```java
+public interface Document {
+    public String getMimeType();
+    public String getExtension();
+}
+public class JSONDocument implements Document {
+    public String getMimeType() {
+        return "application/json";
+    }
+    public String getExtension() {
+        return ".json";
+    }
+}
+public class XMLDocument implements Document {
+    public String getMimeType() {
+        return "application/xml";
+    }
+    public String getExtension() {
+        return ".xml";
+    }
+}
+public interface DocumentCreator {
+    public Document createDocument();
+}
+public class JSONDocumentCreator {
+    public Document createDocument() {
+        return new JSONDocument();
+    }
+}
+public class XMLDocumentCreator {
+    public Document createDocument() {
+        return new XMLDocument();
+    }
+}
+```
+
+### Prototype {#sec-prototype}
+
+Zweck: Entkopple die Objekterzeugung vom eigentlichen System. Gibt die
+Möglichkeit beliebig komplexe Prototypen aus einzelnen, einfachen Prototypen
+zusammenzubauen. Siehe [UML-Diagramm Prototyp](#prototype).
+
+![Prototyp (Design Pattern)](pics/prototype.png){#prototype width=350px}
+
+Implementierung:
+
+```java
+public interface MessagePrototype {
+    public String getPayload();
+    public MessagePrototype clone();
+}
+public class TextMessage implements MessagePrototype {
+    public String getPayload() {
+        // ...
+        return payload;
+    }
+    public MessagePrototype clone() {
+        return super.clone();
+    }
+}
+public class EmailMessage implements MessagePrototype {
+    public String getPayload() {
+        // ...
+        return payload;
+    }
+    public MessagePrototype clone() {
+        return super.clone();
+    }
+}
+public MessageClient() {
+    // provide new instances of MessagePrototype by cloning the existing ones
+}
+```
+
+Die Prototypobjekte werden oft in einem Cache gehalten und zum Klonen daraus
+gelesen. Das Prototyp-Pattern ist dann sinnvoll, wenn die Erzeugung neuer
+Objekte sehr aufwändig ist bzw. das Klonen bestehender Objekte einfacher als
+das Erstellen neuer Objekte.
+
 ### Einsatz von Entwurfsmustern
 
 TODO: p. 35 ff.
