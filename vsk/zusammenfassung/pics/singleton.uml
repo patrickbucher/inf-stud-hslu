@@ -1,0 +1,20 @@
+@startuml
+
+skinparam monochrome true
+skinparam defaultFontName Droid Sans
+skinparam dpi 150
+
+class Singleton {
+    {static} - instance:Singleton
+    - Singleton()
+    {static} + getInstance():Singleton
+    + operation():void
+}
+
+class Client {
+
+}
+
+Client --> Singleton
+
+@enduml

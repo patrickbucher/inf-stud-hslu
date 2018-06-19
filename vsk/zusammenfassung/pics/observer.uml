@@ -1,0 +1,38 @@
+@startuml
+
+skinparam monochrome true
+skinparam defaultFontName Droid Sans
+skinparam dpi 150
+
+interface Observable {
+    - subscribers:List<Observer>
+    ---
+    + subscribe(observer:Observer):void
+    + unsubscribe(observer:Observer):boid
+    - notifySubscribers():void
+}
+
+interface Observer {
+    + update(object:Object):void
+}
+
+Observable --> Observer : notifies
+
+class Subject {
+    - state:Object
+    ---
+    + setState(object:Object)
+    + getState():Object
+}
+
+Observable <|-- Subject
+
+class Subscriber {
+    + update(object:Object):void
+}
+
+Observer <|-- Subscriber
+
+Subscriber --> Subject : observes
+
+@enduml

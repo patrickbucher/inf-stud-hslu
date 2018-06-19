@@ -1,0 +1,41 @@
+@startuml
+
+skinparam monochrome true
+skinparam defaultFontName Droid Sans
+skinparam dpi 150
+
+class BuildFacade {
+    - compiler:Compiler
+    - testExecutor:TestExecutor
+    - documentationGenerator:DocumentationGenerator
+    ---
+    + quickBuild()
+    + fullBuild()
+    + releaseBuild()
+}
+
+class Compiler {
+    + compileSources()
+}
+
+class TestExecutor {
+    + runUnitTests()
+    + runIntegrationTests()
+}
+
+class DocumentationGenerator {
+    + createJavaDoc()
+    + createClassDiagrams()
+    + createSysSpec()
+}
+
+class Client {
+}
+
+BuildFacade o--> Compiler
+BuildFacade o--> TestExecutor
+BuildFacade o--> DocumentationGenerator
+
+Client --> BuildFacade
+
+@enduml

@@ -1,0 +1,30 @@
+@startuml
+
+skinparam monochrome true
+skinparam defaultFontName Droid Sans
+skinparam dpi 150
+
+interface MessageStore {
+    + store(message:Message)
+}
+
+class MessageStoreAdapter {
+    - keyValueStore:KeyValueStore
+    ---
+    + store(message:Message)
+}
+
+MessageStoreAdapter <|.. MessageStore
+
+interface KeyValueStore {
+    + receive(id:String,message:String)
+}
+
+MessageStoreAdapter o--> KeyValueStore
+
+class Client {
+}
+
+Client --> MessageStore
+
+@enduml

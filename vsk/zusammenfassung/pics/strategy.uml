@@ -1,0 +1,37 @@
+@startuml
+
+skinparam monochrome true
+skinparam defaultFontName Droid Sans
+skinparam dpi 150
+
+interface SortingStrategy {
+    + sort(items:List):void
+}
+
+class QuickSort {
+    + sort(items:List):void
+}
+class MergeSort {
+    + sort(items:List):void
+}
+class BubbleSort {
+    + sort(items:List):void
+}
+
+SortingStrategy <|.. QuickSort
+SortingStrategy <|.. MergeSort
+SortingStrategy <|.. BubbleSort
+
+class Context {
+    - sorting:SortingStrategy
+}
+
+Context *-- SortingStrategy
+
+class Client {
+}
+
+Client --> Context
+Client --> SortingStrategy
+
+@enduml

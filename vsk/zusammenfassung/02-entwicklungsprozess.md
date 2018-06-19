@@ -503,6 +503,112 @@ durch die Neuentwicklung keine bestehende Funktionalität beeinträchtigt wurde.
 
 ## Entwurfsmuster
 
+- Aus der Architektur entlehnter Begriff: bewährte Entwürfe (Schablonen) für
+  wiederkehrende Entwurfsprobleme.
+- Von der _Gang of Four_ (GoF) -- Erich Gamme, Richard Helm, Ralph Johnson und
+  John Vlissides im Buch _Design Patterns. Elements of Reusable Object-Oriented
+  Software_ (1995) gesammelt (23 Entwurfsmuster) und popularisiert.
+
+### Wiederverwendung
+
+- Ziel: Wiederverwendung bewährter Lösungen
+    - Wiederverwendung von Objekten zur Laufzeit für höhere Effizienz
+        - Threads in einem Thread-Pool
+        - Datenobjekte in einem Cache
+    - Wiederverwendung von Klassen zur Entwicklungszeit für geringeren
+      Entwicklungsaufwand und geringere Fehlerrate
+        - Copy & Paste: schlecht
+        - Vererbung: je nach Kontekt mehr oder weniger gut geeignet
+        - Aggregation und Komposition: meist besser als Vererbung
+    - Wiederverwendung von Komponenten für geringeren Entwicklungsaufwand und
+      geringere Fehlerrate
+        - Libraries und Frameworks
+        - Entwicklung eigener Komponenten für verschiedene Projekte
+- Problem: Wiederverwendung von Code ist schwierig
+    - verschiedene Kontexte
+    - verschiedene Technologien
+    - verschiedene Designkonzepte
+    - Weiterentwicklung und Wartung
+    - aufwändige Verwaltung
+    - Abhängigkeiten von Dritten
+- Alternative: Wiederverwendung von Konzepten
+    - Konzepte ändern sich selten
+    - meist unabhängig von Sprache und Implementierung
+    - gut erprobt, weit verbreitet und allgemein bekannt
+
+### Klassifikation von Entwurfsmustern
+
+Entwurfsmuster werden nach ihrem Zweck klassifiziert.
+
+1. Erzeugungsmuster (Creational Patterns): Erzeugung von Objekten abstrahieren
+   (Typ, Zeitpunkt, Art); Objekterzeugung delegieren und Details auslagern
+    - Abstrakte Fabrik (Abstract Factory)
+    - Erbauer (Builder)
+    - Fabrikmethode (Factory Method)
+    - Prototyp (Prototype)
+    - Einzelstück (Singleton)
+2. Strukturmustern (Structural Patterns): Objekte/Klassen zu neuen Strukturen
+   zusammenfassen; verschiedene Strukturen aneinander anpassen und miteinander
+   verbinden
+    - Adapter (Adapter)
+    - Brücke (Bridge)
+    - Kompositum (Composite)
+    - Dekorierer (Decorator)
+    - Fassade (Facade)
+    - Fliegengewicht (Flyweight)
+    - Stellvertreter (Proxy)
+3. Verhaltensmuster (Behavioral Patterns): Interaktionen zwischen Objekten
+   beschreiben; Kontrollflüsse zwischen Objekten festlegen; Zuständigkeiten und
+   Kontrolle delegieren
+    - Zuständigkeitskette (Chain of Responsibility)
+    - Befehl (Command)
+    - Interpreter (Interpreter)
+    - Iterator (Iterator)
+    - Vermittler (Mediator)
+    - Memento (Memento)
+    - Beobachter (Observer)
+    - Zustand (State)
+    - Strategie (Strategy)
+    - Schablonenmethode (Template Method)
+    - Besucher (Visitor)
+- Sekundäre Unterteilung:
+    - Klassenmuster: Beziehungen zur Kompilierzeit festgelegt
+    - Objektmuster: Beziehung zur Laufzeit dynamisch veränderbar
+
+### Singleton
+
+![Singleton (Entwurfsmuster)](pics/singleton.png){#singleton width=237}
+
+TODO: p. 22 ff.
+
+### Facade
+
+![Facade (Entwurfsmuster)](pics/facade.png){#facade}
+
+TODO: p. 25 ff.
+
+### Strategy
+
+![Strategy (Entwurfsmuster)](pics/strategy.png){#strategy}
+
+TODO: p. 29 ff.
+
+### Observer
+
+![Observer (Entwurfsmuster)](pics/observer.png){#observer width=405}
+
+TODO: p. 41 ff.
+
+### Adapter
+
+![Adapter (Entwurfsmuster)](pics/adapter.png){#adapter width=598}
+
+TODO: p. 48 ff.
+
+### Einsatz von Entwurfsmustern
+
+TODO: p. 35 ff.
+
 ## Testing
 
 ## Review
