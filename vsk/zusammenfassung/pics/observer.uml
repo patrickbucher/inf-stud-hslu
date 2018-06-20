@@ -5,11 +5,8 @@ skinparam defaultFontName Droid Sans
 skinparam dpi 150
 
 interface Observable {
-    - subscribers:List<Observer>
-    ---
     + subscribe(observer:Observer):void
-    + unsubscribe(observer:Observer):boid
-    - notifySubscribers():void
+    + unsubscribe(observer:Observer):void
 }
 
 interface Observer {
@@ -19,16 +16,17 @@ interface Observer {
 Observable --> Observer : notifies
 
 class Subject {
+    - subscribers:List<Observer>
     - state:Object
     ---
     + setState(object:Object)
     + getState():Object
+    - notifySubscribers():void
 }
 
 Observable <|-- Subject
 
 class Subscriber {
-    + update(object:Object):void
 }
 
 Observer <|-- Subscriber

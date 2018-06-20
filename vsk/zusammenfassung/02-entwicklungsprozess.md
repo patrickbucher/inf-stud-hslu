@@ -540,78 +540,277 @@ durch die Neuentwicklung keine bestehende Funktionalität beeinträchtigt wurde.
 
 Entwurfsmuster werden nach ihrem Zweck klassifiziert.
 
-1. Erzeugungsmuster (Creational Patterns): Erzeugung von Objekten abstrahieren
+1. Creational Patterns (Erzeugungsmuster): Erzeugung von Objekten abstrahieren
    (Typ, Zeitpunkt, Art); Objekterzeugung delegieren und Details auslagern
     - Abstrakte Fabrik (Abstract Factory)
     - Erbauer (Builder)
     - Fabrikmethode (Factory Method)
     - Prototyp (Prototype)
     - Einzelstück (Singleton)
-2. Strukturmustern (Structural Patterns): Objekte/Klassen zu neuen Strukturen
+2. Structural Patterns (Strukturmuster): Objekte/Klassen zu neuen Strukturen
    zusammenfassen; verschiedene Strukturen aneinander anpassen und miteinander
    verbinden
     - Adapter (Adapter)
-    - Brücke (Bridge)
-    - Kompositum (Composite)
-    - Dekorierer (Decorator)
-    - Fassade (Facade)
-    - Fliegengewicht (Flyweight)
-    - Stellvertreter (Proxy)
-3. Verhaltensmuster (Behavioral Patterns): Interaktionen zwischen Objekten
+    - Bridge (Brücke)
+    - Composite (Kompositum)
+    - Decorator (Dekorierer)
+    - Facade (Fassade)
+    - Flyweight Fliegengewicht
+    - Proxy (Stellvertreter)
+3. Behavioral Patterns (Verhaltensmuster): Interaktionen zwischen Objekten
    beschreiben; Kontrollflüsse zwischen Objekten festlegen; Zuständigkeiten und
    Kontrolle delegieren
-    - Zuständigkeitskette (Chain of Responsibility)
-    - Befehl (Command)
+    - Chain of Responsibility (Zuständigkeitskette)
+    - Command (Befehl) 
     - Interpreter (Interpreter)
     - Iterator (Iterator)
-    - Vermittler (Mediator)
+    - Mediator (Vermittler)
     - Memento (Memento)
-    - Beobachter (Observer)
-    - Zustand (State)
-    - Strategie (Strategy)
-    - Schablonenmethode (Template Method)
-    - Besucher (Visitor)
+    - Observer (Beobachter)
+    - State (Zustand)
+    - Strategy (Strategie)
+    - Template Method (Schablonenmethode)
+    - Visitor (Besucher)
 - Sekundäre Unterteilung:
     - Klassenmuster: Beziehungen zur Kompilierzeit festgelegt
     - Objektmuster: Beziehung zur Laufzeit dynamisch veränderbar
 
-### Singleton
+### Singleton (Einzelstück)
 
-![Singleton (Entwurfsmuster)](pics/singleton.png){#singleton width=237}
+Zweck: Gewährleistet, dass es von einer Klasse nur eine Instanz geben kann und
+stellt einen globalen Zugriffspunkt auf diese bereit. Siehe [UML-Diagramm
+Singleton](#singleton).
 
-TODO: p. 22 ff.
+- Klassifikation: Erzeugungsmuster, objektbasiert
+- Merkmale
+    - Speichert die Objektinstanz als privates, statisches Attribut ab.
+    - Verfügt über einen privaten Konstruktor zur Verhinderung
+      Neuinstanziierung von aussen.
+    - Erlaubt den Zugriff auf die eine Instanz über eine öffentliche, statische
+      Methode.
+- Problematik: Singleton führt zu starker Kopplung und lässt sich schwer
+  austauschen.
 
-### Facade
+![Singleton (Entwurfsmuster)](pics/singleton.png){#singleton width=120px}
 
-![Facade (Entwurfsmuster)](pics/facade.png){#facade}
+Implementierung:
 
-TODO: p. 25 ff.
+```java
+public class Singleton {
+    private static final Singleton instance = new Singleton();
+    private Singleton() {
+    }
+    public static Singleton getInstance() {
+        return instance;
+    }
+    public void operation() {
+        // ...
+    }
+}
+```
 
-### Strategy
+### Facade (Fassade)
 
-![Strategy (Entwurfsmuster)](pics/strategy.png){#strategy}
+Zweck: Bietet eine einheitliche Schnittstelle für eine Reihe von Schnittstellen
+in einem Untersystem. Eine Fassade definiert eine Schnittstelle auf einer
+höheren Abstraktionsstufe, welche die Handhabung des Untersystem einfacher
+macht. Siehe [UML-Diagramm Facade](#facade).
 
-TODO: p. 29 ff.
+- Klassifikation: Strukturmuster, objektbasiert
+- Merkmale
+    - Vereinfacht die Anwendung mehrerer Subsysteme.
+    - Entkoppelt die Subsysteme vom Client.
+        - geringere Kopplung
+        - einfachere Austauschbarkeit
+- Problematik: Sollte weder zu reinem Durchlauferhitzer verkommen noch
+  wesentliche Logik beinhalten.
 
-### Observer
+![Facade (Entwurfsmuster)](pics/facade.png){#facade width=380px}
 
-![Observer (Entwurfsmuster)](pics/observer.png){#observer width=405}
+Implementierung:
 
-TODO: p. 41 ff.
+```java
+public class BuildFacade {
+    private Compiler compiler = new Compiler();
+    private TestExecutor testExecutor = new TestExecutor();
+    private DocumentationGenerator documentationGenerator = new DocumentationGenerator();
+    public void quickBuild() {
+        compiler.compileSources();
+        testExecutor.runUnitTests();
+    }
+    public void fullBuild() {
+        quickBuild();
+        testExecutor.runIntegrationTests();
+        documentationGenerator.createJavaDoc();
+    }
+    public void releaseBuild() {
+        fullBuild();
+        documentationGenerator.createSysSpec();
+        documentationGenerator.createClassDiagrams();
+    }
+}
+public class Compiler {
+    public void compileSources() { /* ... */ }
+}
+public class TestExecutor {
+    public void runUnitTests() { /* ... */ }
+    public void runIntegrationTests() { /* ... */ }
+}
+public class DocumentationGenerator {
+    public void createJavaDoc() { /* ... */ }
+    public void createSysSpec() { /* ... */ }
+    public void createClassDiagrams() { /* ... */ }
+}
+```
 
-### Adapter
+### Strategy (Strategie)
 
-![Adapter (Entwurfsmuster)](pics/adapter.png){#adapter width=598}
+Zweck: Definiert eine Familie von Algorithmen, kapselt jeden davon und macht
+sie austauschbar. Mit einer Strategie kann der Algorithmus unabhängig vom
+Client, der ihn verwendet, austauschen. Siehe [UML-Diagramm
+Strategy](#strategy).
 
-TODO: p. 48 ff.
+- Klassifikation: Verhaltensmuster, objektbasiert
+- Merkmale
+    - Bietet unterschiedliche Varianten/Implementierungen von Algorithmen an
+    - Fasst Klassen mit gleichem Interface zusammen, die sich in ihrem
+      Verhalten unterscheiden.
+    - Erlaubt das Hinzufügen weiterer Implementierungen ohne Änderungen am
+      bestehenden Code.
+- Problematik: Der oftmals lohnende Einsatz bei kleinen Methoden wird gerne
+  übersehen.
 
-### Factory Method {#sec-factorymethod}
+![Strategy (Entwurfsmuster)](pics/strategy.png){#strategy width=350px}
 
-Zweck: Definiere eine Klassenschnittstelle mit Operationen zum Erzeugen eines
-Objekts. Lasse die Unterklassen entscheiden, von welcher Klasse das zu
+Implementierung:
+
+```java
+public interface SortingStrategy {
+    public <T> void sort(List<T> items);
+}
+public class QuickSort implements SortingStrategy {
+    public <T> void sort(List<T> items) { /* ... */  }
+}
+public class MergeSort implements SortingStrategy {
+    public <T> void sort(List<T> items) { /* ... */  }
+}
+public class BubbleSort implements SortingStrategy {
+    public <T> void sort(List<T> items) { /* ... */  }
+}
+```
+
+### Observer (Beobachter)
+
+Zweck: Definiert eine eins-zu-viele-Abhängigkeit zwischen Objekten, damit bei
+der ÄNderung des Zustands des einen Objekts alle von ihm abhängigen Objekte
+automatisch benachrichtigt und aktualisiert werden. Siehe [UML-Diagramm
+Observer](#observer).
+
+- Klassifikation: Verhaltensmuster, objektbasiert
+- Merkmale
+    - Realisiert eine lose Kopplung zwischen einem Subjekt und einer
+      theoretisch beliebigen Anzahl von Beobachtern.
+    - Erlaubt Kommunikation entgegen der Abhängigkeitsrichtung.
+    - Hilft bei der Auflösung von zyklischen Referenzen.
+    - Bildet die Grundlage für das Model-View-Controller-Pattern (MVC) und das
+      Event-Handling in Java-GUI-Frameworks.
+- Problematik: Eine enge funktionale Kopplung von Subjekt und Beobachter führt
+  zu grossen Schnittstellen. Das Observer-Pattern ist kein Ersatz für schlechte
+  Aufgabenteilung zwischen Klassen!
+
+![Observer (Entwurfsmuster)](pics/observer.png){#observer width=200px}
+
+Implementierung:
+
+```java
+public interface Observable {
+    public void subscribe(Observer observer);
+    public void unsubscribe(Observer observer);
+}
+public interface Observer {
+    public void update(Object state);
+}
+public class Subject implements Observable {
+    private List<Observer> subscribers = new ArrayList<Observer>;
+    private Object state = null;
+    public void subscribe(Observer observer) {
+        subscribers.add(observer);
+    }
+    public void unsubscribe(Observer observer) {
+        subscribers.remove(observer);
+    }
+    public void setState(Object state) {
+        this.state = state;
+        notifySubscribers();
+    }
+    public Object getState() {
+        return state;
+    }
+    private void notifySubscribers() {
+        subscribers.stream().forEach(s -> s.update(state));
+    }
+}
+public class Subscriber implements Observer {
+    public void update(Object state) { /* ... */  }
+}
+```
+
+### Adapter (Adapter)
+
+Zweck: Konvertiert die Schnittstelle einer Klasse in eine andere Schnittstelle,
+die von einem Client erwartet wird. Ein Adapter lässt Klassen zusammenarbeiten,
+die es ansonsten aufgrund von inkompatibler Schnittstellen nicht könnten. Siehe
+[UML-Diagramm Adapter](#adapter).
+
+- Klassifikation: Strukturmuster, klassen- oder objektbasiert
+- Merkmale
+    - Erlaubt die Wiederverwendung von existierenden Klassen und Schnittstellen
+      trotz inkompatibler/ungeeigneter Schnittstellen.
+    - Erlaubt die Definition einer möglichst allgemeinen Schnittstelle und die
+      spätere Anpassung für die Bedürfnisse unterschiedlicher Clients.
+- Problematik: Ein Adapter ist kein Ersatz für die sinnvolle Ausgestaltung
+  kompatibler Schnittstellen! Sein Einsatz ist oft sinnvoll im Umgang mit APIs
+  von Dritten. Bei eigenen (internen) APIs ist ein Refactoring einem Adapter
+  meist vorzuziehen.
+
+![Adapter (Entwurfsmuster)](pics/adapter.png){#adapter width=300px}
+
+Implementierung:
+
+```java
+public interface MessageStore {
+    public void store(Message message);
+}
+public interface KeyValueStore {
+    public void put(String id, String message);
+}
+public class MessageStoreAdapter implements MessageStore {
+    private KeyValueStore keyValueStore = KeyValueStore.getInstance("messages");
+    public void store(Message message) {
+        keyValueStore.put(message.getId(), message.getPayload());
+    }
+}
+```
+
+### Factory Method (Fabrikmethode) {#sec-factorymethod}
+
+Zweck: Definiert eine Klassenschnittstelle mit Operationen zum Erzeugen eines
+Objekts. Die Unterklassen entscheiden, von welcher Klasse das zu
 erzeugende Objekt ist. Siehe [UML-Diagramm Fabrikmethode](#factorymethod).
 
-![Fabrikmethode (Design Pattern)](pics/factorymethod.png){#factorymethod}
+- Klassifikation: Erzeugungsmuster, klassenbasiert
+- Merkmale
+    - Erlaubt das Erstellen von Instanzen der Klassen einer bestehenden
+      Klassenhierarchie.
+    - Stellt eine einheitliches Schnittstelle zur Erzeugung dieser Klassen zur
+      Verfügung.
+    - Delegiert die Details der Objekterzeugung an die
+      Unterklassen/Implementierungen.
+- Problematik: Bei der Erweiterung der Klassenhierarchie muss auch die
+  Hierarchie der Factory-Klassen erweitert werden. Erweiterungen wirken sich so
+  immer auf mehrere Stellen im Code aus.
+
+![Fabrikmethode (Design Pattern)](pics/factorymethod.png){#factorymethod width=410px}
 
 Implementierung:
 
@@ -653,11 +852,24 @@ public class XMLDocumentCreator {
 
 ### Prototype {#sec-prototype}
 
-Zweck: Entkopple die Objekterzeugung vom eigentlichen System. Gibt die
+Zweck: Entkoppelt die Objekterzeugung vom eigentlichen System. Gibt die
 Möglichkeit beliebig komplexe Prototypen aus einzelnen, einfachen Prototypen
 zusammenzubauen. Siehe [UML-Diagramm Prototyp](#prototype).
 
-![Prototyp (Design Pattern)](pics/prototype.png){#prototype width=350px}
+- Klassifikation: Erzeugungsmuster, objektbasiert
+- Merkmale
+    - Erlaubt die Erzeugung von Objekten aufgrund bereits existierender
+      Objekte.
+    - Steigert die Effizient bei der Erstellung neuer Objekte, indem bestehende
+      Objekte kopiert und nicht komplett neu aufgebaut werden.
+    - Wird oftmals im Zusammenhang mit einem Prototyp-Cache verwendet, aus dem
+      bestehende Objekte zum Klonen herausgelesen werden können.
+- Problematik: Das Klonen von Objekten kann fehleranfällig sein, gerade wenn
+  viele Referenzen auf andere Objekte bestehen. Man muss sich bewusst sein, ob
+  und wo eine _deep copy_ (Klonen sämtlicher referenzier Objekte) oder eine
+  _shallow copy_ (blosses Kopieren aller Referenzen) vorgenommen werden soll.
+
+![Prototyp (Design Pattern)](pics/prototype.png){#prototype width=240px}
 
 Implementierung:
 
@@ -689,14 +901,32 @@ public MessageClient() {
 }
 ```
 
-Die Prototypobjekte werden oft in einem Cache gehalten und zum Klonen daraus
-gelesen. Das Prototyp-Pattern ist dann sinnvoll, wenn die Erzeugung neuer
-Objekte sehr aufwändig ist bzw. das Klonen bestehender Objekte einfacher als
-das Erstellen neuer Objekte.
-
 ### Einsatz von Entwurfsmustern
 
-TODO: p. 35 ff.
+- Voraussetzungen: Man muss die Entwurfsmuster kennen und verstehen!
+    - Quelle: Literatur (GoF-Buch), Internet
+- Sinnvolle Auswahl: Kein Entwurfsmuster löst jedes Problem (_no golden
+  hammer_).
+    - Anhand Kategorie vorselektieren (Erzeugung, Struktur, Verhalten)
+    - Vor- und Nachteile abwägen (siehe _Consequences_-Sektion im GoF-Buch)
+    - Im Zweifelsfall das Muster auswählen, das eine grössere Flexibilität
+      bietet.
+- Überlegter Einsatz: Macht der Einsatz eines Entwurfsmuster den Code besser
+  und einfacher verständlich -- oder wird der Code dadurch nur aufgebläht und
+  unflexibel?
+    - Verifikation anhand fiktivem oder (besser) realem Beispiel durchführen!
+- Im Umgang mit Entwurfsmustern braucht es viel Erfahrung. Im Zweifelsfall
+  sollte man besser auf den Einsatz eines Entwurfsmusters verzichten.
+    - Habe ich ein Problem, auf das ein Entwurfsmuster passt?
+    - Oder habe ich ein Entwurfsmuster, wofür ich ein passendes Problem suche?
+    - Entwurfsmuster sind Konzepte, die erweitert und kombiniert (MVC) werden
+      können.
+    - Ein stures Festhalten an originalen Konzepten im GoF-Buch ist nicht sinnvoll!
+
+Der Vorteil von Entwurfsmustern liegt nicht nur im durch sie besser
+strukturierten Code, sondern darin, dass die Entwickler _eine gemeinsame
+Sprache_ mit kurzen und prägnanten Begriffen für ansonsten schwer vermittelbare
+Konzepte haben.
 
 ## Testing
 
