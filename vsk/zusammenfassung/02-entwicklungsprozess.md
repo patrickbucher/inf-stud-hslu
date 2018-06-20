@@ -850,7 +850,7 @@ public class XMLDocumentCreator {
 }
 ```
 
-### Prototype {#sec-prototype}
+### Prototype (Prototyp) {#sec-prototype}
 
 Zweck: Entkoppelt die Objekterzeugung vom eigentlichen System. Gibt die
 Möglichkeit beliebig komplexe Prototypen aus einzelnen, einfachen Prototypen
@@ -928,7 +928,169 @@ strukturierten Code, sondern darin, dass die Entwickler _eine gemeinsame
 Sprache_ mit kurzen und prägnanten Begriffen für ansonsten schwer vermittelbare
 Konzepte haben.
 
-## Testing
+## Automatisiertes Testing
+
+- Testen geniesst unter Entwicklern und Projektleitern einen schlechten Ruf:
+    - Entwickler wollen lieber programmieren als testen und glauben, dass sie
+      keine Fehler machen.
+    - Projektleiter sehen das Testen als unnötigen Arbeitsschritt, der keinen
+      Mehrwert schafft.
+- Problem: Falscher Testing-Ansatz in der Entwicklung:
+    - Getestet wird erst am Schluss: Suche nach Fehlern, die man lieber nicht
+      finden würde.
+    - Konsequenz: Es wird schlecht getestet, Fehler werden verschwiegen oder
+      Entwickler verhalten sich defensiv.
+    - Werden keine Fehler gefunden heisst dies nicht, dass es keine Fehler
+      gibt!
+- Lösung: Kontinuierlich testen; nicht um Fehler zu finden, sondern um
+  Gewissheit zu haben, was bereits funktioniert.
+- Test-First-Ansatz (Test Driven Development)
+    - Idee: Mögliche Fehler finden, bevor sie gemacht werden, und korrigieren,
+      bevor sie implementiert werden. (Fehler bereits im Ansatz erkennen.)
+    - Ursprung: Extreme Programming (Kent Beck, Erich Gamma)
+    - Ansatz: Zuerst Testfälle (Code) schreiben, dann den produktiven Code.
+    - Vorteil: Der Test kann automatisch erfolgen, sobald der produktive Code
+      geschrieben wurde.
+    - Folge: Schnelles Feedback und erhöhte Motivation!
+
+### Unit- und Integrationstests
+
+- Unit-Tests (oder Komponenten-, Modul-, Entwicklertests): funktionale Tests
+  einzelner, in sich abgeschlossener Einheiten (Klasse, Komponente, Modul)
+    - Ziel: Testen einzelner Einheiten ohne Abhängigkeiten zu anderen Einheiten
+    - Vorteile: schnell, einfach ausführbar, selbstvalidierend (Assertions) und
+      automatisiert
+    - Ausführung in der Entwicklungsumgebung durch den Entwickler und in der
+      CI-Umgebung während des Buildprozesses
+    - Nutzen:
+        - schnell ausführbare Tests neuer Komponenten oder veränderter
+          Komponenten (Regressionstests)
+        - Testen erfolgt bereits während der Implementierungsphase
+        - Möglichkeit des Test-First-Ansatzes: gute Testbarkeit von Anfang an
+          gegeben
+        - automatisiertes, schnelles und übersichtliches Feedback (Reporting)
+        - Messung von Codeabdeckung möglich
+    - Probleme:
+        - für GUI-Komponenten aufwändig
+        - Qualität und Nachvollziehbarkeit der Tests wichtig (aber
+          zeitaufwändig)
+        - es lässt sich nicht «alles» mit Unit-Tests abdecken
+    - JUnit: Am häufigsten eingesetztes Test-Framework in JAva
+        - Version 4.12 am stärksten verbreitet und am besten integriert
+        - Version 5.0 seit September 2017 mit Java 8 (für neue Projekte)
+- Integrationstests: Testen das Zusammenspiel verschiedener Komponenten
+    - Abgrenzug zu Unit-Tests oft kontrovers und nicht eindeutig
+    - Verwendung von Umgebungsressourcen (Netzwerk, Dateisystem):
+      Integrationstest!
+    - Fehlschlagen aufgrund von Fremdeinflüssen möglich: Integrationstest!
+    - Faustregel: Unit-Tests sind auf einem beliebigen System jederzeit
+      lauffähig.
+- JUnit-Namenskonvention: Suffix `Test` für Unit-Tests, Suffix `IT` für
+  Integrationstests; erlaubt die Unterscheidung für verschiedene
+  Verifikationsphasen und unterschiedlich umfassende Builds
+    - Vor dem Commit/Push in der Entwicklungsumgebung: schneller Build mit
+      Unit-Tests
+    - Nightly Build auf der CI-Umgebung: umfassender Build mit Unit- und
+      Integrationstests
+
+### Codeabdeckung
+
+- Problem: Wie erreicht man mit möglichst wenig Aufwand möglichst umfassende
+  Tests?
+- Lösung: Durch Messung der Codeabdeckung durch Testfälle!
+    - Dadurch gezielte Entwicklung von Tests möglich, die mit wenig Testcode
+      viel produktiven Code testen.
+    - Statistische Auswertung möglich, auch mit zeitlicher Entwicklung
+      (Verbesserung oder Verschlechterung der Testabdeckung).
+- Verfahren: Testumgebung merkt sich, welcher Code in einem Testdurchlauf
+  ausgeführt wurde.
+- Es gibt verschiedene Messtechniken:
+    - Welche Zeilen oder Statements wurden ausgeführt? (Line Coverage)
+    - Welche Verzweigungen wurden genommen? (Branch Coverage)
+    - Welche Bedingungen wurden evaluiert? (Decision Coverage)
+    - Welche Programmablaufpfade wurden durchlaufen? (Path Coverage)
+        - Inpraktikabel, da die Anzahl Pfade exponentiell mit der Anzahl
+          Entscheidungen wächst.
+    - Welche Funktionen wurden ausgeführt? (Function Coverage)
+    - Welche Codestellen laufen parallel ab? (Race Coverage)
+    - Diese Metriken sind unterschiedlich aussagekräftig und sollten am besten
+      kombiniert verwendet werden.
+- Technische Umsetzung:
+    1. Instrumentierung des Quellcodes: Compiler fügt Statements zur
+       Coverage-Messung in den Code ein. Zu vermeiden, da der Quellcode zuvor
+       manipuliert und dadurch das Debugging erschwert wird.
+    2. Instrumentierung des Bytecodes: Der Bytecode wird nach der Kompilierung
+       um Coverage-Messungen ergänzt. Die ergänzten `.class`-Dateien müssen von
+       den «produktiven» Kompilaten gesondert werden.
+    3. Just-in-time Instrumentierung zur Laufzeit: Die Laufzeitumgebung
+       instrumentiert den Bytecode über den Classloader. Bester Ansatz.
+
+### Dependency Injections
+
+- Schlechte Testbarkeit von Komponenten aufgrund hoher Kopplung.
+    - Komponente A hängt von Komponente B ab, Komponente B hängt von Komponente
+      C ab.
+    - Ein Unit-Test der Komponente A erfordert und testet sogleich Komponente B
+      und C -- und ist also kein eigentlicher Unit-Test mehr.
+- Lösung: Dependency Injection
+    - Die Komponenten werden nicht länger fest verdrahtet (A instanziert B, B
+      instanziert C).
+    - Stattdessen können jeder Komponente ihre Abhängigkeiten über einen
+      zusätzlichen Konstruktor mitgegeben werden.
+    - Dadurch wird die Kopplung reduziert; idealerweise über ein Interface.
+    - Die Testbarkeit wird erhöht, erfordert aber die Entwicklung von _Test
+      Doubles_, die als abhängige Komponenten eingesetzt werden können.
+
+### Test Doubles
+
+- Anforderungen und Vorbedingungen für den Einsatz von Test Doubles:
+    - Einsatz von Interfaces: Test Double und Produktivkomponente müssen das
+      gleiche Interface implementieren.
+    - Ersetzung der Komponente zur Laufzeit: mittels Dependency Injection!
+    - Sicherungsmassnahmen, um die Verwendung von Test Doubles in der
+      Produktivumgebung zu verhindern. (Aufteilung in Test- und
+      Produktivprojekt)
+- Dummy: primitive, funktionslose Attrappe; häufig eine «leere» Implementierung
+  eines Interfaces 
+    - Beispiel: Eine Komponente benötigt einen Logger, das Logging ist aber
+      nicht Gegenstand des Tests
+    - Lösung: Ein `LoggingDummy` implementiert die `Logging`-Schnittstelle,
+      ohne tatsächlich etwas zu loggen, und wird der Komponente mitgegeben.
+- Stub: einfachste Implementierung eines Interfaces, die mit konstante,
+  vordefinierte Rückgaben liefert
+    - Beispiel: Eine Komponente hängt von einem Loginmechanismus ab, doch es
+      stehen keine Credentials für Tests zur Verfügung.
+    - Lösung: Es wird ein `LoginStub` entwickelt, das die
+      Authentifikatonsschnittstelle implementiert, und einfach alle
+      Loginversuche akzeptiert. (Ein zweiter Stub könnte alle Loginversuche
+      ablehnen, je nach Anforderungen.)
+- Spy: alternative Implementierung, welche dynamische Werte zurückliefert und
+  sich die Aufrufe der Methoden merkt (Anzahl, Häufigkeit, Parameter,
+  Zeitpunkt, Exceptions)
+    - Einsatz: Wenn nicht der Rückgabewert einer Aktion, sondern deren
+      Verhalten getestet werden, wozu die Aufzeichnungen des Spies ausgewertet
+      werden können.
+- Mock: Spezialisierung von Spy, welche die Verifikation der gesammelten Daten
+  selber vornehmen kann
+    - Einsatz: Mithilfe von Mocking-Frameworks (z.B. Mockito) werden zur
+      Laufzeit Mock-Objekte erstellt.
+- Fake: vollständige und korrekte -- aber einfachere! -- Implementierung einer
+  Komponente
+    - Beispiel: Eine Komponente benötigt einen Webservice als Abhängigkeit,
+      welcher in der Testumgebung nicht zur Verfügung steht.
+    - Lösung: Es wird ein Fake-Webservice erstellt, der die Anfragen direkt und
+      nicht über das Netzwerk zurückgibt. (Der Fake-Webservice könnte auf
+      Aspekte wie Logging, Persistenz und Concurrency verzichten.)
+- Einsatzzweck der verschiedenen Verfahren:
+    - Dummy und Stub: Erreichen einer besseren Testisolation und höhreren
+      Selektivität der Testfälle.
+    - Spy und Mock: Universeller Ansatz zur Durchführung von Behaviour-Testing.
+    - Fake: Aufwändige Implementierung zur vollständigen Entkopplung vom Original.
+
+Die Test Doubles sind nicht der Gegenstand der Tests sondern nur Mittel zum
+Zweck! Es sollte nur so viel Aufwand für deren Umsetzung betrieben werden, bis
+dass die Funktion der eigentlich zu testenden Komponente möglichst vollständig
+getestet werden kann!
 
 ## Review
 
