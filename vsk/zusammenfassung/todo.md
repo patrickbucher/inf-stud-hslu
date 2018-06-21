@@ -1,4 +1,4 @@
-# TODO (17/21, ca. 80% fertig)
+# TODO (18/21, ca. 85% fertig)
 
 ## Komponenten (3/3)
 
@@ -6,7 +6,7 @@
 - [x] Schnittstellen
 - [x] Modularisierung
 
-## Entwicklungsprozess (10/12)
+## Entwicklungsprozess (11/12)
 
 - [x] Versionskontrolle
 - [x] Build
@@ -16,7 +16,7 @@
 - [x] Integrations- und Systemtesting
 - [x] Entwurfsmuster
 - [x] Automatisiertes Testing
-- [ ] Review
+- [x] Review
 - [ ] Konfigurationsmanagement
 - [x] Deployment
 - [x] Code-Qualität

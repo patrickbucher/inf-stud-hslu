@@ -355,7 +355,7 @@ Infrastruktur verbirgt.
     - Definition der Sicherheitsrichtlinie in `policy`-Datei:
         - `-Djava.security.policy=my.policy` per Kommandozeile
         - `System.setProperty("java.security.policy", "my.policy");` im Code
-          (`my.policy` muss im akzuellen Verzeichnis liegen)
+        - `my.policy` muss im akzuellen Arbeitsverzeichnis liegen
         - Gewährung von Berechtigungen per `grant` (siehe Beispiele unten)
     - Zusätzliche Angaben (optional):
         - Codebase: Rechte von Klassen aus bestimmten Quellen

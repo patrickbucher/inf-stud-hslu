@@ -1094,6 +1094,62 @@ getestet werden kann!
 
 ## Review
 
+- Review: Öffentliche, verbale, zwischenmenschliche Untersuchungen eines Artefakts.
+- Audit: Unpersönliche Überprüfung eines konkreten Belegs für einen Prozess
+  (z.B. einer Dokumentation).
+- Acceptance Test: Validierung einer Anforderung mittels Black-Box-Tests auf
+  einem System vor einer Übergabe (in Scrum missverständlich als «Review»
+  bezeichnet).
+- Arten von Reviews:
+    - Management Review (Beispiel): Entspricht der Projektmanagement-Plan den
+      Vorgaben und widerspiegelt er den Projektverlauf?
+    - Technisches Review (Beispiel): Erfüllt die Architektur
+      (Systemspezifikation) die Anforderungen und ist sie umsetzbar?
+    - Sprint-Review (Scrum): Untersuchung des Produkt-Inkrements.
+        - Was wurde im Sprint fertiggestellt?
+        - Muss das Produkt-Backlkog angepasst werden?
+        - Bezeichnung in SoDa: Sprint-Abnahme (da kein Review im engeren Sinne)
+- Meilenstein: Geplanter Punkt im Projektverlauf, an dem vorher festgelegte
+  (Zwischen-)Ergebnisse vorliegen, die es erlauben den Projektfortschritt zu
+  messen.
+    - Artefakte: Dokumente, Software-Komponenten
+    - Erreichung des Meilensteins: geforderte Artefakte liegen vor, Überprüfung
+      erfolgreich (Reviews und Tests)
+- Arten von Reviews: sortiert nach absteigender Formalität
+    - Inspection: strenger, wohldefinierter Prozess
+    - Team Review: geplant und strukturiert, weniger formal
+    - Walkthrough: Autor stellt sein Artefakt einer Gruppe von Fachkollegen vor
+    - Pair Programming: Gemeinsame, gleichzeitige Arbeit am selben Artefakt
+    - Peer Deskcheck: Überprüfung des Arbeitsergebnisses durch eine Person
+    - Passaround: Kopien werden an verschiedene Personen versandt und Feedback
+      eingeholt
+    - Ad Hoc Review: Bestandteil der täglichen Teamarbeit
+- Nutzen von Reviews: Reduktion des Nachbearbeitungsaufwands bei der
+  Produkteentwicklung reduzieren, indem Probleme frühzeitig erkannt werden.
+    - Artefakte wie Anforderungen, Konzepte und Entwürfe sollten unbedingt
+      reviewt werden!
+    - Je nach Artefakt und Risiko eine passende Review-Art wählen.
+- Durchführung von Reviews
+    - Sitzungen von 1-2 Stunden zur Überprüfung eines grossen Artefakts oder
+      mehrerer kleiner, zusammenhängender Artefakte.
+    - Klassisches Projektvorgehen: Reviews an den Projektlebenszyklus gekoppelt.
+    - Bestes Verhältnis Aufwand/Ertrag durch Review von übergeordneten
+      Artefakten (lieber die Anforderungsliste statt Quellcode gründlich
+      überprüfen).
+    - Psychologische Aspekte: Reviews sind zwischenmenschliche Angelegenheiten!
+        - Anfrage für ein Review sollte vom Autor, nicht vom Reviewer ausgehen.
+        - Kompatible Review-Paare sollte man sich selber finden lassen.
+        - Konstruktive statt (ab)wertende Kritik üben!
+        - Gefundene Fehler nicht an die grosse Glocke hängen, sondern möglichst
+          lokal lösen.
+    - Vorgehen
+        - Zu prüfende Artefakte einige Tage zuvor den Reviewern zur Verfügung stellen.
+        - Seriöse Vorbereitung aller Teilnehmer ist wichtig.
+        - Der Prozess wird geleitet, es werden alle Teilnehmer nach Inputs gefragt.
+        - Fehler werden in einem standardisierten Reviewprotokoll festgehalten.
+        - Die Art der Fehlerkorrektur ist nicht Thema des Reviews!
+        - Gut durchgeführte Reviews fördern die Lernkultur in einer Organisation.
+
 ## Konfigurationsmanagement
 
 ## Deployment
