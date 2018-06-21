@@ -240,6 +240,54 @@ einem Sender zu einem oder zu mehreren Empfängern.
 
 ## Verteilung & Kommunikation: RMI
 
+Verteiltes System: System, in dem sich Hardware- und Softwarekomponenten auf
+vernetzten Computern befinden und miteinander über den Austausch von
+Nachrichten kommunizieren.
+
+Verteilte Anwendung: Anwendung, die ein verteiltes System als
+Kommunikationsinfrastruktur für ihre verteilten Komponenten nutzt.
+
+### Middleware
+
+Middleware: anwendungsneutrale Vermittlungssofware, die zwischen Anwendungen vermittelt, und dabei den Anwendungen ihre eigene Komplexität und diejenige der Infrastruktur verbirgt.
+
+- Arten von Middleware:
+    1. kommunikationsorientierte Middleware: abstrahiert Netzwerkprogrammierung
+       (RPC, RMI, Web Service)
+    2. nachrichtenorientierte Middleware: arbeitet über den Austausch von
+       Nachrichten (messages) mithilfe von Warteschlangen (queues): JMS, SOAP
+    3. anwendungsorientierte Middleware: unterstützt verteilte Anwendungen:
+       JEE, .NET, CORBA
+- Eine Middleware schafft Transparenz:
+    - Ortstransparenz: Der Benutzer braucht nicht zu wissen, wo sich ein Dienst
+      oder eine Ressource befindet.
+    - Zugriffstransparenz: Der Zugriff erfolgt immer gleich, egal von welchem
+      Netzwerk aus (lokal, remote).
+    - Nebenläufigkeitstransparenz: Mehrere Benutzer können gleichzeitig auf die
+      Dienste und Ressourcen zugreifen. Das System ermöglicht exklusive
+      Zugriffe, Synchronisation und Replikation von Daten.
+    - Fehler- und Ausfalltransparenz: Fehler, die durch die Verteilung
+      auftreten können (Übertragungsfehler, Komponentenausfall) bleiben der
+      Anwendung weitgehend verborgen.
+    - Sprachtransparenz: Die Kommunikation zwischen den Komponenten ist nicht
+      von deren Implementierungssprache abhängig.
+    - Replikationstransparenz: Ressourcen werden bei Bedarf automatisch
+      repliziert, um die benötigte Performance bieten zu können.
+- Architekturmodelle:
+    - Client-Server vs. Peer-to-Peer
+        - Client-Server: langlebiger Serverprozess, kurzlebige Client-Prozesse
+        - Peer-to-Peer: Austausch zwischen gleichberechtigten Prozessen
+    - Fat- vs. Thin-Client
+        - Fat-Client: enthält Verarbeitungslogik und Benutzeroberfläche
+        - Thin-Client: bezieht Verarbeitungslogik und Benutzeroberfläche von einem Server
+        - Kombination: Fat-Client & Thin-Server; Thin-Client & Fat-Server
+    - 2-, 3-, n-Tier
+        - 2-Tier: Datenhaltung von Präsentation/Anwendungslogik getrennt
+        - 3-Tier: Je ein Tier für Datenhaltung, Anwendungslogik und Präsentation
+        - n-Tier: Weitere Verteilung von Datenhaltung und Anwendungslogik
+
+### RMI: Remote Method Invocation
+
 ## Uhrensynchronisation
 
 ## Verteilung: Data Grid
