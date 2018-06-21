@@ -249,15 +249,17 @@ Kommunikationsinfrastruktur für ihre verteilten Komponenten nutzt.
 
 ### Middleware
 
-Middleware: anwendungsneutrale Vermittlungssofware, die zwischen Anwendungen vermittelt, und dabei den Anwendungen ihre eigene Komplexität und diejenige der Infrastruktur verbirgt.
+Middleware: anwendungsneutrale Vermittlungssofware, die zwischen Anwendungen
+vermittelt, und dabei den Anwendungen ihre eigene Komplexität und diejenige der
+Infrastruktur verbirgt.
 
 - Arten von Middleware:
     1. kommunikationsorientierte Middleware: abstrahiert Netzwerkprogrammierung
-       (RPC, RMI, Web Service)
+    (RPC, RMI, Web Service)
     2. nachrichtenorientierte Middleware: arbeitet über den Austausch von
-       Nachrichten (messages) mithilfe von Warteschlangen (queues): JMS, SOAP
+    Nachrichten (messages) mithilfe von Warteschlangen (queues): JMS, SOAP
     3. anwendungsorientierte Middleware: unterstützt verteilte Anwendungen:
-       JEE, .NET, CORBA
+    JEE, .NET, CORBA
 - Eine Middleware schafft Transparenz:
     - Ortstransparenz: Der Benutzer braucht nicht zu wissen, wo sich ein Dienst
       oder eine Ressource befindet.
@@ -279,14 +281,131 @@ Middleware: anwendungsneutrale Vermittlungssofware, die zwischen Anwendungen ver
         - Peer-to-Peer: Austausch zwischen gleichberechtigten Prozessen
     - Fat- vs. Thin-Client
         - Fat-Client: enthält Verarbeitungslogik und Benutzeroberfläche
-        - Thin-Client: bezieht Verarbeitungslogik und Benutzeroberfläche von einem Server
+        - Thin-Client: bezieht Verarbeitungslogik und Benutzeroberfläche von
+          einem Server
         - Kombination: Fat-Client & Thin-Server; Thin-Client & Fat-Server
     - 2-, 3-, n-Tier
         - 2-Tier: Datenhaltung von Präsentation/Anwendungslogik getrennt
-        - 3-Tier: Je ein Tier für Datenhaltung, Anwendungslogik und Präsentation
+        - 3-Tier: Je ein Tier für Datenhaltung, Anwendungslogik und
+          Präsentation
         - n-Tier: Weitere Verteilung von Datenhaltung und Anwendungslogik
 
 ### RMI: Remote Method Invocation
+
+![Arbeitsweise von RMI](pics/rmi.png){#rmi}
+
+- Prinzipielle Arbeitsweise (siehe [Arbeitsweise von RMI](#rmi))
+    1. Remote-Interface: eine oder mehrere Methoden zur Bereitstellung als
+    Dienst
+    2. Server-Klasse: implementiert Remote-Interface, $\geq1$ Instanzen
+    (Remote-Objekte)
+    3. Registry: Registrierung der Remote-Objekte unter eindeutigem Namen
+    4. Suche: Client findet Remote-Objekt über dessen Namen
+    5. Aufruf: Verteilung für Client (Parameterübergabe) und Server (Rückgabe)
+    transparent
+- Technische Umsetzung von RMI
+    - Client- und Server-Stub: Stellvertreterobjekte, die das Remote-Interface
+      implementieren
+        - Automatische Erzeugung seit JDK 1.5, zuvor mit speziellem
+          RMI-Compiler (`rmic`)
+    - Kommunikation über Remote Method Protocol auf Basis von
+      TCP/IP-Verbindungen
+    - RMI-Transportschicht erfolgt über Stubs (Server-Stub kennt Remote-Objekt)
+    - Parameterübergabe: primitive Datentypen und serialisierbare Objekte (call
+      by value)
+    - Übergaben von Verweisen auf Remote-Objekte ohne Serialisierung (call by
+      reference)
+- Vorgehen bei der Entwicklung von RMI-Anwendungen
+    1. Definition des Remote-Interfaces: grundsätzlich normales Java-Interface
+        - muss von Interface `Remote` erben
+        - jede Methode soll eine `RemoteException` werfen können
+        - Parameter und Rückgabewert: primitive Datentypen oder serialisierbare
+          Klassen
+    2. Implementierung des Remote-Interfaces
+        - Ableitung von `UnicastRemoteObject` oder Export per
+          `UnicastRemoteObject.exportObject()`
+    3. Aufstarten der RMI-Registry: `rmiregistry`, Standardport 1099
+        - per automatisch generierter URL erreichbar
+        - programmatischer Zugriff mittels `java.rmi.registry`-Paket
+        - Server kann nur eine Registry manipulieren, die auf dem gleichen
+          Rechner läuft (Sicherheit)
+        - Registry unterstützt keine hierarchiche Namensräume oder dynamische
+          Namen
+    4. Erzeugung und Registrierung von Remote-Objekten: `Naming.bind(url,
+    remoteObject)`
+        - URL: `rmi://localhost:1099/calcSum`
+        - Dynamisches Laden von Klassen erfordert einen `SecurityManager`
+    5. Implementierung des Clients: Remote-Objekt finden und aufrufen
+        - `Naming.lookup(url)` mit entsprechendem Cast liefert Referenz auf
+          Remote-Objekt
+
+### RMI: Codebeispiel
+
+Definition des Remote-Interfaces:
+
+```java
+public interface RemoteSum extends Remote {
+    public int sum(int a, int b) throws RemoteException;
+}
+```
+
+Implementierung des Remote-Interfaces:
+
+```java
+public class RemoteSumImpl extends UnicastRemoteObject extends RemoteSum {
+    @Override
+    public int sum(int a, int b) throws RemoteException {
+        return a + b;
+    }
+}
+```
+
+Erzeugung der Registry:
+
+```java
+public class RegistrySetup {
+    public static void main(String[] args)
+            throws RemoteException, InterruptedException {
+        Registry registry = LocateRegistry.createRegistry(
+            Registry.REGISTRY_PORT); // 1099
+        synchronized (reg) {
+            reg.wait();
+        }
+    }
+}
+```
+
+Registrierung des Remote-Objekts:
+
+```java
+public class SumServer {
+    public static void main(String[] args) throws RemoteException,
+            AlreadyBoundException, MalformedURLException
+        RemoteSumImpl sum = new RemoteSumImpl();
+        String url = "rmi://localhost:1099/sum";
+        Naming.bind(url, sum);
+    }
+}
+```
+
+Implementierung des Clients:
+
+```java
+public class SumClient {
+    public static void main(String[] args) {
+        try {
+            int a = 65;
+            int b = 23;
+            String url = "rmi://localhost:1099/sum";
+            RemoteSum sum = (RemoteSum) Naming.lookup(url);
+            int result = sum.sum(a, b);
+            System.out.println(sum); // 88
+        } catch (RemoteException | NotBoundException | MalformedURLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
 
 ## Uhrensynchronisation
 

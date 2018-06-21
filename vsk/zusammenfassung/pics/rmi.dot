@@ -1,0 +1,14 @@
+digraph rmi {
+    rankdir=LR;
+    graph [dpi=150];
+    node [fontname="Droid Sans"];
+    edge [fontname="Droid Sans"];
+
+    Registry [shape=cylinder];
+    Client [shape=box3d];
+    Server [shape=box3d];
+
+    Server -> Registry [label=" 1. Register Remote Object(s) "];
+    Client -> Registry [label=" 2. Search Remote Object(s) "];
+    Client -> Server [label=" 3. Call Remote Object(s) "];
+}
