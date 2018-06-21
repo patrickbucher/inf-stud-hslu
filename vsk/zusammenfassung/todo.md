@@ -1,4 +1,4 @@
-# TODO (16/21)
+# TODO (17/21, ca. 80% fertig)
 
 ## Komponenten (3/3)
 
@@ -21,11 +21,11 @@
 - [x] Deployment
 - [x] Code-Qualität
 
-## Verteilte Systeme (3/6)
+## Verteilte Systeme (4/6)
 
 - [x] Socket-Kommunikation
 - [x] Serialisierung
 - [x] Message-Passing
-- [ ] Verteilung & Kommunikation: RMI
+- [x] Verteilung & Kommunikation: RMI
 - [ ] Uhrensynchronisation
 - [ ] Verteilung: Data Grid

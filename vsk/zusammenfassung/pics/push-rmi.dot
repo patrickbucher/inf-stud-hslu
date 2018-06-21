@@ -1,0 +1,19 @@
+digraph rmi {
+    graph [dpi=150];
+    node [fontname="Droid Sans"];
+    edge [fontname="Droid Sans"];
+
+    Registry [shape=cylinder];
+    Client [shape=box3d];
+    Server [shape=box3d];
+
+    Server -> Registry [label=" 1A. Register Subscription Service "];
+    Client -> Registry [label=" 1B. Register Notificaton Service "];
+
+    Client -> Registry [label=" 2A. Search Subscription Service "];
+    Client -> Server [label=" 2B. Call Subscription Service (subscribe) "];
+    Server -> Registry [label=" 2C. Search Client's Notification Service "];
+
+    Server -> Server [label=" 3A. Event on Server "];
+    Server -> Client [label=" 3B. Calls Client's Notification Service "];
+}

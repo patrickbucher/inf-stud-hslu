@@ -338,6 +338,44 @@ Infrastruktur verbirgt.
     5. Implementierung des Clients: Remote-Objekt finden und aufrufen
         - `Naming.lookup(url)` mit entsprechendem Cast liefert Referenz auf
           Remote-Objekt
+- Codebase: Unter Einsatz eines Security Managers kann Code auf von einem
+  entfernten Rechner geladen werden. Die Codebase wird über das JVM-Property
+  `java.rmi.codebase` definiert, welches beim Aufstarten der Anwendung oder im
+  Code derselben gesetzt werden kann:
+    - `java -Djava.rmi.server.codebase=http://localhost:8080 -jar anwendung.jar`
+    - `System.setProperty("java.rmi.server.codebase", "http://localhsot:8080");`
+    - Der Code muss per HTTP zur Verfügung gestellt werden (`tool.jar` vom JDK).
+        - `java -jar tool.jar -port 8080 -dir anwendung/`
+- Security Manager: Einschränkungen von Code, der aus dem Netz geladen wird
+  (Netzwerkverbindungen, Dateisystemzugriff, Lesen und Schreiben von
+  Properties, Ausführen externer Programme, Nachladen externer Libraries etc.).
+    - `-Djava.security.manager`: beim Aufstarten der Anwendung 
+    - `System.setSecurityManager(new SecurityManager());`: im Code (zuerst mit
+      `getSecurityManager()` prüfen, ob dieser bereits aktiviert ist)
+    - Definition der Sicherheitsrichtlinie in `policy`-Datei:
+        - `-Djava.security.policy=my.policy` per Kommandozeile
+        - `System.setProperty("java.security.policy", "my.policy");` im Code
+          (`my.policy` muss im akzuellen Verzeichnis liegen)
+        - Gewährung von Berechtigungen per `grant` (siehe Beispiele unten)
+    - Zusätzliche Angaben (optional):
+        - Codebase: Rechte von Klassen aus bestimmten Quellen
+        - Signierung: Rechte werden nur für signierten Code gewährt
+        - Principal: Sonderrechte für authentifizierte Benutzer
+
+Security-Policy, die alle Berechtigungen gewährt (zu Testzwecken oder innerhalb
+eines Containers):
+
+    grant {
+        permission java.security.AllPermission;
+    };
+
+Security-Policy für Sockets (ausgehende Verbindungen zu `localhost:1099` und
+eingehende Verbindungen auf Port `1024` erlauben):
+
+    grant {
+        permission java.net.SocketPermission "localhost:1099", "connect,resolve";
+        permission java.net.SocketPermission "*:1024", "accept,resolve";
+    };
 
 ### RMI: Codebeispiel
 
@@ -369,7 +407,7 @@ public class RegistrySetup {
         Registry registry = LocateRegistry.createRegistry(
             Registry.REGISTRY_PORT); // 1099
         synchronized (reg) {
-            reg.wait();
+            reg.wait(); // inaktiver Wartezustand, nicht terminieren!
         }
     }
 }
@@ -406,6 +444,32 @@ public class SumClient {
     }
 }
 ```
+
+### Push-Prinzip
+
+![RMI: Push-Prinzip](pics/push-rmi.png){#push}
+
+- Umsetzung des Push-Prinzips mittels RMI (siehe [RMI: Push-Prinzip](#push)):
+    1. Registrierung der Services
+        - A. Der Server bietet einen Dienst an, auf welchem sich Clients für
+          Notifikationen registrieren können.
+        - B. Der Client bietet einen Dienst an, welchen der Server für die
+          Notifikation aufrufen kann. Jeder Client registriert sein
+          Remote-Objekt unter einem eindeutigen Namen.
+    2. Vorbereiten der Push-Kommunikation
+        - A. Der Client findet den serverseitigen Service für die Registrierung.
+        - B. Der Client registriert sich beim Server, um Notifikationen zu
+          erhalten. Er übergibt dem Server den eindeutigen Namen, unter dem
+          sein Remote-Objekt auf der Registry zu finden ist.
+        - C. Der Server findet den clientseitigen Service für die Notifikation
+          anhand des zuvor übergebenen eindeutigen Namens.
+    3. Notifizierung des Clients
+        - A. Auf dem Server tritt ein Ereignis ein, das für die Clients von
+          Interesse ist.
+        - B. Der Server notifiziert alle Clients über deren
+          Notifikationsservice.
+- Mit dieser Architektur lassen sich verteilte Observer und Callback-Aufrufe
+  realisieren.
 
 ## Uhrensynchronisation
 
