@@ -6,7 +6,7 @@ Herkunft: _componere_ (lat.) = zusammensetzen
 
 ## Begriffe und Architekturen
 
-### Der Komponentenbegrif
+### Der Komponentenbegriff
 
 - Definition: Eine Software-Komponente
     1. ist ein Software-Element
