@@ -473,4 +473,112 @@ public class SumClient {
 
 ## Uhrensynchronisation
 
+- Uhren müssen synchronisiert werden, damit man sich an Zeiten halten kann.
+- In der Informatik kann es zu Problemen kommen, wenn Systeme mit
+  unterschiedlichen Uhrzeiten zusammenarbeiten (Kausalität kann verloren
+  gehen).
+- Timer: Elektronische Schaltung im Computer auf Basis schwingender
+  Quarzkristalle, welche die Schwingungen zählt und in regelmässigen Abständen
+  Interrupts erzeugt.
+- Uhr-Tick: Durch den Timer erzeugter Interrupt. Beispiel: $H=60$: 60
+  Interrupts pro Sekunde, 216'000 Interrupts pro Stunde
+- Uhr-Asymmetrie: Zeitwerte von anfangs synchronisierten Uhren laufen aufgrund
+  mit unterschiedlicher Frequenz schwingender Kristalle auseinander.
+- Uhren in verteilten Systemen müssen miteinander abgeglichen werden.
+    - Algorithmus von Cristian: Prozess $P$ synchronisieren sich mit Zeit-Server $S$.
+        1. $P$ fragt $S$ zum Zeitpunkt $t_0$ nach der Zeit.
+        2. $S$ verarbeitet die Anfrage in der Zeitspanne $I$.
+        3. $P$ empfängt die Antwort $C_M(t_1)$
+        4. $P$ wird auf die Zeit $C_M(t_1)+\frac{RTT}{2}$ -- die vom Server
+           gemeldete Zeit abzüglich Rücklaufzeit des Pakets (halbe _Round Trip
+           Time_) -- gesetzt.
+           - $RTT=(t_1-t_0)$, falls $I$ unbekannt ist
+           - $RTT=(t_1-t_0-I)$, falls $I$ bekannt ist
+        - Für genauere Werte werden mehrere Messungen durchgeführt, die
+          Ausreisser ignoriert und die verbleibenden Werte zu einem Mittelwert
+          berechnet. (Die Laufzeit der Anfrage ist abhägig von der Netzwerklast.)
+        - Problem: Geht die Uhr von $P$ vor, kann sie nicht einfach
+          zurückgedreht werden (inkonsistente Zustände).
+        - Lösung: Verlangsamung der Uhr, bis die Zeiten wieder übereinstimmen.
+    - Berkeley-Algorithmus: Ermittlung der Durchschnittszeit aller Rechner.
+        1. Ein Zeitserver fragt die lokale Zeit der teilnehmenden Clients in
+        regelmässigen Abständen ab.
+        2. Die tatsächliche Zeit der Clients wird unter Berücksichtigung der
+        Latenzzeit (siehe Algorithmus von Cristian) vom Zeitserver berechnet.
+        3. Der Zeitserver ermittelt einen Mittelwert aus allen Client-Zeiten
+        und seiner Zeit unter Weglassung von Ausreissern.
+        4. Der Zeitserver meldet den Clients die korrekte Zeit.
+        5. Die Uhren der Clients laufen solange langsamer oder schneller ab,
+        bis ihre lokale Zeit mit der errechneten zentralenn Zeit übereinstimmt.
+    - Network Time Protocol (NTP): Synchronisierung der Rechneruhren im Internet
+        - NTP-Daemon auf allen gängigen Rechnerplattformen verfügbar
+        - Genauigkeit: ca. $10ms$ im WAN und $<1ms$ im LAN
+        - Stratum 1: primärer Zeitgeber, an amtliche Zeitstandards angebunden
+        - Stratum 2: empfängt Zeit von Stratum-1-Zeitgebern und gibt sie an
+          Clients weiter
+        - Stratum n-1: empfängt Zeit von übergeordneten Zeitservern und gibt
+          sie an Clients weiter
+        - Stratum n: NTP-Clients
+
+### Logische Uhren
+
+- Leslie Lamport (1978): Es genügt, wenn sich die Rechner innerhalb eines
+  verteilten Systems über _eine_ Uhrzeit einig sind; eine Übereinstimmung mit
+  der (tatsächlichen) Uhrzeit ausserhalb des Systems ist nicht nötig.
+- Logische Uhr: Gibt Ereignissen eindeutige Zeitstempel (monoton steigende
+  Werte), sodass die kausale Ordnung der Ereignisse erkennbar ist.
+- Happened-Before-Relation: $a \rightarrow b$: «a passiert vor b» (Alle
+  Prozesse sind sich einig, dass das Ereignis a vor Ereignis b stattfindet.)
+    - Ein Prozess: a und b sind Ereignisse im gleichen Prozess, und a tritt vor
+      b auf: $a \rightarrow b$
+    - Zwei Prozesse: a ist das Senden und b das Empfangen derselben Nachricht
+      in verschiedenen Prozessen: $a \rightarrow b$
+    - Kausal unabhängige Ereignisse ($a \neq b$): $a || b$, wenn weder $a
+      \rightarrow b$ noch $b \rightarrow a$ gilt.
+    - Transitive Relation: Wenn $a \rightarrow b$ und $b \rightarrow c$ dann $a
+      \rightarrow c$
+- Uhrenbedingung: Ableitung einer kausalen (Halb-)Ordnung aus Zeitsempeln.
+    - Schwache Uhrenbedingung: $a \rightarrow b \Rightarrow C(a) < C(b)$ 
+        - Ist Ereignis a Ursache für Ereignis b, muss der Zeitstempel von a
+          kleiner sein als derjenige von b.
+    - Starke Uhrenbedingung: $C(a) < C(b) \Rightarrow a \rightarrow b$
+        - Zur schwachen Uhrenbedingung gilt zusätzlich der Umkehrschluss: Ist
+          der Zeitstempel von Ereignis a kleiner als derjenige von Ereignis b,
+          war Ereignis a eine Ursache für Ereignis b.
+- Ausgangslage: Uhren verschiedener Rechner ($P_1$, $P_2$) laufen mit
+  konstanten aber unterschiedlichen Geschwindigkeiten.
+    - Beispiel: $P_1$ mit langsamer, $P_2$ mit schneller Uhr
+        1. Anfrage: $P_1(t_0=0) \rightarrow P_2(t_0=0)$
+        2. Verarbeitung: $P_1(t_1=10), P_2(t_1=20)$
+        3. Antwort: $P_1(t2=20) \leftarrow P_2(t_2=40)$
+        - $P_2$ hat die Antwort zu $20<t<40$ versendet, $P_1$ hat die Antwort
+          zu $t=20$ empfangen.
+        - Es sieht so aus, dass Nachrichten früher ankommen, als sie gesendet
+          werden!
+- Lamport-Zeitstempel:
+    - Ein Prozess sendet eine Nachricht mit der eigenen Uhrzeit an einen
+      anderen Prozess.
+    - Einem Ereignis a wird der Zeitwert $C(a)$ zugeordnet.
+        - Alle Prozesse sind sich über den Zeitwert einig.
+        - Gilt $a \rightarrow b$, gilt auch $C(a) < C(b)$
+    - Prozess A sendet eine Nachricht mit der eigenen Uhrzeit a an Prozess B,
+      welcher diese zu seiner Zeit b empfängt. $C(a)$ und $C(b)$ müssen so
+      zugewiesen werden, dass $C(a) < C(b)$ gilt.
+    - Die Uhrzeit C muss immer vorwärts laufen (ansteigende Werte).
+    - Korrekturen können durch die Addition positiver Werte vorgenommen werden.
+    - Dazu muss die Uhr zwischen zwei Ereignissen mindestens einmal ticken!
+    - Beispiel: $P_1$ mit langsamer, $P_2$ mit schneller Uhr
+        1. Anfrage: $P_1(t_0=0) \rightarrow P_2(t_0=0)$, $C(a)=0, C(b)=1$
+        2. Verarbeitung: $P_1(t_1=10), P_2(t_1=20)$
+        3. Antwort: $P_1(t_2=20) \leftarrow P_2(t2=40)$
+            - c: $P_2$ sendet Antwort
+            - d: $P_1$ empfängt Antwort
+        4. Korrektur: $C(c)=40, C(d)=C(c)+1=41$
+        - Aufgrund der Korrektur bleibt die Kausalität beibehalten.
+    - Problem: Es dürfen keine zwei Ereignisse zur selben logischen Zeit
+      auftreten.
+    - Lösung: Logische Zeitstempel mit der jeweiligen Prozessnummer versehen.
+    - Mit dem Lamport-Zeitstempel ist die schwache Uhrenbedingung erfüllt.
+- Vektor-Zeitstempel: TODO S. 26 ff.
+
 ## Verteilung: Data Grid
