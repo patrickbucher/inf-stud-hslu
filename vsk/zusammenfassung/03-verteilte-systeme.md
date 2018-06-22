@@ -555,30 +555,53 @@ public class SumClient {
           zu $t=20$ empfangen.
         - Es sieht so aus, dass Nachrichten früher ankommen, als sie gesendet
           werden!
-- Lamport-Zeitstempel:
+- Lamport-Zeitstempel: Macht _zeitliche_ Abfolge von Ereignissen nachvollziehbar.
     - Ein Prozess sendet eine Nachricht mit der eigenen Uhrzeit an einen
       anderen Prozess.
-    - Einem Ereignis a wird der Zeitwert $C(a)$ zugeordnet.
+    - Einem Ereignis $a$ wird der Zeitwert $C(a)$ zugeordnet.
         - Alle Prozesse sind sich über den Zeitwert einig.
         - Gilt $a \rightarrow b$, gilt auch $C(a) < C(b)$
-    - Prozess A sendet eine Nachricht mit der eigenen Uhrzeit a an Prozess B,
-      welcher diese zu seiner Zeit b empfängt. $C(a)$ und $C(b)$ müssen so
+    - Prozess $A$ sendet eine Nachricht mit der eigenen Uhrzeit $a$ an Prozess $B$,
+      welcher diese zu seiner Zeit $b$ empfängt. $C(a)$ und $C(b)$ müssen so
       zugewiesen werden, dass $C(a) < C(b)$ gilt.
-    - Die Uhrzeit C muss immer vorwärts laufen (ansteigende Werte).
+    - Die Uhrzeit $C$ muss immer vorwärts laufen (ansteigende Werte).
     - Korrekturen können durch die Addition positiver Werte vorgenommen werden.
     - Dazu muss die Uhr zwischen zwei Ereignissen mindestens einmal ticken!
     - Beispiel: $P_1$ mit langsamer, $P_2$ mit schneller Uhr
         1. Anfrage: $P_1(t_0=0) \rightarrow P_2(t_0=0)$, $C(a)=0, C(b)=1$
         2. Verarbeitung: $P_1(t_1=10), P_2(t_1=20)$
         3. Antwort: $P_1(t_2=20) \leftarrow P_2(t2=40)$
-            - c: $P_2$ sendet Antwort
-            - d: $P_1$ empfängt Antwort
+            - $c$: $P_2$ sendet Antwort
+            - $d$: $P_1$ empfängt Antwort
         4. Korrektur: $C(c)=40, C(d)=C(c)+1=41$
         - Aufgrund der Korrektur bleibt die Kausalität beibehalten.
     - Problem: Es dürfen keine zwei Ereignisse zur selben logischen Zeit
       auftreten.
     - Lösung: Logische Zeitstempel mit der jeweiligen Prozessnummer versehen.
     - Mit dem Lamport-Zeitstempel ist die schwache Uhrenbedingung erfüllt.
-- Vektor-Zeitstempel: TODO S. 26 ff.
+- Vektor-Zeitstempel: Macht _kausale_ Abfolge von Ereignissen nachvollziehbar.
+    - $V(x)$: Vektor-Zeitstempel zu Ereignis $x$
+    - $V(a) < V(b)$: Ereignis $a$ geht Ereignis $b$ kausal voraus
+    - Prozess $P_i$ speichert Anzahl Ereignisse für alle Prozesse im Vektor
+      $V_i$ ab.
+        - Vektor der Länge $n$ für $n$ Prozesse im System
+        - Zu Beginn ist der Vektor jedes Prozesses leer (Nullvektor)
+        - $V_i[i]$: Anzahl bisher in $P_i$ aufgetretene Ereignisse
+    - Tritt in $P_i$ ein Ereignis auf, inkrementiert er $V_i[i]$.
+        - $V_i[j]$: Anzahl der $P_i$ bekannten bisher in $P_j$ aufgetretenen
+          Ereignisse
+    - Versendet $P_i$ eine Nachricht, gibt er den Vektor $V_i$ mit.
+    - Empfängt $P_i$ eine Nachricht mit Vektor-Zeitstempel $VT$, bildet er das
+      komponentenweise Maximum von $V_i$ und $VT$.
+        - $\text{max} \left( \left( \begin{array}{c}3\\2\\5\end{array} \right)
+          , \left( \begin{array}{c}2\\4\\1\end{array} \right) \right) = \left(
+          \begin{array}{c}3\\4\\5\end{array} \right)$
+    - Die Vektoren können durch komponentenweisen Vergleich in eine Partielle
+      Ordnung gebracht werden. Ereignis $a$ ist Ursache für Ereignis $b$, wenn
+      für $V(a) \neq V(b)$ mit der Länge $n$ gilt:
+        - $\forall_{1 \leq k \leq n} V(a)[k] \leq V(b)[k]$: _alle_ Komponenten
+          kleiner oder gleich
+        - $\exists_{1 \leq k \leq n} V(a)[k] < V(b)[k]$: _mindestens eine_
+          Komponente kleiner
 
 ## Verteilung: Data Grid
