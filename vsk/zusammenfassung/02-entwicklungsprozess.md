@@ -1152,6 +1152,44 @@ getestet werden kann!
 
 ## Konfigurationsmanagement
 
+- _Configuration Items_ (Hardware, Firmware, Software und die dazugehörigen
+  Einstellungen) sind ständigen Änderungen unterworfen.
+- Nicht alle Versionen aller Komponenten funktionieren korrekt zusammen.
+- Besteht ein System aus mehreren Teilen, ist ein Konfigurationsmanagement
+  nötig.
+- Das Konfigurationsmanagement umfasst:
+    1. Identifikation der Systemkonfiguration zu verschiedenen Zeitpunkten
+    2. kontrollierte Durchführung von Konfigurationsänderungen unter
+       Sicherstellung von Integrität und Rückverfolgung
+- Das Konfigurationsmanagement ist eine Führungsaufgabe!
+    - Identifikation und Dokumentation der Eigenschaften jedes Configuration Items
+    - Steuerung der nötigen Änderungen dieser Eigenschaften
+    - Erfassung des Umsetzungsstandes von Änderungen
+    - Überprüfung der Einhaltung festgelegter Anforderungen
+    - Orgaisation von Zuständigkeiten, Ressourcen und Terminplänen
+    - Auswahl der Werkzeuge und Implementierungen
+    - Überwachung der Lieferanten und Schnittstellen
+    - SCMP: Software Configuration Management Plan (Festhalten der Erkenntnisse
+      und Ergebnisse)
+        1. Einführung: Zweck, Gültigkeitsbereich, Begriffsdefinitionen
+        2. SCM-Management: Wer?
+        3. SCM-Tätigkeiten: Was?
+        4. SCM-Termine: Wann?
+        5. SCM-Ressourcen: Wie/Womit?
+        6. SCM-Aktualisierung: Sicherstellung der Nachführung
+- _Software Configuration Item_: Gruppierung von Software, das für das
+  Konfigurationsmanagement vorgesehen ist und als eine Entität im
+  Konfigurationsmanagementprozess betrachtet wird.
+    - Quellcode
+    - Pläne
+    - Libraries
+    - Daten und Datenkataloge
+    - Anleitungen für Installation, Wartung, Betrieb etc.
+- Version: spezifisches, identifizierbares Artefakt auf einem bestimmten Entwicklungsstand
+- Revision: neue Version eines Artefakts zur Ablösung einer älteren Version desselben
+- Baseline: Satz von Revisionen, Momentaufnahme der Konfiguration
+- Release: getestete und freigegebene Baseline
+
 ## Deployment
 
 Deployment: Bereitstellung, Auslieferung von Software
