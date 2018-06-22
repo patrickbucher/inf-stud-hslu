@@ -509,7 +509,7 @@ public class SumClient {
         und seiner Zeit unter Weglassung von Ausreissern.
         4. Der Zeitserver meldet den Clients die korrekte Zeit.
         5. Die Uhren der Clients laufen solange langsamer oder schneller ab,
-        bis ihre lokale Zeit mit der errechneten zentralenn Zeit übereinstimmt.
+        bis ihre lokale Zeit mit der errechneten zentralen Zeit übereinstimmt.
     - Network Time Protocol (NTP): Synchronisierung der Rechneruhren im Internet
         - NTP-Daemon auf allen gängigen Rechnerplattformen verfügbar
         - Genauigkeit: ca. $10ms$ im WAN und $<1ms$ im LAN
