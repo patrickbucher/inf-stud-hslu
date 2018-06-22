@@ -21,6 +21,13 @@
         - Hardware: Server-Computer, auf dem ein oder mehrere Server-Programme
           laufen
     - Client (Kunde): Dienstnehmer, der Dienste von Servern verwendet
+- Socket-Lebenszyklus:
+    1. Server: Socket erzeugen und an lokalen Port binden
+    2. Server: Mit `accept` auf eingehende Verbindung warten
+    3. Client: Verbindung mit Server herstellen (mit IP-Adresse und Port-Nummer)
+    4. Client/Server: Daten über Socket lesen/schreiben
+    5. Client: Verbindung schliessen
+    6. Server: Socket schliessen
 
 ### Java Sockets
 
@@ -52,15 +59,6 @@ Package `java.net.*` mit Klassen:
     - `static Enumeration<NetworkInterface> getNetworkInterfaces()`
     - `String getDisplayName()`
     - `Enumeration<InetAddress> getInetAddresses()`
-
-### Socket-Lebenszyklus
-
-1. Server: Socket erzeugen und an lokalen Port binden
-2. Server: Mit `accept` auf eingehende Verbindung warten
-3. Client: Verbindung mit Server herstellen (mit IP-Adresse und Port-Nummer)
-4. Client/Server: Daten über Socket lesen/schreiben
-5. Client: Verbindung schliessen
-6. Server: Socket schliessen
 
 ## Serialisierung
 
@@ -259,7 +257,7 @@ Infrastruktur verbirgt.
     2. nachrichtenorientierte Middleware: arbeitet über den Austausch von
     Nachrichten (messages) mithilfe von Warteschlangen (queues): JMS, SOAP
     3. anwendungsorientierte Middleware: unterstützt verteilte Anwendungen:
-    JEE, .NET, CORBA
+    JEE, .NET
 - Eine Middleware schafft Transparenz:
     - Ortstransparenz: Der Benutzer braucht nicht zu wissen, wo sich ein Dienst
       oder eine Ressource befindet.
@@ -636,8 +634,8 @@ anderen Knoten als Backup repliziert sind.
 | Partition | a a a a | b b b b | c c c c |
 | Backup    | b b c c | a a c c | a a b b |
 
-Erweiterung: Neuer Knoten $D$ kommt hinzu. Er nimmt sich von jedem Knoten je
-eine Partition und ein Backup.
+Erweiterung: Neuer Knoten $D$; nimmt sich von jedem Knoten je eine Partition
+und ein Backup.
 
 | Knoten    | $A$   | $B$   | $C$   | $D$   |
 |-----------|-------|-------|-------|-------|
@@ -645,7 +643,7 @@ eine Partition und ein Backup.
 | Backup    | b b c | a c c | a a b | a b c |
 
 Besitzwechsel: Knoten $D$ macht sich die übernommenen Partitionen zueigen.
-Dadurch Ändern sich deren Namen -- auch in den Backups der anderen Knoten.
+Dadurch Ändern sich deren Namen.
 
 | Knoten    | $A$   | $B$   | $C$   | $D$   |
 |-----------|-------|-------|-------|-------|
@@ -676,7 +674,8 @@ Backups wiederhergestellten Partitionen, die vormals zu $B$ gehörten.
 | Partition | a a a a |     | c c c c | d d d d |
 | Backup    | c d d   |     | a a d   | a c c   |
 
-Backup: Die neu zu eigen gemachten Partitionen werden auf die anderen Knoten repliziert.
+Backup: Die neu zu eigen gemachten Partitionen werden auf die anderen Knoten
+repliziert.
 
 | Knoten    | $A$     | $B$ | $C$     | $D$     |
 |-----------|---------|-----|---------|---------|

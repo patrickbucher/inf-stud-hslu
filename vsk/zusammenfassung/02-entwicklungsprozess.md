@@ -807,8 +807,8 @@ erzeugende Objekt ist. Siehe [UML-Diagramm Fabrikmethode](#factorymethod).
     - Delegiert die Details der Objekterzeugung an die
       Unterklassen/Implementierungen.
 - Problematik: Bei der Erweiterung der Klassenhierarchie muss auch die
-  Hierarchie der Factory-Klassen erweitert werden. Erweiterungen wirken sich so
-  immer auf mehrere Stellen im Code aus.
+  Hierarchie der Factory-Klassen erweitert werden. Erweiterungen wirken sich 
+  auf mehrere Stellen im Code aus.
 
 ![Fabrikmethode (Design Pattern)](pics/factorymethod.png){#factorymethod width=410px}
 
@@ -1504,7 +1504,7 @@ Deployment: Bereitstellung, Auslieferung von Software
         - SOC: Separation of Concerns (Verschiedene Klassen werden durch
           verschiedene Tests abgedeckt.)
         - SRP: Single Responsibility Principle (Jeder Testfall kümmert sich um
-          genau eine Sache.)
+          eine Sache.)
         - SLA: Single Level of Abstraction (Ein Testfall operiert nicht auf
           verschiedenen Abstraktionsstufen.)
     - Viele kleine Testfälle mit wenig Assertions erlauben eine gezieltere --

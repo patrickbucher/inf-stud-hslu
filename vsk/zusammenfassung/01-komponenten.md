@@ -87,15 +87,10 @@ Herkunft: _componere_ (lat.) = zusammensetzen
     - Komponenten als normale Klassen implementiert
     - Komponenten können, müssen sich aber nicht and die _Java Beans
       Specification_ halten
-        - Default-Konstruktor
-        - Setter/Getter
-        - Serialisierbarkeit
-        - PropertyChange
-        - Vetoable
-        - Introspection
-    - Weitergehende Komponentenmodelle in Java EE
-        - Servlets
-        - Enterprise Java Beans
+        - Default-Konstruktor, Setter/Getter, Serialisierbarkeit
+        - PropertyChange, Vetoable, Introspection
+    - Weitergehende Komponentenmodelle in Java EE: Servlets, Enterprise Java
+      Beans
 - Austauschbarkeit
     - Die Austauschbarkeit von Komponenten wird durch den Einsatz von
       Schnittstellen erleichtert.
@@ -298,9 +293,8 @@ Verarbeitungsschritten und Datenstrukturen
 
 ### Layers, Tiers & Packages
 
-- Layer
-    - öffentliche Methoden eines tieferstehenden Layers B dürfen vom
-      höherstehenden Layer A genutzt werden
+- Layer: öffentliche Methoden eines tieferstehenden Layers B dürfen vom
+  höherstehenden Layer A genutzt werden
     - Beispiel (Layers von oben nach unten): `A B C`
         - richtig: `A -> B`, `B -> C`
         - zulässig: `A -> C` (gefährlich: Umgehung einer API)
@@ -312,9 +306,6 @@ Verarbeitungsschritten und Datenstrukturen
       Implementierung des Layers B ab (initialisiertes Device, aufgenommene
       Netzwerkverbindung, erstellte Datei)
 - Tier: oft mit Layern verwechselt
-    - Presentation Tier
-    - Business Logic (Tier)
-    - Data Tier
+    - Presentation Tier, Business Logic (Tier), Data Tier
 - Packages: Implementierung des Layer-Konzepts
-    - abstrakt: UML
-    - konkret: Java-Package
+    - abstrakt: UML, konkret: Java-Package
