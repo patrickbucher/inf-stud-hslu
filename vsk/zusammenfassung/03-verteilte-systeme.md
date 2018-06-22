@@ -605,3 +605,108 @@ public class SumClient {
           Komponente kleiner
 
 ## Verteilung: Data Grid
+
+- CAP-Theorem (Brewers Theorem): In einem verteilten System ist es nicht
+  möglich, gleichzeitig folgende drei Eigenschaften zu garantieren:
+    - Consistency (Konsistenz): alle Kopien der manipulierten Daten aktualisiert
+    - Availability (Verfügbarkeit): akzeptable Antwortzeiten
+    - Partition Tolerance (Ausfalltoleranz): bei Verlust von Nachrichten,
+      Netzknoten oder Partitionen
+- Topologien von Data Grids
+    - Embedded: Für Anwendungen mit asynchroner Ausführung von Tasks, Nodes
+      erhalten Anwendung und Daten.
+    - Client/Server: Cluster von skalierbaren Server-Knoten, mit denen Clients
+      kommunizieren.
+- In-Memory Data Grid (IMDG)
+    - Daten liegen im Memory des Knotens (schneller als auf Disk)
+    - Punkt-zu-Punkt-Verbindungen (Socket-Kommunikation): kein
+      Master-Slave-System
+    - Redundanz: Daten verden auf verschiedene Knoten kopiert
+    - Skalierbarkeit: Nodes können während des Betriebs hinzugefügt oder
+      entfernt werden
+    - Persistenz: Speicherung der Daten in relationalen oder NoSQL-Datenanken
+
+### Datenpartitionierung
+
+Ausgangslage: Drei Knoten $A$, $B$ und $C$ mit je vier Partitionen, die auf
+anderen Knoten als Backup repliziert sind.
+
+| Knoten    | $A$     | $B$     | $C$     |
+|-----------|---------|---------|---------|
+| Partition | a a a a | b b b b | c c c c |
+| Backup    | b b c c | a a c c | a a b b |
+
+Erweiterung: Neuer Knoten $D$ kommt hinzu. Er nimmt sich von jedem Knoten je
+eine Partition und ein Backup.
+
+| Knoten    | $A$   | $B$   | $C$   | $D$   |
+|-----------|-------|-------|-------|-------|
+| Partition | a a a | b b b | c c c | a b c |
+| Backup    | b b c | a c c | a a b | a b c |
+
+Besitzwechsel: Knoten $D$ macht sich die übernommenen Partitionen zueigen.
+Dadurch Ändern sich deren Namen -- auch in den Backups der anderen Knoten.
+
+| Knoten    | $A$   | $B$   | $C$   | $D$   |
+|-----------|-------|-------|-------|-------|
+| Partition | a a a | b b b | c c c | d d d |
+| Backup    | b c d | a c d | a b d | a b c |
+
+Crash: Knoten $B$ fällt aus. Die Backups, die auf $B$ waren, werden anhand der
+Originale als Backups auf die anderen Knoten verteilt.
+
+| Knoten    | $A$     | $B$   | $C$     | $D$     |
+|-----------|---------|-------|---------|---------|
+| Partition | a a a   | b b b | c c c   | d d d   |
+| Backup    | b c d d |       | a a b d | a b c c |
+
+Wiederherstellung: Die bereits zu Beginn erstellten Backups der Partitionen von
+$B$ (siehe Ausgangslage) werden zu Partitionen auf den einzelnen Knoten.
+
+| Knoten    | $A$     | $B$ | $C$     | $D$     |
+|-----------|---------|-----|---------|---------|
+| Partition | a a a b |     | b c c c | b d d d |
+| Backup    | c d d   |     | a a d   | a c c   |
+
+Besitzwechsel: Die einzelnen Knoten werden zu Besitzern der zuvor aus ihren
+Backups wiederhergestellten Partitionen, die vormals zu $B$ gehörten.
+
+| Knoten    | $A$     | $B$ | $C$     | $D$     |
+|-----------|---------|-----|---------|---------|
+| Partition | a a a a |     | c c c c | d d d d |
+| Backup    | c d d   |     | a a d   | a c c   |
+
+Backup: Die neu zu eigen gemachten Partitionen werden auf die anderen Knoten repliziert.
+
+| Knoten    | $A$     | $B$ | $C$     | $D$     |
+|-----------|---------|-----|---------|---------|
+| Partition | a a a a |     | c c c c | d d d d |
+| Backup    | c c d d |     | a a d d | a a c c |
+
+Wie zu Beginn gibt es wieder drei Knoten mit je vier Partitionen und vier Backups.
+
+### Hazelcast
+
+- Hazelcast: In-Memory Data Grid in Java (Open Source)
+    - Skalierung von Applikationen
+    - Verteilung von Daten über Cluster
+    - Partitionierung von Daten
+    - Empfang und Versand von Nachrichten
+    - Verarbeitung paralleler Tasks
+- Hazelcast & CAP: Konsistenz wird für Verfügbarkeit geopfert
+- Datenpartitionierung in einem Cluster
+    - fixe Anzahl von Partitionen
+    - ein Schlüssel pro Partition
+    - möglichst gleichmässig verteilte Date über den Cluster
+    - `partitionId = hash(keyData) % PARTITION_COUNT`
+- Programmierung mit Hazelcast:
+    - Die Thread-Sicherheit ist gewährleistet.
+    - Pro Java Virtual Machine können mehrere Instanzen betrieben werden.
+    - Alle Objekte müssen serialisierbar sein.
+    - Informationen über Cluster-Mitglieder können inspiziert werden.
+    - Die Nutzdaten werden mit Maps verwaltet.
+    - Es können Queues zur Ausführung von Tasks verwendet werden.
+    - Es besteht die Möglichkeit systemweite (verteilte) Locks zu erstellen.
+    - Es können Nachrichten an registrierte Abonnenten versendet werden.
+    - Es steht eine Persistenz-API zur Verfügung.
+    - Es können Executors mit Callbacks eingesetzt werden.
