@@ -505,7 +505,7 @@ durch die Neuentwicklung keine bestehende Funktionalität beeinträchtigt wurde.
 
 - Aus der Architektur entlehnter Begriff: bewährte Entwürfe (Schablonen) für
   wiederkehrende Entwurfsprobleme.
-- Von der _Gang of Four_ (GoF) -- Erich Gamme, Richard Helm, Ralph Johnson und
+- Von der _Gang of Four_ (GoF) -- Erich Gamma, Richard Helm, Ralph Johnson und
   John Vlissides im Buch _Design Patterns. Elements of Reusable Object-Oriented
   Software_ (1995) gesammelt (23 Entwurfsmuster) und popularisiert.
 
