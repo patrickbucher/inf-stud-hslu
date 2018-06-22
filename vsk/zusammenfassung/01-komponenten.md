@@ -6,8 +6,6 @@ Herkunft: _componere_ (lat.) = zusammensetzen
 
 ## Begriffe und Architekturen
 
-### Der Komponentenbegriff
-
 - Definition: Eine Software-Komponente
     1. ist ein Software-Element
     2. passt zu einem bestimmten Komponentenmodell
@@ -64,7 +62,7 @@ Herkunft: _componere_ (lat.) = zusammensetzen
     - Kapselung begrenzt Auswirkungen von Änderungen und verbessert so wie
       Wartbarkeit
 
-### Der Entwurf mit Komponenten
+### Entwurf und Entwicklung mit Komponenten
 
 - Komponentenbasierte Enwicklung
     - steigende Komplexität von Systemen, Protokollen und Anwendungsszenarien
@@ -85,9 +83,6 @@ Herkunft: _componere_ (lat.) = zusammensetzen
     - Import: benötigte/verwendete Interfaces von anderen Komponenten
     - Kontext: Rahmenbedingungen für den Betrieb der Komponente
     - Verhalten der Komponente
-
-### Komponenten in Java
-
 - Komponenten in Java SE
     - Komponenten als normale Klassen implementiert
     - Komponenten können, müssen sich aber nicht and die _Java Beans
@@ -131,8 +126,6 @@ Herkunft: _componere_ (lat.) = zusammensetzen
 
 ## Schnittstellen
 
-### Begriff und Konzept
-
 - Der Begriff _Schnittstelle_ als Metapher
     - Beim Zerschneiden eines Apfels entstehen zwei spiegelsymmetrische
       Oberflächen.
@@ -172,7 +165,7 @@ Herkunft: _componere_ (lat.) = zusammensetzen
     2. Schnittstellen sollen _einfach zu verstehen_ sein
     3. Schnittstellen sollen _gut dokumentiert_ sein
 
-### Dienstleistungsperspektive
+### Spezifikation von Schnittstellen
 
 - Die Schnittstelle als Vertrag:
     - Ein _Service Consumer_ schliesst einen Vertrag mit einem _Service
@@ -188,9 +181,6 @@ Herkunft: _componere_ (lat.) = zusammensetzen
     - _Invarianten_: Über alle Instanzen einer Klasse geltende Grundannahmen ab
       deren Erzeugung
         - Anbieter: Überprüfung mittels Assertions
-
-### Spezifikation von Schnittstellen
-
 - Dokumentation von Schnittstellen
     - Umfang:
         - was ist wichtig für die Benutzung der Komponente
@@ -216,8 +206,6 @@ Herkunft: _componere_ (lat.) = zusammensetzen
 
 Modul: in sich abgeschlossener Teil des Programmcodes, bestehend aus
 Verarbeitungsschritten und Datenstrukturen
-
-### Modulkonzept
 
 - Kopplung und Kohäsion
     - Kopplung: Ausmass der Kommunikation zwischen Modulen
