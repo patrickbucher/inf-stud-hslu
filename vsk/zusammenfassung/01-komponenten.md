@@ -230,15 +230,15 @@ Verarbeitungsschritten und Datenstrukturen
     - Kombinierbarkeit (_modular composability_): Module sind unabhängig
       voneinander wiederverwendbar
         - Module sollten möglichst frei kombinierbar sein und sich auch in
-          anderen Umfeldern wieder einsetzen lassen
-        - Zerlegbarkeit und Kombinierbarkeit sind unabhängig voneinander
+          anderen Umfeldern wieder einsetzen lassen.
+        - Zerlegbarkeit und Kombinierbarkeit sind unabhängig voneinander.
     - Verständlichkeit: Module sind unabhängig voneinander verständlich
         - Der Code eines Moduls soll ohne Kenntnis anderer Module verstehbar
-          sein
-        - Module müssen unabhängig voneinander versteh- und wartbar sein
+          sein.
+        - Module müssen unabhängig voneinander versteh- und wartbar sein.
     - Stetigkeit: Änderungen der Spezifikation proportional zu Codeänderungen
         - Anforderungen können sich ändern, sollten sich aber nur auf ein
-          Teilsystem auswirken
+          Teilsystem auswirken.
 - Entwurfsprinzipien
     - lose Kopplung: schlanke Schnittstellen, Austausch nur des Nötigsten
     - starke Kohäsion: hoher Zusammenhalt innerhalb des Moduls
