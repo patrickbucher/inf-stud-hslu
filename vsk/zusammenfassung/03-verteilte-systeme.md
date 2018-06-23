@@ -613,8 +613,8 @@ public class SumClient {
 - Topologien von Data Grids
     - Embedded: Für Anwendungen mit asynchroner Ausführung von Tasks, Nodes
       erhalten Anwendung und Daten.
-    - Client/Server: Cluster von skalierbaren Server-Knoten, mit denen Clients
-      kommunizieren.
+    - Client/Server: Cluster von skalierbaren Server-Knoten mit
+      Client-Kommunikation.
 - In-Memory Data Grid (IMDG)
     - Daten liegen im Memory des Knotens (schneller als auf Disk)
     - Punkt-zu-Punkt-Verbindungen (Socket-Kommunikation): kein
@@ -626,8 +626,8 @@ public class SumClient {
 
 ### Datenpartitionierung
 
-Ausgangslage: Drei Knoten $A$, $B$ und $C$ mit je vier Partitionen, die auf
-anderen Knoten als Backup repliziert sind.
+Ausgangslage: Drei Knoten $A$, $B$ und $C$ mit je vier Partitionen und Backups
+von anderen Knoten.
 
 | Knoten    | $A$     | $B$     | $C$     |
 |-----------|---------|---------|---------|
@@ -642,8 +642,7 @@ und ein Backup.
 | Partition | a a a | b b b | c c c | a b c |
 | Backup    | b b c | a c c | a a b | a b c |
 
-Besitzwechsel: Knoten $D$ macht sich die übernommenen Partitionen zueigen.
-Dadurch Ändern sich deren Namen.
+Besitzwechsel: Knoten $D$ nimmt die übernommenen Partitionen in Besitz.
 
 | Knoten    | $A$   | $B$   | $C$   | $D$   |
 |-----------|-------|-------|-------|-------|
@@ -674,8 +673,7 @@ Backups wiederhergestellten Partitionen, die vormals zu $B$ gehörten.
 | Partition | a a a a |     | c c c c | d d d d |
 | Backup    | c d d   |     | a a d   | a c c   |
 
-Backup: Die neu zu eigen gemachten Partitionen werden auf die anderen Knoten
-repliziert.
+Backup: Die neuen Partitionen werden auf die anderen Knoten repliziert.
 
 | Knoten    | $A$     | $B$ | $C$     | $D$     |
 |-----------|---------|-----|---------|---------|
@@ -683,29 +681,3 @@ repliziert.
 | Backup    | c c d d |     | a a d d | a a c c |
 
 Wie zu Beginn gibt es wieder drei Knoten mit je vier Partitionen und vier Backups.
-
-### Hazelcast
-
-- Hazelcast: In-Memory Data Grid in Java (Open Source)
-    - Skalierung von Applikationen
-    - Verteilung von Daten über Cluster
-    - Partitionierung von Daten
-    - Empfang und Versand von Nachrichten
-    - Verarbeitung paralleler Tasks
-- Hazelcast & CAP: Konsistenz wird für Verfügbarkeit geopfert
-- Datenpartitionierung in einem Cluster
-    - fixe Anzahl von Partitionen
-    - ein Schlüssel pro Partition
-    - möglichst gleichmässig verteilte Date über den Cluster
-    - `partitionId = hash(keyData) % PARTITION_COUNT`
-- Programmierung mit Hazelcast:
-    - Die Thread-Sicherheit ist gewährleistet.
-    - Pro Java Virtual Machine können mehrere Instanzen betrieben werden.
-    - Alle Objekte müssen serialisierbar sein.
-    - Informationen über Cluster-Mitglieder können inspiziert werden.
-    - Die Nutzdaten werden mit Maps verwaltet.
-    - Es können Queues zur Ausführung von Tasks verwendet werden.
-    - Es besteht die Möglichkeit systemweite (verteilte) Locks zu erstellen.
-    - Es können Nachrichten an registrierte Abonnenten versendet werden.
-    - Es steht eine Persistenz-API zur Verfügung.
-    - Es können Executors mit Callbacks eingesetzt werden.

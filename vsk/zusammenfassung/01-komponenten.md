@@ -29,7 +29,7 @@ Herkunft: _componere_ (lat.) = zusammensetzen
         - wie können die Komponenten miteinander über Schnittstellen
           kommunizieren (Schnittstellenstandard)
         - wie werden die Abhängigkeiten der Komponenten voneinander festgelegt
-            - von der Komponente verlange Abhängigkeiten: _Required Interfaces_
+            - von der Komponente verlangte Abhängigkeiten: _Required Interfaces_
             - von der Komponente angebotene Abhängigkeiten: _Provided
               Interfaces_
     - definieren einen _Composition Standard_ 
@@ -59,7 +59,7 @@ Herkunft: _componere_ (lat.) = zusammensetzen
       inkrementelles Testing
     - parallele und verteilte Entwicklung durch präzise Spezifizierung und
       Abhängigkeitsverwaltung
-    - Kapselung begrenzt Auswirkungen von Änderungen und verbessert so wie
+    - Kapselung begrenzt Auswirkungen von Änderungen und verbessert so die
       Wartbarkeit
 
 ### Entwurf und Entwicklung mit Komponenten
@@ -94,14 +94,14 @@ Herkunft: _componere_ (lat.) = zusammensetzen
 - Austauschbarkeit
     - Die Austauschbarkeit von Komponenten wird durch den Einsatz von
       Schnittstellen erleichtert.
-    - Schnittstellen werden als Java-`Interface` definiert und dokumentiert
+    - Schnittstellen werden als Java-Interface definiert und dokumentiert
       (JavaDoc).
-    - Eine Komponente implementieren eine Schnittstelle als Klasse.
+    - Eine Komponente implementiert eine Schnittstelle als Klasse.
         - mehrere, alternative Implementierungen möglich
         - Austauschbarkeit über Schnittstellenreferenz möglich
     - Beispiel: API von JDBC (Java Database Connectivity)
         - von Sun/Oracle als API definiert
-        - von vielen Herstellern implementiert (JDBC-Treiber für spezifische
+        - von Herstellern implementiert (JDBC-Treiber für spezifische
           Datenbanksysteme)
         - Datenbankaustausch auf Basis von JDBC möglich
 - Deployment
@@ -116,8 +116,7 @@ Herkunft: _componere_ (lat.) = zusammensetzen
         - `jdbc-api-4.2.1.jar` enthält die Schnittstelle
         - `jdbc-mysql-3.2.1.jar` enthält die MySQL-Implementierung
         - `jdbc-postgres-4.5.7.jar` enthält die PostgreSQL-Implementierung
-        - Versionierung idealserweise im Manifest und im Dateinamen (Konsistenz
-          beachten!)
+        - Versionierung konsistent im Manifest und im Dateinamen
 
 ## Schnittstellen
 
@@ -147,7 +146,7 @@ Herkunft: _componere_ (lat.) = zusammensetzen
           Architekturaspekte!
         - Mehrwert des Systems gegenüber Einzelkomponenten liegt in den
           Schnittstellen & Beziehungen der Komponenten zueinander
-    - Spezialisten für Teilsysteme konzentrieren sich auf ihr Zeilproblem
+    - Spezialisten für Teilsysteme konzentrieren sich auf ihr Teilproblem
         - Architekten halten das Gesamtsystem über Schnittstellen zusammen
         - Schnittstellen verbinden ein System mit der Aussenwelt und
           ermöglichen die Interaktion damit
@@ -155,7 +154,7 @@ Herkunft: _componere_ (lat.) = zusammensetzen
     1. Schnittstellen sollen _minimal_ sein:
         - wenige Methoden (mit möglichst geringen Überschneidungen in ihren
           Aufgaben)
-        - geringe Anzahl von Parameters
+        - geringe Anzahl von Parametern
         - setzen möglichst keine oder nur wenige globale Daten voraus
     2. Schnittstellen sollen _einfach zu verstehen_ sein
     3. Schnittstellen sollen _gut dokumentiert_ sein
@@ -165,21 +164,21 @@ Herkunft: _componere_ (lat.) = zusammensetzen
 - Die Schnittstelle als Vertrag:
     - Ein _Service Consumer_ schliesst einen Vertrag mit einem _Service
       Provider_ für eine _Dienstleistung_ ab
-- Design by Contract (DbC): Das Zusammenspiel zwischen den Komponenten wir mit
-  einem Vertrag geregelt
+- Design by Contract (DbC): Das Zusammenspiel zwischen den Komponenten wird mit
+  einem Vertrag geregelt:
     - _Preconditions_: Zusicherungen, die der Aufrufer einhalten muss
         - Nutzer: Prüfen der Vorbedingungen vor der Ausführung
         - Anbieter: Überprüfung mittels Assertions
     - _Postconditions_: Nachbedingungen, die der Aufgerufene garantiert
         - Nutzer: Überprüfung mittels Assertions
         - Anbieter: Prüfen der Nachbedingungen nach der Ausführung
-    - _Invarianten_: Über alle Instanzen einer Klasse geltende Grundannahmen ab
+    - _Invarianten_: Über Instanzen einer Klasse geltende Grundannahmen ab
       deren Erzeugung
         - Anbieter: Überprüfung mittels Assertions
 - Dokumentation von Schnittstellen
     - Umfang:
-        - was ist wichtig für die Benutzung der Komponente
-        - was muss der Programmierer versethen und beachten
+        - Was ist wichtig für die Benutzung der Komponente?
+        - Was muss der Programmierer verstehen und beachten?
     - Eigenschaften der Methoden:
         - Syntax (Rückgabewerte, Argumente, Typen, call by value/reference)
         - Semantik (was bewirkt die Methode)
@@ -216,14 +215,14 @@ Verarbeitungsschritten und Datenstrukturen
     - Bibliothek: Sammlung oft verwendeter, thematisch zusammengehörender
       Funktionen (Datumsmodul, Mathematik-Modul, I/O-Modul)
     - Abstrakte Datentypen: Implementierung eines neuen Datentyps mit
-      definierten Operationen (verkettete Liste, binärer Baum Hash-Tabelle)
+      definierten Operationen (verkettete Liste, binärer Baum, Hash-Tabelle)
     - Physische Systeme: Abgegrenztes Hardware-Modul (Ultraschallsensor,
       Anzeigemodul, Kommunikationsmodul)
     - Logisch-konzeptionelles System: Modellierung von Funktionalität auf hoher
       Abstraktionsstufe (Datenbankmodul, Bildverarbeitungsmodul, GUI-Framework)
 - Entwurfskriterien
     - Zerlegbarkeit (_modular decomposability_): Teilprobleme können unabhängig
-      voneinander gelöst werden
+      voneinander gelöst werden.
         - _Divide and Conquer_: Softwareproblem in weniger komplexe
           Teilprobleme zerlegen, sodass sie unabhängig voneinander bearbeitet
           werden können
