@@ -1410,7 +1410,8 @@ Deployment: Bereitstellung, Auslieferung von Software
   sprechenden Namen.
     - `openFile("foo.txt", true)` -- was bedeutet `true`?
     - `openFileCreateIfNotExists("foo.txt");`
-- Auf ungewollte Nebeneffekte sollte verzichtet werden.
+- Auf ungewollte Nebeneffekte sollte verzichtet werden (POLS: Principle of
+  Least Surprise).
     - Beispiel: `checkPassword(username, password)` erstellt eine Session, wenn
       die Credentials korrekt sind.
     - Die Funktion führt eine zusätzliche, verborgene Aufgabe aus (Verletzung
