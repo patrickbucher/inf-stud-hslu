@@ -1316,21 +1316,21 @@ Deployment: Bereitstellung, Auslieferung von Software
 
 - Namen von Klassen sollten gut überlegt sein, da sie ihn lange behalten.
     - Noch wichtiger bei Interfaces!
-- Kriterien für gute Namen:
-    - zweckbeschreibend (schlecht: `ThingDoer`, gut: `TreeWalker`)
+- Kriterien für gute Namen
+    - zweckbeschreibend (schlecht: `ThingDoer`, besser: `TreeWalker`)
     - korrekt und ohne Fehlinformationen (schlecht: `ConnectionSingleton` wenn
       gar kein Singleton implementiert wird)
     - differenzierend
         - schlecht: `int a; float b; char c;`
-        - gut: `int divisor; float dividend; char decimalSeparator;`
-    - gut aussprechbar und suchbar sein
+        - besser: `int divisor; float dividend; char decimalSeparator;`
+    - gut aussprechbar und suchbar
         - schlecht: `int n_pâtés_mangées; String достопримечательность; float
           l0lOl0lOl0lOfAc70r; double schnäderegägs;`
-        - gut: `int pates_eaten; String attraction; float lolFactor; double
+        - besser: `int pates_eaten; String attraction; float lolFactor; double
           babble;`
     - möglichst keine Codierungen enthalten
         - schlecht: `int range_0x00_0xff; int clr00ff00;`
-        - gut: `int rangeFirstByte; int rgbGreen;`
+        - besser: `int rangeFirstByte; int rgbGreen;`
 - Heuristiken zur Namensgebung:
     1. Beschreibende Namen wählen
     2. Namen passend zur Abstraktionsebene wählen
@@ -1460,7 +1460,7 @@ Deployment: Bereitstellung, Auslieferung von Software
     führen.
     2. Output-Argumente: Entsprechen nicht der Erwartung des Aufrufers.
     3. Flag-Argumente: Deuten auf Funktionen mit mehreren Aufgaben hin.
-    4. Tote Funkeionen: Was nicht aufgerufen wird, soll gleich gelöscht werden.
+    4. Tote Funktionen: Was nicht aufgerufen wird, soll gleich gelöscht werden.
 
 ### Unit-Tests
 
@@ -1500,7 +1500,7 @@ Deployment: Bereitstellung, Auslieferung von Software
         - der Name der Assert-Methode soll möglichst aussagekräftig sein
     - Pro Testfall sollte möglichst nur eine Assertion verwendet werden
     - Pro Testfall sollte nur eine Sache getestet werden. Es gelten die
-      Prinzipien:
+      Prinzipien
         - SOC: Separation of Concerns (Verschiedene Klassen werden durch
           verschiedene Tests abgedeckt.)
         - SRP: Single Responsibility Principle (Jeder Testfall kümmert sich um
