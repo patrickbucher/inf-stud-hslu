@@ -14,7 +14,7 @@ class MessageStoreAdapter {
     + store(message:Message)
 }
 
-MessageStoreAdapter <|.. MessageStore
+MessageStore <|.. MessageStoreAdapter
 
 interface KeyValueStore {
     + put(id:String,message:String)

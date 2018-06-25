@@ -26,15 +26,15 @@ Herkunft: _componere_ (lat.) = zusammensetzen
       Entwicklung
     - definieren die genaue Form und Eigenschaften einer Komponente
     - definieren einen _Interaction Standard_ 
-        - wie können die Komponenten miteinander über Schnittstellen
-          kommunizieren (Schnittstellenstandard)
-        - wie werden die Abhängigkeiten der Komponenten voneinander festgelegt
+        - Wie können die Komponenten miteinander über Schnittstellen
+          kommunizieren (Schnittstellenstandard)?
+        - Wie werden die Abhängigkeiten der Komponenten voneinander festgelegt?
             - von der Komponente verlangte Abhängigkeiten: _Required Interfaces_
             - von der Komponente angebotene Abhängigkeiten: _Provided
               Interfaces_
     - definieren einen _Composition Standard_ 
-        - wie werden die Komponenten zu grösseren Einheiten zusammengefügt
-        - wie werden die Komponenten ausgeliefert (Deployment)
+        - Wie werden die Komponenten zu grösseren Einheiten zusammengefügt?
+        - Wie werden die Komponenten ausgeliefert (Deployment)?
 - Beispiele verbreiteter Komponentenmodelle:
     - Microsoft .NET
     - EJB (Enterprise Java Beans)
@@ -111,8 +111,7 @@ Herkunft: _componere_ (lat.) = zusammensetzen
         - Metadaten in `META-INF/manifest.mf`
         - optional weitere Ressourcen (z.B. Grafiken, Textdateien)
     - Deployment von Schnittstelle und Implementierung zum einfacheren
-      Austausch häufig in getrennten `.jar`-Dateien mit Versionierung, Beispiel
-      (fiktiv):
+      Austausch häufig in getrennten `.jar`-Dateien mit Versionierung
         - `jdbc-api-4.2.1.jar` enthält die Schnittstelle
         - `jdbc-mysql-3.2.1.jar` enthält die MySQL-Implementierung
         - `jdbc-postgres-4.5.7.jar` enthält die PostgreSQL-Implementierung
@@ -129,10 +128,10 @@ Herkunft: _componere_ (lat.) = zusammensetzen
     - Tatsächlich werden _Verbindungsstellen_ erstellt, welche Kombinierbarkeit
       sicherstellen.
     - Eine Schnittstelle tut nichts und kann nichts.
-    - Schnittstellen trennen nichts, sie verbinden etwas:
+    - Schnittstellen trennen nichts, sie verbinden etwas.
         - Komponenten untereinander (Programmschnittstellen)
         - Komponenten mit dem Benutzer 
-- Die Bedeutung von Schnittstellen (bei korrektem Gebrauch):
+- Die Bedeutung von Schnittstellen (bei korrektem Gebrauch)
     1. machen Software leichter verständlich (man braucht nur die Schnittstelle
     und nicht die Implementierung zu kennen)
     2. helfen uns Abhängigkeiten zu reduzieren (Abhängigkeit nur von einer
@@ -161,7 +160,7 @@ Herkunft: _componere_ (lat.) = zusammensetzen
 
 ### Spezifikation von Schnittstellen
 
-- Die Schnittstelle als Vertrag:
+- Die Schnittstelle als Vertrag
     - Ein _Service Consumer_ schliesst einen Vertrag mit einem _Service
       Provider_ für eine _Dienstleistung_ ab
 - Design by Contract (DbC): Das Zusammenspiel zwischen den Komponenten wird mit
@@ -184,7 +183,7 @@ Herkunft: _componere_ (lat.) = zusammensetzen
         - Semantik (was bewirkt die Methode)
         - Protokoll (synchron/asynchron)
         - Nichtfunktionale Eigenschaften (Performance, Robustheit,
-          Verfügbarkeit)
+          Thread-Sicherheit)
     - Schnittstellen an der Systemgrenze fliessen in die Systemspezifikation
       ein
 - öffentliche Schnittstellen werden als _API_ bezeichnet (Application

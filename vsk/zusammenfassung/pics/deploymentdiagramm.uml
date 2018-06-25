@@ -2,6 +2,7 @@
 
 skinparam monochrome true
 skinparam defaultFontName DejaVu Sans
+skinparam dpi 150
 
 node Datenbankserver {
     database Oracle

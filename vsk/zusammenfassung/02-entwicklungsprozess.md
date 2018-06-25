@@ -19,14 +19,14 @@ SCM: Source Code Management
 
 ### Arbeiten mit SCM
 
-- Grundlegende Operationen:
+- Grundlegende Operationen
     - `checkout`: lokale Arbeitskopie von Repository erstellen
     - `update`: Änderungen von Repository in der lokalen Arbeitskopie
       aktualisieren
     - `log`: Revisionen von Artefakten einsehen
     - `diff`: Vergleich verschiedener Revisionen zweier Artefakte
     - `commit`: Änderungen in das Repository schreiben
-- Operationen verteilter SCM:
+- Operationen verteilter SCM
     - `clone`: lokale Kopie eines entfernten Repositories erzeugen
     - `fetch`: Änderungen eines entfernten Repositories herunterladen
     - `pull`: Änderungen eines entfernten Repositories lokal
@@ -57,7 +57,7 @@ SCM: Source Code Management
     - mit oder ohne Transaktionsunterstützung
     - weitere Features: Zugriffsprotokolle, Sicherheitsmassnahmen,
       Webserver-Integration
-- Beispiele bekannter SCM:
+- Beispiele bekannter SCM
     - CVS: zentral, robust, stabil, alt, Verbreitung rückläufig
     - Subversion: zentral, transaktionsorientiert, Versionierung auf
       Verzeichnisebene, flexibler und anspruchsvoller als CVS, als
@@ -114,7 +114,7 @@ Buildprozess: aus Quellartefakten ein fertiges Produkt erstellen
       einsetzbar
     - Ant: alt und bewährt, für Java mit XML
     - Maven: populär und etabliert, für Java mit XML
-    - Gradle: populär und junges, mit Groovy-Script und DSL
+    - Gradle: populär und jung, mit Groovy-Script und DSL
 
 ### Apache Maven
 
@@ -156,8 +156,8 @@ Abhängigkeiten zu anderen Modulen
     - definierte Abhängigkeiten
     - Konsistenzsicherung (automatisches überprüfen von Prüfsummen)
     - Suchfunktion und weitere Hilfswerkzeuge
-- Beispiele für Dependency-Management-Software:
-    - apt: Adcanced Packaging Tool (für Debian GNU/Linux und Derivate)
+- Beispiele für Dependency-Management-Software
+    - apt: Advanced Packaging Tool (für Debian GNU/Linux und Derivate)
     - pip: Pip Installs Packages (Paketverwaltung für Python)
     - npm: Node Package Manager (Paketverwaltung für Node.js/JavaScript)
 - Java Dependency Management
@@ -178,7 +178,7 @@ Abhängigkeiten zu anderen Modulen
         - HSLU: [RepuHub Nexus](https://repohub.enterpriselab.ch)
     - Zwischenspeicherung (Caching) in lokalem Repository
       `$HOME/.m2/repository`
-- Weltweit eindeutige Identifikation: über _Maven Coordinates_, drei Attribute:
+- Weltweit eindeutige Identifikation: über _Maven Coordinates_, drei Attribute
     1. GroupId: _Reverse Domain Name_ der Organisation mit Zusatz:
     `ch.hslu.vsk.g05`
     2. ArtifactId: Projektname, Modulname: `logger-server`, `logger-viewer`
@@ -413,7 +413,7 @@ Ziele von Continuous Integration:
     - Bottom-Up the Small: Integration kleinerer Teilsysteme
     - Top-Down the Controls: Integration aufwändiger Kontrollstrukturen
       (mithilfe von Stubs)
-    - Bing-Bang the Backbone: Alles weitere in einem grossen Schritt
+    - Big-Bang the Backbone: Alles weitere in einem grossen Schritt
     - Continuous Integration: Bei iterativ-inkrementeller Entwicklung
 - Platzhalter: Ersetzen (noch) fehlender Komponenten durch Test Doubles
      - Stubs: Ersatzbaustein mit identischem Interface und statischem Verhalten
@@ -436,7 +436,7 @@ Ziele von Continuous Integration:
 - Testen nicht funktionaler Anforderungen
     - Last-, Performance-, Stress-, Sicherheit-, Robustheitstests
     - Anforderungen werden oft gar nicht oder zu wenig spezifisch festgehalten
-    - sollen auch mit Systemtests abgedeckt werden
+    - sollen auch durch Systemtests abgedeckt werden
 - Test-First-Ansatz: Formulieren der Systemtests zu Beginn fördert das
   Verständnis der Anforderungen und deren Testbarkeit
 
@@ -459,33 +459,34 @@ durch die Neuentwicklung keine bestehende Funktionalität beeinträchtigt wurde.
 
 ### Agiles Testing
 
-- Die vier Quadranten des agilen Testens:
-    1. Unit- und Komponententests (automatisiert)
-        - Ziel: Vertrauen in den Code
-        - Verifikation: Code funktioniert, Komponenten spielen zusammen
-        - Tests: automatische Testfälle, liegen im SCM vor
-        - Werkzeuge: JUnit, Stubs, Mocks
-        - Wer: Team
-        - Wann: bei jeder Änderung, in jedem Sprint
-    2. Funktionale Tests (automatisiert und manuell)
-        - Ziel: Vertrauen in den Weg
-        - Verifikation: Software macht, was Kunde erwartet
-        - Tests: teilweise automatisiert, dokumentiert und protokolliert
-        - Werkzeuge: Prototypen, Mockups
-        - Wer: Team und Product Owner
-        - Wann: in jedem Sprint
-    3. Abnahmetests (manuell)
-        - Ziel: Vertrauen in das Produkt
-        - Verifikation: Software macht, was Kunde erwartet
-        - Tests: manuell, dokumentiert (Testplan) und protokolliert (Test- und
-          Abnahmeprotokoll)
-        - Werkzeuge: Testdaten, Logs
-        - Wer: Team und Product Owner, Kunde bei Abnahme
-        - Wann: nach einem Sprint, vor einem Release
-    4. Performance-, Last-, Sicherheitstests (mit speziellen Tools)
-        - Ziel: Vertrauen in Performance, Sicherheit etc.
-        - Verifikation: Code läuft stabil und ist leistungsfähig
-        - Tests: Tool-gestützte, teilweise automatisierte Testfälle
+Die vier Quadranten des agilen Testens:
+
+1. Unit- und Komponententests (automatisiert)
+    - Ziel: Vertrauen in den Code
+    - Verifikation: Code funktioniert, Komponenten spielen zusammen
+    - Tests: automatische Testfälle, liegen im SCM vor
+    - Werkzeuge: JUnit, Stubs, Mocks
+    - Wer: Team
+    - Wann: bei jeder Änderung, in jedem Sprint
+2. Funktionale Tests (automatisiert und manuell)
+    - Ziel: Vertrauen in den Weg
+    - Verifikation: Software macht, was Kunde erwartet
+    - Tests: teilweise automatisiert, dokumentiert und protokolliert
+    - Werkzeuge: Prototypen, Mockups
+    - Wer: Team und Product Owner
+    - Wann: in jedem Sprint
+3. Abnahmetests (manuell)
+    - Ziel: Vertrauen in das Produkt
+    - Verifikation: Software macht, was Kunde erwartet
+    - Tests: manuell, dokumentiert (Testplan) und protokolliert (Test- und
+      Abnahmeprotokoll)
+    - Werkzeuge: Testdaten, Logs
+    - Wer: Team und Product Owner, Kunde bei Abnahme
+    - Wann: nach einem Sprint, vor einem Release
+4. Performance-, Last-, Sicherheitstests (mit speziellen Tools)
+    - Ziel: Vertrauen in Performance, Sicherheit etc.
+    - Verifikation: Code läuft stabil und ist leistungsfähig
+    - Tests: Tool-gestützte, teilweise automatisierte Testfälle
 
 ### Testing in SoDa
 
@@ -555,7 +556,7 @@ Entwurfsmuster werden nach ihrem Zweck klassifiziert.
     - Composite (Kompositum)
     - Decorator (Dekorierer)
     - Facade (Fassade)
-    - Flyweight Fliegengewicht
+    - Flyweight (Fliegengewicht)
     - Proxy (Stellvertreter)
 3. Behavioral Patterns (Verhaltensmuster): Interaktionen zwischen Objekten
    beschreiben; Kontrollflüsse zwischen Objekten festlegen; Zuständigkeiten und
@@ -584,7 +585,7 @@ Singleton](#singleton).
 - Klassifikation: Erzeugungsmuster, objektbasiert
 - Merkmale
     - Speichert die Objektinstanz als privates, statisches Attribut ab.
-    - Verfügt über einen privaten Konstruktor zur Verhinderung
+    - Verfügt über einen privaten Konstruktor zur Verhinderung der
       Neuinstanziierung von aussen.
     - Erlaubt den Zugriff auf die eine Instanz über eine öffentliche, statische
       Methode.
@@ -702,7 +703,7 @@ public class BubbleSort implements SortingStrategy {
 ### Observer (Beobachter)
 
 Zweck: Definiert eine eins-zu-viele-Abhängigkeit zwischen Objekten, damit bei
-der ÄNderung des Zustands des einen Objekts alle von ihm abhängigen Objekte
+der Änderung des Zustands des einen Objekts alle von ihm abhängigen Objekte
 automatisch benachrichtigt und aktualisiert werden. Siehe [UML-Diagramm
 Observer](#observer).
 
@@ -769,11 +770,11 @@ die es ansonsten aufgrund von inkompatibler Schnittstellen nicht könnten. Siehe
     - Erlaubt die Definition einer möglichst allgemeinen Schnittstelle und die
       spätere Anpassung für die Bedürfnisse unterschiedlicher Clients.
 - Problematik: Ein Adapter ist kein Ersatz für die sinnvolle Ausgestaltung
-  kompatibler Schnittstellen! Sein Einsatz ist oft sinnvoll im Umgang mit APIs
-  von Dritten. Bei eigenen (internen) APIs ist ein Refactoring einem Adapter
+  kompatibler Schnittstellen! Sein Einsatz ist oft sinnvoll im Umgang mit
+  Fremd-APIs. Bei eigenen (internen) APIs ist ein Refactoring einem Adapter
   meist vorzuziehen.
 
-![Adapter (Entwurfsmuster)](pics/adapter.png){#adapter width=300px}
+![Adapter (Entwurfsmuster)](pics/adapter.png){#adapter width=146px}
 
 Implementierung:
 
@@ -950,7 +951,7 @@ Konzepte haben.
     - Ursprung: Extreme Programming (Kent Beck, Erich Gamma)
     - Ansatz: Zuerst Testfälle (Code) schreiben, dann den produktiven Code.
     - Vorteil: Der Test kann automatisch erfolgen, sobald der produktive Code
-      geschrieben wurde.
+      geschrieben worden ist.
     - Folge: Schnelles Feedback und erhöhte Motivation!
 
 ### Unit- und Integrationstests
@@ -962,7 +963,7 @@ Konzepte haben.
       automatisiert
     - Ausführung in der Entwicklungsumgebung durch den Entwickler und in der
       CI-Umgebung während des Buildprozesses
-    - Nutzen:
+    - Nutzen
         - schnell ausführbare Tests neuer Komponenten oder veränderter
           Komponenten (Regressionstests)
         - Testen erfolgt bereits während der Implementierungsphase
@@ -970,12 +971,12 @@ Konzepte haben.
           gegeben
         - automatisiertes, schnelles und übersichtliches Feedback (Reporting)
         - Messung von Codeabdeckung möglich
-    - Probleme:
+    - Probleme
         - für GUI-Komponenten aufwändig
         - Qualität und Nachvollziehbarkeit der Tests wichtig (aber
           zeitaufwändig)
         - es lässt sich nicht «alles» mit Unit-Tests abdecken
-    - JUnit: Am häufigsten eingesetztes Test-Framework in JAva
+    - JUnit: Am häufigsten eingesetztes Test-Framework in Java
         - Version 4.12 am stärksten verbreitet und am besten integriert
         - Version 5.0 seit September 2017 mit Java 8 (für neue Projekte)
 - Integrationstests: Testen das Zusammenspiel verschiedener Komponenten
@@ -1004,7 +1005,7 @@ Konzepte haben.
       (Verbesserung oder Verschlechterung der Testabdeckung).
 - Verfahren: Testumgebung merkt sich, welcher Code in einem Testdurchlauf
   ausgeführt wurde.
-- Es gibt verschiedene Messtechniken:
+- Es gibt verschiedene Messtechniken
     - Welche Zeilen oder Statements wurden ausgeführt? (Line Coverage)
     - Welche Verzweigungen wurden genommen? (Branch Coverage)
     - Welche Bedingungen wurden evaluiert? (Decision Coverage)
@@ -1015,7 +1016,7 @@ Konzepte haben.
     - Welche Codestellen laufen parallel ab? (Race Coverage)
     - Diese Metriken sind unterschiedlich aussagekräftig und sollten am besten
       kombiniert verwendet werden.
-- Technische Umsetzung:
+- Technische Umsetzung
     1. Instrumentierung des Quellcodes: Compiler fügt Statements zur
        Coverage-Messung in den Code ein. Zu vermeiden, da der Quellcode zuvor
        manipuliert und dadurch das Debugging erschwert wird.
@@ -1027,14 +1028,14 @@ Konzepte haben.
 
 ### Dependency Injections
 
-- Schlechte Testbarkeit von Komponenten aufgrund hoher Kopplung.
+- Schlechte Testbarkeit von Komponenten aufgrund hoher Kopplung
     - Komponente A hängt von Komponente B ab, Komponente B hängt von Komponente
       C ab.
     - Ein Unit-Test der Komponente A erfordert und testet sogleich Komponente B
       und C -- und ist also kein eigentlicher Unit-Test mehr.
 - Lösung: Dependency Injection
-    - Die Komponenten werden nicht länger fest verdrahtet (A instanziert B, B
-      instanziert C).
+    - Die Komponenten werden nicht länger fest verdrahtet (A instanziiert B, B
+      instanziiert C).
     - Stattdessen können jeder Komponente ihre Abhängigkeiten über einen
       zusätzlichen Konstruktor mitgegeben werden.
     - Dadurch wird die Kopplung reduziert; idealerweise über ein Interface.
@@ -1043,7 +1044,7 @@ Konzepte haben.
 
 ### Test Doubles
 
-- Anforderungen und Vorbedingungen für den Einsatz von Test Doubles:
+- Anforderungen und Vorbedingungen für den Einsatz von Test Doubles
     - Einsatz von Interfaces: Test Double und Produktivkomponente müssen das
       gleiche Interface implementieren.
     - Ersetzung der Komponente zur Laufzeit: mittels Dependency Injection!
@@ -1081,11 +1082,11 @@ Konzepte haben.
     - Lösung: Es wird ein Fake-Webservice erstellt, der die Anfragen direkt und
       nicht über das Netzwerk zurückgibt. (Der Fake-Webservice könnte auf
       Aspekte wie Logging, Persistenz und Concurrency verzichten.)
-- Einsatzzweck der verschiedenen Verfahren:
+- Einsatzzweck der verschiedenen Verfahren
     - Dummy und Stub: Erreichen einer besseren Testisolation und höhreren
-      Selektivität der Testfälle.
-    - Spy und Mock: Universeller Ansatz zur Durchführung von Behaviour-Testing.
-    - Fake: Aufwändige Implementierung zur vollständigen Entkopplung vom Original.
+      Selektivität der Testfälle
+    - Spy und Mock: Universeller Ansatz zur Durchführung von Behaviour-Testing
+    - Fake: Aufwändige Implementierung zur vollständigen Entkopplung vom Original
 
 Die Test Doubles sind nicht der Gegenstand der Tests sondern nur Mittel zum
 Zweck! Es sollte nur so viel Aufwand für deren Umsetzung betrieben werden, bis
@@ -1110,8 +1111,7 @@ getestet werden kann!
         - Muss das Produkt-Backlkog angepasst werden?
         - Bezeichnung in SoDa: Sprint-Abnahme (da kein Review im engeren Sinne)
 - Meilenstein: Geplanter Punkt im Projektverlauf, an dem vorher festgelegte
-  (Zwischen-)Ergebnisse vorliegen, die es erlauben den Projektfortschritt zu
-  messen.
+  Ergebnisse vorliegen, die es erlauben den Projektfortschritt zu messen.
     - Artefakte: Dokumente, Software-Komponenten
     - Erreichung des Meilensteins: geforderte Artefakte liegen vor, Überprüfung
       erfolgreich (Reviews und Tests)
@@ -1121,8 +1121,8 @@ getestet werden kann!
     - Walkthrough: Autor stellt sein Artefakt einer Gruppe von Fachkollegen vor
     - Pair Programming: Gemeinsame, gleichzeitige Arbeit am selben Artefakt
     - Peer Deskcheck: Überprüfung des Arbeitsergebnisses durch eine Person
-    - Passaround: Kopien werden an verschiedene Personen versandt und Feedback
-      eingeholt
+    - Passaround: Kopien an verschiedene Personen versenden und Feedback
+      einholen
     - Ad Hoc Review: Bestandteil der täglichen Teamarbeit
 - Nutzen von Reviews: Reduktion des Nachbearbeitungsaufwands bei der
   Produkteentwicklung reduzieren, indem Probleme frühzeitig erkannt werden.
@@ -1166,7 +1166,7 @@ getestet werden kann!
     - Steuerung der nötigen Änderungen dieser Eigenschaften
     - Erfassung des Umsetzungsstandes von Änderungen
     - Überprüfung der Einhaltung festgelegter Anforderungen
-    - Orgaisation von Zuständigkeiten, Ressourcen und Terminplänen
+    - Organisation von Zuständigkeiten, Ressourcen und Terminplänen
     - Auswahl der Werkzeuge und Implementierungen
     - Überwachung der Lieferanten und Schnittstellen
     - SCMP: Software Configuration Management Plan (Festhalten der Erkenntnisse
@@ -1200,12 +1200,12 @@ Deployment: Bereitstellung, Auslieferung von Software
     3. Konfiguration: Einstellung der Software auf jeweilige Anforderungen
     4. Organisation: Informatin, Schulung, Support, Planung, Produktion
 - Wann findet Deployment statt?
-    - Am Ende eines (erfolgreichen) Projekts.
+    - Am Ende eines (erfolgreichen) Projekts
     - Bei iterativen Entwicklungsmodellen öfters (Continuous Delivery erfordert
       Continuous Deployment)
     - Fortlaufendes Deployment einzelner Iterationsergebnisse (Build, Sprint,
       Meilenstein) auf Entwicklungs- und Testsysteme (Staging)
-- Die Deployment-Dokumentation umfasst:
+- Die Deployment-Dokumentation umfasst
     - Technische Aspekte
         - [Deploymentdiagramme](#deploymentdiagramm): Zuordnung der Komponenten
           zu Systemen/Hardware (Zeigt Nodes, Komponenten pro Node und deren
@@ -1228,7 +1228,7 @@ Deployment: Bereitstellung, Auslieferung von Software
     - Möglichst automatisierbar und dadurch reproduzierbar
     - Vollständige und saubere Deinstallation muss möglich sein
     - Vollautomatische Softwareverteilung (setzt bestimmte Merkmale voraus)
-    - Unterschiedliche Bedürfnisse nach Benutzergruppe:
+    - Unterschiedliche Bedürfnisse nach Benutzergruppe
         - Endbenutzer: Interaktive Installation mit Setup-Wizard
         - Administrator: Möglichst automatisierbare Installation
         - Entwickler/Tester: Auf eigene Bedürfnisse zugeschnittene Installation
@@ -1275,12 +1275,12 @@ Deployment: Bereitstellung, Auslieferung von Software
       (`META-INF/application.xml`)
 - Einzelne (kombiniert zu Shadow-Archiven) oder mehrere `.jar`-Dateien
   (erfordert `CLASSPATH`-Angabe)
-- Zusätzliche `.jar`-Dateien für Quellcode und Dokumentation möglich:
+- Zusätzliche `.jar`-Dateien für Quellcode und Dokumentation möglich
     - `foobar.jar`: Ausführbar (`.class`-Dateien)
     - `foobar-doc.jar`: Dokumentation (JavaDoc)
     - `foobar-src.jar`: Quellcode (`.java`-Dateien), v.a. bei Open Source
 
-![Deploymentdiagramm](pics/deploymentdiagramm.png){#deploymentdiagramm}
+![Deploymentdiagramm](pics/deploymentdiagramm.png){#deploymentdiagramm width=480px}
 
 ## Code-Qualität
 
