@@ -149,7 +149,7 @@ Abhängigkeiten zu anderen Modulen
   Binär-Repositories mit Paketmanagern
     - intern: Modul im selben Projekt
     - extern: Modul aus einem anderen Projekt, evtl. von anderer Organisation
-- Merkmale von Dependency-Management-Software:
+- Merkmale von Dependency-Management-Software
     - zentrale Ablage auf Server (oftmals mit verschiedenen Mirrors)
     - standardisiertes Paketformat
     - zusätzliche Metainformationen
@@ -200,7 +200,7 @@ Abhängigkeiten zu anderen Modulen
       Konflikte und Zyklen zu erkennen und -- soweit möglich -- automatisch
       aufzulösen
 - Versionierung und Snapshots: Dependencies sind grundsätzlich versioniert,
-  dies ermöglicht:
+  dies ermöglicht
     - Erkennung neuer Versionen
     - Automatische Verwendung von Aktualisierungen (Verbesserungen, Bugfixes)
     - Angabe kompatibler Versionsbereiche
@@ -383,7 +383,7 @@ Ziele von Continuous Integration:
   wiederholen (Regressionstests)
     - Die Komplexität von Software erfordert einen Testentwurf nach Modellen.
     - _«Testing by poking around is a waste of time.»_ (Robert Binder)
-- Mit keiner Testart können alle Fehler gefunden werden:
+- Mit keiner Testart können alle Fehler gefunden werden.
     - Unit Test: Überprüfung konkreter Implementierungen.
     - Integrationstest: Spielen die Implementierungen richtig zusammen?
     - Systemtest: Arbeiten die einzelnen Systemkomponenten richtig zusammen?
@@ -402,7 +402,7 @@ Ziele von Continuous Integration:
       (Unit-Tests)
     - gewisse Fehler können nur statistisch geprüft werden (Race Conditions,
       Performance)
-- Durch Integrationstests abzudeckende Aspekte:
+- Durch Integrationstests abzudeckende Aspekte
     - Schnittstellen
         - Kompatibilität der Objekte: Typen, Wertbereiche
         - Aufruf-Sequenzen
@@ -449,7 +449,7 @@ durch die Neuentwicklung keine bestehende Funktionalität beeinträchtigt wurde.
 - Regressionstests beschreiben keine bestimmte Art von Tests, sondern das
   wiederholte Ausführen bestehender Tests.
 - Wiederholbarkeit von Tests erfordert nachvollziehbare Dokumentation der
-  Testfälle:
+  Testfälle.
     - Vorbedingungen für die Testausführung (_given_)
     - Handlungen und Eingaben bei der Testdurchführung (_when_)
     - erwartete Ergebnisse und Nachbedingungen (_then_)
@@ -572,7 +572,7 @@ Entwurfsmuster werden nach ihrem Zweck klassifiziert.
     - Strategy (Strategie)
     - Template Method (Schablonenmethode)
     - Visitor (Besucher)
-- Sekundäre Unterteilung:
+- Sekundäre Unterteilung
     - Klassenmuster: Beziehungen zur Kompilierzeit festgelegt
     - Objektmuster: Beziehung zur Laufzeit dynamisch veränderbar
 
@@ -931,12 +931,12 @@ Konzepte haben.
 
 ## Automatisiertes Testing
 
-- Testen geniesst unter Entwicklern und Projektleitern einen schlechten Ruf:
+- Testen geniesst unter Entwicklern und Projektleitern einen schlechten Ruf.
     - Entwickler wollen lieber programmieren als testen und glauben, dass sie
       keine Fehler machen.
     - Projektleiter sehen das Testen als unnötigen Arbeitsschritt, der keinen
       Mehrwert schafft.
-- Problem: Falscher Testing-Ansatz in der Entwicklung:
+- Problem: Falscher Testing-Ansatz in der Entwicklung
     - Getestet wird erst am Schluss: Suche nach Fehlern, die man lieber nicht
       finden würde.
     - Konsequenz: Es wird schlecht getestet, Fehler werden verschwiegen oder
@@ -1101,7 +1101,7 @@ getestet werden kann!
 - Acceptance Test: Validierung einer Anforderung mittels Black-Box-Tests auf
   einem System vor einer Übergabe (in Scrum missverständlich als «Review»
   bezeichnet).
-- Arten von Reviews:
+- Arten von Reviews
     - Management Review (Beispiel): Entspricht der Projektmanagement-Plan den
       Vorgaben und widerspiegelt er den Projektverlauf?
     - Technisches Review (Beispiel): Erfüllt die Architektur
@@ -1157,7 +1157,7 @@ getestet werden kann!
 - Nicht alle Versionen aller Komponenten funktionieren korrekt zusammen.
 - Besteht ein System aus mehreren Teilen, ist ein Konfigurationsmanagement
   nötig.
-- Das Konfigurationsmanagement umfasst:
+- Das Konfigurationsmanagement umfasst
     1. Identifikation der Systemkonfiguration zu verschiedenen Zeitpunkten
     2. kontrollierte Durchführung von Konfigurationsänderungen unter
        Sicherstellung von Integrität und Rückverfolgung
@@ -1194,7 +1194,7 @@ getestet werden kann!
 
 Deployment: Bereitstellung, Auslieferung von Software
 
-- Beim Deployment geht es um folgende Aspekte:
+- Beim Deployment geht es um folgende Aspekte
     1. Verteilung von Software und Dokumentation per Datenträger oder Web
     2. Installation: Software auf Zielsystem kopieren
     3. Konfiguration: Einstellung der Software auf jeweilige Anforderungen
@@ -1331,7 +1331,7 @@ Deployment: Bereitstellung, Auslieferung von Software
     - möglichst keine Codierungen enthalten
         - schlecht: `int range_0x00_0xff; int clr00ff00;`
         - besser: `int rangeFirstByte; int rgbGreen;`
-- Heuristiken zur Namensgebung:
+- Heuristiken zur Namensgebung
     1. Beschreibende Namen wählen
     2. Namen passend zur Abstraktionsebene wählen
     3. Standardnomenklatur verwenden
@@ -1388,7 +1388,7 @@ Deployment: Bereitstellung, Auslieferung von Software
         - Bei der dritten «Lösung» gibt es _keine_ Funktionsparameter, sie ist
           aber die denkbar schlechteste, da sie einen bestimmten Kontext
           voraussetzt.
-    - Es gibt Funktionen, die _aus fachlicher Sicht_ viele Parameter benötigen:
+    - Es gibt Funktionen, die _aus fachlicher Sicht_ viele Parameter benötigen
         - `Point p1 = new Point(13, 27);` (x- und y-Koordinate)
         - `Color salmon = new RGB(255, 153, 153);` (RGB-Farbe)
         - `Color translucentSalmon = new RGBA(255, 153, 153, 0.5);` (mit
@@ -1434,7 +1434,7 @@ Deployment: Bereitstellung, Auslieferung von Software
         - Der Code ist schwer zu verstehen und kann zu Missverständnissen
           führen.
     - Rückgabewerte von Funktionen verleiten zum Aufruf innerhalb einer
-      Bedingung:
+      Bedingung
         - `if (!map.set("x", 42))` -- ist schwer zu interpretieren
     - Lösung: Aufteilung in zwei Methoden!
         1. `map.hasAttribute(key):boolean` (Rückgabewert)
@@ -1451,7 +1451,7 @@ Deployment: Bereitstellung, Auslieferung von Software
 - Eine gute Namensgebung ist wichtig, aber schwer.
     - Lange Namen sind sprechender, jedoch mühsamer in der Handhabung.
     - Faustregel (Rob Pike): Lange Namen für grosse Gültigkeitsbereiche, kurze
-      Namen für kleine Gültigkeitsbereiche:
+      Namen für kleine Gültigkeitsbereiche
         - `absolutePathToFileSystemTableFile` ist für den globalen Scope
           sinnvoll.
         - `i` für den Arrayindex und `n` für die Anzahl Elemente sind in einem
@@ -1481,7 +1481,7 @@ Deployment: Bereitstellung, Auslieferung von Software
           bestehen muss.
         - Testcode ist auch eine Form von Dokumentation des Produktivcodes.
     - Testcode muss gut lesbar sein. Es soll mit möglichst wenig Code möglichst
-      viel ausgesagt werden. Eigenschaften für guten Testcode sind:
+      viel ausgesagt werden. Eigenschaften für guten Testcode sind
         1. Klarheit
         2. Einfachheit
         3. Ausdrucksdichte
@@ -1489,7 +1489,7 @@ Deployment: Bereitstellung, Auslieferung von Software
     - Test- und Produktivcode werden in kurzen, aufeinanderfolgenden Zyklen
       (Sekunden bis Minuten) geschrieben. Der Testcode eilt dem Produktivcode
       immer nur wenig voraus.
-    - Gesetze des Test Drive Development:
+    - Gesetze des Test Drive Development
         1. Produktiver Code darf erst implementiert werden, wenn es dafür einen
         Unit-Test gibt.
         2. Dieser Unit-Test darf nur gerade so viel Code enthalten, dass er
@@ -1510,15 +1510,15 @@ Deployment: Bereitstellung, Auslieferung von Software
           verschiedenen Abstraktionsstufen.)
     - Viele kleine Testfälle mit wenig Assertions erlauben eine gezieltere --
       und schnellere -- Ausführung von Tests.
-    - BOC-Pattern:
+    - BOC-Pattern
         - Build: Erstellen der Testdaten
         - Operate: Manipulieren der Testdaten
         - Check: Verifizieren der Ergebnisse
-    - AAA-Pattern:
+    - AAA-Pattern
         - Arrange: Ausgangssituation schaffen
         - Act: Aktion ausführen
         - Assert: Ergebnis überprüfen
-    - FIRST-Prinzip:
+    - FIRST-Prinzip
         - Fast: Tests sollen schnell sein.
         - Independent: Tests sollen unabhängig voneinander ausführbar sein.
         - Repeatable: Tests sollen immer auf jeder Umgebung ausführbar sein.
@@ -1526,7 +1526,7 @@ Deployment: Bereitstellung, Auslieferung von Software
           (failure/success).
         - Timely: Tests sollten rechtzeitig und möglichst vor dem Produktivcode
           geschrieben werden.
-- Test-Heuristiken von Clean Code:
+- Test-Heuristiken von Clean Code
     1. Unzureichende Tests vermeiden: Eine möglichst hohe Testabdeckung
     anstreben.
     2. Coverage-Werkzeug verwenden: Nicht abgedeckte Codeteile ermitteln.

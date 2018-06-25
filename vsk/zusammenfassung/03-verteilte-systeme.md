@@ -2,17 +2,16 @@
 
 ## Socket-Kommunikation
 
-- Netzwerkschichten:
+- Netzwerkschichten
     - Applikationsschicht (application layer): HTTP, SMTP, FTP, DNS
-    - Transportschicht (transport layer):
+    - Transportschicht (transport layer)
         - Transmission Control Protocol (TCP): verbindungsorientiert,
           zuverlässig
         - User Datagram Protocol (UDP): verbindungslos, unzuverlässig
     - Internetschicht (internet layer): Internet Protocol (IP)
     - Netzwerkschickt (network layout): Ethernet, WLAN, DSL, UMTS, LTE
-- Begriffe:
-    - Host: An ein Netzwerk angeschlossener Computer mit netzwerkweit
-      eindeutiger IP-Adresse
+- Begriffe
+    - Host: An ein Netzwerk angeschlossener Computer mit eindeutiger IP-Adresse
     - Socket: Kommunikationsendpunkt, durch IP-Adresse und Port-Nummer
       definiert
     - Server (Diener): Dienstleister, der Daten/Ressourcen zur Verfügung
@@ -21,7 +20,7 @@
         - Hardware: Server-Computer, auf dem ein oder mehrere Server-Programme
           laufen
     - Client (Kunde): Dienstnehmer, der Dienste von Servern verwendet
-- Socket-Lebenszyklus:
+- Socket-Lebenszyklus
     1. Server: Socket erzeugen und an lokalen Port binden
     2. Server: Mit `accept` auf eingehende Verbindung warten
     3. Client: Verbindung mit Server herstellen (mit IP-Adresse und Port-Nummer)
@@ -71,7 +70,7 @@ Objektzustand später wiederhergestellt werden kann
     - Interoperabilität: Verwendung persistenter Objekte unabhängig von
       Laufzeitumgebung
     - Wiederauffindbarkeit: Auffinden von persistenten Objekten ohne explizite
-      Suche (transparent)
+      Suche
 - Grundidee: Umwandlung eines  Objekts in Bytestrom zur persistenten
   Abspeicherung
 
@@ -92,26 +91,26 @@ Objektzustand später wiederhergestellt werden kann
 - Standard-Serialisierung: Java-Klassen, Interfaces und Methoden
     - Idee: Dekoration eines Input- oder Output-Streams (`FileInputStream`,
       `BufferedOutputStream`, etc.)
-    - Interface `java.io.ObjectOutput`
+    - Interface `java.io.ObjectOutput`, Klasse `java.io.ObjectOutputStream`
         - `void ObjectOutputStream.writeObject(Object obj)`: rekursives
           Abarbeiten des Objekt-Parameters
-    - Interface `java.io.ObjectInput`
+    - Interface `java.io.ObjectInput`, Klasse `java.io.ObjectInputStream`
         - `Object ObjectInputStream.readObject()`: Aufbauen der
           Objekthierarchie aus Bytestrom (Cast notwendig)
     - Marker-Interface `java.io.Serializable` (keine Methoden): muss
       implementiert werden, damit Objekte der jeweiligen Klasse serialisiert
       werden können
         - dadurch automatische Serialisierbarkeit von erbenden Klassen gegeben
-    - spezielle Methoden Auf dem jeweiligen Objekt:
+    - spezielle Methoden auf dem jeweiligen Objekt
     - `Object readResolve()`: erlaubt Manipulation des deserialisierten Objekts
-        - zur Wiederherstellung transienter Objekte
+        - zur Wiederherstellung transienter Eigenschaften
         - zum Garantieren der Eindeutigkeit bei Singleton-Objekten
     - `void writeObject(final ObjectOutputStream oos)`
-        - eigens definierte Serialisierung anhand von Bytestrom
+        - eigens definierte Serialisierung anhand des Bytestroms
         - Aufruf von `oos.defaultWriteObject()` zum Erweitern der
           Serialisierung
     - `void readObject(final ObjectInputStream ois)`
-        - eigens definierte Deserialisierung anhand von Bytestrom
+        - eigens definierte Deserialisierung anhand des Bytestroms
         - Aufruf von `ois.defaultReadObject()` zum Erweitern der
           Deserialisierung
 - Klonen von beliebigen Objekten per Serialisierung und anschliessender
@@ -148,10 +147,10 @@ Message Passing: Kommunikationsparadigma zum Versenden einer Nachricht von
 einem Sender zu einem oder zu mehreren Empfängern.
 
 - Arten von Nachrichten: (Remote) Method Invocation, Signale, Datenpakete
-- Designentscheide bei der Entwicklung eines Message-Passing-Systems:
+- Designentscheide bei der Entwicklung eines Message-Passing-Systems
     1. zuverlässige oder unzuverlässige Nachrichtenübertragung
     2. garantierte oder beliebige Übertragungsreihenfolge der Nachrichten
-    3. Sender-Empfänger-Beziehungen:
+    3. Sender-Empfänger-Beziehungen
         - Unicast: ein Sender, ein Empfänger
         - Multicast/Broadcast: ein Sender, mehrere Empfänger
         - Client-Server: mehrere Sender, ein Empfänger
@@ -207,7 +206,7 @@ einem Sender zu einem oder zu mehreren Empfängern.
         - ID: Identifikation der Nachricht, nicht immer nötig
         - Argumente: einfache Datentypen (Integer, String) oder mit
           zusätzlichen Informationen/Instruktionen versehen
-    - Solche Nachrichten sind Protokollen wie HTTP, RMI etc. vorzuziehen, wenn:
+    - Solche Nachrichten sind Protokollen wie HTTP, RMI etc. vorzuziehen, wenn
         - die Kommunikation und zu übermittelnden die Datenstrukturen simpel
           sind
         - der Transaktionsdurchsatz kritisch ist (Echtzeit-Anwendungen)
@@ -238,12 +237,11 @@ einem Sender zu einem oder zu mehreren Empfängern.
 
 ## Verteilung & Kommunikation: RMI
 
-Verteiltes System: System, in dem sich Hardware- und Softwarekomponenten auf
-vernetzten Computern befinden und miteinander über den Austausch von
-Nachrichten kommunizieren.
-
-Verteilte Anwendung: Anwendung, die ein verteiltes System als
-Kommunikationsinfrastruktur für ihre verteilten Komponenten nutzt.
+- Verteiltes System: System, in dem sich Hardware- und Softwarekomponenten auf
+  vernetzten Computern befinden und miteinander über den Austausch von
+  Nachrichten kommunizieren.
+- Verteilte Anwendung: Anwendung, die ein verteiltes System als
+  Kommunikationsinfrastruktur für ihre verteilten Komponenten nutzt.
 
 ### Middleware
 
@@ -251,14 +249,14 @@ Middleware: anwendungsneutrale Vermittlungssofware, die zwischen Anwendungen
 vermittelt, und dabei den Anwendungen ihre eigene Komplexität und diejenige der
 Infrastruktur verbirgt.
 
-- Arten von Middleware:
+- Arten von Middleware
     1. kommunikationsorientierte Middleware: abstrahiert Netzwerkprogrammierung
-    (RPC, RMI, Web Service)
+       (RMI)
     2. nachrichtenorientierte Middleware: arbeitet über den Austausch von
     Nachrichten (messages) mithilfe von Warteschlangen (queues): JMS, SOAP
     3. anwendungsorientierte Middleware: unterstützt verteilte Anwendungen:
     JEE, .NET
-- Eine Middleware schafft Transparenz:
+- Transparenz durch Middleware
     - Ortstransparenz: Der Benutzer braucht nicht zu wissen, wo sich ein Dienst
       oder eine Ressource befindet.
     - Zugriffstransparenz: Der Zugriff erfolgt immer gleich, egal von welchem
@@ -273,7 +271,7 @@ Infrastruktur verbirgt.
       von deren Implementierungssprache abhängig.
     - Replikationstransparenz: Ressourcen werden bei Bedarf automatisch
       repliziert, um die benötigte Performance bieten zu können.
-- Architekturmodelle:
+- Architekturmodelle
     - Client-Server vs. Peer-to-Peer
         - Client-Server: langlebiger Serverprozess, kurzlebige Client-Prozesse
         - Peer-to-Peer: Austausch zwischen gleichberechtigten Prozessen
@@ -329,8 +327,8 @@ Infrastruktur verbirgt.
           Rechner läuft (Sicherheit)
         - Registry unterstützt keine hierarchiche Namensräume oder dynamische
           Namen
-    4. Erzeugung und Registrierung von Remote-Objekten: `Naming.bind(url,
-    remoteObject)`
+    4. Erzeugung und Registrierung von Remote-Objekten
+        - `Naming.bind(url, remoteObject)`
         - URL: `rmi://localhost:1099/calcSum`
         - Dynamisches Laden von Klassen erfordert einen `SecurityManager`
     5. Implementierung des Clients: Remote-Objekt finden und aufrufen
@@ -339,7 +337,7 @@ Infrastruktur verbirgt.
 - Codebase: Unter Einsatz eines Security Managers kann Code auf von einem
   entfernten Rechner geladen werden. Die Codebase wird über das JVM-Property
   `java.rmi.codebase` definiert, welches beim Aufstarten der Anwendung oder im
-  Code derselben gesetzt werden kann:
+  Code derselben gesetzt werden kann
     - `java -Djava.rmi.server.codebase=http://localhost:8080 -jar anwendung.jar`
     - `System.setProperty("java.rmi.server.codebase", "http://localhsot:8080");`
     - Der Code muss per HTTP zur Verfügung gestellt werden (`tool.jar` vom JDK).
@@ -350,12 +348,12 @@ Infrastruktur verbirgt.
     - `-Djava.security.manager`: beim Aufstarten der Anwendung 
     - `System.setSecurityManager(new SecurityManager());`: im Code (zuerst mit
       `getSecurityManager()` prüfen, ob dieser bereits aktiviert ist)
-    - Definition der Sicherheitsrichtlinie in `policy`-Datei:
+    - Definition der Sicherheitsrichtlinie in `policy`-Datei
         - `-Djava.security.policy=my.policy` per Kommandozeile
         - `System.setProperty("java.security.policy", "my.policy");` im Code
         - `my.policy` muss im akzuellen Arbeitsverzeichnis liegen
         - Gewährung von Berechtigungen per `grant` (siehe Beispiele unten)
-    - Zusätzliche Angaben (optional):
+    - Zusätzliche Angaben (optional)
         - Codebase: Rechte von Klassen aus bestimmten Quellen
         - Signierung: Rechte werden nur für signierten Code gewährt
         - Principal: Sonderrechte für authentifizierte Benutzer
@@ -388,7 +386,7 @@ public interface RemoteSum extends Remote {
 Implementierung des Remote-Interfaces:
 
 ```java
-public class RemoteSumImpl extends UnicastRemoteObject extends RemoteSum {
+public class RemoteSumImpl extends UnicastRemoteObject implements RemoteSum {
     @Override
     public int sum(int a, int b) throws RemoteException {
         return a + b;
@@ -447,7 +445,7 @@ public class SumClient {
 
 ![RMI: Push-Prinzip](pics/push-rmi.png){#push}
 
-- Umsetzung des Push-Prinzips mittels RMI (siehe [RMI: Push-Prinzip](#push)):
+- Umsetzung des Push-Prinzips mittels RMI (siehe [RMI: Push-Prinzip](#push))
     1. Registrierung der Services
         - A. Der Server bietet einen Dienst an, auf welchem sich Clients für
           Notifikationen registrieren können.
@@ -596,7 +594,7 @@ public class SumClient {
           \begin{array}{c}3\\4\\5\end{array} \right)$
     - Die Vektoren können durch komponentenweisen Vergleich in eine Partielle
       Ordnung gebracht werden. Ereignis $a$ ist Ursache für Ereignis $b$, wenn
-      für $V(a) \neq V(b)$ mit der Länge $n$ gilt:
+      für $V(a) \neq V(b)$ mit der Länge $n$ gilt
         - $\forall_{1 \leq k \leq n} V(a)[k] \leq V(b)[k]$: _alle_ Komponenten
           kleiner oder gleich
         - $\exists_{1 \leq k \leq n} V(a)[k] < V(b)[k]$: _mindestens eine_
@@ -605,7 +603,7 @@ public class SumClient {
 ## Verteilung: Data Grid
 
 - CAP-Theorem (Brewers Theorem): In einem verteilten System ist es nicht
-  möglich, gleichzeitig folgende drei Eigenschaften zu garantieren:
+  möglich, gleichzeitig folgende drei Eigenschaften zu garantieren
     - Consistency (Konsistenz): alle Kopien der manipulierten Daten aktualisiert
     - Availability (Verfügbarkeit): akzeptable Antwortzeiten
     - Partition Tolerance (Ausfalltoleranz): bei Verlust von Nachrichten,

@@ -35,7 +35,7 @@ Herkunft: _componere_ (lat.) = zusammensetzen
     - definieren einen _Composition Standard_ 
         - Wie werden die Komponenten zu grösseren Einheiten zusammengefügt?
         - Wie werden die Komponenten ausgeliefert (Deployment)?
-- Beispiele verbreiteter Komponentenmodelle:
+- Beispiele verbreiteter Komponentenmodelle
     - Microsoft .NET
     - EJB (Enterprise Java Beans)
     - OSGi (Open Services Gateway Initiative)
@@ -138,7 +138,7 @@ Herkunft: _componere_ (lat.) = zusammensetzen
     Schnittstelle, nicht von einer Implementierung)
     3. erleichtern die Wiederverwendbarkeit (bei der Verwendung bewährter
     Schnittstellen statt Eigenentwicklung)
-- Die Beziehung zwischen Schnittstellen und Architektur:
+- Die Beziehung zwischen Schnittstellen und Architektur
     - System > Summe seiner Teile (Beziehungen zwischen den Teilen: durch
       Schnittstellen ermöglicht)
         - Schnittstellen & Beziehungen zwischen den Komponenten: wichtigste
@@ -150,7 +150,7 @@ Herkunft: _componere_ (lat.) = zusammensetzen
         - Schnittstellen verbinden ein System mit der Aussenwelt und
           ermöglichen die Interaktion damit
 - Kriterien für gute Schnittstellen
-    1. Schnittstellen sollen _minimal_ sein:
+    1. Schnittstellen sollen _minimal_ sein
         - wenige Methoden (mit möglichst geringen Überschneidungen in ihren
           Aufgaben)
         - geringe Anzahl von Parametern
@@ -164,7 +164,7 @@ Herkunft: _componere_ (lat.) = zusammensetzen
     - Ein _Service Consumer_ schliesst einen Vertrag mit einem _Service
       Provider_ für eine _Dienstleistung_ ab
 - Design by Contract (DbC): Das Zusammenspiel zwischen den Komponenten wird mit
-  einem Vertrag geregelt:
+  einem Vertrag geregelt
     - _Preconditions_: Zusicherungen, die der Aufrufer einhalten muss
         - Nutzer: Prüfen der Vorbedingungen vor der Ausführung
         - Anbieter: Überprüfung mittels Assertions
@@ -175,10 +175,10 @@ Herkunft: _componere_ (lat.) = zusammensetzen
       deren Erzeugung
         - Anbieter: Überprüfung mittels Assertions
 - Dokumentation von Schnittstellen
-    - Umfang:
+    - Umfang
         - Was ist wichtig für die Benutzung der Komponente?
         - Was muss der Programmierer verstehen und beachten?
-    - Eigenschaften der Methoden:
+    - Eigenschaften der Methoden
         - Syntax (Rückgabewerte, Argumente, Typen, call by value/reference)
         - Semantik (was bewirkt die Methode)
         - Protokoll (synchron/asynchron)
@@ -257,15 +257,15 @@ Verarbeitungsschritten und Datenstrukturen
     - sinnvolle Modularisierung: eine der anspruchsvollsten Aufgaben der
       Informatik
 - Parnas: _On the Criteria to be Used in Decomposing Systems into Modules_ (1972)
-    - Ziele der Modularisierung:
+    - Ziele der Modularisierung
         1. Die Flexibilität und Verständlichkeit eines Systems verbessern
         2. Die Entwicklungszeit eines Systems reduzieren
-    - Voraussetzung für modulares Programmieren:
+    - Voraussetzung für modulares Programmieren
         1. Ein Modul kann mit wenig Kenntnis des Codes eines anderen Moduls
            geschrieben werden.
         2. Module können neu zusammengesetzt und ersetzt werden, ohne dass das
           ganze System neu zusammengesetzt werden muss.
-    - Nutzen der Modularisierung:
+    - Nutzen der Modularisierung
         - Verkürzung der Entwicklungszeit, da mehrere Teams gleichzeitig an je
           einem Modul arbeiten können und nur wenig Kommunikation zwischen
           ihnen nötig ist.
@@ -273,12 +273,12 @@ Verarbeitungsschritten und Datenstrukturen
           Änderungen in anderen Modulen zur Folge haben.
         - Bessere Verständlichkeit, da ein System nicht als ganzes, sondern
           Modul für Modul analysiert werden kann.
-    - Ansätze der Modularisierung:
+    - Ansätze der Modularisierung
         1. _Flowchart-Analyse_: Jeder grosse Verarbeitungsschritt wird als
            Modul implementiert (konventionell).
         2. _Information Hiding_: Jede Design-Entscheidung wird in einem Modul
            versteckt (neuer Ansatz).
-    - Interpretation:
+    - Interpretation
         - Mit dem traditionellen Ansatz (_Flowchart-Analyse_) wird ein
           _Algorithmus_ in einzelne Verarbeitungsschritte zerlegt.
         - Mit dem neuen Ansatz (_Information Hiding_) werden die
