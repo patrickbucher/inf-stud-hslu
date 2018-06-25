@@ -167,29 +167,29 @@ einem Sender zu einem oder zu mehreren Empfängern.
           empfangender Applikation zwischengespeichert (Router, Socket)
 - Kommunikationsformen: Nachricht $A \rightarrow B$
     - persistent und asynchron: HTTP/REST
-        1. A sendet eine Nachricht und wird fortgesetzt
-        2. B läuft nicht
-        3. B wird gestartet und empfängt die Nachricht
-        4. A ist fertig
+        1. A sendet eine Nachricht und wird fortgesetzt.
+        2. B läuft nicht.
+        3. B wird gestartet und empfängt die Nachricht.
+        4. A ist fertig.
     - persistent und synchron: E-Mail
-        1. A sendet eine Nachricht und wartet, bis diese akzeptiert wurde
-        2. B speichert die Nachricht für die spätere Auslieferung ab
-        3. B meldet A, dass die Nachricht akzeptiert wurde
-        4. B wird gestartet und empfängt die Nachricht
+        1. A sendet eine Nachricht und wartet, bis diese akzeptiert wurde.
+        2. B speichert die Nachricht für die spätere Auslieferung ab.
+        3. B meldet A, dass die Nachricht akzeptiert wurde.
+        4. B wird gestartet und empfängt die Nachricht.
     - transient und asynchron: UDP
-        1. A sendet eine Nachricht und wird fortgesetzt
-        2. B muss laufen, damit Die Nachricht gesendet werden kann
-        3. B empfängt die Nachricht
+        1. A sendet eine Nachricht und wird fortgesetzt.
+        2. B muss laufen, damit Die Nachricht gesendet werden kann.
+        3. B empfängt die Nachricht.
     - transient und synchron (empfangsbasiert): TCP
-        1. A sendet eine Nachricht und wartet auf die Empfangsbestätigung
-        2. B läuft, macht aber gerade etwas anderes
-        3. B nimmt die Nachricht entgegen und bestätigt dies A
-        4. B verarbeitet die Nachricht später
+        1. A sendet eine Nachricht und wartet auf die Empfangsbestätigung.
+        2. B läuft, macht aber gerade etwas anderes.
+        3. B nimmt die Nachricht _während anderer Tätigkeit_ entgegen und bestätigt dies A.
+        4. B verarbeitet die Nachricht nach Abschluss der anderen Tätigkeit.
     - transient und synchron (auslieferungsbasiert): asynchroner RPC
-        1. A sendet eine Nachricht und wartet, bis diese akzeptiert wurde
-        2. B empfängt die Nachricht, macht aber gerade etwas anderes
-        3. B bestätigt die Annahme der Nachricht
-        4. B verarbeitet die Nachricht später
+        1. A sendet eine Nachricht und wartet, bis diese akzeptiert wurde.
+        2. B empfängt die Nachricht, macht aber gerade etwas anderes.
+        3. B bestätigt die Annahme der Nachricht _nach Abschluss der anderen Tätigkeit_.
+        4. B verarbeitet die Nachricht.
     - transient und synchron (antwortbasiert): RMI
         1. A sendet eine Nachricht und wartet auf eine Antwort
         2. B läuft, macht aber gerade etwas anderes
@@ -533,14 +533,14 @@ public class SumClient {
       \rightarrow b$ noch $b \rightarrow a$ gilt.
     - Transitive Relation: Wenn $a \rightarrow b$ und $b \rightarrow c$ dann $a
       \rightarrow c$
-- Uhrenbedingung: Ableitung einer kausalen (Halb-)Ordnung aus Zeitsempeln.
+- Uhrenbedingung: Ableitung einer kausalen (Halb-)Ordnung aus Zeitstempeln.
     - Schwache Uhrenbedingung: $a \rightarrow b \Rightarrow C(a) < C(b)$ 
-        - Ist Ereignis a Ursache für Ereignis b, muss der Zeitstempel von a
-          kleiner sein als derjenige von b.
+        - Ist Ereignis $a$ Ursache für Ereignis $b$, muss der Zeitstempel von
+          $a$ kleiner sein als derjenige von $b$.
     - Starke Uhrenbedingung: $C(a) < C(b) \Rightarrow a \rightarrow b$
         - Zur schwachen Uhrenbedingung gilt zusätzlich der Umkehrschluss: Ist
-          der Zeitstempel von Ereignis a kleiner als derjenige von Ereignis b,
-          war Ereignis a eine Ursache für Ereignis b.
+          der Zeitstempel von Ereignis $a$ kleiner als derjenige von Ereignis
+          $b$, war Ereignis $a$ eine Ursache für Ereignis $b$.
 - Ausgangslage: Uhren verschiedener Rechner ($P_1$, $P_2$) laufen mit
   konstanten aber unterschiedlichen Geschwindigkeiten.
     - Beispiel: $P_1$ mit langsamer, $P_2$ mit schneller Uhr
@@ -592,7 +592,7 @@ public class SumClient {
         - $\text{max} \left( \left( \begin{array}{c}3\\2\\5\end{array} \right)
           , \left( \begin{array}{c}2\\4\\1\end{array} \right) \right) = \left(
           \begin{array}{c}3\\4\\5\end{array} \right)$
-    - Die Vektoren können durch komponentenweisen Vergleich in eine Partielle
+    - Die Vektoren können durch komponentenweisen Vergleich in eine partielle
       Ordnung gebracht werden. Ereignis $a$ ist Ursache für Ereignis $b$, wenn
       für $V(a) \neq V(b)$ mit der Länge $n$ gilt
         - $\forall_{1 \leq k \leq n} V(a)[k] \leq V(b)[k]$: _alle_ Komponenten
@@ -635,47 +635,47 @@ von anderen Knoten.
 Erweiterung: Neuer Knoten $D$; nimmt sich von jedem Knoten je eine Partition
 und ein Backup.
 
-| Knoten    | $A$   | $B$   | $C$   | $D$   |
-|-----------|-------|-------|-------|-------|
-| Partition | a a a | b b b | c c c | a b c |
-| Backup    | b b c | a c c | a a b | a b c |
+| Knoten    | $A$   | $B$   | $C$   | $D$       |
+|-----------|-------|-------|-------|-----------|
+| Partition | a a a | b b b | c c c | **a b c** |
+| Backup    | b b c | a c c | a a b | **a b c** |
 
 Besitzwechsel: Knoten $D$ nimmt die übernommenen Partitionen in Besitz.
 
-| Knoten    | $A$   | $B$   | $C$   | $D$   |
-|-----------|-------|-------|-------|-------|
-| Partition | a a a | b b b | c c c | d d d |
-| Backup    | b c d | a c d | a b d | a b c |
+| Knoten    | $A$       | $B$       | $C$       | $D$       |
+|-----------|-----------|-----------|-----------|-----------|
+| Partition | a a a     | b b b     | c c c     | **d d d** |
+| Backup    | b c **d** | a c **d** | a b **d** | a b c     |
 
 Crash: Knoten $B$ fällt aus. Die Backups, die auf $B$ waren, werden anhand der
 Originale als Backups auf die anderen Knoten verteilt.
 
-| Knoten    | $A$     | $B$   | $C$     | $D$     |
-|-----------|---------|-------|---------|---------|
-| Partition | a a a   | b b b | c c c   | d d d   |
-| Backup    | b c d d |       | a a b d | a b c c |
+| Knoten    | $A$         | $B$   | $C$         | $D$         |
+|-----------|-------------|-------|-------------|-------------|
+| Partition | a a a       | b b b | c c c       | d d d       |
+| Backup    | b c d **d** |       | a **a** b d | a b c **c** |
 
 Wiederherstellung: Die bereits zu Beginn erstellten Backups der Partitionen von
 $B$ (siehe Ausgangslage) werden zu Partitionen auf den einzelnen Knoten.
 
-| Knoten    | $A$     | $B$ | $C$     | $D$     |
-|-----------|---------|-----|---------|---------|
-| Partition | a a a b |     | b c c c | b d d d |
-| Backup    | c d d   |     | a a d   | a c c   |
+| Knoten    | $A$         | $B$ | $C$         | $D$         |
+|-----------|-------------|-----|-------------|-------------|
+| Partition | a a a **b** |     | **b** c c c | **b** d d d |
+| Backup    | c d d       |     | a a d       | a c c       |
 
 Besitzwechsel: Die einzelnen Knoten werden zu Besitzern der zuvor aus ihren
 Backups wiederhergestellten Partitionen, die vormals zu $B$ gehörten.
 
-| Knoten    | $A$     | $B$ | $C$     | $D$     |
-|-----------|---------|-----|---------|---------|
-| Partition | a a a a |     | c c c c | d d d d |
-| Backup    | c d d   |     | a a d   | a c c   |
+| Knoten    | $A$         | $B$ | $C$         | $D$         |
+|-----------|-------------|-----|-------------|-------------|
+| Partition | a a a **a** |     | **c** c c c | **d** d d d |
+| Backup    | c d d       |     | a a d       | a c c       |
 
 Backup: Die neuen Partitionen werden auf die anderen Knoten repliziert.
 
-| Knoten    | $A$     | $B$ | $C$     | $D$     |
-|-----------|---------|-----|---------|---------|
-| Partition | a a a a |     | c c c c | d d d d |
-| Backup    | c c d d |     | a a d d | a a c c |
+| Knoten    | $A$         | $B$ | $C$         | $D$         |
+|-----------|-------------|-----|-------------|-------------|
+| Partition | a a a a     |     | c c c c     | d d d d     |
+| Backup    | c c d **d** |     | a **a** d d | a **a** c c |
 
 Wie zu Beginn gibt es wieder drei Knoten mit je vier Partitionen und vier Backups.
