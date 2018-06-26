@@ -450,15 +450,13 @@ public class SumClient {
         - A. Der Server bietet einen Dienst an, auf welchem sich Clients für
           Notifikationen registrieren können.
         - B. Der Client bietet einen Dienst an, welchen der Server für die
-          Notifikation aufrufen kann. Jeder Client registriert sein
-          Remote-Objekt unter einem eindeutigen Namen.
+          Notifikation aufrufen kann.
     2. Vorbereiten der Push-Kommunikation
         - A. Der Client findet den serverseitigen Service für die Registrierung.
-        - B. Der Client registriert sich beim Server, um Notifikationen zu
-          erhalten. Er übergibt dem Server den eindeutigen Namen, unter dem
-          sein Remote-Objekt auf der Registry zu finden ist.
-        - C. Der Server findet den clientseitigen Service für die Notifikation
-          anhand des zuvor übergebenen eindeutigen Namens.
+        - B. Der Client registriert sich beim Server mit einer Referenz auf
+          sein Remote-Interface als Parameter, um Notifikationen zu erhalten.
+        - C. Der Server speichert die Referenz auf das Remote-Interface des
+          Clients für die spätere Notifikation ab.
     3. Notifizierung des Clients
         - A. Auf dem Server tritt ein Ereignis ein, das für die Clients von
           Interesse ist.
