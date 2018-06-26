@@ -1198,7 +1198,7 @@ Deployment: Bereitstellung, Auslieferung von Software
     1. Verteilung von Software und Dokumentation per Datenträger oder Web
     2. Installation: Software auf Zielsystem kopieren
     3. Konfiguration: Einstellung der Software auf jeweilige Anforderungen
-    4. Organisation: Informatin, Schulung, Support, Planung, Produktion
+    4. Organisation: Information, Schulung, Support, Planung, Produktion
 - Wann findet Deployment statt?
     - Am Ende eines (erfolgreichen) Projekts
     - Bei iterativen Entwicklungsmodellen öfters (Continuous Delivery erfordert
