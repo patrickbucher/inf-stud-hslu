@@ -1108,7 +1108,7 @@ getestet werden kann!
       (Systemspezifikation) die Anforderungen und ist sie umsetzbar?
     - Sprint-Review (Scrum): Untersuchung des Produkt-Inkrements.
         - Was wurde im Sprint fertiggestellt?
-        - Muss das Produkt-Backlkog angepasst werden?
+        - Muss das Produkt-Backlog angepasst werden?
         - Bezeichnung in SoDa: Sprint-Abnahme (da kein Review im engeren Sinne)
 - Meilenstein: Geplanter Punkt im Projektverlauf, an dem vorher festgelegte
   Ergebnisse vorliegen, die es erlauben den Projektfortschritt zu messen.
