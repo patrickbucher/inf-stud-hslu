@@ -44,14 +44,14 @@ Dokumente zu meinem Informatik-Studium an der Hochschule Luzern ‒ Informatik (
     - Präsentation zum Thema GUI-Programmierung in Java
 - `pmb`: Project Management Basics
     - Testatübungen
-- `pta`: Projekt- und Teamarbeit (a.k.a _Pointless Team Assignment)
+- `pta`: Projekt- und Teamarbeit (a.k.a _Pointless Team Assignment)_
     - Präsentation
     - Interview mit Auswertung
 - `sell`: Self Directed English Language Learning
     - Präsentation mit Glossar
 - `vsk`: Verteilte Systeme und Komponenten
     - Interface-Vorschlag
-    - Zusammenfassung (in Arbeit)
+    - Zusammenfassung
 
 ## Weitere Repositories
 
