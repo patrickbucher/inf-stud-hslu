@@ -1,0 +1,51 @@
+\documentclass[a4paper,12pt,landscape]{scrartcl}
+
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+\usepackage{tabularx}
+%\usepackage[top=1.5cm,right=1.5cm,bottom=2.5cm,left=1.5cm]{geometry}
+\usepackage{amssymb}
+\usepackage{xcolor}
+
+\newcommand{\rc}{\textcolor{red}{\large{\checkmark}}}
+\newcommand{\gc}{\textcolor{green}{\large{\checkmark}}}
+
+\setmainfont{EB Garamond}
+\setsansfont{Open Sans}
+\setmonofont{DejaVu Sans Mono}
+
+\setcounter{secnumdepth}{0}
+
+\begin{document}
+
+\section{Morphologischer Kasten}
+
+\def\arraystretch{1.8}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+\large{\textsc{Komponente}} & \large{\textsc{Lösungsvarianten}} \\
+\hline
+Startsignal & Starttaste \hfill \gc Smartphone-App \hfill \rc Sprachsignal \hfill SSH-Befehl \hfill Webseite \\
+Fortbewegung am Seil & \gc Reifen \hfill Raupe \hfill \rc Affenantrieb \hfill Luftdruck \hfill Propellerantrieb \\
+Motor zur Fortbewegung & \rc \gc Schrittmotor \hfill Brushless-Motor \hfill Brushed-Motor \hfill Servomotor \\
+Lasterkennung & \rc \gc Bilderkennung \hfill Drucksensor \hfill Ultraschallsensor \hfill Infrarotsensor \\
+Lastaufnahme & Magnet \hfill mech. Greifer \hfill Vakuumglocke \hfill \rc \gc Softrobotics-Greifarm \hfill Lasso \\
+Lastmotor & \rc \gc Schrittmotor \hfill Brushless-Motor \hfill Brushed-Motor \hfill Servomotor \\
+Last heben/senken & \gc Seilzug \hfill Zahnstange \hfill Gewindestange \hfill \rc Telekopmast \hfill Nürnberger Schere \\
+Zielfelderkennung & \gc Bilderkennung \hfill \rc Wärmebildkamera \hfill Infrarotsensor \hfill Reflektion messen \\
+Stromversorgung & 9V-Batterie \hfill \gc Lithium-Polymer-Akku \hfill Bleiakku \hfill \rc Lithium-Ionen-Akku \\
+Zielmasterkennung & \rc Bilderkennung \hfill \gc Drucksensor \hfill Ultraschallsensor \hfill Infrarotsensor \\
+Lastkoordinaten-Erfassung & Infrarotsensor \hfill \gc Ultraschallsensor \hfill Schrittmotor \hfill \rc Bilderkennung \\
+Lastkoordinaten-Übertragung & Bluetooth \hfill \gc WiFi \hfill Infrarot \hfill \rc Akustisch \\
+Visualisierung der Koordinaten & Display auf Gerät \hfill \gc Smartphone-App \hfill \rc Desktop-Anwendung \hfill Webseite \\
+\hline
+\end{tabularx}
+
+\begin{description}
+    \item [\rc] Hightech-Variante
+    \item [\gc] Optimierte Variante
+\end{description}
+
+\end{document}

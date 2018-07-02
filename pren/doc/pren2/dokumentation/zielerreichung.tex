@@ -1,0 +1,88 @@
+\section{Zielerreichung}
+\label{sec:zielerreichung}
+
+Bei der Arbeit an \textit{Silisloth} mussten -- wie die vorliegende Dokumentation zeigt -- viele kleine Details beachtet werden. Es bestand die Gefahr sich in diesen Details und den Blick fürs Ganze zu verlieren. Um dies zu verhindern wurden die einzelnen Komponenten möglichst bald am Prototypen montiert, sodass Tests früh an der «Produktivumgebung» stattfinden mussten, bzw. das Aufbauen eines isolierten Testsettings aufwändiger als ein Test am Prototypen gewesen wäre. Dies förderte zudem die Zusammenarbeit innerhalb der Gruppe, da man sich für Tests immer absprechen musste.
+
+\subsection{Testphase}
+
+Im letzten Drittel des Semesters wurden Tests «am Seil» durchgeführt, wobei das Absolvieren der gestellten Wettbewerbsaufgabe geübt wurde. Diese Tests wurden nicht im Einzelnen protokolliert. Stattdessen ist hier eine Liste mit Erkenntnissen und Verbesserungen aufgeführt, die einen Überblick über den Test- und Lernprozess geben soll:
+
+\begin{description}
+    \item[Antriebsmotor] Es stellte sich bald heraus, dass \textit{Silisloth} im Vergleich zu den Prototypen anderer Gruppen sehr langsam fährt. Der zu Beginn verbaute Getriebemotor war eine sehr konservative Wahl: Mit der verbauten Untersetzung hätte er einen weit schwereren Prototypen antreiben können, jedoch nur sehr langsam. Deshalb wurde ein stärkerer Motor verbaut.
+    \item[Zielfelderkennung] Die Zielfelderkennung schien bei den ersten Tests bereits perfekt zu funktionieren. Bei geänderten (d.h. dunkleren) Lichtverhältnissen und mit auf dem Zielfeld entstandenen Spuren traten aber plötzlich Probleme auf, die mit kleineren Korrekturen nur scheinbar gelöst werden konnten, indem der Schwarz-Weiss-Schwellwert auf die jeweiligen Lichtverhältnisse optimiert wurde. Da Lichtverhältnisse plötzlich ändern können, wurde in der zweitletzten Woche eine zuverlässigere Lösung mit adaptivem Thresholding erarbeitet, was bei allen Lichtverhältnissen zuverlässig funktioniert.
+    \item[Silikongreifer] Der Silikongreifer erforderte einiges an Abstimmungsarbeit. Es wurden verschiedene Versionen mit jeweils kleinen Detailverbesserungen gefertigt, welche sich beim Aufpumpen mehr oder weniger gleichmässig ausdehnten. Beim Greifen der Last mussten die Höhe der Greifeinheit und die Pumpzeit genau eingestellt werden. Auch die Verbindungen zwischen den Luftschläuchen mussten mehrmals überprüft und abgedichtet werden.
+    \item[Netzwerk] Zu Beginn der Tests wurden Laptop, Smartphone und Raspi mit dem HSLU-WiFi verbunden. Das Auffinden des Raspi im Netz mittels ARP-Scan dauerte dabei sehr lange. Gegen Ende des Semesters wurde eine eigene Netzwerkumgebung mit dedizierten Geräten (WiFi-Access-Point, Laptop ohne GUI, unpersonalisiertes Smartphone) aufgebaut. Damit konnte sehr schnell getestet werden. Der Austausch mit der Arbeitsumgebung wurde dadurch hingegen etwas erschwert (Übertragen aufgenommener Bilder zur Auswertung, Austausch des Python-Quellcodes). Aus diesem Grund kam die «produktive» Netzwerkumgebung erst in den letzten beiden Wochen zum Einsatz.
+    \item[Vorbereitung] An den offiziellen PREN-Terminen (Donnerstag- und Freitagvormittag) musste man oft länger beim Testgelände warten, bis ein Seil frei war. Eine gute Vorbereitung sparte wertvolle Testzeit -- und reduzierte die Wartezeit für andere Gruppen. Dazu gehört, dass die Akkus geladen, die Verbindungen zwischen den involvierten Geräten erstellt, die Steuerprogramme auf Raspi und Arduino aktualisiert und genügend helfende Hände vorhanden sind. Dies funktionierte schon bald so gut, dass bereits nach fünf Minuten Testzeit mehrere Durchläufe absolviert werden konnten.
+    \item[Notausschalter] Wurde in einem Testlauf das Zielfeld nicht richtig erkannt, fuhr \textit{Silisloth} ungebremst in den Endpfosten, was zu Beschädigungen an einzelnen Komponenten und an der ganzen Konstruktion hätte führen können. Zu Beginn der Tests wurde in einem solchen Notfall der Akku vom Laststromkreis getrennt, was einige Sekunden dauerte und erheblichen Kraftaufwand benötigte. Darum wurden später zwei Schalter -- je einen für Last- und Steuerstromkreis -- eingebaut, welche bei Bedarf umgelegt werden konnten. So mussten auch vor und nach den Tests keine Kabel mehr ein- bzw. ausgesteckt werden.
+\end{description}
+
+\subsection{Beurteilung gemäss Anforderungen}
+
+Die Anforderungsliste (siehe Ordner \texttt{Anhang}) wurde zu Beginn des Projekts festgelegt. Der im Rahmen von PREN 2 erstellte Prototyp soll kritisch darauf geprüft werden, ob er diesen Anforderungen gerecht wird. Dabei werden die Anforderungen in den ersten drei Spalten aufgeführt; in der vierten Spalte wird die Erfüllung der jeweiligen Anforderung gemäss den Tests eingeschätzt. Auf Wunsch- und Unteranforderungen wird dabei nicht eingegangen.
+
+{\footnotesize
+\begin{longtable}{|r|p{2cm}|p{5cm}|p{5.5cm}|}
+\hline
+\textsc{Nr.} & \textsc{Bezeichnung} & \textsc{Details} & \textsc{Einschätzung gemäss Konzept} \\
+\hline
+    \textsc{1} & \multicolumn{3}{l|}{\textsc{Rahmenbedingungen}} \\
+    \hline
+    1.1 & Aufbau  & \textit{Silisloth} lässt sich in max. zwei Minuten aufbauen. & Zu zweit in ca. 20 Sekunden möglich \\
+    1.2 & Autonomie & \textit{Silisloth} und das I/O-Gerät arbeiten nach dem Startsignal autonom. & Nach Startsignal (per Smartphone-App) kein weiteres Eingreifen nötig \\
+    1.3 & Temperaturbe\-reich & Die Geräte sind in einem Temperaturfenster von $0\degree C$ bis $70\degree C$ einsatzfähig. & Keine Temperaturprobleme festgestellt, Schrittmotor und Raspi-CPU mit Kühlkörper ausgestattet \\
+1.4 & Lichtverhältnisse & \textit{Silisloth} funktioniert bei $1’000-100’000$ lux. & Probleme bei unterschiedlichen Lichtverhältnissen behoben \\
+    1.5 & Zeitrahmen & \textit{Silisloth} erledigt ihre Aufgaben innerhalb von vier Minuten. & Gemessene Zeitdauer: 1 Minute, 7 Sekunden \\
+    \hline
+    \textsc{2} & \multicolumn{3}{l|}{\textsc{Dimensionen}} \\
+    \hline
+    2.1 & Länge & max. $480mm$ & $431mm$ (CAD-Modell) \\
+    2.2 & Breite & max. $480mm$ & $204mm$ (CAD-Modell) \\
+    2.3 & Höhe & max. $580mm$ & $379mm$ (CAD-Modell) \\
+    2.4 & Gewicht & max. $7’000g$ Leergewicht & $4'000g$ (CAD-Modell, Herstellerangaben) \\
+    \hline
+    \textsc{3} & \multicolumn{3}{l|}{\textsc{Antrieb}} \\
+    \hline
+    3.1 & Höhenüberwin\-dung & \textit{Silisloth} ist in der Lage eine Steigung von max. $40\degree$ zu überwinden. & Höhenüberwindung der Testanlage problemlos ($8.1\degree$) \\
+    3.2 & Einsatzbereich & \textit{Silisloth} kann auf einem Seil mit Durchmesser $2-4mm$ montiert werden. & Funktioniert mit Seil der Testanlage \\
+3.3 & Ziel & \textit{Silisloth} stoppt nach Berührung des Endpfostens. & Drucktaster meldet Berührung \\
+    3.4 & Geschwindigkeit  & \textit{Silisloth} bewegt sich durchschnittlich mit mindestens $15\frac{mm}{s}$. & $20\frac{cm}{s}$ möglich \\
+    3.5 & Fahrtrichtung & \textit{Silisloth} ist in der Lage sich vorwärts und rückwärts am Seil zu bewegen. & Vorwärts- und Rückwärtsfahren möglich \\
+    \hline
+    \textsc{4} & \multicolumn{3}{l|}{\textsc{Lastbeförderung}} \\
+    \hline
+    4.1 & Greifen & \textit{Silisloth} kann eine quaderförmige Last mit den Kantenlängen von mindestens $45mm$ und höchstens $55mm$ und einem Gewicht von bis zu $200g$ greifen. & Tests mit $50mm$ Kantenlänge und ca. $200g$ Last erfolgreich \\
+    4.2 & Heben/Senken  & \textit{Silisloth} kann eine Last von bis zu $200g$ heben und senken. & Bei Tests unproblematisch \\
+    4.3 & Abladen & \textit{Silisloth} kann die Last auf dem Zielfeld absetzen. & Luftventile arbeiten schnell und zuverlässig, Greifer löst sich \\
+    \hline
+    \textsc{5} & \multicolumn{3}{l|}{\textsc{Sensorik}} \\
+    \hline
+    5.1 & x-Koordinate & Die x-Koordinate muss mit einer Toleranz von $\pm20mm$ bestimmt werden können. & Messgenauigkeit der Ultraschallsensoren: $\pm20mm (>100cm), \pm2.5\%(<100cm)$ \\
+    5.2 & z-Koordinate  & Die z-Koordinate muss mit einer Toleranz von $\pm20mm$ bestimmt werden können. & Messgenauigkeit der Ultraschallsensoren: $\pm20mm (>100cm), \pm2.5\%(<100cm)$ \\
+5.3 & Zielerkennung  & Das spezifizierte Zielfeld muss mit einer Toleranz von $\pm20mm$ erkannt werden können. & optische Erkennung in diesem Rahmen \\
+5.4 & Lasterkennung  & Die Last muss mit einer Toleranz von $\pm$15mm erkannt werden können. & Funktioniert nach Feinabstimmung \\
+    \hline
+    \textsc{6} & \multicolumn{3}{l|}{\textsc{Kommunikation}} \\
+    \hline
+6.1 & Startsignal & \textit{Silisloth} empfängt das Startsignal. & Funktioniert per WiFi \\
+6.2 & Koordinaten & \textit{Silisloth} sendet die Koordinaten an das Ausgabegerät. &  Funktioniert per WiFi \\
+    \hline
+    \textsc{7} & \multicolumn{3}{l|}{\textsc{I/O-Gerät}} \\
+    \hline
+7.1 & Startsignal & Das Gerät sendet beim Start das Signal an \textit{Silisloth}. & Funktioniert per Smartphone-App \\
+7.2 & Koordinaten & Das Gerät gibt die x- und z-Koordinaten der Last an. &  Die Koordinaten werden in Abständen von $500ms$ angezeigt \\
+    \hline
+    \textsc{8} & \multicolumn{3}{l|}{\textsc{Ausnahmebehandlung}} \\
+    \hline
+    8.1 & Lasterkennung & Falls \textit{Silisloth} den Endpfosten nicht erkennt, soll es durch einen Nothalt beim Berühren des Mastes anhalten. & Drucktaster beendet Ablauf zuverlässig \\
+8.2 & Lasterkennung & Falls \textit{Silisloth} die Last nicht erkennt, fährt es automatisch zum Ziel. & Last wird nicht erkannt sondern abgeschätzt, manuelles Not-Aus nötig \\
+8.3 & Zielerkennung & \textit{Silisloth} lässt die Last beim Endpfosten fallen, falls es das Zielfeld nicht erkennt. & Drucktaster beendet Ablauf endgültig \\
+    8.4 & Schwingen & \textit{Silisloth} hält an, falls die Schwingung in y-Richtung $20\degree$ überschreitet & Nicht umgesetzt, da Schwingungen in y-Richtung unproblematisch \\
+8.5 & Lastverlust & \textit{Silisloth} erkennt, wenn es seine Last verliert. & Kann nicht erkannt werden \\
+\hline
+\caption{Einschätzung der Anforderungserfüllung aufgrund Prototyps \label{tbl:review-anforderungen}}
+\end{longtable}
+}
+
+Nach Betrachtung von \tblrefplain{tbl:review-anforderungen} kann unterm Strich festgestellt werden, dass sich der Prototyp weitgehend im Rahmen der Anforderungen bewegt. Kleinere Abweichungen, wie etwa die Messungenauigkeit der Ultraschallsensoren bei grosse Distanzen, verursachen keine grösseren Probleme. \textit{Silisloth} kann nicht erkennen, ob die Last nicht aufgenommen oder verloren wurde. Wie auf ein solches Ereignis reagiert werden müsste, wurde nicht konzipiert.
+
+Der Wettbewerb wird zeigen, wie gut die erarbeitete Lösung tatsächlich ist.

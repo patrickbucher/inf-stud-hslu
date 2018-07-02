@@ -1,0 +1,61 @@
+\section{Rückblick}
+\label{sec:schlusswort}
+
+Der Wiedereinstieg nach den kurzen Semesterferien verlief zu Beginn etwas schleppend. Im Bereich Projektmanagement wurde zunächst ein Versuch unternommen mit Jira zu arbeiten, welches den Informatikern aus ihrer Berufspraxis bereits bekannt war. Es stellte sich bald heraus, dass Jira zwar für die Abhandlung von Scrum-Sprints sehr geeignet ist, aber nicht die erwünschten Funktionen für das Projektmanagement bietet. (Ausserdem sind Studentenlizenzen nur für die selbst gehostete Variante von Jira gültig, und die Jira-Lizenzen hätten das Budget bei weitem gesprengt.) So wurde Jira fallengelassen. Das Projekt wurde seither über einfache Aufgabenlisten und mit einem zentralen Projektplan abgewickelt.
+
+Zu Beginn wurde das Projekt in drei Phasen aufgeteilt, wobei zum Ende jeder Phase verschiedene Arten von Tests erfolgreich absolviert werden sollten:
+
+\begin{description}
+    \item[1. Phase: Komponenten] Einzelne Komponenten wie Ultraschallensoren, Motoren, Silikongreifer, Luftpumpen etc. wurden isoliert getestet und in ihrer Handhabung verstanden.
+    \item[2. Phase: Komponentengruppen] Die erfolgreich getesteten Komponenten wurden zu verschiedenen Komponentengruppen, wie Greifmechanismus, Bildverarbeitung, Distanzmessung etc., kombiniert und zusammen getestet. Hierbei konnte eine Komponente in mehreren Komponentengruppen vorkommen.
+    \item[3. Phase: Autonome Laufkatze] Sobald alle Komponentengruppen funktionierten, wurde \textit{Silisloth} komplett montiert und getestet, um so die Wettbewerbssituation zu simulieren.
+\end{description}
+
+Zwar gab es mit einzelnen Komponenten im späteren Projektverlauf immer wieder vereinzelte Probleme (z.B. mit ungenauen Ultraschallsensoren, defekten Akkus und gerissenen Silikongreifern), ansonsten konnte dieser Plan aber gut eingehalten werden.
+
+Bei der Maschinentechnik gab es gleich von Beginn an grosse Fortschritte zu verzeichnen. Die CAD-Pläne wurden gegenüber PREN 1 noch etwas verbessert und ergänzt. Die mechanischen Teile waren schnell gefertigt und schon nach wenigen Wochen montiert. In der Semestermitte war \textit{Silisloth} bereits komplett montiert und -- was die Hardware betrifft -- voll einsatzfähig.
+
+Im Bereich Elektrotechnik wurden zu Beginn Versuche mit dem Freedom Board unternommen. Da hier Fortschritte ausblieben, wurde die Entscheidung gefällt auf Arduino umzusteigen. Es stellten sich nun bald erste Erfolge ein, sodass die zu Beginn verlorene Zeit bald aufgeholt werden konnte. Die Schnittstelle zwischen Raspi und Arduino wurde mit der Informatik zusammen definiert und später vereinfacht.
+
+In der Informatik ging es in den ersten Wochen darum ein besseres Verständnis für die Programmiersprache Python 3, die Raspberry-Plattform (v.a. GPIO-Programmierung) und die Bildverarbeitungsbibliothek OpenCV zu erlangen. Mit der bald funktionierenden Zielfelderkennung konnte eines der Hauptprobleme früh aus dem Weg geräumt werden. Weiter wurde auf Basis von alter Hardware eine komplette Testumgebung bestehend aus Smartphone, Laptop und Wireless-Access-Point eingerichtet, um so an der Wettbewerbssituation nicht auf das HSLU-Netzwerk angewiesen zu sein. In der zweiten Semesterhälfte ging es darum die einzelnen Softwarekomponenten zu kombinieren, wobei ein Grossteil von Programmlogik und Parametern während der Tests verbessert wurde.
+
+\subsection{Lessons Learned}
+
+\begin{description}
+    \item[Arduino/Freedom Board] Sind auch nach mehreren Wochen kaum Fortschritte zu verzeichnen, befindet man sich wohl auf dem falschen Pfad. Hier hilft es mehr umzudenken als weiter dem Holzweg entlang zu schreiten. Der Wechsel vom Freedom Board auf Arduino führte zu schnellen Fortschritten im Bereich Elektrotechnik.
+    \item[Bildverarbeitung] Die Bildverarbeitung war die grösste Hürde im Bereich Informatik. Nach ersten grundlegenden Funktionstests in PREN 1 ist diese Komponente aber recht lange liegen geblieben. Doch schon nach kurzer (wenn auch intensiver) Beschäftigung mit der Bildverarbeitung im ersten Drittel von PREN 2 konnte eine solide Lösung ausgearbeitet werden. Desto länger man eine schwierige Aufgabe herausschiebt, desto schwieriger und bedrohlicher wirkt sie. Darum ist es wichtig, heikle Aufgaben sofort anzugehen, auch wenn ein schneller Erfolg nicht in Aussicht steht. Durch kleine, inkrementelle Verbesserungen verliert die ungelöste Aufgabe ihr Bedrohliches.
+    \item[Multithreading] Python unterstützt die wirklich parallele Ausführung von Programmlogik nur über separate Prozesse, nicht über Threads \cite[S. 122]{effective-python}. Es dauert aber länger einen Prozess aufzustarten als einen Thread. Ausserdem ist die Kommunikation zwischen verschiedenen Prozessen verglichen mit Threads nur mit grossen Einschränkungen möglich. Die Idee, die vier Prozessorkerne des Raspi mit paralleler Ausführung von Programmlogik auszunützen, musste bald verworfen werden. Die Kommunikation vom Raspi zur Smartphone-App bzw. zum Arduino war anfänglich auch mit Threads gelöst. Dies führte zunächst bei den Messungen mit den Ultraschallsensoren zu Problemen, welche später mit fehleranfälligem Synchronisationscode teilweise gelöst wurden. Im weiteren Verlauf wurden Programmlogik und Kommunikationsprotokoll soweit vereinfacht, dass schliesslich ganz auf Threads verzichtet werden konnte. Ein Programmierproblem sollte zunächst so einfach wie möglich gelöst werden. Über die Ausführungsgeschwindigkeit sollte man sich erst dann Gedanken machen, wenn sie sich als ungenügend herausstellt.
+    \item[Race Conditions] Im Gegensatz zum Raspi wurden auf dem Arduino mehrere Threads ausgeführt. Einer kümmerte sich um die Kommunikation mit dem Raspi (Kommunikationsthread), der andere regelte die Motoren (Koordinationsthread). Beim Erteilen des \texttt{Sxxx;}-Signals zum Herablassen der Greifeinheit traten dabei Probleme auf, da der Arduino den Befehl ignorierte. Es stellte sich heraus, dass der Arduino das Zeichen \texttt{S} über den Kommunikationsthread erhielt, der Koordinationsthread aber vor dem Einlesen der Anzahl Millimeter nicht in den entsprechenden Status wechselte, da in der Zwischenzeit kein Kontextwechsel stattfand. Es lag also eine klassische \textit{Race Condition} vor! Das Problem wurde gelöst, indem der Kommunikationsthread nach Erhalt des Zeichens \texttt{S} selber den Statuswechsel vornahm, sodass die darauf übertragene Zahl korrekt eingelesen und ausgewertet werden konnte. Bei Threads darf man keine Annahmen über Kontextwechsel treffen!
+    \item[Entladen von LiPo-Akkus] Werden LiPo-Akkus (oder einzelne Batteriezellen) zu stark entladen, sodass die Spannung unter $3V$ fällt, gilt der Akku als beschädigt und kann nicht mehr aufgeladen werden. Dies ist während Tests einmal geschehen, wonach die Testserie unterbrochen, sowie ein neuer Akku angeschafft werden musste. Dies hat nicht nur Geld sondern auch wertvolle Testzeit gekostet. Deshalb wurde mit dem neuen LiPo-Akku sogleich ein \textit{LiPo-Checker} angeschafft: ein kleines elektronisches Bauteil, das an den LiPo-Akku angeschlossen wird und mit einer grünen und roten LED den Ladestatus jeder Zelle darstellt. Fällt die Spannung bis zu einem kritischen Bereich ab, erzeugt der LiPo-Checker einen ohrenbetäubenden Lärm, sodass man den Akku sofort aussteckt und nicht länger betreibt. Für den kleineren LiPo-Akku, der den Raspi speist, ist das Problem weniger gravierend, da ein Spannungsabfall vorher durch das Herunterfahren des Betriebssystems bemerkt wird. Der Akku sollte dennoch nach den Testläufen von der USV getrennt werden, da eine LED auch Strom verbraucht und so den Akku entlädt.
+\end{description}
+
+\subsection{Fazit}
+
+Die Arbeit an \textit{Silisloth} begann Mitte September 2017 und dauerte bis Juni 2018 an, wobei das Projekt im Januar und Februar 2018 ruhte. Gab es vor neun Monaten nur einen Projektauftrag und eine (anfangs unvollständige) Liste von Gruppenmitgliedern, gibt es jetzt eine voll funktionsfähige autonome Laufkatze namens \textit{Silisloth} und ein Team, das gut zusammengewachsen ist und alle Herausforderungen erfolgreich meistern konnte.
+Um ein abschliessendes Fazit zu ziehen lohnt sich der Vergleich mit den Zielen, die sich das Team selber im letzten September gegeben hat \cite[S. 49]{pren1}.
+
+\subsubsection{Gruppenziele}
+
+\begin{description}
+\item[Ziel 1] \textit{Wir wollen gut zusammen arbeiten -- auch über die Fachbereiche hinweg.}
+
+Die Zusammenarbeit über das ganze Team hinweg hat während des ganzen Projekts gut funktioniert. Es gab viele Diskussionen, aber keinen Streit. Probleme und Meinungsverschiedenheiten konnten unkompliziert gelöst werden.
+
+\item[Ziel 2] \textit{Wir wollen Spass an der Arbeit haben.}
+
+Das Projekt war sehr motivierend und hat den Gruppenmitgliedern nicht nur viel Arbeit beschert, sondern auch Freude bereitet. Für Tests wurde auch Freizeit geopfert.
+
+\item[Ziel 3] \textit{Wir wollen etwas lernen -- in unserem Fachbereich und fachbereichübergreifend.}
+
+Die Gruppe war in den drei Fachbereichen Maschinentechnik, Elektrotechnik und Informatik gut besetzt, sodass niemand im Fachbereich der anderen eingreifen musste. Wo gegenseitige Hilfe über die Fachgrenzen hinweg möglich war, wurde diese geleistet. Es ist nicht so wichtig, in den für einen fremden Fachbereichen etwas zu leisten, sondern die Perspektive der anderen Fachbereiche einzunehmen, um eine gute Zusammenarbeit zu ermöglichen. Spezialisten dürfen Spezialisten sein, solange sie zu einem Perspektivwechsel fähig sind.
+
+\item[Ziel 4] \textit{Wir wollen, dass jedes Gruppenmitglied seinen Beitrag leistet.}
+
+Bei den sehr vielfältigen Tätigkeiten -- Konzeption, Planung, Recherche, Berechnung, Fertigung, Montage, Messung, Beschaffung, Programmierung, Testen, Projektplanung, Dokumentation, Netzwerkverwaltung, Konfiguration usw. usf. -- konnte sich jedes Teammitglied einbringen und einen Beitrag leisten.
+
+\item[Ziel 5] \textit{Wir wollen eine sichere, zuverlässige und für alle verständliche Lösung erarbeiten, nicht den Wettbewerb um jeden Preis gewinnen.}
+
+Zwar versteht nicht jedes Gruppenmitglied die Details der gesamten Lösung. Dennoch kann jeder Auskunft darüber geben, welches Problem mit welchen Komponenten gelöst wurde, wie diese grob funktionieren, und die Entscheidungen dahinter nachvollziehen.
+
+Die gefundene Lösung arbeitet zwar langsamer als andere Prototypen, dafür sehr zuverlässig und genau. Was beim Wettbewerb drin liegt, wird sich zeigen.
+\end{description}

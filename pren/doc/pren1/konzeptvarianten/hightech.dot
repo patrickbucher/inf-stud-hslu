@@ -1,0 +1,88 @@
+digraph hightech{
+    rankdir="TB";
+    splines="ortho";
+    node [fontname="Open Sans", fontsize=16, shape="component", margin=0.2];
+    edge [fontname="Open Sans", fontsize=16, arrowhead="none"];
+
+    "Sprachsignal" [shape="none"];
+    "Spracherkennung";
+    "Zahnrad";
+    "Zahnstange";
+    "Geschwindigkeitsregler";
+    "Druckluft";
+    "Spannungswandler";
+    "Schalter";
+    "Akustische Koordinatenübertragung";
+
+    subgraph cluster_rechenzentrum {
+        graph [style="invis"];
+        node [shape="box3d"];
+        "Entwicklerboard";
+    }
+
+    subgraph cluster_sensorik {
+        graph [style="dotted"];
+        node [shape="rpromoter"];
+        "Bildkamera";
+        "Mikrofon";
+        "Wärmebildkamera";
+    }
+
+    subgraph cluster_kraftwerk {
+        graph [style="invis"];
+        node [shape="cylinder"];
+        "Lithium-Ionen-Akku";
+    }
+
+    subgraph cluster_maschinenraum {
+        graph [style="dotted"];
+        node [shape="cds"];
+        "Affenantrieb";
+        "Schrittmotor(en)";
+        "Softrobotics-Greifer";
+        "Seiltrommel";
+    }
+
+    subgraph cluster_desktop {
+        graph [style="invis"];
+        node [shape="tab"];
+        "Desktopanwendung"
+    }
+
+    // 1.
+    "Sprachsignal" -> "Mikrofon";
+    "Spracherkennung" -> "Entwicklerboard";
+
+    // 2.
+    "Affenantrieb" -> "Zahnrad" -> "Zahnstange" -> "Schrittmotor(en)";
+
+    // 3.
+    "Schrittmotor(en)" -> "Geschwindigkeitsregler" -> "Entwicklerboard";
+
+    // 4.
+    "Bildkamera" -> "Entwicklerboard";
+
+    // 5.
+    "Softrobotics-Greifer" -> "Druckluft" -> "Entwicklerboard";
+
+    // 6.
+    "Softrobotics-Greifer" -> "Seiltrommel" -> "Schrittmotor(en)";
+
+    // 7. (same as 3.)
+    // "Schrittmotor(en)" -> "Geschwindigkeitsregler" -> "Entwicklerboard";
+
+    // 8.
+    "Wärmebildkamera" -> "Entwicklerboard";
+
+    // 9.
+    "Lithium-Ionen-Akku" -> "Spannungswandler";
+    "Spannungswandler" -> "Entwicklerboard";
+    "Spannungswandler" -> "Schalter";
+    "Schalter" -> "Schrittmotor(en)";
+
+    // 10.
+    "Entwicklerboard" -> "Lautsprecher" -> "Akustische Koordinatenübertragung";
+
+    // 11.
+    "Akustische Koordinatenübertragung" -> "Mikrofon" -> "Spracherkennung" -> "Desktopanwendung";
+}

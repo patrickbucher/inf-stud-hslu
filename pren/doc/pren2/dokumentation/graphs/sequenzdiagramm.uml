@@ -1,0 +1,50 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontName Open Sans 
+Benutzer ->> SmartphoneApp: Start
+activate SmartphoneApp
+SmartphoneApp ->> RaspberryPi: Start
+activate RaspberryPi
+RaspberryPi ->> Arduino: losfahren
+activate Arduino
+deactivate Arduino
+RaspberryPi -> RaspberryPi: Holzwürfel erreicht
+RaspberryPi -> Arduino: Last aufnehmen(z-Koordinate)
+deactivate RaspberryPi
+activate Arduino
+Arduino --> RaspberryPi: Last aufgenommen
+deactivate Arduino
+activate RaspberryPi
+loop bis Last abgesetzt
+    RaspberryPi -->> SmartphoneApp: x- und z-Koordinate
+end
+RaspberryPi ->> RaspberryPi: Zielfelderkennung starten
+RaspberryPi ->> Arduino: weiterfahren
+activate Arduino
+deactivate Arduino
+loop bis Distanz zu Zielfeld erkannt
+    RaspberryPi ->> RaspberryPi: Bild auswerten
+end
+RaspberryPi ->> Arduino: verlangsamen
+activate Arduino
+deactivate Arduino
+loop bis Absetzpunkt erreicht
+    RaspberryPi ->> RaspberryPi: Bild auswerten
+end
+RaspberryPi ->> Arduino: Last absetzen(z-Koordinate)
+activate Arduino
+deactivate Arduino
+RaspberryPi ->> RaspberryPi: Endtaster aktivieren
+RaspberryPi ->> RaspberryPi: Kritische Distanz zu Mast erkannt
+RaspberryPi ->> Arduino: verlangsamen
+activate Arduino
+deactivate Arduino
+RaspberryPi ->> RaspberryPi: Endschalter betätigt
+RaspberryPi ->> Arduino: anhalten
+activate Arduino
+deactivate Arduino
+RaspberryPi -->> SmartphoneApp: beenden
+deactivate RaspberryPi
+SmartphoneApp -->> Benutzer: fertig
+deactivate SmartphoneApp
+@enduml

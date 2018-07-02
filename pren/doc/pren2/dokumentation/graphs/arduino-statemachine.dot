@@ -1,0 +1,23 @@
+digraph arduinoStatemachine {
+    graph [fontname="Open Sans"; dpi=150];
+    node [fontname="Open Sans"; fontsize="16pt"];
+    edge [fontname="Open Sans"; fontsize="12pt"];
+
+    "Begin" [shape="plain"];
+    "End" [shape="plain"];
+
+    "Begin" -> "Wait" [label=" initialize "];
+    "Wait" -> "Start" [label=" 'G' "; fontname="Fira Mono"];
+    "Start" -> "Stop" [label=" 'S' "; fontname="Fira Mono"];
+    "Stop" -> "StepDown" [label=" [height] "];
+    "StepDown" -> "Grab" [label=" [Phase I] "];
+    "StepDown" -> "Release" [label=" [Phase II] "];
+    "Grab" -> "StepUp";
+    "Release" -> "StepUp";
+    "StepUp" -> "Accelerate";
+    "Accelerate" -> "Drive";
+    "Drive" -> "Slow" [label=" 'D' "; fontname="Fira Mono"];
+    "Slow" -> "End" [label=" 'H' "; fontname="Fira Mono"];
+
+    "Slow" -> "Stop" [label=" 'S' "; fontname="Fira Mono"];
+}

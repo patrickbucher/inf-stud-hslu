@@ -1,0 +1,40 @@
+\documentclass[a4paper,11pt]{scrartcl}
+
+\usepackage[ngerman]{babel}
+\usepackage[hidelinks]{hyperref}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{fontspec}
+    \setmainfont{EB Garamond}
+    \setsansfont{Open Sans}
+    \setmonofont[SizeFeatures={Size=8}]{Fira Mono}
+\usepackage{multicol}
+\usepackage{pdflscape}
+
+\renewcommand{\baselinestretch}{1.2}
+\pagestyle{headings}
+
+\begin{document}
+
+\input{0-titelseite.tex}
+\newpage
+%\tableofcontents
+%\newpage
+
+\section{Vorgehen}
+
+Bei PREN 1 wurde die Problemstellung \textit{top-down} analysiert. Als Ergebnis entstand eine Dokumentation, in der die zur Umsetzung notwendigen Komponenten und Schnittstellen beschrieben sind.
+
+In PREN 2 wird der Prototyp \textit{Silisloth} nun \textit{bottom-up} umgesetzt, d.h. zuerst werden die einzelnen Komponenten beschafft oder hergestellt, in Betrieb genommen und getestet. Sind die einzelnen Komponenten bereit (Meilenstein 1), werden diese mit anderen Komponenten kombiniert, um so die Schnittstellen umzusetzen. Aus diesem Schritt entstehen Funktionsgruppen, die unabhängig von anderen Funktionsgruppen getestet werden können. Einzelne Komponenten können in verschiedenen Funktionsgruppen auftauchen. Sind die einzelnen Funktionsgruppen umgesetzt und erfolgreich getestet (Meilenstein 2), kann der Prototyp zusammengebaut werden. Dieser Schritt ist kritisch, denn sobald der Prototyp zusammengebaut ist, können einzelne Komponenten und Funktionsgruppen nicht mehr so einfach geändert oder (im Fall eines Defekts) ausgetauscht werden. Nachdem der Prototyp zusammengebaut und grundsätzlich funktionsfähig ist (Meilenstein 3), wird die Feinabstimmung vorgenommen. Hierbei geht es um das Zusammenspiel der Komponenten, es können aber auch noch Verbesserungen an einzelnen Komponenten nötig sein, gerade im Software-Bereich.
+
+\subsection{Meilensteine}
+
+\paragraph{Meilenstein 1} Alle Komponenten sind vorhanden, fertig implementiert und erfolgreich getestet.
+
+\paragraph{Meilenstein 2} Alle Komponenten wurden in ihren jeweiligen Funktionsgruppen eingebettet und mit den zugehörigen Komponenten kombiniert. Alle Schnittstellen sind implementiert, alle Funktionsgruppen sind erfolgreich getestet.
+
+\paragraph{Meilenstein 3} Der Prototyp ist fertig und funktionsbereit. Der Prototyp «kann» grundsätzlich alles, wenn auch dabei noch Probleme auftreten (Fortbewegung am Seil funktioniert, wenn auch noch nicht schnell genug oder zu ruckartig; Absetzen der Last funktioniert, wenn auch noch ungenau usw.)
+
+\paragraph{Iterative Verbesserung} Der Prototyp wird fortlaufend optimiert und verbessert. Es wird die Feinabstimmung vorgenommen (Verbesserung der Bildverarbeitung, der Motorensteuerung, des Timings; Erhöhung der Genauigkeit usw.) Die Wettbewerbssituation wird geprobt (Aufbau, Inbetriebnahme, Zeitmessung, Einschätzung Punktbewertung, Abbau), die Testläufe werden analysiert und kritisch reflektiert.
+
+\end{document}

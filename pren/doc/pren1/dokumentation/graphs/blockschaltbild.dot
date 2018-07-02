@@ -1,0 +1,62 @@
+digraph blockschaltbild {
+    rankdir="TB";
+    splines="ortho";
+    graph [dpi=300];
+    node [fontname="Open Sans", fontsize=16, margin=0.2, shape="rectangle"];
+    edge [fontname="Open Sans", fontsize=16, arrowhead="none"];
+
+    "Startsignal";
+    "Stromversorgung";
+    "Visualisierung der Koordinaten";
+
+    subgraph cluster_Last {
+        style="invis";
+        "Lastaufnahme";
+        "Lastmotor";
+        "Last heben/senken";
+        "Lasterkennung";
+        "Lastkoordinaten-Erfassung";
+        "Lastkoordinaten-Übertragung";
+    }
+
+    subgraph cluster_Ziel {
+        style="invis";
+        "Zielfelderkennung";
+        "Zielmasterkennung";
+    }
+
+    subgraph cluster_Fortbewegung {
+        style="invis";
+        "Fortbewegung am Seil";
+        "Motor zur Fortbewegung";
+    }
+
+    "Startsignal" -> "Motor zur Fortbewegung";
+    "Startsignal" -> "Lasterkennung";
+
+    "Stromversorgung" -> "Lastaufnahme";
+    "Stromversorgung" -> "Lastmotor";
+    "Stromversorgung" -> "Motor zur Fortbewegung";
+
+    "Lastkoordinaten-Übertragung" -> "Visualisierung der Koordinaten";
+    "Lastkoordinaten-Übertragung" -> "Lastkoordinaten-Erfassung";
+
+    "Lastaufnahme" -> "Lastmotor";
+    "Lastaufnahme" -> "Last heben/senken";
+    "Lastaufnahme" -> "Motor zur Fortbewegung";
+    "Lastaufnahme" -> "Lasterkennung";
+    "Lastaufnahme" -> "Zielfelderkennung";
+
+    "Lastmotor" -> "Last heben/senken";
+
+    "Last heben/senken" -> "Lasterkennung";
+    "Last heben/senken" -> "Zielfelderkennung";
+    "Last heben/senken" -> "Lastkoordinaten-Erfassung";
+
+    "Fortbewegung am Seil" -> "Motor zur Fortbewegung";
+
+    "Motor zur Fortbewegung" -> "Lasterkennung";
+    "Motor zur Fortbewegung" -> "Zielfelderkennung";
+    "Motor zur Fortbewegung" -> "Zielmasterkennung";
+    "Motor zur Fortbewegung" -> "Lastkoordinaten-Erfassung";
+}

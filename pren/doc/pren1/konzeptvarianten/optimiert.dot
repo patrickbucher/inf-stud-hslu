@@ -1,0 +1,74 @@
+digraph hightech{
+    rankdir="TB";
+    splines="ortho";
+    node [fontname="Open Sans", fontsize=16, shape="component", margin=0.2];
+    edge [fontname="Open Sans", fontsize=16, arrowhead="none"];
+
+    // new
+    "Smartphone-App";
+    "WiFi";
+    "Reifen";
+    "Zahnriemen";
+
+    // old
+    "Geschwindigkeitsregler";
+    "Druckluft";
+    "Spannungswandler";
+    "Schalter";
+
+    subgraph cluster_rechenzentrum {
+        graph [style="invis"];
+        node [shape="box3d"];
+        "Entwicklerboard";
+    }
+
+    subgraph cluster_sensorik {
+        graph [style="dotted"];
+        node [shape="rpromoter"];
+        "Bildkamera";
+        "Ultraschallsensor";
+        "Drucktaster";
+    }
+
+    subgraph cluster_kraftwerk {
+        graph [style="invis"];
+        node [shape="cylinder"];
+        "Lithium-Polymer-Akku";
+    }
+
+    subgraph cluster_maschinenraum {
+        graph [style="dotted"];
+        node [shape="cds"];
+        "Schrittmotor(en)";
+        "Softrobotics-Greifer";
+        "Seiltrommel";
+    }
+
+    // 1.
+    "Smartphone-App" -> "WiFi" -> "Entwicklerboard";
+
+    // 2.
+    "Reifen" -> "Zahnriemen" -> "Schrittmotor(en)";
+
+    // 3.
+    "Schrittmotor(en)" -> "Geschwindigkeitsregler" -> "Entwicklerboard";
+
+    // 4.
+    "Bildkamera" -> "Entwicklerboard";
+
+    // 5.
+    "Softrobotics-Greifer" -> "Druckluft" -> "Entwicklerboard";
+
+    // 6.
+    "Softrobotics-Greifer" -> "Seiltrommel" -> "Schrittmotor(en)";
+
+    // 7. (same as 3.)
+    "Lithium-Polymer-Akku" -> "Spannungswandler";
+    "Spannungswandler" -> "Entwicklerboard";
+    "Spannungswandler" -> "Schalter";
+    "Schalter" -> "Schrittmotor(en)";
+
+    // 8.
+    "Ultraschallsensor" -> "Entwicklerboard";
+    "Drucktaster" -> "Entwicklerboard";
+}

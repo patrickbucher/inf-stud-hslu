@@ -1,0 +1,9 @@
+digraph rechennetzwerk {
+    graph [fontname="Open Sans"; dpi=150];
+    node [fontname="Open Sans"; shape="box3d"];
+    edge [fontname="Open Sans"; dir="both"];
+
+    "Laptop" -> "Raspberry Pi" [label=" ssh "];
+    "Raspberry Pi" -> "Arduino" [label=" seriell "];
+    "Smartphone App" -> "Raspberry Pi" [label=" TCP "];
+}

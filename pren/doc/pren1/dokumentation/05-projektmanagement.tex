@@ -1,0 +1,84 @@
+\section{Projektmanagement und Projektplanung}
+
+\subsection{Risikomanagement}
+\label{sec:risikomanagement}
+
+In der Risikomatrix (\tblref{tbl:risikomatrix}) sind die erkannten Risiken aufgelistet. Dabei werden die Risiken nach Eintrittswahrscheinlichkeit und möglichem Schadensausmass eingeteilt. Für Risiken, die sich im gelben Bereich befinden, werden mögliche Gegenmassnahmen erläutert um das Risiko zu minimieren.
+
+\begin{table}[H]
+\small
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\begin{tabularx}{\linewidth}{p{0.5cm} Y|Y|Y|Y|Y|}
+\cline{2-6}
+\multirow{5}{*}{\begin{turn}{90}\textsc{Eintrittswahrscheinlichkeit}\end{turn}} & Häufig & \cellcolor{yellow!25} & \cellcolor{yellow!25} & \cellcolor{red!25} & \cellcolor{red!25} \\
+\cline{2-6}
+& Wahrscheinlich & \cellcolor{green!25} & \cellcolor{yellow!25} & \cellcolor{yellow!25} & \cellcolor{red!25} \\
+\cline{2-6}
+& Gelegentlich & \cellcolor{green!25} & \cellcolor{yellow!25} \makecell{Seilschwingung} & \cellcolor{yellow!25} \makecell{Greiftechnik \\ Hindernisse} & \cellcolor{yellow!25} \\
+\cline{2-6}
+& Unwahrscheinlich & \cellcolor{green!25} & \cellcolor{green!25} & \cellcolor{green!25} \makecell{Gesamtgewicht \\ Geschwindigkeit}
+& \cellcolor{yellow!25} \makecell{Kosten \\ Freedom-Board} \\
+\cline{2-6}
+& Unvorstellbar & \cellcolor{green!25} & \cellcolor{green!25} & \cellcolor{green!25} & \cellcolor{green!25} Gegengewicht \\
+\cline{2-6}
+& & Unwesentlich & Geringfügig & Kritisch & Katastrophal \\
+\multicolumn{2}{Y}{} & \multicolumn{4}{c}{\textsc{Schadensausmass}}
+\end{tabularx}
+\caption{Die Risikomatrix\label{tbl:risikomatrix}}
+\end{table}
+
+\subsubsection{Erläuterungen und Gegenmassnahmen}
+
+\begin{description}
+    \item[Seilschwingung] Durch die Fortbewegung von \textit{Silisloth} und/oder das Heben der Last entsteht eine Schwingung am Seil. Die Last muss zudem noch hoch genug angehoben werden, damit sie trotz Schwingungen nicht die Hindernisse berührt. Sollten die Seilschwingungen zu stark sein, wird analysiert, wo diese Schwingungen auftreten. Sollten die Schwingungen beim Heben oder Senken der Last entstehen, müsste dieser Vorgang verlangsamt werden. Entstehen die Schwingungen während der Fahrt, müsste die Fortbewegungsgeschwindigkeit gesenkt werden, sofern \textit{Silisloth} seine Aufgabe noch innerhalb der maximal definierten Zeit von vier Minuten erfüllt. Wird die Zeit von vier Minuten überschritten, und die Seilschwingungen sind immer noch vorhanden, muss der Schwerpunkt gesenkt werden ohne dabei die Hindernisse zu berühren. Reicht das Senken der Last nicht zum Senken des Schwerpunkts, muss \textit{Silisloth} umkonstruiert werden um den Schwerpunkt tiefer platzieren zu können.
+\item[Hindernisse] Die Hindernisse verfälschen den Z-Wert (die Höhe über der Plattform) der Last. Sind es nur einzelne Hindernisse, können ungültige Z-Werte durch Ausschliessen ignoriert werden. Sollten die Hindernisse jedoch eine konstante Steigung haben und auf der ganzen Strecke vorhanden sein, wird es schwierig, diese mittels des Ultraschalldistanzsensors zu erkennen und zu ignorieren. Aufgrund der Möglichkeit eines Hindernisses mit konstanter Steigung wird der Punkt «Hindernisse» als kritisch eingestuft. Sollte ein solches Hindernis verwendet werden, würde als Gegenmassnahme der Z-Wert nicht mehr über den Ultraschalldistanzsensor gemessen, sondern anhand des gemessenen X-Wertes (die zurückgelegte horizontale Strecke) und der Steigung des Seils berechnet.
+\item[Gesamtgewicht] \textit{Silisloth} ist schwerer als das maximal definierte Gewicht, weshalb das Seil zu stark durchhängt und dadurch die Hindernisse berührt werden. Dieses Risiko wird als unwahrscheinlich eingestuft. Darum sind hier keine Gegenmassnahmen vorgesehen.
+\item[Kosten] Die Kosten für das Projekt sind höher als die maximal verfügbaren 500 Franken. Eine Kostenüberschreitung wäre katastrophal, da damit das Projekt nicht umgesetzt werden könnte. Als Gegenmassnahme müssten die Kosten wo immer möglich reduziert werden. Aufgrund der Kostenschätzung der genutzten Komponenten wird eine Kostenüberschreitung jedoch als unwahrscheinlich eingestuft (siehe \secref{sec:budget}). 
+\item[Gegengewicht] \textit{Silisloth} ist zu schwer für das Gegengewicht, wodurch es den Boden berührt. Aufgrund des hohen maximalen Gewichts wird dieses Risiko als unvorstellbar eingestuft. Darum sind hier keine Gegenmassnahmen vorgesehen.
+\item[Geschwindigkeit] \textit{Silisloth} fährt zu langsam und erreicht deshalb das Ziel nicht in der vorgegebenen Zeit von unter vier Minuten. Da vier Minuten mehr als genug für das Erledigen der Aufgabe erscheinen, wird das Risiko als unwahrscheinlich eingestuft. 
+\item[Greiftechnik] Die Last kann über die Greiftechnik mit dem Softrobotics-Greifer nicht angehoben werden oder geht während der Fahrt verloren. Sollte sich diese Greiftechnik nicht bewähren, müsste die Last mit einem Magneten angehoben werden. Die Greiftechnik mit einem Magneten hat sich in einem ersten Versuch bereits als verlässliche Alternative bewährt.
+\item[Freedom-Board] Das Freedom-Board wird für die Ansteuerung der Motoren verwendet. Sollte das Freedom-Board nicht zum Laufen gebracht werden, wäre das katastrophal, da dann \textit{Silisloth} notwendige Funktionen nicht ausführen könnte. Als Alternative könnte das Arduino-Board für die Motorenansteuerung verwendet werden. Dieses hat sich in verschiedenen Tests schon als leicht zugänglich erwiesen.
+\end{description}
+
+\subsection{Ressourcenbudget}
+\label{sec:budget}
+
+Gesamthaft stehen für PREN 1 und PREN 2 CHF $500$ zur Verfügung. Davon sind CHF $200$ für das erste Semester bzw. PREN 1 vorgesehen, um im Rahmen der Konzeptphase Lösungsansätze zu erproben. Mit diesem Budget sollen auch die erforderlichen Komponenten gekauft werden. Zusätzlich wurde damit auch der Zweikomponenten-Silikon beschafft, welcher für den Silikongreifer benötigt wird. Wie \tblrefplain{tbl:kostenbudget-pren1} zeigt, wurde das Budget grösstenteils aufgebraucht. Die Komponenten wurden nach vertiefter Recherche bewusst ausgesucht, sodass diese auch in PREN 2 weiterverwendet werden können.
+
+\begin{table}
+    \centering
+    \begin{tabularx}{0.8\textwidth}{l|X|r}
+    & Kostenbudget PREN 1 & CHF $200.00$ \\
+    \hline
+    \multirow{6}{*}{Informatik} & Raspberry Pi & CHF $-38.90$ \\
+    & Kamera & CHF $-29.90$ \\
+    & SD-Karte & CHF $-19.90$ \\
+    & Akku & CHF $-19.90$ \\
+    & USV & CHF $-29.90$ \\
+    & Netzteil & CHF $-10.00$ \\
+    \hline
+    \multirow{2}{*}{Elektrotechnik} & Freedom Board & CHF $-21.95$ \\
+    & Motorensteuerung & CHF $-6.95$ \\
+    \hline
+    \multirow{2}{*}{Maschinenbau} & Luftpumpe $2\times$ & CHF $-5.00$ \\
+    & Silikon (anteilsmässig) & CHF $-7.00$ \\
+    \hline
+    & Restbudget & CHF $12.60$ \\
+    \end{tabularx}
+    \caption{Das Kostenbudget für PREN 1\label{tbl:kostenbudget-pren1}}
+\end{table}
+
+Zusätzliche Mittel, wie zum Beispiel Maschinenlaufzeiten oder Arbeitsstunden, wurden (mit Ausnahme eines privaten 3D-Druckers) noch nicht in Anspruch genommen. Somit sind noch genügend Ressourcen für PREN 2 vorhanden, wie \tblrefplain{tbl:restbudget} zeigt.
+
+\begin{table}
+    \centering
+    \begin{tabularx}{0.85\textwidth}{X|r|r|r}
+    \textsc{Mittel} & \textsc{Zeitbudget} & \textsc{Bezug} & \textsc{Restbudget} \\ \hline
+    3D-Drucker (privat) & - & $8h$ & - \\ \hline
+    3D-Drucker (HSLU) & $25h$ & $0h$ & $25h$ \\ \hline
+    Lasergerät & $1h$ & $0h$ & $1h$ \\ \hline
+    Werkstattpersonal Elektrotechnik & $10h$ & $0h$ & $10h$ \\ \hline
+    Werkstattpersonal Maschinenbau & $10h$ & $0h$ & $10h$
+    \end{tabularx}
+    \caption{Das Restbudget für verschiedene Hilfsmittel (PREN 1 \& PREN 2)\label{tbl:restbudget}}
+\end{table}

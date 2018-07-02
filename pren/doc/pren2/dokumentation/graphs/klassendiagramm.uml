@@ -1,0 +1,99 @@
+@startuml
+
+skinparam monochrome true
+skinparam defaultFontName Open Sans
+
+package "silisloth" {
+    class Brain {
+        arduino:Arduino
+        eye:TargetDetection
+        server:TcpServer
+        sensor_x:UltrasonicSensor
+        sensor_z:UltrasonicSensor
+        end_switch:EndSwitch
+        ---
+        __init__()
+        start()
+        drive_to_freight(drive_by_time:bool)
+        pick_up_freight()
+        spot_target_field()
+        approach_target_field(critical_distance:int)
+        calc_end_distance(cam_to_target:int, us_to_pole:int):int
+        move_freight_over_target(end:int)
+        drop_freight()
+        drive_to_pole()
+        send_coordinates(x:int, z:int)
+        distances(x:bool, z:bool):int,int
+    }
+    class Arduino {
+        port:Serial
+        ---
+        __init__(device:str)
+        freight_ready():bool
+        write(cmd:str)
+        move_off()
+        pick_up(height:int)
+        decelerate()
+        drop_freight(height:int)
+        halt()
+    }
+    class EndSwitch {
+        gpio:RPi.GPIO
+        pressed:bool
+        ---
+        __init__(gpio)
+        is_pressed():bool
+        pushed_button(channel:int)
+    }
+    class ImageAnalyzer {
+        innermost_square_height_mm:int
+        ---
+        __init__(innermost_square_height_mm:int)
+        {static} determine_center(contours:numpy.array):int[2]
+        {static} to_grayscale(image:numpy.array, threshold:int):numpy.array
+        {static} is_square_shaped(countours:numpy.array):bool
+        {static} has_neighbours(hierarchy:numpy.array):bool
+        {static} find_smallest(cont_hier_list:numpy.array):numpy.array
+        {static} calc_middle(image:numpy.array):int
+        calculate_distance(image_bgr:numpy.array):int
+        estimate_distance_to_center(image:numpy.array, contours:numpy.array):int
+        has_square_area(image, contours):bool
+    }
+    class TargetDetection {
+        cam:PiCamera
+        analyzer:ImageAnalyzer
+        store_pics:bool
+        ---
+        __init__(store_pics:bool)
+        distance_to_target():int
+    }
+    class TcpServer {
+        ip:str
+        port:int
+        buf_size:int
+        ---
+        __init__()
+        send(message:str)
+        receive():str
+        close()
+    }
+    class UltrasonicSensor {
+        gpio:RPi.GPIO
+        pin_trigger:int
+        pin_echo:int
+        ---
+        __init__(pin_trigger, pin_echo, gpio)
+        {static} fake_distance(min, max):int
+        median_distance(measure_millis):int
+        n_median_distance(n:int):int
+        distance():int
+    }
+    Brain o-- "2" UltrasonicSensor
+    Brain o-- Arduino
+    Brain o-- EndSwitch
+    Brain o-- TargetDetection
+    Brain o-- TcpServer
+    TargetDetection o-- ImageAnalyzer
+}
+
+@enduml

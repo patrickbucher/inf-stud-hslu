@@ -1,0 +1,3 @@
+#!/bin/sh
+
+rev $1 | cut -d ' ' -f 1 | rev | awk '{sum += $1} END {print sum}'

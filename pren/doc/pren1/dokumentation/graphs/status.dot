@@ -1,0 +1,22 @@
+digraph state {
+    rankdir=TD;
+    graph [dpi=300];
+    node [fontname="Open Sans", fontsize=16];
+    edge [fontname="Open Sans", fontsize=16];
+
+    "Start" [shape="plain"]; 
+    "Ende" [shape="plain"]; 
+    "Start" -> "auf Startsignal wartend";
+    "auf Startsignal wartend" -> "zur Last fahrend" [label=" Startsignal erkannt"];
+    "auf Startsignal wartend" -> "auf Startsignal wartend" [label=" Startsignal noch nicht erkannt"];
+    "zur Last fahrend" -> "zur Last fahrend" [label=" Last noch nicht erkannt"];
+    "zur Last fahrend" -> "Last aufnehmend" [label=" Last erkannt"];
+    "Last aufnehmend" -> "zum Ziel fahrend" [label=" Last aufgenommen"];
+    "Last aufnehmend" -> "Last aufnehmend" [label=" Last noch nicht aufgenommen"];
+    "zum Ziel fahrend" -> "Last absetzend" [label=" Zielfeld erkannt"];
+    "zum Ziel fahrend" -> "zum Ziel fahrend" [label=" Zielfeld noch nicht erkannt"];
+    "Last absetzend" -> "zum Zielmast fahrend" [label=" Last abgesetzt"];
+    "Last absetzend" -> "Last absetzend" [label=" Last noch nicht abgesetzt"];
+    "zum Zielmast fahrend" -> "Ende" [label=" Zielmast erreicht"];
+    "zum Zielmast fahrend" -> "zum Zielmast fahrend" [label=" Zielmast noch nicht erreicht"];
+}

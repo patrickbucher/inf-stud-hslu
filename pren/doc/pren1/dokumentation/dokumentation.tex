@@ -1,0 +1,79 @@
+\documentclass[a4paper,11pt]{scrartcl}
+
+\usepackage[ngerman]{babel}
+\usepackage[hidelinks]{hyperref}
+\usepackage{apacite}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{tabularx}
+    \usepackage{array}
+    \usepackage{multicol}
+    \usepackage{multirow}
+    \usepackage{makecell}
+\usepackage[table]{xcolor}
+\usepackage{fontspec}
+    \setmainfont{EB Garamond}
+    \setsansfont{Open Sans}
+    \setmonofont{Fira Mono}[SizeFeatures={Size=8}]
+\usepackage{listings}
+    \lstset{basicstyle=\footnotesize\ttfamily}
+\usepackage{nameref}
+\usepackage{rotating}
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage{enumitem}
+\usepackage{hyphenat}
+
+\newcommand{\imgref}[1]{{siehe \textit{Abbildung \ref{#1}, Seite \pageref{#1}}}}
+\newcommand{\imgrefplain}[1]{{\textit{Abbildung \ref{#1}, Seite \pageref{#1}}}}
+\newcommand{\secref}[1]{{siehe \textit{Abschnitt \ref{#1}: \nameref{#1}, Seite \pageref{#1}}}}
+\newcommand{\secrefplain}[1]{{\textit{\ref{#1}: \nameref{#1}, Seite \pageref{#1}}}}
+\newcommand{\tblref}[1]{{siehe \textit{Tabelle \ref{#1}: \nameref{#1}, Seite \pageref{#1}}}}
+\newcommand{\tblrefplain}[1]{{\textit{Tabelle \ref{#1}: \nameref{#1}, Seite \pageref{#1}}}}
+\newcommand{\calcref}[1]{{siehe \textit{Berechnung \ref{#1}, Seite \pageref{#1}}}}
+\newcommand{\calcrefplain}[1]{{\textit{\ref{#1}, Seite \pageref{#1}}}}
+\newcommand{\appref}[1]{\textit{Anhang \ref{#1}: \nameref{#1}}}
+
+\newenvironment{itemizecell}[1]{\begin{tabular}{@{\textbullet~}p{#1}@{}}}{\end{tabular}}
+
+\renewcommand{\baselinestretch}{1.2}
+\pagestyle{headings}
+
+\renewcaptionname{ngerman}{\refname}{Quellen}
+
+\begin{document}
+
+\input{a-titelseite.tex}
+\newpage
+\input{b-team.tex}
+\newpage
+\input{c-management-summary.tex}
+\newpage
+\tableofcontents
+\newpage
+\input{01-einleitung.tex}
+\newpage
+\input{02-analyse.tex}
+\newpage
+\input{03-gesamtkonzept.tex}
+\newpage
+\input{04-komponenten.tex}
+\newpage
+\input{05-projektmanagement.tex}
+\newpage
+\input{06-fazit.tex}
+\newpage
+\input{99-anhang.tex}
+\newpage
+\bibliographystyle{apacite}
+\bibliography{dokumentation}
+\newpage
+\listoffigures
+\addcontentsline{toc}{section}{Abbildungsverzeichnis}
+\newpage
+\listoftables
+\addcontentsline{toc}{section}{Tabellenverzeichnis}
+
+\end{document}

@@ -1,0 +1,133 @@
+\pagestyle{plain}
+\appendix
+
+\section{Anhang}
+\label{app:anhang}
+
+\subsection{Kostenübersicht}
+
+\tblrefplain{tbl:kostenbudget} gibt Auskunft darüber, wie das Budget von CHF $500.00$ in PREN 1 und PREN 2 verwendet wurde.
+
+\begin{table}
+    \footnotesize
+    \centering
+    \begin{tabular}{l|l|l|r|r|r}
+        & \textsc{Artikel} & \textsc{Bereich} & \textsc{Stk.} & \textsc{Preis} & \textsc{Summe} \\
+        \hline
+        \multirow{11}{*}{\begin{turn}{90}\textsc{PREN 1}\end{turn}}
+            & Silikon & Greifeinheit & $0.50$ & $71.90$ & $35.95$ \\
+            & Luftpumpe & Greifeinheit & $2.00$ & $1.95$ & $3.90$ \\
+            & Raspberry Pi & Steuerung & $1.00$ & $39.90$ & $39.90$ \\
+            & Raspi-Cam & Zielfelderkennung & $1.00$ & $29.90$ & $29.90 $ \\
+            & SD-Karte $16 GB$ & Steuerung & $1.00$ & $19.90$ & $19.90$ \\
+            & Arduino Uno & Steuerung & $1.00$ & $25.00$ & $25.00$ \\
+            & Motor Shield & Steuerung & $1.00$ & $6.95$ & $6.95$ \\
+            & LiPo-Akku $3000mAh/3.7V$ & Stromversorgung & $1.00$ & $19.90$ & $19.90$ \\
+            & Adafruit Power-Boost (USV) & Stromversorgung & $1.00$ & $27.90$ & $27.90$ \\
+            & Netzteil & Stromversorgung & $1.00$ & $10.00$ & $10.00$ \\
+            & \textsc{Zwischentotal} & & & & $\boldsymbol{219.30}$ \\
+            \hline
+        \multirow{24}{*}{\begin{turn}{90}\textsc{PREN 2}\end{turn}}
+            & Zahnriemen & Hubmechanismus & $1.00$ & $6.95$ & $6.95$ \\
+            & Riemenrad klein & Hubmechanismus & $1.00$ & $10.95$ & $10.95$ \\
+            & Riemenrad gross & Hubmechanismus & $1.00$ & $12.95$ & $12.95$ \\
+            & Angelschnur & Hubmechanismus & $1.00$ & $9.90$ & $9.90$ \\
+            & Schrittmotor & Hubmechanismus & $1.00$ & $14.05$ & $14.05$ \\
+            & Kugellager & Antrieb & $2.00$ & $4.15$ & $8.30$ \\
+            & Getriebemotor 1:50 & Antrieb & $1.00$ & $29.45$ & $29.45$ \\
+            & Getriebemotor & Antrieb & $1.00$ & $24.95$ & $24.95$ \\
+            & Riemenrad klein & Antrieb & $2.00$ & $12.95$ & $25.90$ \\
+            & Magnetventil & Greifeinheit & $1.00$ & $4.80$ & $4.80$ \\
+            & Spiralkabel & Greifeinheit & $1.00$ & $5.80$ & $5.80$ \\
+            & Silikon & Greifeinheit & $0.50$ & $71.90$ & $35.95$ \\
+            & Quick-Pins & Aufhängung & $2.00$ & $2.50$ & $5.00$ \\
+            & Motor Shield & Steuerung & $1.00$ & $18.75$ & $18.75$ \\
+            & DC-Konverter & Schaltung & $1.00$ & $5.95$ & $5.95$ \\
+            & USB-Kabel A-Micro-A & Schaltung & $1.00$ & $7.45$ & $7.45$ \\
+            & USB-Kabel A-B & Schaltung & $1.00$ & $9.45$ & $9.45$ \\
+            & Prüfsummer & Schaltung & $1.00$ & $10.95$ & $10.95$ \\
+            & Relais & Schaltung & $1.00$ & $3.45$ & $3.45$ \\
+            & Ultraschallsensor & Sensorik & $2.00$ & $3.71$ & $7.42$ \\
+            & LiPo-Akku $1300mAh/14.8V$ & Stromversorgung & $1.00$ & $27.45$ & $27.45$ \\
+            & Kleinteile, Diverses & Fertigung & $1.00$ & $30.00$ & $30.00$ \\
+            & Holz, Haken, Seil etc. & Gestell & $1.00$ & $24.10$ & $24.10$ \\
+            & \textsc{Zwischentotal} & & & & $\boldsymbol{339.92}$ \\
+            \hline
+        & \textsc{Gesamttotal} & & & & $\boldsymbol{559.22}$
+    \end{tabular}
+    \caption{Das Kostenbudget für PREN 1 und PREN 2\label{tbl:kostenbudget}}
+\end{table}
+
+\subsection{Thresholding-Benchmarks}
+\label{app:thresholding}
+
+Um die verschiedenen Thresholding-Verfahren bei unterschiedlichen Lichtverhältnissen zu erproben, wurden zwei Bildserien verwendet. \footnote{Die Helligkeit ist nicht von der Kamera abhängig. Die Bildserien wurden an verschiedenen Tagen aufgenommen, wobei der Raum einmal mit den Storen verdunkelt und das andere mal von Sonnenlicht durchflutet war.}
+
+\begin{enumerate}
+    \item Bildserie
+        \begin{itemize}
+            \item Kamera: Raspi-Cam
+            \item Auflösung: $480 \times 640$
+            \item zu erkennende Zielfelder: 13
+            \item Lichtverhältnisse: eher dunkel, Kunstlicht
+        \end{itemize}
+    \item Bildserie
+        \begin{itemize}
+            \item Kamera: Smartphone-Kamera 
+            \item Auflösung: $1920 \times 2560$
+            \item zu erkennende Zielfelder: 18
+            \item Lichtverhältnisse: eher hell, Sonnenlicht
+        \end{itemize}
+\end{enumerate}
+
+Zu Beginn wurde nur das statische Thresholding-Verfahren implementiert. Beim Simulieren der Wettbewerbssituation kam es dabei immer wieder zu Unregelmässigkeiten: einmal funktionierte die Zielfelderkennung, einmal nicht. Dieser Umstand konnte auf Verschmutzungen und Beschädigungen am verwendeten Zielfeld zurückgeführt werden. Mit der Anpassung des absoluten Threshold-Wertes konnte das Zielfeld wieder erkannt werden. Diese Korrektur führte jedoch dazu, dass Tests an anderen Tagen und -- wie es sich herausstellte -- bei anderen Lichtverhältnissen erneut fehlschlugen.
+
+Aus diesem Grund wurde ein adaptives Thresholding-Verfahren erprobt. Dabei wird das Bild nicht anhand eines fixen Wertes in Graustufen umgewandelt -- ist ein Pixel heller als $x$ wird er weiss, sonst schwarz. Stattdessen wird die Umgebung eines Pixels auf dessen Helligkeitsverteilung analysiert, und die dabei ermittelte Verteilung als Entscheidungsgrundlage für das Einfärben verwendet. Die Grösse der Umgebung hat sich dabei als kritischer Parameter herausgestellt und wurde mit $1/4$ der Bildgrösse sehr gross gewählt, was sich positiv auf das Erkennungsergebnis, jedoch negativ auf die Performance auswirkte (\tblref{tbl:thresholding} -- die Werte $100$, $110$, $120$ bei den statischen Verfahren beziehen sich auf den gewählten absoluten Threshold-Wert im Bereich von $0$: schwarz bis $255$: weiss).
+
+\begin{table}
+    {\small
+    \begin{tabularx}{\textwidth}{l|r|r|r|r|r|r}
+        & \multicolumn{3}{l|}{\textsc{1. Bildserie}} & \multicolumn{3}{l}{\textsc{2. Bildserie}} \\
+        \hline
+        \textsc{Verfahren} & Erkannt & Zeit (Mean) & Zeit (Median) & Erkannt & Zeit (Mean) & Zeit (Median) \\
+        \hline
+        Statisch ($100$) & $11/13$ & $35ms$ & $36ms$ & $11/18$ & $354ms$ & $355ms$ \\
+        \hline
+        Statisch ($110$) & $7/13$ & $36ms$ & $36ms$ & $18/18$ & $348ms$ & $346ms$ \\
+        \hline
+        Statisch ($120$) & $1/13$ & $34ms$ & $34ms$ & $18/18$ & $355ms$ & $355ms$ \\
+        \hline
+        Adaptiv (Gauss) & $13/13$ & $333ms$ & $334ms$ & $18/18$ & $77499ms$ & $77520ms$ \\
+        \hline
+        Adaptiv (Mean) & $13/13$ & $46ms$ & $47ms$ & $18/18$ & $552ms$ & $553ms$ \\
+        \hline
+    \end{tabularx}
+    }
+    \caption{Die Benchmarking-Ergebnisse der verschiedenen Thresholding-Verfahren}
+    \label{tbl:thresholding}
+\end{table}
+
+Aus den Thresholding-Benchmarks\footnote{Die Benchmarks wurden auf einem Raspberry Pi 3 Modell B durchgeführt.} wurden folgende Erkenntnisse gewonnen:
+
+\begin{itemize}
+    \item Das statische Verfahren ist performanter als das adaptive.
+    \item Bei den statischen Verfahren konnte kein Threshold gefunden werden, mit dem alle Zielfelder erkannt werden können. Der Threshold müsste an die Lichtverhältnisse angepasst werden.\footnote{Bei Sonneneinstrahlung ändern sich die Lichtverhältnisse in Sekunden, wenn eine Wolke die Sonne verdeckt.} Das statische Verfahren ist somit unsicher.
+    \item Bei den adaptiven Verfahren konnten alle Zielfelder erkannt werden.
+    \item Das Gauss-Verfahren ist um ca. Faktor $7$ (geringe Auflösung) bzw. $140$ (hohe Auflösung) langsamer als das Mean-Verfahren.\footnote{Die Laufzeit wächst etwas schneller als linear zur Auflösung.}
+    \item Für kleine Auflösungen beträgt die Performance-Einbusse mit dem Adaptiv-Mean-Verfahren gegenüber den statischen Verfahren ca. $30\%$. Diese Performance ist immer noch wettbewerbstauglich.
+\end{itemize}
+
+\textsc{Fazit}: Das Adaptiv-Mean-Verfahren (in Kombination mit einer Auflösung von $480 \times 640$ Pixeln) kommt zum Einsatz. Dieses ist zwar etwas langsamer als das statische Verfahren, arbeitet aber bei allen erprobten Lichtverhältnissen fehlerfrei.\footnote{Ein fehlerhafter Algorithmus kann mit beliebig hoher Performance implementiert werden, sogar mit $O(0)$.}
+
+\subsection{Weitere}
+
+Im Verzeichnis \texttt{Anhang} befinden sich folgende Anhänge:
+
+\begin{description}
+    \item[\texttt{Dokumentation\_PREN-1.pdf}] Das \textit{Silisloth}-Konzept aus PREN 1, auf welches in der vorliegenden Arbeit oft verwiesen wurde.
+    \item[\texttt{Anforderungsliste\_PREN-1.pdf}] Die Anforderungen aus PREN 1, welchen \textit{Silisloth} genügen sollte.
+    \item[\texttt{Assembly-Zeichnungen.pdf}] Das CAD-Modell für \textit{Silisloth} aus verschiedenen Perspektiven.
+    \item[\texttt{silisloth-app.zip}] Der Quellcode zur Smartphone-App (Java).
+    \item[\texttt{silisloth-raspi.zip}] Der Quellcode zum Raspi-Projekt (Python).
+    \item[\texttt{silisloth-arduino.zip}] Der Quellcode zum Arduino-Projekt (C).
+\end{description}
