@@ -21,7 +21,7 @@ Dokumente zu meinem Informatik-Studium an der Hochschule Luzern ‒ Informatik (
         - Presentation
 - `fkom`: Fachkommunikation
     - divese Übungen
-    - Testabübung (Blogeintrag)
+    - Testatbübung (Blogeintrag)
     - Zusammenfassung
         - Textsorten
         - Verständlichkeit
