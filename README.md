@@ -47,6 +47,9 @@ Dokumente zu meinem Informatik-Studium an der Hochschule Luzern ‒ Informatik (
 - `pta`: Projekt- und Teamarbeit (a.k.a _Pointless Team Assignment)_
     - Präsentation
     - Interview mit Auswertung
+- `pren`: Produktentwicklung (1 & 2)
+    - Dokumentation (PREN 1 & PREN 2)
+    - Code (Raspi, Arduino, Smartphone-App)
 - `sell`: Self Directed English Language Learning
     - Präsentation mit Glossar
 - `vsk`: Verteilte Systeme und Komponenten
