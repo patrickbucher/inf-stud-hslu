@@ -716,7 +716,7 @@ Observer](#observer).
     - Bildet die Grundlage für das Model-View-Controller-Pattern (MVC) und das
       Event-Handling in Java-GUI-Frameworks.
 - Problematik: Eine enge funktionale Kopplung von Subjekt und Beobachter führt
-  zu grossen Schnittstellen. Das Observer-Pattern ist kein Ersatz für schlechte
+  zu grossen Schnittstellen. Das Observer-Pattern ist kein Ersatz für fehlende
   Aufgabenteilung zwischen Klassen!
 
 ![Observer (Entwurfsmuster)](pics/observer.png){#observer width=200px}
