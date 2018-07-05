@@ -4,5 +4,12 @@ DATE=-V date="`date +'%d.%m.%Y'`"
 
 FILES=00-vsk.md 01-komponenten.md 02-entwicklungsprozess.md 03-verteilte-systeme.md
 
-vsk.pdf: $(FILES)
-	pandoc -s -N --toc $(PARAMS) $(FONTS) $(DATE) $(FILES) -o vsk.pdf
+vsk.pdf: vsk.tex
+	xelatex vsk.tex && xelatex vsk.tex && xelatex vsk.tex
+	make clean
+
+vsk.tex: $(FILES)
+	pandoc -s -N --toc $(PARAMS) $(FONTS) $(DATE) $(FILES) -o vsk.tex
+
+clean:
+	rm -f *.tex *.aux *.toc *.log *.out
