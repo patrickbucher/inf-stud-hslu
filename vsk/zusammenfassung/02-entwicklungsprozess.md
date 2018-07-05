@@ -1115,7 +1115,7 @@ getestet werden kann!
     - Artefakte: Dokumente, Software-Komponenten
     - Erreichung des Meilensteins: geforderte Artefakte liegen vor, Überprüfung
       erfolgreich (Reviews und Tests)
-- Arten von Reviews: sortiert nach absteigender Formalität
+- Formen von Reviews: sortiert nach absteigender Formalität
     - Inspection: strenger, wohldefinierter Prozess
     - Team Review: geplant und strukturiert, weniger formal
     - Walkthrough: Autor stellt sein Artefakt einer Gruppe von Fachkollegen vor
@@ -1124,6 +1124,17 @@ getestet werden kann!
     - Passaround: Kopien an verschiedene Personen versenden und Feedback
       einholen
     - Ad Hoc Review: Bestandteil der täglichen Teamarbeit
+
+| Review           | Planning | Preparation | Meeting    | Correction | Verification |
+|------------------|----------|-------------|------------|------------|--------------|
+| Inspection       | Yes      | Yes         | Yes        | Yes        | Yes          |
+| Tema-Review      | Yes      | Yes         | Yes        | Yes        | No           |
+| Walkthrough      | Yes      | No          | Yes        | Yes        | No           |
+| Pair Programming | Yes      | No          | Continuous | Yes        | Yes          |
+| Peer Deskcheck   | No       | Yes         | Perhaps    | Yes        | No           |
+| Passaround       | No       | Yes         | No         | Yes        | No           |
+| Ad Hoc Review    | No       | No          | Yes        | Yes        | No           |
+
 - Nutzen von Reviews: Reduktion des Nachbearbeitungsaufwands bei der
   Produkteentwicklung reduzieren, indem Probleme frühzeitig erkannt werden.
     - Artefakte wie Anforderungen, Konzepte und Entwürfe sollten unbedingt
