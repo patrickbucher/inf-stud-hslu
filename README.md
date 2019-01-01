@@ -66,3 +66,4 @@ Dokumente zu meinem Informatik-Studium an der Hochschule Luzern ‒ Informatik (
 - [mongomir-pytkovic](https://github.com/patrickbucher/mongomir-pytkovic): Projektarbeit für das Modul Datenbanksysteme mit MongoDB, Python, Docker und nginx
 - [ad_exercises](https://github.com/patrickbucher/ad_exercises): Java-Code zu den Übungen im Modul Algorithmen & Datenstrukturen
 - [struggling-at-hslu/observations](https://github.com/struggling-at-hslu/observations): Beobachtungen und Betrachtungen rund um das Informatik-Studium der Hochschule Luzern
+- [pcp-project](https://github.com/patrickbucher/pcp-project): Vorstellung der Programmiersprache Rust im Modul PCP
