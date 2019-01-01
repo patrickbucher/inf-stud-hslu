@@ -37,6 +37,8 @@ Dokumente zu meinem Informatik-Studium an der Hochschule Luzern ‒ Informatik (
 - `ks`: Kreatives Schreiben
     - Portfolio (diverse Texte)
     - Projekt zu D. Oppligers _acht schtumpfo züri empfernt_
+- `mc`: Mikrocontroller
+    - Sämtliche C-Übungen
 - `mod`: Modellieren Grundlagen
     - Testatübungen
     - sonstige Übungen

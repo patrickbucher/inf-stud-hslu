@@ -1,0 +1,4 @@
+Das ist ein Test.
+Das ist noch ein Test.
+Das ist ein Test, der die Zeilenlänge von 80 noch knapp unterschreitet.
+Das ist ein Test, der die Zeilenlänge von 80 nicht mehr unter- sondern ueberschreitet.
