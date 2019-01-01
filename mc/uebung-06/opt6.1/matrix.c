@@ -37,12 +37,12 @@ double **create_matrix(int rows, int cols, int argc, double init, ...)
     va_list argp;
     int r, c;
 
-	if (argc > 0) {
-		va_start(argp, init);
-		argc--;
-	} else {
-		init = 0.0;
-	}
+    if (argc > 0) {
+        va_start(argp, init);
+        argc--;
+    } else {
+        init = 0.0;
+    }
     matrix = (double **)malloc(sizeof(double *) * rows);
     for (r = 0; r < rows; r++) {
         matrix[r] = (double *)malloc(sizeof(double) * cols);
@@ -52,8 +52,8 @@ double **create_matrix(int rows, int cols, int argc, double init, ...)
                 init = va_arg(argp, double);
                 argc--;
             } else {
-				init = 0.0;
-			}
+                init = 0.0;
+            }
         }
     }
     va_end(argp);
