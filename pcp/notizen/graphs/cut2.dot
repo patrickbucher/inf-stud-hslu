@@ -1,0 +1,23 @@
+graph "Cut" {
+    graph [dpi=300];
+    node [fontname="Go Mono", shape=rect];
+    edge [fontname="Go Mono"];
+
+    a [label="p(X)"];
+    a -- b1 [label=" r1 "];
+    a -- b2 [label=" r2 "];
+    a -- b3 [label=" ! "];
+    b1 [label="a(X)"];
+    b2 [label="b(X), !, c(X)"];
+    b3 [label="CUT OFF"; shape=plain];
+    b1 -- c1 [label=" a(1) "];
+    b2 -- c2 [label=" b(2) "];
+    b2 -- c3 [label=" ! "];
+    c1 [label="X=1"; shape=plain];
+    c2 [label="!, c(2)"];
+    c3 [label="CUT OFF"; shape=plain];
+    c2 -- d1 [label=" c(2) "];
+    d1 [label="c(2)"];
+    d1 -- e1 [label=" c(2) "];
+    e1 [label="X=2"; shape=plain];
+}

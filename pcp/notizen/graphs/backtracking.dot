@@ -1,0 +1,23 @@
+graph "Backtracking" {
+    graph [dpi=300];
+    node [fontname="Go Mono"];
+    edge [fontname="Go Mono"];
+
+    a [label="k(Y)", shape=rect];
+    b [label="f(X), g(X), h(X)", shape=rect];
+    c1 [label="g(a), h(a)", shape=rect];
+    d1 [label="h(a)", shape=rect];
+    f [label="fail", shape=plain];
+    c2 [label="g(b), h(b)", shape=rect];
+    d2 [label="h(b)", shape=rect];
+    s [label="", shape=rect];
+
+    a -- b [label=" Y=X (rule 1) "];
+    b -- c1 [label=" f(a), X=a "];
+    c1 -- d1 [label=" g(a) "];
+    d1 -- f;
+    f -- b [label=" backtracking "];
+    b -- c2 [label=" f(b), X=b "];
+    c2 -- d2 [label=" g(b) "];
+    d2 -- s;
+}

@@ -1,0 +1,17 @@
+digraph Grandmother {
+    node [fontname="Go Mono", shape=rect];
+    edge [fontname="Go Mono"];
+
+    a [label="grandmother(liz, X)"];
+    a -> b1 [label=" Prädikat grandmother/2, G=liz "];
+    b1 [label="female(liz), parent(liz, P), parent(P, C)"];
+    b1 -> c1 [label=" Fakt female(liz) "];
+    c1 [label="parent(liz, P), parent(P, C)"];
+    c1 -> d1 [label=" Fakt parent(liz, tom) "];
+    d1 [label="parent(tom, C)"];
+    d1 -> e1 [label=" Fakt parent(tom, sue) "];
+    e1 [label=""];
+    e1 -> d1 [label=" ; "];
+    d1 -> e2 [label=" Fakt parent(tom, jim) "];
+    e2 [label=""];
+}

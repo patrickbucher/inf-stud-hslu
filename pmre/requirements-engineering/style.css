@@ -1,0 +1,20 @@
+body {
+    line-height: 1.5;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+h1.title, p.subtitle, p.author, p.date {
+    text-align: center;
+}
+
+figcaption {
+    margin: 1em 0;
+}
+
+pre {
+    background-color: #eee;
+    padding: 1em;
+    border-radius: 1em;
+}

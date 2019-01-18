@@ -42,10 +42,16 @@ Dokumente zu meinem Informatik-Studium an der Hochschule Luzern ‒ Informatik (
 - `mod`: Modellieren Grundlagen
     - Testatübungen
     - sonstige Übungen
+- `pcp`: Programming Concepts and Paradigms
+    - Aufgaben (ausser zu Compilern/ANTLR)
+    - Zusammenfassung (ausser zu ANTLR)
+    - Weitere Code-Snippets
 - `plab`: Programmier Labor
     - Präsentation zum Thema GUI-Programmierung in Java
 - `pmb`: Project Management Basics
     - Testatübungen
+- `pmre`: Project Management and Requirements Engineering
+    - Zusammenfassung von _Basiswissen Requirements Engineering_ (Kapitel 1-6)
 - `pta`: Projekt- und Teamarbeit (a.k.a _Pointless Team Assignment)_
     - Präsentation
     - Interview mit Auswertung

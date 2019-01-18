@@ -1,0 +1,21 @@
+digraph Offspring {
+    node [fontname="Go Mono", shape=rect];
+    edge [fontname="Go Mono"];
+
+    a [label="offspring(ann, mary)"]; 
+    a -> b1 [label=" Prädikat offspring/2, O=ann, P=mary "];
+    b1 [label="parent(mary, ann)"];
+    b1 -> c1;
+    c1 [label="fail", shape=plain];
+    b1 -> a [label=" Backtracking "];
+    a -> b2 [label=" Prädikat offspring/2, O=ann, P=mary "];
+    b2 [label="offspring(ann, X), offspring(X, mary)"];
+    b2 -> c2 [label=" Prädikat offspring/2, O=ann, P=X) "];
+    c2 [label="parent(X, ann), offspring(X, mary)"];
+    c2 -> d1 [label=" Fakt parent(mia, ann), X=mia "];
+    d1 [label=" offspring(mia, mary) "];
+    d1 -> e1 [label=" Fakt parent(mary, mia) "];
+    e1 [label=" parent(mary, mia) "];
+    e1 -> f [label=""];
+    f [label=""];
+}

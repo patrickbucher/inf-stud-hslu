@@ -1,0 +1,20 @@
+graph "Syntaxtree" {
+    graph [dpi=300];
+    node [fontname="Go Mono", shape=ellipse];
+    edge [fontname="Go Mono"];
+
+    op1 [label=":="];
+    avg [label="average"];
+    op2 [label="/"];
+    op3 [label="+"];
+    two [label="2"];
+    opa [label="a"];
+    opb [label="b"];
+
+    op1 -- avg;
+    op1 -- op2;
+    op2 -- op3;
+    op2 -- two;
+    op3 -- opa;
+    op3 -- opb;
+}
