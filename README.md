@@ -60,6 +60,8 @@ Dokumente zu meinem Informatik-Studium an der Hochschule Luzern ‒ Informatik (
     - Code (Raspi, Arduino, Smartphone-App)
 - `sell`: Self Directed English Language Learning
     - Präsentation mit Glossar
+- `sprg`: Sicheres Programmieren
+    - Fallstudie «Smart Meter» (Threat Modeling nach STRIDE)
 - `vsk`: Verteilte Systeme und Komponenten
     - Interface-Vorschlag
     - Zusammenfassung

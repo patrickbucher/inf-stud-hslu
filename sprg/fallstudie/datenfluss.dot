@@ -1,0 +1,11 @@
+digraph datenfluss {
+    graph [dpi="150"];
+    node [fontname="Droid Sans Mono", fontsize="12pt", margin="0.5, 0.25", shape="box"];
+    edge [fontname="Droid Sans Mono", fontsize="12pt"];
+
+    "Smart Meter des Endkunden" -> "Ortsnetzstation" [label=" Power Line Communication "];
+    "Ortsnetzstation" -> "Verarbeitungsserver des Energielieferanten" [label=" HTTP "];
+    "Verarbeitungsserver des Energielieferanten" -> "Datenbank" [label=" Datenbankverbindung "];
+    "Webserver des Energielieferanten" -> "Datenbank" [label=" Datenbankverbindung "];
+    "Browser des Endkunden" -> "Webserver des Energielieferanten" [label=" HTTP "];
+}
