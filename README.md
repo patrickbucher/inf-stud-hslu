@@ -76,3 +76,4 @@ Dokumente zu meinem Informatik-Studium an der Hochschule Luzern ‒ Informatik (
 - [struggling-at-hslu/observations](https://github.com/struggling-at-hslu/observations): Beobachtungen und Betrachtungen rund um das Informatik-Studium der Hochschule Luzern
 - [pcp-project](https://github.com/patrickbucher/pcp-project): Vorstellung der Programmiersprache Rust im Modul PCP
 - [getting-to-philosophy](https://github.com/patrickbucher/getting-to-philosophy): Gruppenarbeit für den «Selenium-Teil» des Moduls SWT (nicht mit Selenium, sondern in Go umgesetzt), zum Simulieren des Spiels [Getting to Philosophy](https://en.wikipedia.org/wiki/Wikipedia:Getting_to_Philosophy) auf Wikipedia.
+- [oauth2-demo](https://github.com/patrickbucher/oauth2-demo): Demoapplikationen für OAuth 2 (ergänzend zum Paper für das Modul INFKOL entwickelt).
