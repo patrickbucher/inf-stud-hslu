@@ -1,0 +1,71 @@
+\section{Introduction}
+
+This section discusses what OAuth 2.0 is (henceforth OAuth 2, without the zero), and, especially, what it is not. Often times, OAuth 2 is perceived as some sort of security or authentication library that is capable of things way beyond its scope. Also, this section will mention what OAuth 2 is used for, how those ends were achieved before OAuth 2, and why OAuth 2 has gained traction. 
+
+\subsection{The OAuth 2 Basics}
+
+OAuth 2 is, simply put, a protocol that is used to authorize the access to protected resources. Since it works as a means to grant third-party applications limited access to these protected resources or HTTP services on behalf of a resource owner, it is often referred to as a delegation protocol \cite[p. 3]{oauth2-in-action}. If a user is shown the option to «login with Facebook» (or Google, or GitHub, etc.), OAuth 2 is probably being used.
+
+\subsubsection{Roles}
+
+The OAuth 2 protocol defines four roles that are listed below \cite{RFC6749}:
+
+\begin{enumerate}
+\item Resource Owner: Entity that grants access to protected resources.
+\item Resource Server: Server that hosts the protected resources. Handles the requests to protected resources using access tokens.
+\item Client: Application that sends requests to retrieve protected resources on behalf of the resource owner, once it has been granted authorization.
+\item Authorization Server: Server that supplies access tokens to a client after the resource owner has been authenticated and has obtained authorization.
+\end{enumerate}
+
+\subsubsection{Access Token}
+The access token can be viewed as the right to access a requested protected resource. This does not implicitly mean that the token will grant full access to all protected resources on a Resource Server. Often, or mostly, an access token only provides limited access to delegate specific actions by a resource owner \cite[p. 4]{oauth2-in-action}.
+
+\subsubsection{Protocol Flow}
+
+The flow of interactions between the OAuth 2 roles are as follows \cite[p. 5-6]{oauth2-in-action}:
+
+\begin{enumerate}
+\item An application (client) sends an authorization request directly to a resource owner, or, preferably, indirectly through an authorization server.
+\item The client is authorized and receives a grant which represents the resource owner's authorization credentials.
+\item The client can now request an access token from the authorization server with the freshly obtained grant.
+\item The client is then authenticated by the authorization server once it has successfully validated the authorization grant. Then the authorization server creates and issues an access token.
+\item The client can now request protected resources from the resource server with the access token.
+\item If the access token has been successfully validated, the resource server provides the client with the requested resources.
+\end{enumerate}
+
+\subsection{The Dark Ages before OAuth 2}
+
+Before OAuth 2, there were many alternatives to grant access to protected resources. Common approaches such as \textit{Credential Sharing}, \textit{Ask The User}, \textit{Universal Key} and \textit{Special Password} are explained briefly in this section. It is important to note that in none of these approaches an authorization server is used.
+
+\begin{description}
+    \item[Credential Sharing] This method copies a resource owner's credentials that are then replayed to the protected resource. It therefore requires the user to utilize the same credentials at the protected resource as at the client application. Since the user is exposing his credentials to the client application, the client is \textit{impersonating} the user. This leaves no way for the protected resource to tell if the user is requesting resources, or if the user is being impersonated. This can make sense if services and resources are offered by the same company, but causes tracability issues \cite[p. 7]{oauth2-in-action}.
+    \item[Ask The User] The \textit{Ask The User} approach is a common practice despite the dangers that it poses. Until recently, Facebook asked new users for their credentials to their email account \cite{endgadget-facebook}, for example. This approach is used when credential sharing is not offered by the service holding a resource, and the client has no way to obtain the user's credentials across those different security domains. In this approach, the user is then asked for his username and password, which are then replayed on the protected resource \cite[p. 8]{oauth2-in-action}. The mechanism is similar to \textit{Credential Sharing}, but more transparent to the user.
+    \item[Universal Key] A user can be given a universal key, which can be used to request protected resources directly. The problem is, that if this key is stolen, the resources are entirely and irrevocabely exposed. The universal key also does not work on a by-user basis, but globally for all users. This approach only makes sense between two trusted parties \cite[p. 10]{oauth2-in-action}.
+    \item[Special Password] The special password in this case represents a password that is specifically created solemnly on the side of the protected resource for sharing with third-party-services. This means the user need not share his credentials with the third-party services. Although this is a more desirable approach, the user is now required to keep track of yet another password \cite[p. 10]{oauth2-in-action}.
+\end{description}
+
+\subsection{The Attraction of OAuth 2}
+
+The insecure and unsatisfactory approaches mentioned before, even though possibly still in wide use, are all obsolete nowadays. OAuth 2 is a solution that lets users grant limited and fine-grained access to their protected resources separately for different clients. This approach requires an authorization server: a system that is trusted by the protected resource and the resource owner alike. The authorization server is aware of all the granted rights and issues special-purpose security credentials for client access of a specified scope: access tokens. No credentials are shared in the process \cite[p. 11]{oauth2-in-action}.
+
+An authorization server might require clients to authenticate themselves, so that only authorized clients can retrieve grants for protected resources. (This looks similar to the \textit{Universal Key} approach, but here the pre-shared secret key is not used for the resource access, which only works with a valid access token, but only for the authentication of the client itself.) Another similarity to the approaches discussed before is that OAuth 2 does not require the user being present when resources are accessed on his behalf \cite[p. 14]{oauth2-in-action}.
+
+Having protected resources being accessed without the user's presence might sound intransparent, but one must remember that the user gave his consensus for the access delegation earlier in the process. Therefore it is important that clients state their request access scopes correctly and transparently. This approach is often referred to as \textit{TOFU: Trust On First Use} \cite[p. 15]{oauth2-in-action}.
+
+\subsubsection{The Limitations of OAuth 2}
+
+Even though OAuth 2 solves the delegation problem well, it is no silver bullet.
+
+\begin{itemize}
+    \item OAuth 2 is neither an authentication nor an authorization protocol, it is just a framework to base those kinds of protocols onto.
+    \item The authorization server plays a key role in every OAuth 2 deployment and thus bears the risk of being the single point of failure for security breaches.
+    \item OAuth 2 lives in the context of HTTP and requires secured connections (TLS) to be of any real use.
+    \item Delegating access to other users (as opposed to clients) is not provided by OAuth 2. However, this can be implemented using the UMA (User Managed Access) protocol, an OAuth 2 extension.
+    \item Both the protected resource and the authorization server need to understand the token format. (On the plus side, the client does not need to.)
+\end{itemize}
+
+Most of these shortcomings are limitations in the scope of the protocol definition, and are addressed by additional protocols and standards, some of them are OAuth 2 extensions. The key role the authorization server plays bears a high risk. It is easier though to secure one critical system well than to secure a multitude of systems equally sufficient \cite[p. 18-20]{oauth2-in-action}.
+
+\vskip 13pt
+
+The next chapter goes into more detail on the components in OAuth 2, and how they interact with one another in a process called the \textit{Authorization Grant}, the most common OAuth 2 process.

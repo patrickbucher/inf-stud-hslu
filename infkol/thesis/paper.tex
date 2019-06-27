@@ -1,0 +1,54 @@
+\documentclass[a4paper,11pt]{scrartcl}
+
+% packages
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{apacite} % keep after hyperref
+\usepackage{tabularx}
+\usepackage{fontspec}
+    \setmainfont{Droid Serif}
+    \setsansfont{Droid Sans}
+    \setmonofont[SizeFeatures={Size=10}]{Droid Sans Mono}
+
+% global options
+\renewcommand{\baselinestretch}{1.2}
+\pagestyle{headings}
+
+% macro definitions
+\newcommand{\imgref}[1]{{see \textit{figure \ref{#1}, page \pageref{#1}}}}
+\newcommand{\imgrefplain}[1]{{\textit{figure \ref{#1}, page \pageref{#1}}}}
+\newcommand{\tablerefplain}[1]{{\textit{table \ref{#1}, page \pageref{#1}}}}
+
+\begin{document}
+
+\input{0-title.tex}
+\newpage
+
+\tableofcontents
+\newpage
+
+\input{1-intro.tex}
+\newpage
+
+\input{2-case-study.tex}
+\newpage
+
+\input{3-json-web-tokens.tex}
+\newpage
+
+\input{4-vulnerabilities.tex}
+\newpage 
+
+\input{5-conclusion.tex}
+\newpage
+
+\bibliographystyle{apacite}
+\bibliography{paper}
+\listoffigures
+\addcontentsline{toc}{section}{List of Figures}
+\listoftables
+\addcontentsline{toc}{section}{List of Tables}
+
+\end{document}

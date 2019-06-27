@@ -1,0 +1,184 @@
+\section{JSON Web Tokens (JWT)}
+
+This chapter is mainly about structured JSON Web Tokens. However, there will also be a brief look throughout the chapter at what a token can be, and what other token implementations exist. All code examples are in JavaScript.
+
+\subsection{OAuth 2 Tokens}
+
+Since nothing works without them, tokens are viewed as the centerpiece of OAuth. A client requests a token from the authentication and authorization server (henceforth «auth server») and passes it on to the protected resource. The protected resource validates it and verifies if the attached permissions and rights allow the client to proceed with its request. The tokens can be seen as the result of the delegation act.
+
+It is important to note that OAuth 2 does not define what a token is, thus leaving the implementation to each deployment. OAuth 2 can therefore be used in many different deployments with varying requirements. This is one of the reasons OAuth 2 is chosen over other protocols such as SAML or Kerberos.
+
+Upon receiving a token, the client must merely send the token along with its request. This means that the client does not need to know anything about what a token is or how it is implemented. The only thing the client needs to know, is how to obtain and use it. Both the auth server and protected resource need to know more about it, though. The auth server must know how to create one, whereas the resource owner needs to know how to recognize and validate it.
+
+\subsection{Overview of OAuth 2 Token Implementations}
+
+Since OAuth 2 does not dictate the form of its tokens, there are many different implementations. 
+
+One approach would be to generate a random string which is then stored in a database. This random string represents the token. Upon receiving the token, the resource owner looks the string up in this database and retrieves additional information about a client's or user's permission and rights. The downside of this approach is that the auth server and resource owner both need to have access to a shared database. This is not always adviseable nor possible. (Another option is that the protected resource verifies the token at the auth server, as it was done in the case study in the chapter before.)
+
+What will be looked at closer in this chapter is the implementation of structured tokens. In this case, tokens carry information, which the protected resource can parse and use for validation. An extension of this approach would be the use of token introspection, although this will not be the subject here, because it does not really further enhance the basic understanding of tokens in itself.
+
+\subsection{Structured Tokens: JSON Web Tokens (JWT)}
+
+According to the IETF «JSON Web Token (JWT) is a compact, URL-safe means of representing claims to be transferred between two parties» \cite[p. 1]{RFC7519}. It carries all the information necessary in itself to grant the client or the user access to a protected resource. It thus enables indirect communication between the auth server and resource owner without further API calls. The information that the JWT carries could be for instance an expiration time\-stamp or information about the user who gave authorization to it. Although JWT does allow for any keys and values to be placed into its JSON objects, they do set a guideline with a few standard claims to avoid key clashing between different implementations. These claims can be seen in \tablerefplain{tbl:jwt-claims} \cite[p. 185]{oauth2-in-action}.
+
+\begin{table}
+    \begin{tabularx}{\linewidth}{l | X}
+        \textbf{Claim Name} & \textbf{Claim Description} \\
+        \hline
+        \texttt{iss} & The \textit{issuer} of the token. This is an indicator of \textit{who created this token}, and in many OAuth 2 deployments this is the URL of the auth server. This claim is a single string. \\
+        \texttt{sub} & The \textit{subject} of the token. This is an indicator of \textit{who the token is about}, and in many OAuth 2 deployments this is a unique identifier for the resource owner. In most cases, the subject needs to be unique only within the scope of the issuer. This claim is a single string. \\
+        \texttt{aud} & The \textit{audience} of the token. This is an indicator of \textit{who is supposed to accept the token}, and in many OAuth 2 deployments this includes the URI of the protected resource or protected resources that the token can be sent to. This claim can be either an array of strings or, if there's only one value, a single string with no array wrapping it. \\
+        \texttt{exp} & The \textit{expiration} time\-stamp of the token. This is an indicator of \textit{when the token will expire}, for deployments where the token will expire on its own. This claim is an integer of the number of seconds since the UNIX Epoch, midnight on January 1, 1970, in the Greenwich Mean Time (GMT) time zone. \\
+        \texttt{nbf} & The \textit{not-before} time\-stamp of the token. This is an indicator of \textit{when the token will begin to be valid}, for deployments where the token could be issued before it becomes valid. This claim is an integer of the number of seconds since the UNIX Epoch, midnight on January 1, 1970, in the GMT time zone. \\
+        \texttt{iat} & The \textit{issued-at} time\-stamp of the token. This is an indicator of \textit{when the token was created}, and is commonly the system time\-stamp of the issuer at the time of token creation. This claim is an integer of the number of seconds since the UNIX Epoch, midnight on January 1, 1970, in the GMT time zone. \\
+        \texttt{jti} & The \textit{unique identifier} of the token. This is a value \textit{unique to  each token created by the issuer}, and it is often a cryptographically random value in order to prevent collisions. This value is also useful for preventing token guessing and replay attacks by adding a component of randomized entropy to the structured token what would not be available to an attacker.
+    \end{tabularx}
+    \caption{Standard JSON Web Token Claims\label{tbl:jwt-claims}}
+\end{table}
+
+The JSON Web Token is, as its name implicates, a JSON object, which gets encapsuled into a suitable format for transmission over, for instance, HTTP. There are two main distinctions between different types of JWTs: unsigned and signed tokens.
+
+\subsubsection{Unsigned JSON Web Tokens}
+
+The unsigned JWT consists of two parts that are separated through a period. The first part represents the header, which contains information about the type of the token, and other information the resource owner needs to know about the token itself. In its JSON form before encoding, it could look as follows:
+
+\begin{verbatim}
+{
+  "typ": "JWT",
+  "alg": "none"
+}
+\end{verbatim}
+
+The second part of the token is called payload. The payload carries all data that the protected resource needs to validate and verify a request from the client. 
+
+\begin{verbatim}
+var payload = {
+  iss: 'http://localhost:9001/',
+  sub: code.user ? code.user.sub : undefined,
+  aud: 'http://localhost:9002/',
+  iat: Math.floor(Date.now() / 1000),
+  exp: Math.floor(Date.now() / 1000) + (5 * 60), // five minutes
+  jti: randomstring.generate(8)
+};
+\end{verbatim}
+
+To create an unsigned JWT, one merely needs to create a header and payload, serialize the JSON objects as strings, and then encode the two strings using base64 URL encoding. These two strings made out of header and payload are then concatenated via a period followed by a period at the end. An unsigned JWT could look something like this:
+
+\begin{verbatim}
+eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJzdWIiOiIxMjM0NTY3ODkwIiwib
+  mFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.
+\end{verbatim}
+
+The downside of an unsigned JWT is obviously that it has no encryption, so that any client can dissect, analyse and then create its own tokens. They are therefore considered unsafe.
+
+\subsubsection{Signed JSON Web Tokens}
+
+Signed JWTs are encrypted before transmission and are therefore safer than unsigned tokens. Signed JWTs have a third part that is again concatenated with the header and payload at the end of the token. This third part holds information about how the token was encrypted. JWT has created a suite of useful specifications called JSON Object Signing and Encryption standards, or JOSE in short, to help with the encryption of these tokens. It covers various topics such as encryption, signatures and key storage formats.
+
+There are many ways of creating signed JWTs. There are also two main signing types: asymmetric and symmetric signing. Symmetric signing uses a shared secret between the auth server and protected resource. The token could then be encrypted using HS256. The header would then look something like the code below:
+
+\begin{verbatim}
+var header = { 'typ': 'JWT', 'alg': 'HS256'};
+\end{verbatim}
+
+The header and payload are then encrypted as shown in the next code example.
+
+\begin{verbatim}
+var access_token = jose.jws.JWS.sign(header.alg,
+   JSON.stringify(header),
+   JSON.stringify(payload),
+   new Buffer(sharedTokenSecret).toString('hex'));
+\end{verbatim}
+
+The token then looks something like this:
+
+\begin{verbatim}
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYW
+  xob3N0OjkwMDEvIiwic3ViIjoiOVhFMy1KSTM0LTAwMTMyQSIsImF1ZCI6Imh
+  0dHA6Ly9sb2NhbGhvc3Q6OTAwMi8iLCJpYXQiOjE0NjcyNTEwNzMsImV4cCI6
+  MTQ2NzI1MTM3MywianRpIjoiaEZLUUpSNmUifQ.WqRsY03pYwuJTx-9pDQXft
+  kcj7YbRn95o-16NHrVugg
+\end{verbatim}
+
+The problem with symmetrical approaches is that the auth server and protected resource have to be tied closely to be able to share a secret. If this is not the case, then the asymmetrical approach may be more suitable. Here the auth server has a private and a public key, which it uses to create the tokens. The protected resource must have access to the auth server's public key in order to verify the token. One possible way to sign such a token would be with the RS256 signature method by JOSE. The header would then look as follows:
+
+\begin{verbatim}
+var header = { 'typ': 'JWT', 'alg': rsaKey.alg, 'kid': rsaKey.kid };
+\end{verbatim}
+
+The access token is then created like this:
+
+\begin{verbatim}
+var access_token = jose.jws.JWS.sign(header.alg,
+   JSON.stringify(header),
+   JSON.stringify(payload),
+   privateKey);
+\end{verbatim}
+
+This method generates much longer tokens. To mitigate this, token introspection is used, where the public key information of the auth server is hosted on a known URL, so that the protected resource can fetch it when needed.
+
+\subsubsection{Validating JSON Web Tokens: 3 Examples}
+
+Here are three ways the protected resource could validate a received token from the client. The first example is implemented with an unsigned token. The second example with a signed symmetrical token, and the third with an signed asymmetrical token.
+
+\paragraph{Example 1: Validation of Unsigned Token}
+
+\begin{verbatim}
+// 1. Decode Base64URL and parse JSON
+var tokenParts = inToken.split('.');
+var payload = JSON.parse(base64url.decode(tokenParts[1]));
+
+// 2. Validate
+if (payload.iss == 'http://localhost:9001/') {
+  if ((Array.isArray(payload.aud) &&
+       __.contains(payload.aud, 'http://localhost:9002/')) ||
+       payload.aud == 'http://localhost:9002/') {
+    var now = Math.floor(Date.now() / 1000);
+    if (payload.iat <= now) {
+        if (payload.exp >= now) {
+            req.access_token = payload;
+        }
+    }
+  }
+}
+\end{verbatim}
+
+\paragraph{Example 2: Validation of Signed Symmetric Token}
+
+\begin{verbatim}
+// 1. Get shared secret
+var sharedTokenSecret = 'shared OAuth token secret!';
+
+// 2. Decode and parse token
+var tokenParts = inToken.split('.');
+var header = JSON.parse(base64url.decode(tokenParts[0]));
+var payload = JSON.parse(base64url.decode(tokenParts[1]));
+
+// 3. Validate
+if (jose.jws.JWS.verify(inToken,
+    new Buffer(sharedTokenSecret).toString('hex'), 
+    [header.alg])) {
+    
+    // All previous validation from example 1 go here...
+}
+\end{verbatim}
+
+\paragraph{Example 3: Validation of Signed Asymmetric Token}
+
+\begin{verbatim}
+// 1. Get public key of auth server
+var publicKey = jose.KEYUTIL.getKey(rsaKey);
+
+// 2. Validate
+if (jose.jws.JWS.verify(inToken,
+    publicKey,
+    [header.alg])) {
+
+    // All previous validation from example 1 go here...
+}
+\end{verbatim}
+
+\subsection{OAuth 2 Token Lifecycle}
+
+There are many ways to define the lifecycle of a token. JWTs are stateless and provide access tokens that expire, but also provide refresh tokens (that also expire after a longer period of time), but they cannot be revoked. Other specifications use token revocation, where the client requests for the token to be deleted and thus closes the token lifecycle. OAuth 2 defines a token revocation protocol.

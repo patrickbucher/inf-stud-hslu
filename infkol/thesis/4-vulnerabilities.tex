@@ -1,0 +1,71 @@
+\section{OAuth 2 Vulnerabilities}
+
+OAuth 2 does not guarantee security, since it does not define any implementations. Even though OAuth 2 can be seen as a solid security protocol, vulnerabilities can arise when implementing it in insecure manners. This chapter is about a few chosen vulnerabilities on each parties side.
+
+\subsection{Client Vulnerabilities}
+
+Even though an OAuth 2 client does not hold the application's data or store any user credentials, an authorized and trusted client is both a rewarding and a vulnerable target for an attacker. It carries senstivie data (authorization codes, access tokens), and the user's trust relationship to the client can easily be exploited, if the client is not implemented properly.
+
+\subsubsection{Secret Theft}
+
+Whenever a client needs to manage a secret — authorization codes, access and refresh tokens in the case of OAuth 2 — it can be stolen and misused. In this case, it can lead to theft of information from the protected resource, or worse, manipulation of the protected resources. This makes it a necessity to store these secrets at a place where outside parties will not be able to access them. Secrets also must not be written to log files.
+
+\subsubsection{CSRF Attacks}
+
+Cross-Site Request Forgery (CSRF) is when malicious applications make clients execute undesired actions via a website for which a user is authenticated. The malicious application tricks the user or the browser being used into sending a request to perform a task on a URI. Although the malicious application intended the request, it was the authenticated user that made it. The malicious code is usually embedded in HTML or JavaScript code on a website or in an email message. Upon action of the user, the code is executed without the user knowing. A plausible list of events would be the following:
+
+\begin{enumerate}
+  \item The victim requests a page from the attacker's server.
+  \item The attacker's server responds with HTML containing malicious code pointing to a task URL on the resource owner's server.
+  \item The victim's browser loads the URL that sends cookies to the resource owner.
+  \item The resource owner authenticates the victim.
+  \item Loading the task URL triggers an action at the resource owner.
+  \item The attacker forges the authorization code of the authorization server.
+  \item The attacker sends a CSRF attack to the client at the client's redirect URI (with the authorization code).
+  \item The victim's browser loads the redirect URI with the authorization code.
+  \item The client sends the authorization code to the authorization server.
+\end{enumerate}
+
+One of the most effective ways to mitigate such an attack is to add a random state parameter, as it is demonstrated in the case study. This parameter is passed to the authorization server on its first request. The authentication server must return this state parameter upon which the client can compare if it still matches. If not, the client can terminate the process.
+
+\subsection{Protected Resource Vulnerabilities}
+
+Attacking the protected resource of an OAuth 2 deployment is the most obvious choice, for this component offers the applications main assets: the user's data.
+
+\subsubsection{Token Leak}
+
+If a token is leaked to an attacker via hijacking or due to weak entropy or overly wide scopes, the resource owner could give the attacker access to protected resources.
+
+\subsubsection{Cross-Site Scripting (XSS)}
+
+An attacker can trick a victim into following a forged URI containing an XSS attack. This attack is quite common and is listed in the OWASP Top Ten \cite{owasp2017}. The protected resource becomes vulnerable when the API endpoints have been weakly designed or not properly implemented. Without cleansing user inputs, for example, the attacker could add malicious code into the query string of a URI that hits an API endpoint, and then execute the malicious code upon response. In this example, JavaScript code is injected where a language code (\texttt{de}, \texttt{en}, etc.) is expected. 
+
+\begin{verbatim}
+http://localhost:9002/endpoint?access_token=TOKEN
+    &language=<script>alert('XSS')</script>
+\end{verbatim}
+
+The endpoint is poorly implemented, processes the request, and the pretended language code (i.e. the malicious JavaScript code) is executed. Tokens, which are held in the browser session, thus can be accessed from the malicious code and be sent to the attacker over an AJAX request.
+
+\subsection{Authorization Server Vulnerabilities}
+
+The authorization server is the most complex entity in a OAuth 2 deployment, and therefore also has the most possible pitfalls. It both has a user-facing interface (authorization/authentication page for front-channel communication) and a machine-facing interface (API for back-channel communication). In addition to general web security advice (use TLS, secure the server and logs, etc.), some special advice specific to OAuth 2 is given here to avoid common vulnerabilities.
+
+\subsubsection{Session Hijacking}
+
+An authorization code, as it is used in the case study, is a one-time password, and therefore must only be allowed to be used exactly once. Since the authorization code is sent back to the client by the means of a redirect, this one-time password stays in the browser history, even if the user logs out off the client and/or the authorization server. An attacker with access to the same computer (and to the browser history) could therefore tamper this original redirect request to get a fresh \texttt{access\_token} and, thus, access to the original user's scope.
+
+The OAuth 2 specification gives clear advice on how to prevent such attacks: An authorization code must only be used once, and then must be invalidated by the authorization server. Optionally, all the access tokens issued with an authorization code can be revoked upon a second attempt to use it \cite[section 4.1.3]{RFC6749}.
+
+\subsubsection{Redirect URI Manipulation}
+
+The \texttt{redirect\_uri} a client uses to get the authorization code sent to must be initially registered at the authorization server. The authorization server then must check on every request that the \texttt{redirect\_uri} actually used \textit{matches} the \texttt{redirect\_uri} initially registered. However, this matching can be done in different ways:
+
+\begin{enumerate}
+    \item Exact matching: check for equality.
+    \item Allowing subdirectory: the path of the actual \texttt{redirect\_uri} can contain additional elements to the registered value.
+    \item Allowing subdomain: any subdomain on the registered host can be used with the same path.
+    \item Allowing both subdirectory and subdomain: a combination of the latter two options.
+\end{enumerate}
+
+Option 1, exact matching, is the safest option. The other options are unsafe and can be exploited, especially in a cloud hosting setting. A user of service \url{foo.cloudhosting.com} could be redirected to the attacker's service hosted on the same environment, say \url{bar.cloudhosting.com}, if a different subdomain is allowed. If a different path (subdirectory) is allowed, the attacker can achieve the same by using relative paths (\texttt{../../..}). If a user can be sent to such a forged page, his authorization code will be redirected to the attacker, giving him access to the user's authorized scope.

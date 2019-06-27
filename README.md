@@ -26,6 +26,9 @@ Dokumente zu meinem Informatik-Studium an der Hochschule Luzern ‒ Informatik (
         - Textsorten
         - Verständlichkeit
         - Vier wesentliche Merkmale von Texten
+- `infkol`: Computer Science Hot Topics
+    - Zusammenfassungen, Fragen und Antworten zu fünf Gastvorträgen
+    - Paper über OAuth 2
 - `ipcv`: Image Processing & Computer Vision
     - Übungen der ersten vier Wochen
 - `isf`: Information Security Fundamentals

@@ -1,0 +1,32 @@
+digraph auth_grant {
+    graph [dpi="300"];
+    node [fontname="Droid Sans Mono", fontsize="12pt", margin="0.5, 0.25"];
+    edge [fontname="Droid Sans Mono", fontsize="12pt"];
+
+    owner [label="Resource Owner", shape="rect"];
+    authserver [label="Authserver", shape="rect"];
+    resource [label="Resource", shape="rect"];
+    client [label="Client", shape="rect"];
+
+    // Phase 1: getting a token
+    owner -> client [label=" 1 "];
+    client -> resource [label=" 2 "];
+    resource -> client [label=" 3a "]; // TODO is this redirect clear?
+    client -> authserver [label=" 3b "];
+    authserver -> owner [label=" 4 "];
+    owner -> authserver [label=" 5 "];
+    authserver -> owner [label=" 6a "]; // TODO is this redirect clear?
+    owner -> client [label=" 6b "];
+    client -> authserver [label=" 7 "];
+    authserver -> client [label=" 8 "];
+    client -> authserver [label=" 9 "];
+
+    // Phase 2: using a token
+    client -> resource [label=" 10 "];
+    resource -> client [style="dashed", label=" 11 "];
+    resource -> authserver [label=" 12 "];
+    authserver -> resource [label=" 13 "];
+    resource -> client [label=" 14 "];
+    client -> owner [label=" 15 "];
+    owner -> client [label=" 16 "];
+}
