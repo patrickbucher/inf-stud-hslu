@@ -1,0 +1,32 @@
+1. gepaart/ungepaart
+2. einseitig/zweiseitig
+3. Nullhypothese
+4. Alternativhypothese
+
+a)
+
+- gepaart
+- einseitig
+- Durch das Rauchen häufen sich die Blutplättchen nicht vermehrt auf.
+- Durch das Rauchen häufen sich die Blutplättchen vermehrt auf.
+
+b)
+
+- ungepaart (gepaart, aber willkürlich!)
+- einseitig
+- Die fremdbefruchteten Pflanzen werden nicht grösser.
+- Die fremdbefruchteten Pflanzen werden grösser.
+
+c)
+
+- ungepaart
+- zweiseitig
+- Das Kalziumsalz hat keinen Einfluss auf den systolischen Blutdruck.
+- Das Kaltiumsalz hat einen Einfluss auf den systolischen Blutdruck.
+
+d)
+
+- ungepaart
+- zweiseitig
+- Beide Arten von Eisen werden gleich gut aufgenommen.
+- Die beiden Arten von Eisen werden unterschiedlich gut aufgenommen.

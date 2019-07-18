@@ -1,0 +1,6 @@
+- Sind die beiden Libraries `sympy` und `scipy.integrate` auf dem Stick installiert?
+- Serie 3, Aufgabe 5 c)
+- paarweise/ungepaart: Beispiel mit Pflanzen (willkürliche Paare!?)
+- kommen Aufgaben wie 5.6 und 5.7 auch an der Prüfung dran?
+- Serie 6, Aufgabe 3 b)
+- Serie 10: kann man alles mit Python machen?

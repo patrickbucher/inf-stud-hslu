@@ -65,6 +65,9 @@ Dokumente zu meinem Informatik-Studium an der Hochschule Luzern ‒ Informatik (
     - Präsentation mit Glossar
 - `sprg`: Sicheres Programmieren
     - Fallstudie «Smart Meter» (Threat Modeling nach STRIDE)
+- `stat`: Statistics for Data Science
+    - Übungen mit teils ausführlichen Lösungen
+    - Scan von handschriftlicher Zusammenfassung für MEP (12 Seiten)
 - `vsk`: Verteilte Systeme und Komponenten
     - Interface-Vorschlag
     - Zusammenfassung
@@ -80,3 +83,4 @@ Dokumente zu meinem Informatik-Studium an der Hochschule Luzern ‒ Informatik (
 - [pcp-project](https://github.com/patrickbucher/pcp-project): Vorstellung der Programmiersprache Rust im Modul PCP
 - [getting-to-philosophy](https://github.com/patrickbucher/getting-to-philosophy): Gruppenarbeit für den «Selenium-Teil» des Moduls SWT (nicht mit Selenium, sondern in Go umgesetzt), zum Simulieren des Spiels [Getting to Philosophy](https://en.wikipedia.org/wiki/Wikipedia:Getting_to_Philosophy) auf Wikipedia.
 - [oauth2-demo](https://github.com/patrickbucher/oauth2-demo): Demoapplikationen für OAuth 2 (ergänzend zum Paper für das Modul INFKOL entwickelt).
+- [statistics-with-python](https://github.com/patrickbucher/statistics-with-python): Persönliche Notizen zu IPython, NumPy, Pandas und Matplotlib
