@@ -1,0 +1,2 @@
+CC=gcc
+CLFAGS=-Wall
