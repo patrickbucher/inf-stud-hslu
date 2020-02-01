@@ -1,0 +1,2138 @@
+{
+  "files": [
+    {
+      "code": 510,
+      "comment": 58,
+      "blank": 42,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/requests/requests.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 509,
+      "comment": 4,
+      "blank": 56,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/cmd/px.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 498,
+      "comment": 0,
+      "blank": 31,
+      "name": "/home/paedu/code/github.com/patrickbucher/getting-to-philosophy/firstlink/firstlink_test.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 361,
+      "comment": 34,
+      "blank": 27,
+      "name": "/home/paedu/code/github.com/patrickbucher/getting-to-philosophy/firstlink/firstlink.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 345,
+      "comment": 1,
+      "blank": 25,
+      "name": "/home/paedu/code/github.com/patrickbucher/revergo/board/board_test.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 314,
+      "comment": 0,
+      "blank": 30,
+      "name": "/home/paedu/code/github.com/patrickbucher/reveal-the-pain/frontend/src/script.js",
+      "Lang": "JavaScript"
+    },
+    {
+      "code": 253,
+      "comment": 9,
+      "blank": 46,
+      "name": "/home/paedu/code/github.com/patrickbucher/reversi/src/board_test.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 242,
+      "comment": 8,
+      "blank": 17,
+      "name": "/home/paedu/code/github.com/patrickbucher/oauth2-demo/authserver/authserver.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 240,
+      "comment": 30,
+      "blank": 106,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/help/help.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 222,
+      "comment": 8,
+      "blank": 23,
+      "name": "/home/paedu/code/github.com/patrickbucher/getting-to-philosophy/firstlink.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 207,
+      "comment": 3,
+      "blank": 20,
+      "name": "/home/paedu/code/github.com/patrickbucher/reveal-the-pain/backend/src/server.js",
+      "Lang": "JavaScript"
+    },
+    {
+      "code": 203,
+      "comment": 25,
+      "blank": 17,
+      "name": "/home/paedu/code/github.com/patrickbucher/revergo/board/board.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 194,
+      "comment": 0,
+      "blank": 0,
+      "name": "/home/paedu/code/github.com/patrickbucher/getting-to-philosophy/assets/index.html",
+      "Lang": "HTML"
+    },
+    {
+      "code": 187,
+      "comment": 3,
+      "blank": 14,
+      "name": "/home/paedu/code/github.com/patrickbucher/oauth2-demo/client/client.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 171,
+      "comment": 16,
+      "blank": 20,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/vier_gewinnt/vier_gewinnt.c",
+      "Lang": "C"
+    },
+    {
+      "code": 166,
+      "comment": 1,
+      "blank": 6,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/utils/filesystem_test.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 165,
+      "comment": 0,
+      "blank": 5,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/env/env_test.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 161,
+      "comment": 18,
+      "blank": 22,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/tokenstore/tokenpair.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 153,
+      "comment": 14,
+      "blank": 21,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/darts_x01/darts_x01.c",
+      "Lang": "C"
+    },
+    {
+      "code": 148,
+      "comment": 17,
+      "blank": 14,
+      "name": "/home/paedu/code/github.com/patrickbucher/revergo/tournament/tournament.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 139,
+      "comment": 2,
+      "blank": 9,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/requests/tagging.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 130,
+      "comment": 0,
+      "blank": 27,
+      "name": "/home/paedu/code/github.com/patrickbucher/reversi/src/board.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 119,
+      "comment": 0,
+      "blank": 10,
+      "name": "/home/paedu/code/github.com/patrickbucher/oauth2-demo/resource/resource.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 117,
+      "comment": 16,
+      "blank": 14,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/gol/gol.c",
+      "Lang": "C"
+    },
+    {
+      "code": 117,
+      "comment": 35,
+      "blank": 15,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/tokenstore/tokenstore.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 115,
+      "comment": 0,
+      "blank": 8,
+      "name": "/home/paedu/code/github.com/patrickbucher/reveal-the-pain/backend/scripts/create-journal.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 108,
+      "comment": 6,
+      "blank": 20,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/threading/sum.c",
+      "Lang": "C"
+    },
+    {
+      "code": 108,
+      "comment": 7,
+      "blank": 11,
+      "name": "/home/paedu/code/github.com/patrickbucher/revergo/player/stdin_player.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 108,
+      "comment": 1,
+      "blank": 12,
+      "name": "/home/paedu/code/github.com/patrickbucher/roman-numerals/src/main/java/com/github/patrickbucher/RomanNumerals.java",
+      "Lang": "Java"
+    },
+    {
+      "code": 98,
+      "comment": 5,
+      "blank": 22,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/monty_hall/monty_hall.c",
+      "Lang": "C"
+    },
+    {
+      "code": 93,
+      "comment": 5,
+      "blank": 11,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/smart_quotes/c/smart_quotes.c",
+      "Lang": "C"
+    },
+    {
+      "code": 88,
+      "comment": 0,
+      "blank": 21,
+      "name": "/home/paedu/code/github.com/patrickbucher/reversi/src/tournament.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 85,
+      "comment": 0,
+      "blank": 0,
+      "name": "/home/paedu/code/github.com/patrickbucher/reveal-the-pain/frontend/src/index.html",
+      "Lang": "HTML"
+    },
+    {
+      "code": 85,
+      "comment": 26,
+      "blank": 4,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/utils/filesystem.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 84,
+      "comment": 16,
+      "blank": 10,
+      "name": "/home/paedu/code/github.com/patrickbucher/revergo/player/minimax_player.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 81,
+      "comment": 0,
+      "blank": 15,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/minigrep/src/lib.rs",
+      "Lang": "Rust"
+    },
+    {
+      "code": 79,
+      "comment": 9,
+      "blank": 16,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/linum/linum.c",
+      "Lang": "C"
+    },
+    {
+      "code": 78,
+      "comment": 21,
+      "blank": 9,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/utils/utils.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 76,
+      "comment": 5,
+      "blank": 32,
+      "name": "/home/paedu/code/github.com/skiapoden/kurtoid/app/trumpcarloid.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 75,
+      "comment": 7,
+      "blank": 18,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/smart_quotes/js/smart-quotes.js",
+      "Lang": "JavaScript"
+    },
+    {
+      "code": 71,
+      "comment": 13,
+      "blank": 5,
+      "name": "/home/paedu/code/github.com/patrickbucher/revergo/game/game.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 71,
+      "comment": 5,
+      "blank": 28,
+      "name": "/home/paedu/code/github.com/skiapoden/kurtoid/app/carloid.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 69,
+      "comment": 0,
+      "blank": 14,
+      "name": "/home/paedu/code/github.com/patrickbucher/reveal-the-pain/frontend/src/style.css",
+      "Lang": "CSS"
+    },
+    {
+      "code": 67,
+      "comment": 4,
+      "blank": 11,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/sorting/sorting.c",
+      "Lang": "C"
+    },
+    {
+      "code": 67,
+      "comment": 0,
+      "blank": 12,
+      "name": "/home/paedu/code/github.com/patrickbucher/zeit/src/zeit.c",
+      "Lang": "C"
+    },
+    {
+      "code": 65,
+      "comment": 10,
+      "blank": 6,
+      "name": "/home/paedu/code/github.com/patrickbucher/revergo/player/cornerdefense_player.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 61,
+      "comment": 0,
+      "blank": 9,
+      "name": "/home/paedu/code/github.com/patrickbucher/revergo/board/move_test.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 60,
+      "comment": 0,
+      "blank": 13,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/alnumpargen/alnumpargen.c",
+      "Lang": "C"
+    },
+    {
+      "code": 60,
+      "comment": 16,
+      "blank": 19,
+      "name": "/home/paedu/code/github.com/patrickbucher/reveal-the-pain/backend/src/correlation.test.js",
+      "Lang": "JavaScript"
+    },
+    {
+      "code": 60,
+      "comment": 0,
+      "blank": 17,
+      "name": "/home/paedu/code/github.com/patrickbucher/reversi/src/game.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 60,
+      "comment": 12,
+      "blank": 11,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/env/env.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 57,
+      "comment": 1,
+      "blank": 13,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/checkout/checkout.c",
+      "Lang": "C"
+    },
+    {
+      "code": 57,
+      "comment": 0,
+      "blank": 9,
+      "name": "/home/paedu/code/github.com/patrickbucher/roman-numerals/src/test/java/com/github/patrickbucher/RomanNumeralsTest.java",
+      "Lang": "Java"
+    },
+    {
+      "code": 56,
+      "comment": 0,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/oauth2-demo/authserver/auth.html",
+      "Lang": "HTML"
+    },
+    {
+      "code": 55,
+      "comment": 0,
+      "blank": 7,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/summary/src/main.rs",
+      "Lang": "Rust"
+    },
+    {
+      "code": 55,
+      "comment": 0,
+      "blank": 3,
+      "name": "/home/paedu/code/github.com/patrickbucher/reveal-the-pain/backend/src/redis.js",
+      "Lang": "JavaScript"
+    },
+    {
+      "code": 53,
+      "comment": 2,
+      "blank": 18,
+      "name": "/home/paedu/code/github.com/skiapoden/kurtoid/app/permutoid.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 52,
+      "comment": 0,
+      "blank": 10,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/touchtype_generator/generate_number_text.c",
+      "Lang": "C"
+    },
+    {
+      "code": 52,
+      "comment": 6,
+      "blank": 5,
+      "name": "/home/paedu/code/github.com/patrickbucher/reveal-the-pain/backend/src/correlation.js",
+      "Lang": "JavaScript"
+    },
+    {
+      "code": 52,
+      "comment": 0,
+      "blank": 11,
+      "name": "/home/paedu/code/github.com/patrickbucher/zeit/src/utils.c",
+      "Lang": "C"
+    },
+    {
+      "code": 51,
+      "comment": 0,
+      "blank": 4,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/fibcache/src/main.rs",
+      "Lang": "Rust"
+    },
+    {
+      "code": 51,
+      "comment": 0,
+      "blank": 4,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/words/src/lib.rs",
+      "Lang": "Rust"
+    },
+    {
+      "code": 50,
+      "comment": 0,
+      "blank": 10,
+      "name": "/home/paedu/code/github.com/skiapoden/kurtoid/app/rule_based_trump.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 50,
+      "comment": 29,
+      "blank": 14,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/requests/credentials.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 49,
+      "comment": 0,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/twelve-days-of-xmas/src/main.rs",
+      "Lang": "Rust"
+    },
+    {
+      "code": 49,
+      "comment": 0,
+      "blank": 15,
+      "name": "/home/paedu/code/github.com/patrickbucher/reversi/src/edge_player_test.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 48,
+      "comment": 0,
+      "blank": 10,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/key_value/key_value.c",
+      "Lang": "C"
+    },
+    {
+      "code": 48,
+      "comment": 0,
+      "blank": 3,
+      "name": "/home/paedu/code/github.com/patrickbucher/revergo/simulation/simulation.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 47,
+      "comment": 3,
+      "blank": 8,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/pymath/mathfuncs.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 47,
+      "comment": 0,
+      "blank": 9,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/sorting/simple_sort.c",
+      "Lang": "C"
+    },
+    {
+      "code": 46,
+      "comment": 0,
+      "blank": 4,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/tokenstore/tokenstore_test.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 45,
+      "comment": 1,
+      "blank": 5,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/mean_median_mode/src/main.rs",
+      "Lang": "Rust"
+    },
+    {
+      "code": 45,
+      "comment": 0,
+      "blank": 8,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/openrussianrip/openrussianrip.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 45,
+      "comment": 7,
+      "blank": 6,
+      "name": "/home/paedu/code/github.com/patrickbucher/revergo/player/maxround_player.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 45,
+      "comment": 0,
+      "blank": 15,
+      "name": "/home/paedu/code/github.com/skiapoden/kurtoid/app/rule_based_trump_test.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 45,
+      "comment": 2,
+      "blank": 17,
+      "name": "/home/paedu/code/github.com/skiapoden/kurtoid/app/trumpruloid.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 44,
+      "comment": 11,
+      "blank": 11,
+      "name": "/home/paedu/code/github.com/patrickbucher/revergo/board/constants.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 43,
+      "comment": 0,
+      "blank": 10,
+      "name": "/home/paedu/code/github.com/patrickbucher/reversi/src/cornerminimax_player.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 42,
+      "comment": 3,
+      "blank": 8,
+      "name": "/home/paedu/code/github.com/patrickbucher/getting-to-philosophy/firstlink/records.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 40,
+      "comment": 6,
+      "blank": 6,
+      "name": "/home/paedu/code/github.com/patrickbucher/revergo/player/corner_player.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 40,
+      "comment": 2,
+      "blank": 13,
+      "name": "/home/paedu/code/github.com/skiapoden/kurtoid/app/kurtoid.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 40,
+      "comment": 0,
+      "blank": 11,
+      "name": "/home/paedu/code/github.com/skiapoden/kurtoid/app/simulation.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 39,
+      "comment": 6,
+      "blank": 7,
+      "name": "/home/paedu/code/github.com/patrickbucher/revergo/player/edge_player.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 39,
+      "comment": 0,
+      "blank": 12,
+      "name": "/home/paedu/code/github.com/patrickbucher/zeit/src/duration.c",
+      "Lang": "C"
+    },
+    {
+      "code": 38,
+      "comment": 0,
+      "blank": 11,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/largest/src/main.rs",
+      "Lang": "Rust"
+    },
+    {
+      "code": 38,
+      "comment": 47,
+      "blank": 6,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/mememo/src/lib.rs",
+      "Lang": "Rust"
+    },
+    {
+      "code": 38,
+      "comment": 1,
+      "blank": 12,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/stat/stat.c",
+      "Lang": "C"
+    },
+    {
+      "code": 37,
+      "comment": 0,
+      "blank": 0,
+      "name": "/home/paedu/code/github.com/patrickbucher/oauth2-demo/client/gossip.html",
+      "Lang": "HTML"
+    },
+    {
+      "code": 37,
+      "comment": 0,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/oauth2-demo/client/index.html",
+      "Lang": "HTML"
+    },
+    {
+      "code": 35,
+      "comment": 0,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/employees/src/main.rs",
+      "Lang": "Rust"
+    },
+    {
+      "code": 34,
+      "comment": 0,
+      "blank": 5,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/mememo/tests/lib_test.rs",
+      "Lang": "Rust"
+    },
+    {
+      "code": 34,
+      "comment": 0,
+      "blank": 8,
+      "name": "/home/paedu/code/github.com/patrickbucher/reversi/src/simulation.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 33,
+      "comment": 0,
+      "blank": 5,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/iterators/src/main.rs",
+      "Lang": "Rust"
+    },
+    {
+      "code": 33,
+      "comment": 1,
+      "blank": 8,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/sorting/sort_utils.c",
+      "Lang": "C"
+    },
+    {
+      "code": 33,
+      "comment": 0,
+      "blank": 3,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/utftest/lineio.c",
+      "Lang": "C"
+    },
+    {
+      "code": 33,
+      "comment": 0,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/revergo/league/league.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 33,
+      "comment": 0,
+      "blank": 7,
+      "name": "/home/paedu/code/github.com/patrickbucher/reversi/src/minimax_player.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 32,
+      "comment": 2,
+      "blank": 5,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/unk/unk.c",
+      "Lang": "C"
+    },
+    {
+      "code": 31,
+      "comment": 0,
+      "blank": 0,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/smart_quotes/js/smart-quotes.html",
+      "Lang": "HTML"
+    },
+    {
+      "code": 30,
+      "comment": 0,
+      "blank": 4,
+      "name": "/home/paedu/code/github.com/patrickbucher/reveal-the-pain/backend/src/validator.test.js",
+      "Lang": "JavaScript"
+    },
+    {
+      "code": 30,
+      "comment": 8,
+      "blank": 7,
+      "name": "/home/paedu/code/github.com/patrickbucher/revergo/board/move.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 30,
+      "comment": 5,
+      "blank": 6,
+      "name": "/home/paedu/code/github.com/patrickbucher/revergo/player/random_player.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 29,
+      "comment": 0,
+      "blank": 7,
+      "name": "/home/paedu/code/github.com/patrickbucher/reversi/src/maxround_player.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 29,
+      "comment": 2,
+      "blank": 8,
+      "name": "/home/paedu/code/github.com/patrickbucher/reversi/src/stdin_player.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 29,
+      "comment": 2,
+      "blank": 12,
+      "name": "/home/paedu/code/github.com/skiapoden/kurtoid/app/parallel_universe.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 28,
+      "comment": 0,
+      "blank": 9,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/guessing_game/src/main.rs",
+      "Lang": "Rust"
+    },
+    {
+      "code": 28,
+      "comment": 0,
+      "blank": 4,
+      "name": "/home/paedu/code/github.com/patrickbucher/reveal-the-pain/backend/src/validator.js",
+      "Lang": "JavaScript"
+    },
+    {
+      "code": 26,
+      "comment": 2,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/pig_latin/src/main.rs",
+      "Lang": "Rust"
+    },
+    {
+      "code": 25,
+      "comment": 0,
+      "blank": 6,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/pymath/prime.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 25,
+      "comment": 0,
+      "blank": 7,
+      "name": "/home/paedu/code/github.com/patrickbucher/reversi/src/edge_player.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 24,
+      "comment": 0,
+      "blank": 6,
+      "name": "/home/paedu/code/github.com/skiapoden/kurtoid/app/donat_trump.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 22,
+      "comment": 0,
+      "blank": 0,
+      "name": "/home/paedu/code/github.com/patrickbucher/roman-numerals/pom.xml",
+      "Lang": "Maven"
+    },
+    {
+      "code": 22,
+      "comment": 0,
+      "blank": 6,
+      "name": "/home/paedu/code/github.com/skiapoden/kurtoid/app/main.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 21,
+      "comment": 0,
+      "blank": 3,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/utils/contenttype_test.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 20,
+      "comment": 1,
+      "blank": 11,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/pymath/fib_test.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 20,
+      "comment": 0,
+      "blank": 6,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/stat/sd.c",
+      "Lang": "C"
+    },
+    {
+      "code": 20,
+      "comment": 0,
+      "blank": 12,
+      "name": "/home/paedu/code/github.com/patrickbucher/reversi/src/stdin_player_test.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 20,
+      "comment": 2,
+      "blank": 2,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/utils/contenttype.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 19,
+      "comment": 1,
+      "blank": 6,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/pymath/factor.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 19,
+      "comment": 0,
+      "blank": 6,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/stat/mean.c",
+      "Lang": "C"
+    },
+    {
+      "code": 18,
+      "comment": 0,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/points/src/main.rs",
+      "Lang": "Rust"
+    },
+    {
+      "code": 17,
+      "comment": 1,
+      "blank": 9,
+      "name": "/home/paedu/code/github.com/skiapoden/kurtoid/app/kurtutils.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 16,
+      "comment": 0,
+      "blank": 0,
+      "name": "/home/paedu/code/github.com/patrickbucher/getting-to-philosophy/assets/style.css",
+      "Lang": "CSS"
+    },
+    {
+      "code": 16,
+      "comment": 0,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/longest/src/main.rs",
+      "Lang": "Rust"
+    },
+    {
+      "code": 16,
+      "comment": 0,
+      "blank": 5,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/minigrep/src/main.rs",
+      "Lang": "Rust"
+    },
+    {
+      "code": 16,
+      "comment": 0,
+      "blank": 4,
+      "name": "/home/paedu/code/github.com/patrickbucher/zeit/src/duration.h",
+      "Lang": "C Header"
+    },
+    {
+      "code": 15,
+      "comment": 0,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/maths/src/lib.rs",
+      "Lang": "Rust"
+    },
+    {
+      "code": 15,
+      "comment": 0,
+      "blank": 3,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/round/round.c",
+      "Lang": "C"
+    },
+    {
+      "code": 15,
+      "comment": 3,
+      "blank": 4,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/utils/pwinput.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 15,
+      "comment": 3,
+      "blank": 2,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/utils/pwinput_windows.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 14,
+      "comment": 0,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/oauth2-demo/commons/logger.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 14,
+      "comment": 4,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/oauth2-demo/commons/resourcepath.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 14,
+      "comment": 0,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/fib-test/fib.c",
+      "Lang": "C"
+    },
+    {
+      "code": 14,
+      "comment": 0,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/fib-test/fib.cpp",
+      "Lang": "C++"
+    },
+    {
+      "code": 14,
+      "comment": 0,
+      "blank": 3,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/pymath/gcd_euclid.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 14,
+      "comment": 0,
+      "blank": 7,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/pymath/mathfuncs_test.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 13,
+      "comment": 0,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/charcode/charcode.c",
+      "Lang": "C"
+    },
+    {
+      "code": 13,
+      "comment": 0,
+      "blank": 6,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/pymath/prime_test.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 12,
+      "comment": 0,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/fibonacci/src/main.rs",
+      "Lang": "Rust"
+    },
+    {
+      "code": 12,
+      "comment": 1,
+      "blank": 3,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/pymath/fib.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 12,
+      "comment": 0,
+      "blank": 5,
+      "name": "/home/paedu/code/github.com/patrickbucher/zeit/src/duration_test.c",
+      "Lang": "C"
+    },
+    {
+      "code": 11,
+      "comment": 0,
+      "blank": 4,
+      "name": "/home/paedu/code/github.com/patrickbucher/zeit/src/utils_test.c",
+      "Lang": "C"
+    },
+    {
+      "code": 11,
+      "comment": 3,
+      "blank": 2,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/tokenstore/tokenresponse.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 10,
+      "comment": 0,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/fahr_to_cels/src/main.rs",
+      "Lang": "Rust"
+    },
+    {
+      "code": 10,
+      "comment": 2,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/oauth2-demo/commons/randstr.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 10,
+      "comment": 0,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/fib-test/fib.rs",
+      "Lang": "Rust"
+    },
+    {
+      "code": 10,
+      "comment": 0,
+      "blank": 5,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/pymath/factor_test.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 10,
+      "comment": 0,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/unbloat/hello.c",
+      "Lang": "C"
+    },
+    {
+      "code": 10,
+      "comment": 0,
+      "blank": 4,
+      "name": "/home/paedu/code/github.com/patrickbucher/reversi/src/random_player.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 9,
+      "comment": 0,
+      "blank": 3,
+      "name": "/home/paedu/code/github.com/patrickbucher/oauth2-demo/commons/token.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 9,
+      "comment": 0,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/fib-test/fib.pl",
+      "Lang": "Perl"
+    },
+    {
+      "code": 9,
+      "comment": 0,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/reversi/src/firstmove_player.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 8,
+      "comment": 0,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/fib-test/fib.js",
+      "Lang": "JavaScript"
+    },
+    {
+      "code": 8,
+      "comment": 0,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/revergo/player/common.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 7,
+      "comment": 8,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/mean/avg/src/lib.rs",
+      "Lang": "Rust"
+    },
+    {
+      "code": 7,
+      "comment": 0,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/mean/mean/src/main.rs",
+      "Lang": "Rust"
+    },
+    {
+      "code": 7,
+      "comment": 8,
+      "blank": 0,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/mean/sum/src/lib.rs",
+      "Lang": "Rust"
+    },
+    {
+      "code": 7,
+      "comment": 0,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/bufio/main.c",
+      "Lang": "C"
+    },
+    {
+      "code": 7,
+      "comment": 4,
+      "blank": 4,
+      "name": "/home/paedu/code/github.com/patrickbucher/revergo/player/player.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 7,
+      "comment": 0,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/zeit/src/utils.h",
+      "Lang": "C Header"
+    },
+    {
+      "code": 6,
+      "comment": 0,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/statfoo/src/main.rs",
+      "Lang": "Rust"
+    },
+    {
+      "code": 6,
+      "comment": 0,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/fib-test/fib.py",
+      "Lang": "Python"
+    },
+    {
+      "code": 6,
+      "comment": 1,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/reveal-the-pain/backend/src/credentials.js",
+      "Lang": "JavaScript"
+    },
+    {
+      "code": 5,
+      "comment": 0,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/bufio/bufio.c",
+      "Lang": "C"
+    },
+    {
+      "code": 3,
+      "comment": 1,
+      "blank": 0,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/smart_quotes/js/jquery.js",
+      "Lang": "JavaScript"
+    },
+    {
+      "code": 3,
+      "comment": 0,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/sorting/simple_sort.h",
+      "Lang": "C Header"
+    },
+    {
+      "code": 3,
+      "comment": 0,
+      "blank": 0,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/sorting/sort_utils.h",
+      "Lang": "C Header"
+    },
+    {
+      "code": 3,
+      "comment": 5,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/stat/stat.h",
+      "Lang": "C Header"
+    },
+    {
+      "code": 2,
+      "comment": 0,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/bufio/bufio.h",
+      "Lang": "C Header"
+    },
+    {
+      "code": 1,
+      "comment": 4,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/getting-to-philosophy/example/csv.sh",
+      "Lang": "Bourne Shell"
+    },
+    {
+      "code": 1,
+      "comment": 4,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/getting-to-philosophy/example/firstlink.sh",
+      "Lang": "Bourne Shell"
+    },
+    {
+      "code": 1,
+      "comment": 1,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/getting-to-philosophy/run.sh",
+      "Lang": "Bourne Shell"
+    },
+    {
+      "code": 1,
+      "comment": 5,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/oauth2-demo/kill.sh",
+      "Lang": "BASH"
+    },
+    {
+      "code": 1,
+      "comment": 7,
+      "blank": 4,
+      "name": "/home/paedu/code/github.com/patrickbucher/oauth2-demo/run.sh",
+      "Lang": "Bourne Shell"
+    },
+    {
+      "code": 1,
+      "comment": 60,
+      "blank": 5,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/utils/audioconv",
+      "Lang": "BASH"
+    },
+    {
+      "code": 1,
+      "comment": 2,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/utils/md2html",
+      "Lang": "BASH"
+    },
+    {
+      "code": 1,
+      "comment": 14,
+      "blank": 3,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/utils/md2pdf",
+      "Lang": "Bourne Shell"
+    },
+    {
+      "code": 1,
+      "comment": 7,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/utils/switchkb",
+      "Lang": "Bourne Shell"
+    },
+    {
+      "code": 1,
+      "comment": 1,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/reveal-the-pain/docs/Arbeitsjournal/journal",
+      "Lang": "Bourne Shell"
+    },
+    {
+      "code": 1,
+      "comment": 1,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/skiapoden/kurtoid/build.sh",
+      "Lang": "Bourne Shell"
+    },
+    {
+      "code": 1,
+      "comment": 6,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/skiapoden/kurtoid/deploy.sh",
+      "Lang": "Bourne Shell"
+    },
+    {
+      "code": 1,
+      "comment": 1,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/skiapoden/kurtoid/run.sh",
+      "Lang": "Bourne Shell"
+    },
+    {
+      "code": 1,
+      "comment": 2,
+      "blank": 0,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/px.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 1,
+      "comment": 52,
+      "blank": 6,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/scripts/ci-pipeline.sh",
+      "Lang": "BASH"
+    },
+    {
+      "code": 1,
+      "comment": 42,
+      "blank": 4,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/scripts/ci-px-agent-login-logout-test.sh",
+      "Lang": "BASH"
+    },
+    {
+      "code": 1,
+      "comment": 36,
+      "blank": 4,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/scripts/ci-px-autotag-test.sh",
+      "Lang": "BASH"
+    },
+    {
+      "code": 1,
+      "comment": 14,
+      "blank": 2,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/scripts/ci-px-deliver-test.sh",
+      "Lang": "BASH"
+    },
+    {
+      "code": 1,
+      "comment": 86,
+      "blank": 11,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/scripts/ci-px-env-test.sh",
+      "Lang": "BASH"
+    },
+    {
+      "code": 1,
+      "comment": 21,
+      "blank": 3,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/scripts/ci-px-get-test.sh",
+      "Lang": "BASH"
+    },
+    {
+      "code": 1,
+      "comment": 35,
+      "blank": 4,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/scripts/ci-px-help-test.sh",
+      "Lang": "BASH"
+    },
+    {
+      "code": 1,
+      "comment": 70,
+      "blank": 8,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/scripts/ci-px-login-logout-test.sh",
+      "Lang": "BASH"
+    },
+    {
+      "code": 1,
+      "comment": 28,
+      "blank": 4,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/scripts/ci-px-patch-test.sh",
+      "Lang": "BASH"
+    },
+    {
+      "code": 1,
+      "comment": 22,
+      "blank": 3,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/scripts/ci-px-post-test.sh",
+      "Lang": "BASH"
+    },
+    {
+      "code": 1,
+      "comment": 36,
+      "blank": 5,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/scripts/ci-px-put-delete-test.sh",
+      "Lang": "BASH"
+    },
+    {
+      "code": 1,
+      "comment": 31,
+      "blank": 4,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/scripts/ci-px-upload-recursively-test.sh",
+      "Lang": "BASH"
+    },
+    {
+      "code": 1,
+      "comment": 18,
+      "blank": 3,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/scripts/ci-px-upload-test.sh",
+      "Lang": "BASH"
+    },
+    {
+      "code": 1,
+      "comment": 3,
+      "blank": 1,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/scripts/ci-px-version-test.sh",
+      "Lang": "BASH"
+    },
+    {
+      "code": 1,
+      "comment": 26,
+      "blank": 8,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/scripts/standalone-px-deliver-retry-test.sh",
+      "Lang": "BASH"
+    },
+    {
+      "code": 1,
+      "comment": 26,
+      "blank": 8,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/scripts/standalone-px-get-retry-test.sh",
+      "Lang": "BASH"
+    },
+    {
+      "code": 1,
+      "comment": 26,
+      "blank": 8,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/scripts/standalone-px-upload-retry-test.sh",
+      "Lang": "BASH"
+    },
+    {
+      "code": 1,
+      "comment": 15,
+      "blank": 3,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/scripts/standalone.sh",
+      "Lang": "BASH"
+    },
+    {
+      "code": 0,
+      "comment": 17,
+      "blank": 4,
+      "name": "/home/paedu/code/github.com/patrickbucher/getting-to-philosophy/LICENSE.txt",
+      "Lang": "Plain Text"
+    },
+    {
+      "code": 0,
+      "comment": 18,
+      "blank": 10,
+      "name": "/home/paedu/code/github.com/patrickbucher/getting-to-philosophy/README.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 6,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/getting-to-philosophy/example/README.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 4,
+      "blank": 0,
+      "name": "/home/paedu/code/github.com/patrickbucher/getting-to-philosophy/example/firstlink.json",
+      "Lang": "JSON"
+    },
+    {
+      "code": 0,
+      "comment": 34,
+      "blank": 0,
+      "name": "/home/paedu/code/github.com/patrickbucher/getting-to-philosophy/example/hopcount-report.json",
+      "Lang": "JSON"
+    },
+    {
+      "code": 0,
+      "comment": 26,
+      "blank": 0,
+      "name": "/home/paedu/code/github.com/patrickbucher/getting-to-philosophy/example/hopcount.json",
+      "Lang": "JSON"
+    },
+    {
+      "code": 0,
+      "comment": 2,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/getting-to-philosophy/firstlink/README.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 2,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/README.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 6,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/employees/Cargo.toml",
+      "Lang": "TOML"
+    },
+    {
+      "code": 0,
+      "comment": 6,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/fahr_to_cels/Cargo.toml",
+      "Lang": "TOML"
+    },
+    {
+      "code": 0,
+      "comment": 7,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/fibcache/Cargo.toml",
+      "Lang": "TOML"
+    },
+    {
+      "code": 0,
+      "comment": 6,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/fibonacci/Cargo.toml",
+      "Lang": "TOML"
+    },
+    {
+      "code": 0,
+      "comment": 7,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/guessing_game/Cargo.toml",
+      "Lang": "TOML"
+    },
+    {
+      "code": 0,
+      "comment": 7,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/iterators/Cargo.toml",
+      "Lang": "TOML"
+    },
+    {
+      "code": 0,
+      "comment": 7,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/largest/Cargo.toml",
+      "Lang": "TOML"
+    },
+    {
+      "code": 0,
+      "comment": 7,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/longest/Cargo.toml",
+      "Lang": "TOML"
+    },
+    {
+      "code": 0,
+      "comment": 7,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/maths/Cargo.toml",
+      "Lang": "TOML"
+    },
+    {
+      "code": 0,
+      "comment": 4,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/mean/Cargo.toml",
+      "Lang": "TOML"
+    },
+    {
+      "code": 0,
+      "comment": 8,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/mean/avg/Cargo.toml",
+      "Lang": "TOML"
+    },
+    {
+      "code": 0,
+      "comment": 8,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/mean/mean/Cargo.toml",
+      "Lang": "TOML"
+    },
+    {
+      "code": 0,
+      "comment": 7,
+      "blank": 4,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/mean/sum/Cargo.toml",
+      "Lang": "TOML"
+    },
+    {
+      "code": 0,
+      "comment": 6,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/mean_median_mode/Cargo.toml",
+      "Lang": "TOML"
+    },
+    {
+      "code": 0,
+      "comment": 8,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/mememo/Cargo.toml",
+      "Lang": "TOML"
+    },
+    {
+      "code": 0,
+      "comment": 7,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/minigrep/Cargo.toml",
+      "Lang": "TOML"
+    },
+    {
+      "code": 0,
+      "comment": 8,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/minigrep/poem.txt",
+      "Lang": "Plain Text"
+    },
+    {
+      "code": 0,
+      "comment": 6,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/pig_latin/Cargo.toml",
+      "Lang": "TOML"
+    },
+    {
+      "code": 0,
+      "comment": 7,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/points/Cargo.toml",
+      "Lang": "TOML"
+    },
+    {
+      "code": 0,
+      "comment": 8,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/statfoo/Cargo.toml",
+      "Lang": "TOML"
+    },
+    {
+      "code": 0,
+      "comment": 7,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/summary/Cargo.toml",
+      "Lang": "TOML"
+    },
+    {
+      "code": 0,
+      "comment": 6,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/twelve-days-of-xmas/Cargo.toml",
+      "Lang": "TOML"
+    },
+    {
+      "code": 0,
+      "comment": 102,
+      "blank": 11,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/twelve-days-of-xmas/twelve-days-of-christmas.txt",
+      "Lang": "Plain Text"
+    },
+    {
+      "code": 0,
+      "comment": 7,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/code/words/Cargo.toml",
+      "Lang": "TOML"
+    },
+    {
+      "code": 0,
+      "comment": 12,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/notes/00-meta.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 109,
+      "blank": 41,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/notes/01-getting-started.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 101,
+      "blank": 31,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/notes/02-guessing-game.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 239,
+      "blank": 86,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/notes/03-common-programming-concepts.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 267,
+      "blank": 69,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/notes/04-ownership.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 232,
+      "blank": 47,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/notes/05-structs.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 268,
+      "blank": 57,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/notes/06-enums.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 254,
+      "blank": 71,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/notes/07-modules.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 266,
+      "blank": 70,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/notes/08-collections.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 252,
+      "blank": 54,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/notes/09-error-handling.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 700,
+      "blank": 177,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/notes/10-traits-generics-lifetimes.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 449,
+      "blank": 151,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/notes/11-writing-automated-tests.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 474,
+      "blank": 147,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/notes/12-command-line-program.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 508,
+      "blank": 127,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/notes/13-functional-features.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 383,
+      "blank": 116,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/notes/14-cargo-and-crates-io.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 15,
+      "blank": 14,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/notes/15-smart-pointers.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 10,
+      "blank": 4,
+      "name": "/home/paedu/code/github.com/patrickbucher/learning-rust/notes/Makefile",
+      "Lang": "Makefile"
+    },
+    {
+      "code": 0,
+      "comment": 91,
+      "blank": 37,
+      "name": "/home/paedu/code/github.com/patrickbucher/oauth2-demo/README.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 0,
+      "blank": 0,
+      "name": "/home/paedu/code/github.com/patrickbucher/oauth2-demo/client/app.css",
+      "Lang": "CSS"
+    },
+    {
+      "code": 0,
+      "comment": 17,
+      "blank": 4,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/LICENSE.txt",
+      "Lang": "Plain Text"
+    },
+    {
+      "code": 0,
+      "comment": 1000,
+      "blank": 1000,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/alnumpargen/paragraphs.txt",
+      "Lang": "Plain Text"
+    },
+    {
+      "code": 0,
+      "comment": 8,
+      "blank": 3,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/bufio/Makefile",
+      "Lang": "Makefile"
+    },
+    {
+      "code": 0,
+      "comment": 6,
+      "blank": 2,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/gol/Makefile",
+      "Lang": "Makefile"
+    },
+    {
+      "code": 0,
+      "comment": 8,
+      "blank": 3,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/linum/Makefile",
+      "Lang": "Makefile"
+    },
+    {
+      "code": 0,
+      "comment": 13,
+      "blank": 5,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/monty_hall/Makefile",
+      "Lang": "Makefile"
+    },
+    {
+      "code": 0,
+      "comment": 100,
+      "blank": 0,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/openrussianrip/top-100-adjectives.txt",
+      "Lang": "Plain Text"
+    },
+    {
+      "code": 0,
+      "comment": 100,
+      "blank": 0,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/openrussianrip/top-100-nouns.txt",
+      "Lang": "Plain Text"
+    },
+    {
+      "code": 0,
+      "comment": 100,
+      "blank": 0,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/openrussianrip/top-100-verbs.txt",
+      "Lang": "Plain Text"
+    },
+    {
+      "code": 0,
+      "comment": 500,
+      "blank": 0,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/openrussianrip/top-500-all.txt",
+      "Lang": "Plain Text"
+    },
+    {
+      "code": 0,
+      "comment": 4,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/round/Makefile",
+      "Lang": "Makefile"
+    },
+    {
+      "code": 0,
+      "comment": 9,
+      "blank": 0,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/smart_quotes/sed/smart_quotes.sed",
+      "Lang": "sed"
+    },
+    {
+      "code": 0,
+      "comment": 13,
+      "blank": 6,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/sorting/Makefile",
+      "Lang": "Makefile"
+    },
+    {
+      "code": 0,
+      "comment": 15,
+      "blank": 7,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/stat/Makefile",
+      "Lang": "Makefile"
+    },
+    {
+      "code": 0,
+      "comment": 4,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/threading/Makefile",
+      "Lang": "Makefile"
+    },
+    {
+      "code": 0,
+      "comment": 4,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/touchtype_generator/Makefile",
+      "Lang": "Makefile"
+    },
+    {
+      "code": 0,
+      "comment": 4,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/unbloat/Makefile",
+      "Lang": "Makefile"
+    },
+    {
+      "code": 0,
+      "comment": 1,
+      "blank": 0,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/unbloat/junk.txt",
+      "Lang": "Plain Text"
+    },
+    {
+      "code": 0,
+      "comment": 4,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/utftest/Makefile",
+      "Lang": "Makefile"
+    },
+    {
+      "code": 0,
+      "comment": 4,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/prog/vier_gewinnt/Makefile",
+      "Lang": "Makefile"
+    },
+    {
+      "code": 0,
+      "comment": 4,
+      "blank": 3,
+      "name": "/home/paedu/code/github.com/patrickbucher/reveal-the-pain/README.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 4742,
+      "blank": 0,
+      "name": "/home/paedu/code/github.com/patrickbucher/reveal-the-pain/backend/package-lock.json",
+      "Lang": "JSON"
+    },
+    {
+      "code": 0,
+      "comment": 22,
+      "blank": 0,
+      "name": "/home/paedu/code/github.com/patrickbucher/reveal-the-pain/backend/package.json",
+      "Lang": "JSON"
+    },
+    {
+      "code": 0,
+      "comment": 1,
+      "blank": 0,
+      "name": "/home/paedu/code/github.com/patrickbucher/reveal-the-pain/backend/scripts/requirements.txt",
+      "Lang": "Plain Text"
+    },
+    {
+      "code": 0,
+      "comment": 25,
+      "blank": 0,
+      "name": "/home/paedu/code/github.com/patrickbucher/reveal-the-pain/docker-compose.yml",
+      "Lang": "YAML"
+    },
+    {
+      "code": 0,
+      "comment": 39,
+      "blank": 0,
+      "name": "/home/paedu/code/github.com/patrickbucher/reveal-the-pain/docs/Arbeitsjournal/Arbeitsjournal.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 13,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/reveal-the-pain/docs/Arbeitsjournal/journal.awk",
+      "Lang": "Awk"
+    },
+    {
+      "code": 0,
+      "comment": 10,
+      "blank": 4,
+      "name": "/home/paedu/code/github.com/patrickbucher/reveal-the-pain/docs/Makefile",
+      "Lang": "Makefile"
+    },
+    {
+      "code": 0,
+      "comment": 35,
+      "blank": 9,
+      "name": "/home/paedu/code/github.com/patrickbucher/reveal-the-pain/docs/Projektidee_Reveal-the-Pain.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 180,
+      "blank": 32,
+      "name": "/home/paedu/code/github.com/patrickbucher/reveal-the-pain/docs/Zusammenfassung_Reveal-the-Pain.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 7,
+      "blank": 3,
+      "name": "/home/paedu/code/github.com/patrickbucher/reveal-the-pain/presentation/Makefile",
+      "Lang": "Makefile"
+    },
+    {
+      "code": 0,
+      "comment": 48,
+      "blank": 21,
+      "name": "/home/paedu/code/github.com/patrickbucher/reveal-the-pain/presentation/slides.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 553,
+      "blank": 121,
+      "name": "/home/paedu/code/github.com/patrickbucher/revergo/LICENSE.txt",
+      "Lang": "Plain Text"
+    },
+    {
+      "code": 0,
+      "comment": 11,
+      "blank": 4,
+      "name": "/home/paedu/code/github.com/patrickbucher/revergo/Makefile",
+      "Lang": "Makefile"
+    },
+    {
+      "code": 0,
+      "comment": 49,
+      "blank": 12,
+      "name": "/home/paedu/code/github.com/patrickbucher/revergo/README.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 30,
+      "blank": 11,
+      "name": "/home/paedu/code/github.com/patrickbucher/reversi/README.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 1,
+      "blank": 0,
+      "name": "/home/paedu/code/github.com/patrickbucher/reversi/requirements.txt",
+      "Lang": "Plain Text"
+    },
+    {
+      "code": 0,
+      "comment": 6,
+      "blank": 0,
+      "name": "/home/paedu/code/github.com/patrickbucher/reversi/todo.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 128,
+      "blank": 37,
+      "name": "/home/paedu/code/github.com/patrickbucher/roman-numerals/LICENSE.txt",
+      "Lang": "Plain Text"
+    },
+    {
+      "code": 0,
+      "comment": 2,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/roman-numerals/README.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 15,
+      "blank": 5,
+      "name": "/home/paedu/code/github.com/patrickbucher/zeit/Makefile",
+      "Lang": "Makefile"
+    },
+    {
+      "code": 0,
+      "comment": 8,
+      "blank": 4,
+      "name": "/home/paedu/code/github.com/patrickbucher/zeit/README.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 2,
+      "blank": 1,
+      "name": "/home/paedu/code/github.com/patrickbucher/zeit/TODO.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 21,
+      "blank": 15,
+      "name": "/home/paedu/code/github.com/skiapoden/kurtoid/README.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 10,
+      "blank": 5,
+      "name": "/home/paedu/code/github.com/skiapoden/kurtoid/doc/Makefile",
+      "Lang": "Makefile"
+    },
+    {
+      "code": 0,
+      "comment": 50,
+      "blank": 8,
+      "name": "/home/paedu/code/github.com/skiapoden/kurtoid/doc/kurtoid.txt",
+      "Lang": "Plain Text"
+    },
+    {
+      "code": 0,
+      "comment": 3,
+      "blank": 0,
+      "name": "/home/paedu/code/github.com/skiapoden/kurtoid/requirements.txt",
+      "Lang": "Plain Text"
+    },
+    {
+      "code": 0,
+      "comment": 31,
+      "blank": 11,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/Makefile",
+      "Lang": "Makefile"
+    },
+    {
+      "code": 0,
+      "comment": 18,
+      "blank": 10,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/README.md",
+      "Lang": "Markdown"
+    },
+    {
+      "code": 0,
+      "comment": 8,
+      "blank": 0,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/scripts/testdata/deliver-metadata.json",
+      "Lang": "JSON"
+    },
+    {
+      "code": 0,
+      "comment": 11,
+      "blank": 0,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/scripts/testdata/document-patch.json",
+      "Lang": "JSON"
+    },
+    {
+      "code": 0,
+      "comment": 18,
+      "blank": 0,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/scripts/testdata/organization.json",
+      "Lang": "JSON"
+    }
+  ],
+  "total": {
+    "files": 304,
+    "code": 11096,
+    "comment": 14382,
+    "blank": 4414
+  }
+}

@@ -1,0 +1,4162 @@
+{
+  "name": "",
+  "code": 11096,
+  "comment": 14382,
+  "blank": 4414,
+  "language": "Go",
+  "children": [
+    {
+      "name": "home",
+      "code": 11096,
+      "comment": 14382,
+      "blank": 4414,
+      "language": "Go",
+      "children": [
+        {
+          "name": "paedu",
+          "code": 11096,
+          "comment": 14382,
+          "blank": 4414,
+          "language": "Go",
+          "children": [
+            {
+              "name": "code",
+              "code": 11096,
+              "comment": 14382,
+              "blank": 4414,
+              "language": "Go",
+              "children": [
+                {
+                  "name": "gitlab.peax.ch",
+                  "code": 2427,
+                  "comment": 922,
+                  "blank": 426,
+                  "language": "Go",
+                  "children": [
+                    {
+                      "name": "px",
+                      "code": 2427,
+                      "comment": 922,
+                      "blank": 426,
+                      "language": "Go",
+                      "children": [
+                        {
+                          "name": "cmd",
+                          "code": 509,
+                          "comment": 4,
+                          "blank": 56,
+                          "language": "Go",
+                          "children": [
+                            {
+                              "name": "px.go",
+                              "code": 509,
+                              "comment": 4,
+                              "blank": 56,
+                              "language": "Go",
+                              "LanguageLines": {}
+                            }
+                          ],
+                          "LanguageLines": {
+                            "Go": 569
+                          }
+                        },
+                        {
+                          "name": "help",
+                          "code": 240,
+                          "comment": 30,
+                          "blank": 106,
+                          "language": "Go",
+                          "children": [
+                            {
+                              "name": "help.go",
+                              "code": 240,
+                              "comment": 30,
+                              "blank": 106,
+                              "language": "Go",
+                              "LanguageLines": {}
+                            }
+                          ],
+                          "LanguageLines": {
+                            "Go": 376
+                          }
+                        },
+                        {
+                          "name": "utils",
+                          "code": 400,
+                          "comment": 56,
+                          "blank": 30,
+                          "language": "Go",
+                          "children": [
+                            {
+                              "name": "pwinput.go",
+                              "code": 15,
+                              "comment": 3,
+                              "blank": 4,
+                              "language": "Go",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "pwinput_windows.go",
+                              "code": 15,
+                              "comment": 3,
+                              "blank": 2,
+                              "language": "Go",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "filesystem_test.go",
+                              "code": 166,
+                              "comment": 1,
+                              "blank": 6,
+                              "language": "Go",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "filesystem.go",
+                              "code": 85,
+                              "comment": 26,
+                              "blank": 4,
+                              "language": "Go",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "utils.go",
+                              "code": 78,
+                              "comment": 21,
+                              "blank": 9,
+                              "language": "Go",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "contenttype_test.go",
+                              "code": 21,
+                              "comment": 0,
+                              "blank": 3,
+                              "language": "Go",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "contenttype.go",
+                              "code": 20,
+                              "comment": 2,
+                              "blank": 2,
+                              "language": "Go",
+                              "LanguageLines": {}
+                            }
+                          ],
+                          "LanguageLines": {
+                            "Go": 486
+                          }
+                        },
+                        {
+                          "name": "env",
+                          "code": 225,
+                          "comment": 12,
+                          "blank": 16,
+                          "language": "Go",
+                          "children": [
+                            {
+                              "name": "env_test.go",
+                              "code": 165,
+                              "comment": 0,
+                              "blank": 5,
+                              "language": "Go",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "env.go",
+                              "code": 60,
+                              "comment": 12,
+                              "blank": 11,
+                              "language": "Go",
+                              "LanguageLines": {}
+                            }
+                          ],
+                          "LanguageLines": {
+                            "Go": 253
+                          }
+                        },
+                        {
+                          "name": "tokenstore",
+                          "code": 335,
+                          "comment": 56,
+                          "blank": 43,
+                          "language": "Go",
+                          "children": [
+                            {
+                              "name": "tokenpair.go",
+                              "code": 161,
+                              "comment": 18,
+                              "blank": 22,
+                              "language": "Go",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "tokenstore.go",
+                              "code": 117,
+                              "comment": 35,
+                              "blank": 15,
+                              "language": "Go",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "tokenstore_test.go",
+                              "code": 46,
+                              "comment": 0,
+                              "blank": 4,
+                              "language": "Go",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "tokenresponse.go",
+                              "code": 11,
+                              "comment": 3,
+                              "blank": 2,
+                              "language": "Go",
+                              "LanguageLines": {}
+                            }
+                          ],
+                          "LanguageLines": {
+                            "Go": 434
+                          }
+                        },
+                        {
+                          "name": "px.go",
+                          "code": 1,
+                          "comment": 2,
+                          "blank": 0,
+                          "language": "Go",
+                          "LanguageLines": {}
+                        },
+                        {
+                          "name": "scripts",
+                          "code": 18,
+                          "comment": 624,
+                          "blank": 89,
+                          "language": "BASH",
+                          "children": [
+                            {
+                              "name": "ci-pipeline.sh",
+                              "code": 1,
+                              "comment": 52,
+                              "blank": 6,
+                              "language": "BASH",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "ci-px-autotag-test.sh",
+                              "code": 1,
+                              "comment": 36,
+                              "blank": 4,
+                              "language": "BASH",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "ci-px-put-delete-test.sh",
+                              "code": 1,
+                              "comment": 36,
+                              "blank": 5,
+                              "language": "BASH",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "ci-px-upload-recursively-test.sh",
+                              "code": 1,
+                              "comment": 31,
+                              "blank": 4,
+                              "language": "BASH",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "ci-px-upload-test.sh",
+                              "code": 1,
+                              "comment": 18,
+                              "blank": 3,
+                              "language": "BASH",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "standalone-px-deliver-retry-test.sh",
+                              "code": 1,
+                              "comment": 26,
+                              "blank": 8,
+                              "language": "BASH",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "standalone-px-get-retry-test.sh",
+                              "code": 1,
+                              "comment": 26,
+                              "blank": 8,
+                              "language": "BASH",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "ci-px-deliver-test.sh",
+                              "code": 1,
+                              "comment": 14,
+                              "blank": 2,
+                              "language": "BASH",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "ci-px-help-test.sh",
+                              "code": 1,
+                              "comment": 35,
+                              "blank": 4,
+                              "language": "BASH",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "ci-px-login-logout-test.sh",
+                              "code": 1,
+                              "comment": 70,
+                              "blank": 8,
+                              "language": "BASH",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "ci-px-patch-test.sh",
+                              "code": 1,
+                              "comment": 28,
+                              "blank": 4,
+                              "language": "BASH",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "standalone.sh",
+                              "code": 1,
+                              "comment": 15,
+                              "blank": 3,
+                              "language": "BASH",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "ci-px-get-test.sh",
+                              "code": 1,
+                              "comment": 21,
+                              "blank": 3,
+                              "language": "BASH",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "standalone-px-upload-retry-test.sh",
+                              "code": 1,
+                              "comment": 26,
+                              "blank": 8,
+                              "language": "BASH",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "testdata",
+                              "code": 0,
+                              "comment": 37,
+                              "blank": 0,
+                              "language": "JSON",
+                              "children": [
+                                {
+                                  "name": "document-patch.json",
+                                  "code": 0,
+                                  "comment": 11,
+                                  "blank": 0,
+                                  "language": "JSON",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "organization.json",
+                                  "code": 0,
+                                  "comment": 18,
+                                  "blank": 0,
+                                  "language": "JSON",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "deliver-metadata.json",
+                                  "code": 0,
+                                  "comment": 8,
+                                  "blank": 0,
+                                  "language": "JSON",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "JSON": 37
+                              }
+                            },
+                            {
+                              "name": "ci-px-agent-login-logout-test.sh",
+                              "code": 1,
+                              "comment": 42,
+                              "blank": 4,
+                              "language": "BASH",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "ci-px-env-test.sh",
+                              "code": 1,
+                              "comment": 86,
+                              "blank": 11,
+                              "language": "BASH",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "ci-px-post-test.sh",
+                              "code": 1,
+                              "comment": 22,
+                              "blank": 3,
+                              "language": "BASH",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "ci-px-version-test.sh",
+                              "code": 1,
+                              "comment": 3,
+                              "blank": 1,
+                              "language": "BASH",
+                              "LanguageLines": {}
+                            }
+                          ],
+                          "LanguageLines": {
+                            "BASH": 694,
+                            "JSON": 8
+                          }
+                        },
+                        {
+                          "name": "requests",
+                          "code": 699,
+                          "comment": 89,
+                          "blank": 65,
+                          "language": "Go",
+                          "children": [
+                            {
+                              "name": "requests.go",
+                              "code": 510,
+                              "comment": 58,
+                              "blank": 42,
+                              "language": "Go",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "tagging.go",
+                              "code": 139,
+                              "comment": 2,
+                              "blank": 9,
+                              "language": "Go",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "credentials.go",
+                              "code": 50,
+                              "comment": 29,
+                              "blank": 14,
+                              "language": "Go",
+                              "LanguageLines": {}
+                            }
+                          ],
+                          "LanguageLines": {
+                            "Go": 853
+                          }
+                        },
+                        {
+                          "name": "Makefile",
+                          "code": 0,
+                          "comment": 31,
+                          "blank": 11,
+                          "language": "Makefile",
+                          "LanguageLines": {}
+                        },
+                        {
+                          "name": "README.md",
+                          "code": 0,
+                          "comment": 18,
+                          "blank": 10,
+                          "language": "Markdown",
+                          "LanguageLines": {}
+                        }
+                      ],
+                      "LanguageLines": {
+                        "BASH": 59,
+                        "Go": 2102,
+                        "Makefile": 42,
+                        "Markdown": 28
+                      }
+                    }
+                  ],
+                  "LanguageLines": {
+                    "Go": 610
+                  }
+                },
+                {
+                  "name": "github.com",
+                  "code": 8669,
+                  "comment": 13460,
+                  "blank": 3988,
+                  "language": "Go",
+                  "children": [
+                    {
+                      "name": "patrickbucher",
+                      "code": 8154,
+                      "comment": 13349,
+                      "blank": 3780,
+                      "language": "Go",
+                      "children": [
+                        {
+                          "name": "reveal-the-pain",
+                          "code": 1022,
+                          "comment": 5153,
+                          "blank": 183,
+                          "language": "JavaScript",
+                          "children": [
+                            {
+                              "name": "frontend",
+                              "code": 468,
+                              "comment": 0,
+                              "blank": 44,
+                              "language": "JavaScript",
+                              "children": [
+                                {
+                                  "name": "src",
+                                  "code": 468,
+                                  "comment": 0,
+                                  "blank": 44,
+                                  "language": "JavaScript",
+                                  "children": [
+                                    {
+                                      "name": "index.html",
+                                      "code": 85,
+                                      "comment": 0,
+                                      "blank": 0,
+                                      "language": "HTML",
+                                      "LanguageLines": {}
+                                    },
+                                    {
+                                      "name": "style.css",
+                                      "code": 69,
+                                      "comment": 0,
+                                      "blank": 14,
+                                      "language": "CSS",
+                                      "LanguageLines": {}
+                                    },
+                                    {
+                                      "name": "script.js",
+                                      "code": 314,
+                                      "comment": 0,
+                                      "blank": 30,
+                                      "language": "JavaScript",
+                                      "LanguageLines": {}
+                                    }
+                                  ],
+                                  "LanguageLines": {
+                                    "CSS": 83,
+                                    "HTML": 85,
+                                    "JavaScript": 344
+                                  }
+                                }
+                              ],
+                              "LanguageLines": {
+                                "JavaScript": 344
+                              }
+                            },
+                            {
+                              "name": "backend",
+                              "code": 553,
+                              "comment": 4791,
+                              "blank": 65,
+                              "language": "JSON",
+                              "children": [
+                                {
+                                  "name": "src",
+                                  "code": 438,
+                                  "comment": 26,
+                                  "blank": 57,
+                                  "language": "JavaScript",
+                                  "children": [
+                                    {
+                                      "name": "validator.test.js",
+                                      "code": 30,
+                                      "comment": 0,
+                                      "blank": 4,
+                                      "language": "JavaScript",
+                                      "LanguageLines": {}
+                                    },
+                                    {
+                                      "name": "validator.js",
+                                      "code": 28,
+                                      "comment": 0,
+                                      "blank": 4,
+                                      "language": "JavaScript",
+                                      "LanguageLines": {}
+                                    },
+                                    {
+                                      "name": "credentials.js",
+                                      "code": 6,
+                                      "comment": 1,
+                                      "blank": 2,
+                                      "language": "JavaScript",
+                                      "LanguageLines": {}
+                                    },
+                                    {
+                                      "name": "server.js",
+                                      "code": 207,
+                                      "comment": 3,
+                                      "blank": 20,
+                                      "language": "JavaScript",
+                                      "LanguageLines": {}
+                                    },
+                                    {
+                                      "name": "correlation.test.js",
+                                      "code": 60,
+                                      "comment": 16,
+                                      "blank": 19,
+                                      "language": "JavaScript",
+                                      "LanguageLines": {}
+                                    },
+                                    {
+                                      "name": "redis.js",
+                                      "code": 55,
+                                      "comment": 0,
+                                      "blank": 3,
+                                      "language": "JavaScript",
+                                      "LanguageLines": {}
+                                    },
+                                    {
+                                      "name": "correlation.js",
+                                      "code": 52,
+                                      "comment": 6,
+                                      "blank": 5,
+                                      "language": "JavaScript",
+                                      "LanguageLines": {}
+                                    }
+                                  ],
+                                  "LanguageLines": {
+                                    "JavaScript": 521
+                                  }
+                                },
+                                {
+                                  "name": "scripts",
+                                  "code": 115,
+                                  "comment": 1,
+                                  "blank": 8,
+                                  "language": "Python",
+                                  "children": [
+                                    {
+                                      "name": "create-journal.py",
+                                      "code": 115,
+                                      "comment": 0,
+                                      "blank": 8,
+                                      "language": "Python",
+                                      "LanguageLines": {}
+                                    },
+                                    {
+                                      "name": "requirements.txt",
+                                      "code": 0,
+                                      "comment": 1,
+                                      "blank": 0,
+                                      "language": "Plain Text",
+                                      "LanguageLines": {}
+                                    }
+                                  ],
+                                  "LanguageLines": {
+                                    "Plain Text": 1,
+                                    "Python": 123
+                                  }
+                                },
+                                {
+                                  "name": "package-lock.json",
+                                  "code": 0,
+                                  "comment": 4742,
+                                  "blank": 0,
+                                  "language": "JSON",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "package.json",
+                                  "code": 0,
+                                  "comment": 22,
+                                  "blank": 0,
+                                  "language": "JSON",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "JSON": 4764,
+                                "JavaScript": 230,
+                                "Python": 123
+                              }
+                            },
+                            {
+                              "name": "docs",
+                              "code": 1,
+                              "comment": 278,
+                              "blank": 47,
+                              "language": "Markdown",
+                              "children": [
+                                {
+                                  "name": "Arbeitsjournal",
+                                  "code": 1,
+                                  "comment": 53,
+                                  "blank": 2,
+                                  "language": "Markdown",
+                                  "children": [
+                                    {
+                                      "name": "journal",
+                                      "code": 1,
+                                      "comment": 1,
+                                      "blank": 1,
+                                      "language": "Bourne Shell",
+                                      "LanguageLines": {}
+                                    },
+                                    {
+                                      "name": "Arbeitsjournal.md",
+                                      "code": 0,
+                                      "comment": 39,
+                                      "blank": 0,
+                                      "language": "Markdown",
+                                      "LanguageLines": {}
+                                    },
+                                    {
+                                      "name": "journal.awk",
+                                      "code": 0,
+                                      "comment": 13,
+                                      "blank": 1,
+                                      "language": "Awk",
+                                      "LanguageLines": {}
+                                    }
+                                  ],
+                                  "LanguageLines": {
+                                    "Awk": 14,
+                                    "Bourne Shell": 3,
+                                    "Markdown": 39
+                                  }
+                                },
+                                {
+                                  "name": "Makefile",
+                                  "code": 0,
+                                  "comment": 10,
+                                  "blank": 4,
+                                  "language": "Makefile",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "Projektidee_Reveal-the-Pain.md",
+                                  "code": 0,
+                                  "comment": 35,
+                                  "blank": 9,
+                                  "language": "Markdown",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "Zusammenfassung_Reveal-the-Pain.md",
+                                  "code": 0,
+                                  "comment": 180,
+                                  "blank": 32,
+                                  "language": "Markdown",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "Bourne Shell": 3,
+                                "Makefile": 14,
+                                "Markdown": 256
+                              }
+                            },
+                            {
+                              "name": "README.md",
+                              "code": 0,
+                              "comment": 4,
+                              "blank": 3,
+                              "language": "Markdown",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "docker-compose.yml",
+                              "code": 0,
+                              "comment": 25,
+                              "blank": 0,
+                              "language": "YAML",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "presentation",
+                              "code": 0,
+                              "comment": 55,
+                              "blank": 24,
+                              "language": "Markdown",
+                              "children": [
+                                {
+                                  "name": "Makefile",
+                                  "code": 0,
+                                  "comment": 7,
+                                  "blank": 3,
+                                  "language": "Makefile",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "slides.md",
+                                  "code": 0,
+                                  "comment": 48,
+                                  "blank": 21,
+                                  "language": "Markdown",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "Makefile": 10,
+                                "Markdown": 69
+                              }
+                            }
+                          ],
+                          "LanguageLines": {
+                            "Bourne Shell": 3,
+                            "JavaScript": 574,
+                            "Makefile": 10,
+                            "Markdown": 7,
+                            "YAML": 25
+                          }
+                        },
+                        {
+                          "name": "reversi",
+                          "code": 812,
+                          "comment": 48,
+                          "blank": 202,
+                          "language": "Python",
+                          "children": [
+                            {
+                              "name": "src",
+                              "code": 812,
+                              "comment": 11,
+                              "blank": 191,
+                              "language": "Python",
+                              "children": [
+                                {
+                                  "name": "stdin_player_test.py",
+                                  "code": 20,
+                                  "comment": 0,
+                                  "blank": 12,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "random_player.py",
+                                  "code": 10,
+                                  "comment": 0,
+                                  "blank": 4,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "firstmove_player.py",
+                                  "code": 9,
+                                  "comment": 0,
+                                  "blank": 2,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "cornerminimax_player.py",
+                                  "code": 43,
+                                  "comment": 0,
+                                  "blank": 10,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "minimax_player.py",
+                                  "code": 33,
+                                  "comment": 0,
+                                  "blank": 7,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "stdin_player.py",
+                                  "code": 29,
+                                  "comment": 2,
+                                  "blank": 8,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "board_test.py",
+                                  "code": 253,
+                                  "comment": 9,
+                                  "blank": 46,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "board.py",
+                                  "code": 130,
+                                  "comment": 0,
+                                  "blank": 27,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "game.py",
+                                  "code": 60,
+                                  "comment": 0,
+                                  "blank": 17,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "simulation.py",
+                                  "code": 34,
+                                  "comment": 0,
+                                  "blank": 8,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "edge_player.py",
+                                  "code": 25,
+                                  "comment": 0,
+                                  "blank": 7,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "tournament.py",
+                                  "code": 88,
+                                  "comment": 0,
+                                  "blank": 21,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "edge_player_test.py",
+                                  "code": 49,
+                                  "comment": 0,
+                                  "blank": 15,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "maxround_player.py",
+                                  "code": 29,
+                                  "comment": 0,
+                                  "blank": 7,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "Python": 1014
+                              }
+                            },
+                            {
+                              "name": "README.md",
+                              "code": 0,
+                              "comment": 30,
+                              "blank": 11,
+                              "language": "Markdown",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "requirements.txt",
+                              "code": 0,
+                              "comment": 1,
+                              "blank": 0,
+                              "language": "Plain Text",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "todo.md",
+                              "code": 0,
+                              "comment": 6,
+                              "blank": 0,
+                              "language": "Markdown",
+                              "LanguageLines": {}
+                            }
+                          ],
+                          "LanguageLines": {
+                            "Markdown": 47,
+                            "Plain Text": 1,
+                            "Python": 308
+                          }
+                        },
+                        {
+                          "name": "oauth2-demo",
+                          "code": 727,
+                          "comment": 120,
+                          "blank": 94,
+                          "language": "Go",
+                          "children": [
+                            {
+                              "name": "run.sh",
+                              "code": 1,
+                              "comment": 7,
+                              "blank": 4,
+                              "language": "Bourne Shell",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "README.md",
+                              "code": 0,
+                              "comment": 91,
+                              "blank": 37,
+                              "language": "Markdown",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "authserver",
+                              "code": 298,
+                              "comment": 8,
+                              "blank": 18,
+                              "language": "Go",
+                              "children": [
+                                {
+                                  "name": "authserver.go",
+                                  "code": 242,
+                                  "comment": 8,
+                                  "blank": 17,
+                                  "language": "Go",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "auth.html",
+                                  "code": 56,
+                                  "comment": 0,
+                                  "blank": 1,
+                                  "language": "HTML",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "Go": 267,
+                                "HTML": 57
+                              }
+                            },
+                            {
+                              "name": "client",
+                              "code": 261,
+                              "comment": 3,
+                              "blank": 15,
+                              "language": "Go",
+                              "children": [
+                                {
+                                  "name": "client.go",
+                                  "code": 187,
+                                  "comment": 3,
+                                  "blank": 14,
+                                  "language": "Go",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "gossip.html",
+                                  "code": 37,
+                                  "comment": 0,
+                                  "blank": 0,
+                                  "language": "HTML",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "index.html",
+                                  "code": 37,
+                                  "comment": 0,
+                                  "blank": 1,
+                                  "language": "HTML",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "app.css",
+                                  "code": 0,
+                                  "comment": 0,
+                                  "blank": 0,
+                                  "language": "CSS",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "CSS": 0,
+                                "Go": 204,
+                                "HTML": 75
+                              }
+                            },
+                            {
+                              "name": "resource",
+                              "code": 119,
+                              "comment": 0,
+                              "blank": 10,
+                              "language": "Go",
+                              "children": [
+                                {
+                                  "name": "resource.go",
+                                  "code": 119,
+                                  "comment": 0,
+                                  "blank": 10,
+                                  "language": "Go",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "Go": 129
+                              }
+                            },
+                            {
+                              "name": "commons",
+                              "code": 47,
+                              "comment": 6,
+                              "blank": 9,
+                              "language": "Go",
+                              "children": [
+                                {
+                                  "name": "resourcepath.go",
+                                  "code": 14,
+                                  "comment": 4,
+                                  "blank": 2,
+                                  "language": "Go",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "randstr.go",
+                                  "code": 10,
+                                  "comment": 2,
+                                  "blank": 2,
+                                  "language": "Go",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "token.go",
+                                  "code": 9,
+                                  "comment": 0,
+                                  "blank": 3,
+                                  "language": "Go",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "logger.go",
+                                  "code": 14,
+                                  "comment": 0,
+                                  "blank": 2,
+                                  "language": "Go",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "Go": 62
+                              }
+                            },
+                            {
+                              "name": "kill.sh",
+                              "code": 1,
+                              "comment": 5,
+                              "blank": 1,
+                              "language": "BASH",
+                              "LanguageLines": {}
+                            }
+                          ],
+                          "LanguageLines": {
+                            "BASH": 7,
+                            "Bourne Shell": 12,
+                            "Go": 616,
+                            "Markdown": 128
+                          }
+                        },
+                        {
+                          "name": "learning-rust",
+                          "code": 678,
+                          "comment": 4866,
+                          "blank": 1406,
+                          "language": "Rust",
+                          "children": [
+                            {
+                              "name": "code",
+                              "code": 678,
+                              "comment": 325,
+                              "blank": 141,
+                              "language": "Rust",
+                              "children": [
+                                {
+                                  "name": "mememo",
+                                  "code": 72,
+                                  "comment": 55,
+                                  "blank": 12,
+                                  "language": "Rust",
+                                  "children": [
+                                    {
+                                      "name": "src",
+                                      "code": 38,
+                                      "comment": 47,
+                                      "blank": 6,
+                                      "language": "Rust",
+                                      "children": [
+                                        {
+                                          "name": "lib.rs",
+                                          "code": 38,
+                                          "comment": 47,
+                                          "blank": 6,
+                                          "language": "Rust",
+                                          "LanguageLines": {}
+                                        }
+                                      ],
+                                      "LanguageLines": {
+                                        "Rust": 91
+                                      }
+                                    },
+                                    {
+                                      "name": "tests",
+                                      "code": 34,
+                                      "comment": 0,
+                                      "blank": 5,
+                                      "language": "Rust",
+                                      "children": [
+                                        {
+                                          "name": "lib_test.rs",
+                                          "code": 34,
+                                          "comment": 0,
+                                          "blank": 5,
+                                          "language": "Rust",
+                                          "LanguageLines": {}
+                                        }
+                                      ],
+                                      "LanguageLines": {
+                                        "Rust": 39
+                                      }
+                                    },
+                                    {
+                                      "name": "Cargo.toml",
+                                      "code": 0,
+                                      "comment": 8,
+                                      "blank": 1,
+                                      "language": "TOML",
+                                      "LanguageLines": {}
+                                    }
+                                  ],
+                                  "LanguageLines": {
+                                    "Rust": 130,
+                                    "TOML": 9
+                                  }
+                                },
+                                {
+                                  "name": "employees",
+                                  "code": 35,
+                                  "comment": 6,
+                                  "blank": 3,
+                                  "language": "Rust",
+                                  "children": [
+                                    {
+                                      "name": "src",
+                                      "code": 35,
+                                      "comment": 0,
+                                      "blank": 2,
+                                      "language": "Rust",
+                                      "children": [
+                                        {
+                                          "name": "main.rs",
+                                          "code": 35,
+                                          "comment": 0,
+                                          "blank": 2,
+                                          "language": "Rust",
+                                          "LanguageLines": {}
+                                        }
+                                      ],
+                                      "LanguageLines": {
+                                        "Rust": 37
+                                      }
+                                    },
+                                    {
+                                      "name": "Cargo.toml",
+                                      "code": 0,
+                                      "comment": 6,
+                                      "blank": 1,
+                                      "language": "TOML",
+                                      "LanguageLines": {}
+                                    }
+                                  ],
+                                  "LanguageLines": {
+                                    "Rust": 37,
+                                    "TOML": 7
+                                  }
+                                },
+                                {
+                                  "name": "mean",
+                                  "code": 21,
+                                  "comment": 43,
+                                  "blank": 11,
+                                  "language": "Rust",
+                                  "children": [
+                                    {
+                                      "name": "sum",
+                                      "code": 7,
+                                      "comment": 15,
+                                      "blank": 4,
+                                      "language": "Rust",
+                                      "children": [
+                                        {
+                                          "name": "src",
+                                          "code": 7,
+                                          "comment": 8,
+                                          "blank": 0,
+                                          "language": "Rust",
+                                          "children": [
+                                            {
+                                              "name": "lib.rs",
+                                              "code": 7,
+                                              "comment": 8,
+                                              "blank": 0,
+                                              "language": "Rust",
+                                              "LanguageLines": {}
+                                            }
+                                          ],
+                                          "LanguageLines": {
+                                            "Rust": 15
+                                          }
+                                        },
+                                        {
+                                          "name": "Cargo.toml",
+                                          "code": 0,
+                                          "comment": 7,
+                                          "blank": 4,
+                                          "language": "TOML",
+                                          "LanguageLines": {}
+                                        }
+                                      ],
+                                      "LanguageLines": {
+                                        "Rust": 15,
+                                        "TOML": 11
+                                      }
+                                    },
+                                    {
+                                      "name": "Cargo.toml",
+                                      "code": 0,
+                                      "comment": 4,
+                                      "blank": 1,
+                                      "language": "TOML",
+                                      "LanguageLines": {}
+                                    },
+                                    {
+                                      "name": "avg",
+                                      "code": 7,
+                                      "comment": 16,
+                                      "blank": 3,
+                                      "language": "Rust",
+                                      "children": [
+                                        {
+                                          "name": "src",
+                                          "code": 7,
+                                          "comment": 8,
+                                          "blank": 1,
+                                          "language": "Rust",
+                                          "children": [
+                                            {
+                                              "name": "lib.rs",
+                                              "code": 7,
+                                              "comment": 8,
+                                              "blank": 1,
+                                              "language": "Rust",
+                                              "LanguageLines": {}
+                                            }
+                                          ],
+                                          "LanguageLines": {
+                                            "Rust": 16
+                                          }
+                                        },
+                                        {
+                                          "name": "Cargo.toml",
+                                          "code": 0,
+                                          "comment": 8,
+                                          "blank": 2,
+                                          "language": "TOML",
+                                          "LanguageLines": {}
+                                        }
+                                      ],
+                                      "LanguageLines": {
+                                        "Rust": 16,
+                                        "TOML": 10
+                                      }
+                                    },
+                                    {
+                                      "name": "mean",
+                                      "code": 7,
+                                      "comment": 8,
+                                      "blank": 3,
+                                      "language": "TOML",
+                                      "children": [
+                                        {
+                                          "name": "src",
+                                          "code": 7,
+                                          "comment": 0,
+                                          "blank": 1,
+                                          "language": "Rust",
+                                          "children": [
+                                            {
+                                              "name": "main.rs",
+                                              "code": 7,
+                                              "comment": 0,
+                                              "blank": 1,
+                                              "language": "Rust",
+                                              "LanguageLines": {}
+                                            }
+                                          ],
+                                          "LanguageLines": {
+                                            "Rust": 8
+                                          }
+                                        },
+                                        {
+                                          "name": "Cargo.toml",
+                                          "code": 0,
+                                          "comment": 8,
+                                          "blank": 2,
+                                          "language": "TOML",
+                                          "LanguageLines": {}
+                                        }
+                                      ],
+                                      "LanguageLines": {
+                                        "Rust": 8,
+                                        "TOML": 10
+                                      }
+                                    }
+                                  ],
+                                  "LanguageLines": {
+                                    "Rust": 39,
+                                    "TOML": 5
+                                  }
+                                },
+                                {
+                                  "name": "minigrep",
+                                  "code": 97,
+                                  "comment": 15,
+                                  "blank": 23,
+                                  "language": "Rust",
+                                  "children": [
+                                    {
+                                      "name": "src",
+                                      "code": 97,
+                                      "comment": 0,
+                                      "blank": 20,
+                                      "language": "Rust",
+                                      "children": [
+                                        {
+                                          "name": "main.rs",
+                                          "code": 16,
+                                          "comment": 0,
+                                          "blank": 5,
+                                          "language": "Rust",
+                                          "LanguageLines": {}
+                                        },
+                                        {
+                                          "name": "lib.rs",
+                                          "code": 81,
+                                          "comment": 0,
+                                          "blank": 15,
+                                          "language": "Rust",
+                                          "LanguageLines": {}
+                                        }
+                                      ],
+                                      "LanguageLines": {
+                                        "Rust": 117
+                                      }
+                                    },
+                                    {
+                                      "name": "Cargo.toml",
+                                      "code": 0,
+                                      "comment": 7,
+                                      "blank": 2,
+                                      "language": "TOML",
+                                      "LanguageLines": {}
+                                    },
+                                    {
+                                      "name": "poem.txt",
+                                      "code": 0,
+                                      "comment": 8,
+                                      "blank": 1,
+                                      "language": "Plain Text",
+                                      "LanguageLines": {}
+                                    }
+                                  ],
+                                  "LanguageLines": {
+                                    "Plain Text": 9,
+                                    "Rust": 96,
+                                    "TOML": 9
+                                  }
+                                },
+                                {
+                                  "name": "fibcache",
+                                  "code": 51,
+                                  "comment": 7,
+                                  "blank": 6,
+                                  "language": "Rust",
+                                  "children": [
+                                    {
+                                      "name": "src",
+                                      "code": 51,
+                                      "comment": 0,
+                                      "blank": 4,
+                                      "language": "Rust",
+                                      "children": [
+                                        {
+                                          "name": "main.rs",
+                                          "code": 51,
+                                          "comment": 0,
+                                          "blank": 4,
+                                          "language": "Rust",
+                                          "LanguageLines": {}
+                                        }
+                                      ],
+                                      "LanguageLines": {
+                                        "Rust": 55
+                                      }
+                                    },
+                                    {
+                                      "name": "Cargo.toml",
+                                      "code": 0,
+                                      "comment": 7,
+                                      "blank": 2,
+                                      "language": "TOML",
+                                      "LanguageLines": {}
+                                    }
+                                  ],
+                                  "LanguageLines": {
+                                    "Rust": 55,
+                                    "TOML": 9
+                                  }
+                                },
+                                {
+                                  "name": "words",
+                                  "code": 51,
+                                  "comment": 7,
+                                  "blank": 6,
+                                  "language": "Rust",
+                                  "children": [
+                                    {
+                                      "name": "src",
+                                      "code": 51,
+                                      "comment": 0,
+                                      "blank": 4,
+                                      "language": "Rust",
+                                      "children": [
+                                        {
+                                          "name": "lib.rs",
+                                          "code": 51,
+                                          "comment": 0,
+                                          "blank": 4,
+                                          "language": "Rust",
+                                          "LanguageLines": {}
+                                        }
+                                      ],
+                                      "LanguageLines": {
+                                        "Rust": 55
+                                      }
+                                    },
+                                    {
+                                      "name": "Cargo.toml",
+                                      "code": 0,
+                                      "comment": 7,
+                                      "blank": 2,
+                                      "language": "TOML",
+                                      "LanguageLines": {}
+                                    }
+                                  ],
+                                  "LanguageLines": {
+                                    "Rust": 55,
+                                    "TOML": 9
+                                  }
+                                },
+                                {
+                                  "name": "mean_median_mode",
+                                  "code": 45,
+                                  "comment": 7,
+                                  "blank": 6,
+                                  "language": "Rust",
+                                  "children": [
+                                    {
+                                      "name": "src",
+                                      "code": 45,
+                                      "comment": 1,
+                                      "blank": 5,
+                                      "language": "Rust",
+                                      "children": [
+                                        {
+                                          "name": "main.rs",
+                                          "code": 45,
+                                          "comment": 1,
+                                          "blank": 5,
+                                          "language": "Rust",
+                                          "LanguageLines": {}
+                                        }
+                                      ],
+                                      "LanguageLines": {
+                                        "Rust": 51
+                                      }
+                                    },
+                                    {
+                                      "name": "Cargo.toml",
+                                      "code": 0,
+                                      "comment": 6,
+                                      "blank": 1,
+                                      "language": "TOML",
+                                      "LanguageLines": {}
+                                    }
+                                  ],
+                                  "LanguageLines": {
+                                    "Rust": 51,
+                                    "TOML": 7
+                                  }
+                                },
+                                {
+                                  "name": "pig_latin",
+                                  "code": 26,
+                                  "comment": 8,
+                                  "blank": 3,
+                                  "language": "Rust",
+                                  "children": [
+                                    {
+                                      "name": "src",
+                                      "code": 26,
+                                      "comment": 2,
+                                      "blank": 2,
+                                      "language": "Rust",
+                                      "children": [
+                                        {
+                                          "name": "main.rs",
+                                          "code": 26,
+                                          "comment": 2,
+                                          "blank": 2,
+                                          "language": "Rust",
+                                          "LanguageLines": {}
+                                        }
+                                      ],
+                                      "LanguageLines": {
+                                        "Rust": 30
+                                      }
+                                    },
+                                    {
+                                      "name": "Cargo.toml",
+                                      "code": 0,
+                                      "comment": 6,
+                                      "blank": 1,
+                                      "language": "TOML",
+                                      "LanguageLines": {}
+                                    }
+                                  ],
+                                  "LanguageLines": {
+                                    "Rust": 30,
+                                    "TOML": 7
+                                  }
+                                },
+                                {
+                                  "name": "largest",
+                                  "code": 38,
+                                  "comment": 7,
+                                  "blank": 13,
+                                  "language": "Rust",
+                                  "children": [
+                                    {
+                                      "name": "Cargo.toml",
+                                      "code": 0,
+                                      "comment": 7,
+                                      "blank": 2,
+                                      "language": "TOML",
+                                      "LanguageLines": {}
+                                    },
+                                    {
+                                      "name": "src",
+                                      "code": 38,
+                                      "comment": 0,
+                                      "blank": 11,
+                                      "language": "Rust",
+                                      "children": [
+                                        {
+                                          "name": "main.rs",
+                                          "code": 38,
+                                          "comment": 0,
+                                          "blank": 11,
+                                          "language": "Rust",
+                                          "LanguageLines": {}
+                                        }
+                                      ],
+                                      "LanguageLines": {
+                                        "Rust": 49
+                                      }
+                                    }
+                                  ],
+                                  "LanguageLines": {
+                                    "Rust": 49,
+                                    "TOML": 9
+                                  }
+                                },
+                                {
+                                  "name": "maths",
+                                  "code": 15,
+                                  "comment": 7,
+                                  "blank": 4,
+                                  "language": "Rust",
+                                  "children": [
+                                    {
+                                      "name": "src",
+                                      "code": 15,
+                                      "comment": 0,
+                                      "blank": 2,
+                                      "language": "Rust",
+                                      "children": [
+                                        {
+                                          "name": "lib.rs",
+                                          "code": 15,
+                                          "comment": 0,
+                                          "blank": 2,
+                                          "language": "Rust",
+                                          "LanguageLines": {}
+                                        }
+                                      ],
+                                      "LanguageLines": {
+                                        "Rust": 17
+                                      }
+                                    },
+                                    {
+                                      "name": "Cargo.toml",
+                                      "code": 0,
+                                      "comment": 7,
+                                      "blank": 2,
+                                      "language": "TOML",
+                                      "LanguageLines": {}
+                                    }
+                                  ],
+                                  "LanguageLines": {
+                                    "Rust": 17,
+                                    "TOML": 9
+                                  }
+                                },
+                                {
+                                  "name": "fibonacci",
+                                  "code": 12,
+                                  "comment": 6,
+                                  "blank": 2,
+                                  "language": "Rust",
+                                  "children": [
+                                    {
+                                      "name": "src",
+                                      "code": 12,
+                                      "comment": 0,
+                                      "blank": 1,
+                                      "language": "Rust",
+                                      "children": [
+                                        {
+                                          "name": "main.rs",
+                                          "code": 12,
+                                          "comment": 0,
+                                          "blank": 1,
+                                          "language": "Rust",
+                                          "LanguageLines": {}
+                                        }
+                                      ],
+                                      "LanguageLines": {
+                                        "Rust": 13
+                                      }
+                                    },
+                                    {
+                                      "name": "Cargo.toml",
+                                      "code": 0,
+                                      "comment": 6,
+                                      "blank": 1,
+                                      "language": "TOML",
+                                      "LanguageLines": {}
+                                    }
+                                  ],
+                                  "LanguageLines": {
+                                    "Rust": 13,
+                                    "TOML": 7
+                                  }
+                                },
+                                {
+                                  "name": "statfoo",
+                                  "code": 6,
+                                  "comment": 8,
+                                  "blank": 3,
+                                  "language": "TOML",
+                                  "children": [
+                                    {
+                                      "name": "src",
+                                      "code": 6,
+                                      "comment": 0,
+                                      "blank": 1,
+                                      "language": "Rust",
+                                      "children": [
+                                        {
+                                          "name": "main.rs",
+                                          "code": 6,
+                                          "comment": 0,
+                                          "blank": 1,
+                                          "language": "Rust",
+                                          "LanguageLines": {}
+                                        }
+                                      ],
+                                      "LanguageLines": {
+                                        "Rust": 7
+                                      }
+                                    },
+                                    {
+                                      "name": "Cargo.toml",
+                                      "code": 0,
+                                      "comment": 8,
+                                      "blank": 2,
+                                      "language": "TOML",
+                                      "LanguageLines": {}
+                                    }
+                                  ],
+                                  "LanguageLines": {
+                                    "Rust": 7,
+                                    "TOML": 10
+                                  }
+                                },
+                                {
+                                  "name": "summary",
+                                  "code": 55,
+                                  "comment": 7,
+                                  "blank": 9,
+                                  "language": "Rust",
+                                  "children": [
+                                    {
+                                      "name": "Cargo.toml",
+                                      "code": 0,
+                                      "comment": 7,
+                                      "blank": 2,
+                                      "language": "TOML",
+                                      "LanguageLines": {}
+                                    },
+                                    {
+                                      "name": "src",
+                                      "code": 55,
+                                      "comment": 0,
+                                      "blank": 7,
+                                      "language": "Rust",
+                                      "children": [
+                                        {
+                                          "name": "main.rs",
+                                          "code": 55,
+                                          "comment": 0,
+                                          "blank": 7,
+                                          "language": "Rust",
+                                          "LanguageLines": {}
+                                        }
+                                      ],
+                                      "LanguageLines": {
+                                        "Rust": 62
+                                      }
+                                    }
+                                  ],
+                                  "LanguageLines": {
+                                    "Rust": 62,
+                                    "TOML": 9
+                                  }
+                                },
+                                {
+                                  "name": "twelve-days-of-xmas",
+                                  "code": 49,
+                                  "comment": 108,
+                                  "blank": 13,
+                                  "language": "Plain Text",
+                                  "children": [
+                                    {
+                                      "name": "src",
+                                      "code": 49,
+                                      "comment": 0,
+                                      "blank": 1,
+                                      "language": "Rust",
+                                      "children": [
+                                        {
+                                          "name": "main.rs",
+                                          "code": 49,
+                                          "comment": 0,
+                                          "blank": 1,
+                                          "language": "Rust",
+                                          "LanguageLines": {}
+                                        }
+                                      ],
+                                      "LanguageLines": {
+                                        "Rust": 50
+                                      }
+                                    },
+                                    {
+                                      "name": "Cargo.toml",
+                                      "code": 0,
+                                      "comment": 6,
+                                      "blank": 1,
+                                      "language": "TOML",
+                                      "LanguageLines": {}
+                                    },
+                                    {
+                                      "name": "twelve-days-of-christmas.txt",
+                                      "code": 0,
+                                      "comment": 102,
+                                      "blank": 11,
+                                      "language": "Plain Text",
+                                      "LanguageLines": {}
+                                    }
+                                  ],
+                                  "LanguageLines": {
+                                    "Plain Text": 113,
+                                    "Rust": 50,
+                                    "TOML": 7
+                                  }
+                                },
+                                {
+                                  "name": "iterators",
+                                  "code": 33,
+                                  "comment": 7,
+                                  "blank": 7,
+                                  "language": "Rust",
+                                  "children": [
+                                    {
+                                      "name": "src",
+                                      "code": 33,
+                                      "comment": 0,
+                                      "blank": 5,
+                                      "language": "Rust",
+                                      "children": [
+                                        {
+                                          "name": "main.rs",
+                                          "code": 33,
+                                          "comment": 0,
+                                          "blank": 5,
+                                          "language": "Rust",
+                                          "LanguageLines": {}
+                                        }
+                                      ],
+                                      "LanguageLines": {
+                                        "Rust": 38
+                                      }
+                                    },
+                                    {
+                                      "name": "Cargo.toml",
+                                      "code": 0,
+                                      "comment": 7,
+                                      "blank": 2,
+                                      "language": "TOML",
+                                      "LanguageLines": {}
+                                    }
+                                  ],
+                                  "LanguageLines": {
+                                    "Rust": 38,
+                                    "TOML": 9
+                                  }
+                                },
+                                {
+                                  "name": "guessing_game",
+                                  "code": 28,
+                                  "comment": 7,
+                                  "blank": 10,
+                                  "language": "Rust",
+                                  "children": [
+                                    {
+                                      "name": "src",
+                                      "code": 28,
+                                      "comment": 0,
+                                      "blank": 9,
+                                      "language": "Rust",
+                                      "children": [
+                                        {
+                                          "name": "main.rs",
+                                          "code": 28,
+                                          "comment": 0,
+                                          "blank": 9,
+                                          "language": "Rust",
+                                          "LanguageLines": {}
+                                        }
+                                      ],
+                                      "LanguageLines": {
+                                        "Rust": 37
+                                      }
+                                    },
+                                    {
+                                      "name": "Cargo.toml",
+                                      "code": 0,
+                                      "comment": 7,
+                                      "blank": 1,
+                                      "language": "TOML",
+                                      "LanguageLines": {}
+                                    }
+                                  ],
+                                  "LanguageLines": {
+                                    "Rust": 37,
+                                    "TOML": 8
+                                  }
+                                },
+                                {
+                                  "name": "points",
+                                  "code": 18,
+                                  "comment": 7,
+                                  "blank": 4,
+                                  "language": "Rust",
+                                  "children": [
+                                    {
+                                      "name": "src",
+                                      "code": 18,
+                                      "comment": 0,
+                                      "blank": 2,
+                                      "language": "Rust",
+                                      "children": [
+                                        {
+                                          "name": "main.rs",
+                                          "code": 18,
+                                          "comment": 0,
+                                          "blank": 2,
+                                          "language": "Rust",
+                                          "LanguageLines": {}
+                                        }
+                                      ],
+                                      "LanguageLines": {
+                                        "Rust": 20
+                                      }
+                                    },
+                                    {
+                                      "name": "Cargo.toml",
+                                      "code": 0,
+                                      "comment": 7,
+                                      "blank": 2,
+                                      "language": "TOML",
+                                      "LanguageLines": {}
+                                    }
+                                  ],
+                                  "LanguageLines": {
+                                    "Rust": 20,
+                                    "TOML": 9
+                                  }
+                                },
+                                {
+                                  "name": "longest",
+                                  "code": 16,
+                                  "comment": 7,
+                                  "blank": 3,
+                                  "language": "Rust",
+                                  "children": [
+                                    {
+                                      "name": "Cargo.toml",
+                                      "code": 0,
+                                      "comment": 7,
+                                      "blank": 2,
+                                      "language": "TOML",
+                                      "LanguageLines": {}
+                                    },
+                                    {
+                                      "name": "src",
+                                      "code": 16,
+                                      "comment": 0,
+                                      "blank": 1,
+                                      "language": "Rust",
+                                      "children": [
+                                        {
+                                          "name": "main.rs",
+                                          "code": 16,
+                                          "comment": 0,
+                                          "blank": 1,
+                                          "language": "Rust",
+                                          "LanguageLines": {}
+                                        }
+                                      ],
+                                      "LanguageLines": {
+                                        "Rust": 17
+                                      }
+                                    }
+                                  ],
+                                  "LanguageLines": {
+                                    "Rust": 17,
+                                    "TOML": 9
+                                  }
+                                },
+                                {
+                                  "name": "fahr_to_cels",
+                                  "code": 10,
+                                  "comment": 6,
+                                  "blank": 3,
+                                  "language": "Rust",
+                                  "children": [
+                                    {
+                                      "name": "src",
+                                      "code": 10,
+                                      "comment": 0,
+                                      "blank": 2,
+                                      "language": "Rust",
+                                      "children": [
+                                        {
+                                          "name": "main.rs",
+                                          "code": 10,
+                                          "comment": 0,
+                                          "blank": 2,
+                                          "language": "Rust",
+                                          "LanguageLines": {}
+                                        }
+                                      ],
+                                      "LanguageLines": {
+                                        "Rust": 12
+                                      }
+                                    },
+                                    {
+                                      "name": "Cargo.toml",
+                                      "code": 0,
+                                      "comment": 6,
+                                      "blank": 1,
+                                      "language": "TOML",
+                                      "LanguageLines": {}
+                                    }
+                                  ],
+                                  "LanguageLines": {
+                                    "Rust": 12,
+                                    "TOML": 7
+                                  }
+                                }
+                              ],
+                              "LanguageLines": {
+                                "Rust": 753
+                              }
+                            },
+                            {
+                              "name": "README.md",
+                              "code": 0,
+                              "comment": 2,
+                              "blank": 1,
+                              "language": "Markdown",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "notes",
+                              "code": 0,
+                              "comment": 4539,
+                              "blank": 1264,
+                              "language": "Markdown",
+                              "children": [
+                                {
+                                  "name": "15-smart-pointers.md",
+                                  "code": 0,
+                                  "comment": 15,
+                                  "blank": 14,
+                                  "language": "Markdown",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "01-getting-started.md",
+                                  "code": 0,
+                                  "comment": 109,
+                                  "blank": 41,
+                                  "language": "Markdown",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "02-guessing-game.md",
+                                  "code": 0,
+                                  "comment": 101,
+                                  "blank": 31,
+                                  "language": "Markdown",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "11-writing-automated-tests.md",
+                                  "code": 0,
+                                  "comment": 449,
+                                  "blank": 151,
+                                  "language": "Markdown",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "07-modules.md",
+                                  "code": 0,
+                                  "comment": 254,
+                                  "blank": 71,
+                                  "language": "Markdown",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "00-meta.md",
+                                  "code": 0,
+                                  "comment": 12,
+                                  "blank": 2,
+                                  "language": "Markdown",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "03-common-programming-concepts.md",
+                                  "code": 0,
+                                  "comment": 239,
+                                  "blank": 86,
+                                  "language": "Markdown",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "05-structs.md",
+                                  "code": 0,
+                                  "comment": 232,
+                                  "blank": 47,
+                                  "language": "Markdown",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "10-traits-generics-lifetimes.md",
+                                  "code": 0,
+                                  "comment": 700,
+                                  "blank": 177,
+                                  "language": "Markdown",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "12-command-line-program.md",
+                                  "code": 0,
+                                  "comment": 474,
+                                  "blank": 147,
+                                  "language": "Markdown",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "14-cargo-and-crates-io.md",
+                                  "code": 0,
+                                  "comment": 383,
+                                  "blank": 116,
+                                  "language": "Markdown",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "04-ownership.md",
+                                  "code": 0,
+                                  "comment": 267,
+                                  "blank": 69,
+                                  "language": "Markdown",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "06-enums.md",
+                                  "code": 0,
+                                  "comment": 268,
+                                  "blank": 57,
+                                  "language": "Markdown",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "09-error-handling.md",
+                                  "code": 0,
+                                  "comment": 252,
+                                  "blank": 54,
+                                  "language": "Markdown",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "08-collections.md",
+                                  "code": 0,
+                                  "comment": 266,
+                                  "blank": 70,
+                                  "language": "Markdown",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "13-functional-features.md",
+                                  "code": 0,
+                                  "comment": 508,
+                                  "blank": 127,
+                                  "language": "Markdown",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "Makefile",
+                                  "code": 0,
+                                  "comment": 10,
+                                  "blank": 4,
+                                  "language": "Makefile",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "Makefile": 14,
+                                "Markdown": 5789
+                              }
+                            }
+                          ],
+                          "LanguageLines": {
+                            "Markdown": 17,
+                            "Rust": 96
+                          }
+                        },
+                        {
+                          "name": "zeit",
+                          "code": 204,
+                          "comment": 25,
+                          "blank": 60,
+                          "language": "C",
+                          "children": [
+                            {
+                              "name": "TODO.md",
+                              "code": 0,
+                              "comment": 2,
+                              "blank": 1,
+                              "language": "Markdown",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "src",
+                              "code": 204,
+                              "comment": 0,
+                              "blank": 50,
+                              "language": "C",
+                              "children": [
+                                {
+                                  "name": "zeit.c",
+                                  "code": 67,
+                                  "comment": 0,
+                                  "blank": 12,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "utils.c",
+                                  "code": 52,
+                                  "comment": 0,
+                                  "blank": 11,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "duration.c",
+                                  "code": 39,
+                                  "comment": 0,
+                                  "blank": 12,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "duration.h",
+                                  "code": 16,
+                                  "comment": 0,
+                                  "blank": 4,
+                                  "language": "C Header",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "duration_test.c",
+                                  "code": 12,
+                                  "comment": 0,
+                                  "blank": 5,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "utils_test.c",
+                                  "code": 11,
+                                  "comment": 0,
+                                  "blank": 4,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "utils.h",
+                                  "code": 7,
+                                  "comment": 0,
+                                  "blank": 2,
+                                  "language": "C Header",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "C": 225,
+                                "C Header": 29
+                              }
+                            },
+                            {
+                              "name": "Makefile",
+                              "code": 0,
+                              "comment": 15,
+                              "blank": 5,
+                              "language": "Makefile",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "README.md",
+                              "code": 0,
+                              "comment": 8,
+                              "blank": 4,
+                              "language": "Markdown",
+                              "LanguageLines": {}
+                            }
+                          ],
+                          "LanguageLines": {
+                            "C": 79,
+                            "Makefile": 20,
+                            "Markdown": 15
+                          }
+                        },
+                        {
+                          "name": "getting-to-philosophy",
+                          "code": 1336,
+                          "comment": 161,
+                          "blank": 110,
+                          "language": "Go",
+                          "children": [
+                            {
+                              "name": "firstlink",
+                              "code": 901,
+                              "comment": 39,
+                              "blank": 67,
+                              "language": "Go",
+                              "children": [
+                                {
+                                  "name": "firstlink_test.go",
+                                  "code": 498,
+                                  "comment": 0,
+                                  "blank": 31,
+                                  "language": "Go",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "firstlink.go",
+                                  "code": 361,
+                                  "comment": 34,
+                                  "blank": 27,
+                                  "language": "Go",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "records.go",
+                                  "code": 42,
+                                  "comment": 3,
+                                  "blank": 8,
+                                  "language": "Go",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "README.md",
+                                  "code": 0,
+                                  "comment": 2,
+                                  "blank": 1,
+                                  "language": "Markdown",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "Go": 1004,
+                                "Markdown": 3
+                              }
+                            },
+                            {
+                              "name": "firstlink.go",
+                              "code": 222,
+                              "comment": 8,
+                              "blank": 23,
+                              "language": "Go",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "assets",
+                              "code": 210,
+                              "comment": 0,
+                              "blank": 0,
+                              "language": "HTML",
+                              "children": [
+                                {
+                                  "name": "index.html",
+                                  "code": 194,
+                                  "comment": 0,
+                                  "blank": 0,
+                                  "language": "HTML",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "style.css",
+                                  "code": 16,
+                                  "comment": 0,
+                                  "blank": 0,
+                                  "language": "CSS",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "CSS": 16,
+                                "HTML": 194
+                              }
+                            },
+                            {
+                              "name": "example",
+                              "code": 2,
+                              "comment": 78,
+                              "blank": 5,
+                              "language": "JSON",
+                              "children": [
+                                {
+                                  "name": "csv.sh",
+                                  "code": 1,
+                                  "comment": 4,
+                                  "blank": 2,
+                                  "language": "Bourne Shell",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "firstlink.sh",
+                                  "code": 1,
+                                  "comment": 4,
+                                  "blank": 2,
+                                  "language": "Bourne Shell",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "README.md",
+                                  "code": 0,
+                                  "comment": 6,
+                                  "blank": 1,
+                                  "language": "Markdown",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "firstlink.json",
+                                  "code": 0,
+                                  "comment": 4,
+                                  "blank": 0,
+                                  "language": "JSON",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "hopcount-report.json",
+                                  "code": 0,
+                                  "comment": 34,
+                                  "blank": 0,
+                                  "language": "JSON",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "hopcount.json",
+                                  "code": 0,
+                                  "comment": 26,
+                                  "blank": 0,
+                                  "language": "JSON",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "Bourne Shell": 14,
+                                "JSON": 64,
+                                "Markdown": 7
+                              }
+                            },
+                            {
+                              "name": "run.sh",
+                              "code": 1,
+                              "comment": 1,
+                              "blank": 1,
+                              "language": "Bourne Shell",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "LICENSE.txt",
+                              "code": 0,
+                              "comment": 17,
+                              "blank": 4,
+                              "language": "Plain Text",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "README.md",
+                              "code": 0,
+                              "comment": 18,
+                              "blank": 10,
+                              "language": "Markdown",
+                              "LanguageLines": {}
+                            }
+                          ],
+                          "LanguageLines": {
+                            "Bourne Shell": 10,
+                            "Go": 782,
+                            "HTML": 194,
+                            "Markdown": 28,
+                            "Plain Text": 21
+                          }
+                        },
+                        {
+                          "name": "revergo",
+                          "code": 1409,
+                          "comment": 749,
+                          "blank": 288,
+                          "language": "Go",
+                          "children": [
+                            {
+                              "name": "LICENSE.txt",
+                              "code": 0,
+                              "comment": 553,
+                              "blank": 121,
+                              "language": "Plain Text",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "board",
+                              "code": 683,
+                              "comment": 45,
+                              "blank": 69,
+                              "language": "Go",
+                              "children": [
+                                {
+                                  "name": "board_test.go",
+                                  "code": 345,
+                                  "comment": 1,
+                                  "blank": 25,
+                                  "language": "Go",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "board.go",
+                                  "code": 203,
+                                  "comment": 25,
+                                  "blank": 17,
+                                  "language": "Go",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "move_test.go",
+                                  "code": 61,
+                                  "comment": 0,
+                                  "blank": 9,
+                                  "language": "Go",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "constants.go",
+                                  "code": 44,
+                                  "comment": 11,
+                                  "blank": 11,
+                                  "language": "Go",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "move.go",
+                                  "code": 30,
+                                  "comment": 8,
+                                  "blank": 7,
+                                  "language": "Go",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "Go": 797
+                              }
+                            },
+                            {
+                              "name": "player",
+                              "code": 426,
+                              "comment": 61,
+                              "blank": 58,
+                              "language": "Go",
+                              "children": [
+                                {
+                                  "name": "player.go",
+                                  "code": 7,
+                                  "comment": 4,
+                                  "blank": 4,
+                                  "language": "Go",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "minimax_player.go",
+                                  "code": 84,
+                                  "comment": 16,
+                                  "blank": 10,
+                                  "language": "Go",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "cornerdefense_player.go",
+                                  "code": 65,
+                                  "comment": 10,
+                                  "blank": 6,
+                                  "language": "Go",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "corner_player.go",
+                                  "code": 40,
+                                  "comment": 6,
+                                  "blank": 6,
+                                  "language": "Go",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "edge_player.go",
+                                  "code": 39,
+                                  "comment": 6,
+                                  "blank": 7,
+                                  "language": "Go",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "common.go",
+                                  "code": 8,
+                                  "comment": 0,
+                                  "blank": 2,
+                                  "language": "Go",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "stdin_player.go",
+                                  "code": 108,
+                                  "comment": 7,
+                                  "blank": 11,
+                                  "language": "Go",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "maxround_player.go",
+                                  "code": 45,
+                                  "comment": 7,
+                                  "blank": 6,
+                                  "language": "Go",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "random_player.go",
+                                  "code": 30,
+                                  "comment": 5,
+                                  "blank": 6,
+                                  "language": "Go",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "Go": 545
+                              }
+                            },
+                            {
+                              "name": "simulation",
+                              "code": 48,
+                              "comment": 0,
+                              "blank": 3,
+                              "language": "Go",
+                              "children": [
+                                {
+                                  "name": "simulation.go",
+                                  "code": 48,
+                                  "comment": 0,
+                                  "blank": 3,
+                                  "language": "Go",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "Go": 51
+                              }
+                            },
+                            {
+                              "name": "league",
+                              "code": 33,
+                              "comment": 0,
+                              "blank": 2,
+                              "language": "Go",
+                              "children": [
+                                {
+                                  "name": "league.go",
+                                  "code": 33,
+                                  "comment": 0,
+                                  "blank": 2,
+                                  "language": "Go",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "Go": 35
+                              }
+                            },
+                            {
+                              "name": "Makefile",
+                              "code": 0,
+                              "comment": 11,
+                              "blank": 4,
+                              "language": "Makefile",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "README.md",
+                              "code": 0,
+                              "comment": 49,
+                              "blank": 12,
+                              "language": "Markdown",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "tournament",
+                              "code": 148,
+                              "comment": 17,
+                              "blank": 14,
+                              "language": "Go",
+                              "children": [
+                                {
+                                  "name": "tournament.go",
+                                  "code": 148,
+                                  "comment": 17,
+                                  "blank": 14,
+                                  "language": "Go",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "Go": 179
+                              }
+                            },
+                            {
+                              "name": "game",
+                              "code": 71,
+                              "comment": 13,
+                              "blank": 5,
+                              "language": "Go",
+                              "children": [
+                                {
+                                  "name": "game.go",
+                                  "code": 71,
+                                  "comment": 13,
+                                  "blank": 5,
+                                  "language": "Go",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "Go": 89
+                              }
+                            }
+                          ],
+                          "LanguageLines": {
+                            "Go": 851,
+                            "Makefile": 15,
+                            "Markdown": 61,
+                            "Plain Text": 674
+                          }
+                        },
+                        {
+                          "name": "prog",
+                          "code": 1779,
+                          "comment": 2096,
+                          "blank": 1378,
+                          "language": "C",
+                          "children": [
+                            {
+                              "name": "unbloat",
+                              "code": 10,
+                              "comment": 5,
+                              "blank": 2,
+                              "language": "C",
+                              "children": [
+                                {
+                                  "name": "hello.c",
+                                  "code": 10,
+                                  "comment": 0,
+                                  "blank": 1,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "Makefile",
+                                  "code": 0,
+                                  "comment": 4,
+                                  "blank": 1,
+                                  "language": "Makefile",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "junk.txt",
+                                  "code": 0,
+                                  "comment": 1,
+                                  "blank": 0,
+                                  "language": "Plain Text",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "C": 11,
+                                "Makefile": 5,
+                                "Plain Text": 1
+                              }
+                            },
+                            {
+                              "name": "darts_x01",
+                              "code": 153,
+                              "comment": 14,
+                              "blank": 21,
+                              "language": "C",
+                              "children": [
+                                {
+                                  "name": "darts_x01.c",
+                                  "code": 153,
+                                  "comment": 14,
+                                  "blank": 21,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "C": 188
+                              }
+                            },
+                            {
+                              "name": "gol",
+                              "code": 117,
+                              "comment": 22,
+                              "blank": 16,
+                              "language": "C",
+                              "children": [
+                                {
+                                  "name": "gol.c",
+                                  "code": 117,
+                                  "comment": 16,
+                                  "blank": 14,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "Makefile",
+                                  "code": 0,
+                                  "comment": 6,
+                                  "blank": 2,
+                                  "language": "Makefile",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "C": 147,
+                                "Makefile": 8
+                              }
+                            },
+                            {
+                              "name": "key_value",
+                              "code": 48,
+                              "comment": 0,
+                              "blank": 10,
+                              "language": "C",
+                              "children": [
+                                {
+                                  "name": "key_value.c",
+                                  "code": 48,
+                                  "comment": 0,
+                                  "blank": 10,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "C": 58
+                              }
+                            },
+                            {
+                              "name": "pymath",
+                              "code": 174,
+                              "comment": 6,
+                              "blank": 55,
+                              "language": "Python",
+                              "children": [
+                                {
+                                  "name": "fib_test.py",
+                                  "code": 20,
+                                  "comment": 1,
+                                  "blank": 11,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "factor.py",
+                                  "code": 19,
+                                  "comment": 1,
+                                  "blank": 6,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "mathfuncs_test.py",
+                                  "code": 14,
+                                  "comment": 0,
+                                  "blank": 7,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "prime_test.py",
+                                  "code": 13,
+                                  "comment": 0,
+                                  "blank": 6,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "fib.py",
+                                  "code": 12,
+                                  "comment": 1,
+                                  "blank": 3,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "factor_test.py",
+                                  "code": 10,
+                                  "comment": 0,
+                                  "blank": 5,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "mathfuncs.py",
+                                  "code": 47,
+                                  "comment": 3,
+                                  "blank": 8,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "prime.py",
+                                  "code": 25,
+                                  "comment": 0,
+                                  "blank": 6,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "gcd_euclid.py",
+                                  "code": 14,
+                                  "comment": 0,
+                                  "blank": 3,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "Python": 235
+                              }
+                            },
+                            {
+                              "name": "openrussianrip",
+                              "code": 45,
+                              "comment": 800,
+                              "blank": 8,
+                              "language": "Plain Text",
+                              "children": [
+                                {
+                                  "name": "top-100-adjectives.txt",
+                                  "code": 0,
+                                  "comment": 100,
+                                  "blank": 0,
+                                  "language": "Plain Text",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "top-100-nouns.txt",
+                                  "code": 0,
+                                  "comment": 100,
+                                  "blank": 0,
+                                  "language": "Plain Text",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "top-100-verbs.txt",
+                                  "code": 0,
+                                  "comment": 100,
+                                  "blank": 0,
+                                  "language": "Plain Text",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "top-500-all.txt",
+                                  "code": 0,
+                                  "comment": 500,
+                                  "blank": 0,
+                                  "language": "Plain Text",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "openrussianrip.py",
+                                  "code": 45,
+                                  "comment": 0,
+                                  "blank": 8,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "Plain Text": 800,
+                                "Python": 53
+                              }
+                            },
+                            {
+                              "name": "utftest",
+                              "code": 33,
+                              "comment": 4,
+                              "blank": 4,
+                              "language": "C",
+                              "children": [
+                                {
+                                  "name": "lineio.c",
+                                  "code": 33,
+                                  "comment": 0,
+                                  "blank": 3,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "Makefile",
+                                  "code": 0,
+                                  "comment": 4,
+                                  "blank": 1,
+                                  "language": "Makefile",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "C": 36,
+                                "Makefile": 5
+                              }
+                            },
+                            {
+                              "name": "unk",
+                              "code": 32,
+                              "comment": 2,
+                              "blank": 5,
+                              "language": "C",
+                              "children": [
+                                {
+                                  "name": "unk.c",
+                                  "code": 32,
+                                  "comment": 2,
+                                  "blank": 5,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "C": 39
+                              }
+                            },
+                            {
+                              "name": "LICENSE.txt",
+                              "code": 0,
+                              "comment": 17,
+                              "blank": 4,
+                              "language": "Plain Text",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "vier_gewinnt",
+                              "code": 171,
+                              "comment": 20,
+                              "blank": 21,
+                              "language": "C",
+                              "children": [
+                                {
+                                  "name": "vier_gewinnt.c",
+                                  "code": 171,
+                                  "comment": 16,
+                                  "blank": 20,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "Makefile",
+                                  "code": 0,
+                                  "comment": 4,
+                                  "blank": 1,
+                                  "language": "Makefile",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "C": 207,
+                                "Makefile": 5
+                              }
+                            },
+                            {
+                              "name": "alnumpargen",
+                              "code": 60,
+                              "comment": 1000,
+                              "blank": 1013,
+                              "language": "Plain Text",
+                              "children": [
+                                {
+                                  "name": "alnumpargen.c",
+                                  "code": 60,
+                                  "comment": 0,
+                                  "blank": 13,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "paragraphs.txt",
+                                  "code": 0,
+                                  "comment": 1000,
+                                  "blank": 1000,
+                                  "language": "Plain Text",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "C": 73,
+                                "Plain Text": 2000
+                              }
+                            },
+                            {
+                              "name": "bufio",
+                              "code": 14,
+                              "comment": 8,
+                              "blank": 7,
+                              "language": "C",
+                              "children": [
+                                {
+                                  "name": "main.c",
+                                  "code": 7,
+                                  "comment": 0,
+                                  "blank": 2,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "bufio.c",
+                                  "code": 5,
+                                  "comment": 0,
+                                  "blank": 1,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "bufio.h",
+                                  "code": 2,
+                                  "comment": 0,
+                                  "blank": 1,
+                                  "language": "C Header",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "Makefile",
+                                  "code": 0,
+                                  "comment": 8,
+                                  "blank": 3,
+                                  "language": "Makefile",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "C": 15,
+                                "C Header": 3,
+                                "Makefile": 11
+                              }
+                            },
+                            {
+                              "name": "threading",
+                              "code": 108,
+                              "comment": 10,
+                              "blank": 21,
+                              "language": "C",
+                              "children": [
+                                {
+                                  "name": "Makefile",
+                                  "code": 0,
+                                  "comment": 4,
+                                  "blank": 1,
+                                  "language": "Makefile",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "sum.c",
+                                  "code": 108,
+                                  "comment": 6,
+                                  "blank": 20,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "C": 134,
+                                "Makefile": 5
+                              }
+                            },
+                            {
+                              "name": "monty_hall",
+                              "code": 98,
+                              "comment": 18,
+                              "blank": 27,
+                              "language": "C",
+                              "children": [
+                                {
+                                  "name": "monty_hall.c",
+                                  "code": 98,
+                                  "comment": 5,
+                                  "blank": 22,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "Makefile",
+                                  "code": 0,
+                                  "comment": 13,
+                                  "blank": 5,
+                                  "language": "Makefile",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "C": 125,
+                                "Makefile": 18
+                              }
+                            },
+                            {
+                              "name": "sorting",
+                              "code": 153,
+                              "comment": 18,
+                              "blank": 35,
+                              "language": "C",
+                              "children": [
+                                {
+                                  "name": "Makefile",
+                                  "code": 0,
+                                  "comment": 13,
+                                  "blank": 6,
+                                  "language": "Makefile",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "sorting.c",
+                                  "code": 67,
+                                  "comment": 4,
+                                  "blank": 11,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "simple_sort.c",
+                                  "code": 47,
+                                  "comment": 0,
+                                  "blank": 9,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "sort_utils.c",
+                                  "code": 33,
+                                  "comment": 1,
+                                  "blank": 8,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "simple_sort.h",
+                                  "code": 3,
+                                  "comment": 0,
+                                  "blank": 1,
+                                  "language": "C Header",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "sort_utils.h",
+                                  "code": 3,
+                                  "comment": 0,
+                                  "blank": 0,
+                                  "language": "C Header",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "C": 180,
+                                "C Header": 7,
+                                "Makefile": 19
+                              }
+                            },
+                            {
+                              "name": "touchtype_generator",
+                              "code": 52,
+                              "comment": 4,
+                              "blank": 11,
+                              "language": "C",
+                              "children": [
+                                {
+                                  "name": "generate_number_text.c",
+                                  "code": 52,
+                                  "comment": 0,
+                                  "blank": 10,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "Makefile",
+                                  "code": 0,
+                                  "comment": 4,
+                                  "blank": 1,
+                                  "language": "Makefile",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "C": 62,
+                                "Makefile": 5
+                              }
+                            },
+                            {
+                              "name": "round",
+                              "code": 15,
+                              "comment": 4,
+                              "blank": 4,
+                              "language": "C",
+                              "children": [
+                                {
+                                  "name": "Makefile",
+                                  "code": 0,
+                                  "comment": 4,
+                                  "blank": 1,
+                                  "language": "Makefile",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "round.c",
+                                  "code": 15,
+                                  "comment": 0,
+                                  "blank": 3,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "C": 18,
+                                "Makefile": 5
+                              }
+                            },
+                            {
+                              "name": "fib-test",
+                              "code": 61,
+                              "comment": 0,
+                              "blank": 8,
+                              "language": "C",
+                              "children": [
+                                {
+                                  "name": "fib.c",
+                                  "code": 14,
+                                  "comment": 0,
+                                  "blank": 2,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "fib.cpp",
+                                  "code": 14,
+                                  "comment": 0,
+                                  "blank": 2,
+                                  "language": "C++",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "fib.rs",
+                                  "code": 10,
+                                  "comment": 0,
+                                  "blank": 1,
+                                  "language": "Rust",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "fib.pl",
+                                  "code": 9,
+                                  "comment": 0,
+                                  "blank": 1,
+                                  "language": "Perl",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "fib.js",
+                                  "code": 8,
+                                  "comment": 0,
+                                  "blank": 1,
+                                  "language": "JavaScript",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "fib.py",
+                                  "code": 6,
+                                  "comment": 0,
+                                  "blank": 1,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "C": 16,
+                                "C++": 16,
+                                "JavaScript": 9,
+                                "Perl": 10,
+                                "Python": 7,
+                                "Rust": 11
+                              }
+                            },
+                            {
+                              "name": "smart_quotes",
+                              "code": 202,
+                              "comment": 22,
+                              "blank": 29,
+                              "language": "C",
+                              "children": [
+                                {
+                                  "name": "sed",
+                                  "code": 0,
+                                  "comment": 9,
+                                  "blank": 0,
+                                  "language": "sed",
+                                  "children": [
+                                    {
+                                      "name": "smart_quotes.sed",
+                                      "code": 0,
+                                      "comment": 9,
+                                      "blank": 0,
+                                      "language": "sed",
+                                      "LanguageLines": {}
+                                    }
+                                  ],
+                                  "LanguageLines": {
+                                    "sed": 9
+                                  }
+                                },
+                                {
+                                  "name": "c",
+                                  "code": 93,
+                                  "comment": 5,
+                                  "blank": 11,
+                                  "language": "C",
+                                  "children": [
+                                    {
+                                      "name": "smart_quotes.c",
+                                      "code": 93,
+                                      "comment": 5,
+                                      "blank": 11,
+                                      "language": "C",
+                                      "LanguageLines": {}
+                                    }
+                                  ],
+                                  "LanguageLines": {
+                                    "C": 109
+                                  }
+                                },
+                                {
+                                  "name": "js",
+                                  "code": 109,
+                                  "comment": 8,
+                                  "blank": 18,
+                                  "language": "JavaScript",
+                                  "children": [
+                                    {
+                                      "name": "smart-quotes.js",
+                                      "code": 75,
+                                      "comment": 7,
+                                      "blank": 18,
+                                      "language": "JavaScript",
+                                      "LanguageLines": {}
+                                    },
+                                    {
+                                      "name": "smart-quotes.html",
+                                      "code": 31,
+                                      "comment": 0,
+                                      "blank": 0,
+                                      "language": "HTML",
+                                      "LanguageLines": {}
+                                    },
+                                    {
+                                      "name": "jquery.js",
+                                      "code": 3,
+                                      "comment": 1,
+                                      "blank": 0,
+                                      "language": "JavaScript",
+                                      "LanguageLines": {}
+                                    }
+                                  ],
+                                  "LanguageLines": {
+                                    "HTML": 31,
+                                    "JavaScript": 104
+                                  }
+                                }
+                              ],
+                              "LanguageLines": {
+                                "C": 109,
+                                "JavaScript": 100,
+                                "sed": 9
+                              }
+                            },
+                            {
+                              "name": "linum",
+                              "code": 79,
+                              "comment": 17,
+                              "blank": 19,
+                              "language": "C",
+                              "children": [
+                                {
+                                  "name": "linum.c",
+                                  "code": 79,
+                                  "comment": 9,
+                                  "blank": 16,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "Makefile",
+                                  "code": 0,
+                                  "comment": 8,
+                                  "blank": 3,
+                                  "language": "Makefile",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "C": 104,
+                                "Makefile": 11
+                              }
+                            },
+                            {
+                              "name": "checkout",
+                              "code": 57,
+                              "comment": 1,
+                              "blank": 13,
+                              "language": "C",
+                              "children": [
+                                {
+                                  "name": "checkout.c",
+                                  "code": 57,
+                                  "comment": 1,
+                                  "blank": 13,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "C": 71
+                              }
+                            },
+                            {
+                              "name": "stat",
+                              "code": 80,
+                              "comment": 21,
+                              "blank": 33,
+                              "language": "C",
+                              "children": [
+                                {
+                                  "name": "stat.c",
+                                  "code": 38,
+                                  "comment": 1,
+                                  "blank": 12,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "sd.c",
+                                  "code": 20,
+                                  "comment": 0,
+                                  "blank": 6,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "mean.c",
+                                  "code": 19,
+                                  "comment": 0,
+                                  "blank": 6,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "stat.h",
+                                  "code": 3,
+                                  "comment": 5,
+                                  "blank": 2,
+                                  "language": "C Header",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "Makefile",
+                                  "code": 0,
+                                  "comment": 15,
+                                  "blank": 7,
+                                  "language": "Makefile",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "C": 102,
+                                "C Header": 10,
+                                "Makefile": 22
+                              }
+                            },
+                            {
+                              "name": "charcode",
+                              "code": 13,
+                              "comment": 0,
+                              "blank": 2,
+                              "language": "C",
+                              "children": [
+                                {
+                                  "name": "charcode.c",
+                                  "code": 13,
+                                  "comment": 0,
+                                  "blank": 2,
+                                  "language": "C",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "C": 15
+                              }
+                            },
+                            {
+                              "name": "utils",
+                              "code": 4,
+                              "comment": 83,
+                              "blank": 10,
+                              "language": "BASH",
+                              "children": [
+                                {
+                                  "name": "audioconv",
+                                  "code": 1,
+                                  "comment": 60,
+                                  "blank": 5,
+                                  "language": "BASH",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "md2html",
+                                  "code": 1,
+                                  "comment": 2,
+                                  "blank": 1,
+                                  "language": "BASH",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "md2pdf",
+                                  "code": 1,
+                                  "comment": 14,
+                                  "blank": 3,
+                                  "language": "Bourne Shell",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "switchkb",
+                                  "code": 1,
+                                  "comment": 7,
+                                  "blank": 1,
+                                  "language": "Bourne Shell",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "BASH": 70,
+                                "Bourne Shell": 27
+                              }
+                            }
+                          ],
+                          "LanguageLines": {
+                            "BASH": 66,
+                            "C": 1555,
+                            "Plain Text": 21,
+                            "Python": 111
+                          }
+                        },
+                        {
+                          "name": "roman-numerals",
+                          "code": 187,
+                          "comment": 131,
+                          "blank": 59,
+                          "language": "Plain Text",
+                          "children": [
+                            {
+                              "name": "LICENSE.txt",
+                              "code": 0,
+                              "comment": 128,
+                              "blank": 37,
+                              "language": "Plain Text",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "README.md",
+                              "code": 0,
+                              "comment": 2,
+                              "blank": 1,
+                              "language": "Markdown",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "src",
+                              "code": 165,
+                              "comment": 1,
+                              "blank": 21,
+                              "language": "Java",
+                              "children": [
+                                {
+                                  "name": "main",
+                                  "code": 108,
+                                  "comment": 1,
+                                  "blank": 12,
+                                  "language": "Java",
+                                  "children": [
+                                    {
+                                      "name": "java",
+                                      "code": 108,
+                                      "comment": 1,
+                                      "blank": 12,
+                                      "language": "Java",
+                                      "children": [
+                                        {
+                                          "name": "com",
+                                          "code": 108,
+                                          "comment": 1,
+                                          "blank": 12,
+                                          "language": "Java",
+                                          "children": [
+                                            {
+                                              "name": "github",
+                                              "code": 108,
+                                              "comment": 1,
+                                              "blank": 12,
+                                              "language": "Java",
+                                              "children": [
+                                                {
+                                                  "name": "patrickbucher",
+                                                  "code": 108,
+                                                  "comment": 1,
+                                                  "blank": 12,
+                                                  "language": "Java",
+                                                  "children": [
+                                                    {
+                                                      "name": "RomanNumerals.java",
+                                                      "code": 108,
+                                                      "comment": 1,
+                                                      "blank": 12,
+                                                      "language": "Java",
+                                                      "LanguageLines": {}
+                                                    }
+                                                  ],
+                                                  "LanguageLines": {
+                                                    "Java": 121
+                                                  }
+                                                }
+                                              ],
+                                              "LanguageLines": {
+                                                "Java": 121
+                                              }
+                                            }
+                                          ],
+                                          "LanguageLines": {
+                                            "Java": 121
+                                          }
+                                        }
+                                      ],
+                                      "LanguageLines": {
+                                        "Java": 121
+                                      }
+                                    }
+                                  ],
+                                  "LanguageLines": {
+                                    "Java": 121
+                                  }
+                                },
+                                {
+                                  "name": "test",
+                                  "code": 57,
+                                  "comment": 0,
+                                  "blank": 9,
+                                  "language": "Java",
+                                  "children": [
+                                    {
+                                      "name": "java",
+                                      "code": 57,
+                                      "comment": 0,
+                                      "blank": 9,
+                                      "language": "Java",
+                                      "children": [
+                                        {
+                                          "name": "com",
+                                          "code": 57,
+                                          "comment": 0,
+                                          "blank": 9,
+                                          "language": "Java",
+                                          "children": [
+                                            {
+                                              "name": "github",
+                                              "code": 57,
+                                              "comment": 0,
+                                              "blank": 9,
+                                              "language": "Java",
+                                              "children": [
+                                                {
+                                                  "name": "patrickbucher",
+                                                  "code": 57,
+                                                  "comment": 0,
+                                                  "blank": 9,
+                                                  "language": "Java",
+                                                  "children": [
+                                                    {
+                                                      "name": "RomanNumeralsTest.java",
+                                                      "code": 57,
+                                                      "comment": 0,
+                                                      "blank": 9,
+                                                      "language": "Java",
+                                                      "LanguageLines": {}
+                                                    }
+                                                  ],
+                                                  "LanguageLines": {
+                                                    "Java": 66
+                                                  }
+                                                }
+                                              ],
+                                              "LanguageLines": {
+                                                "Java": 66
+                                              }
+                                            }
+                                          ],
+                                          "LanguageLines": {
+                                            "Java": 66
+                                          }
+                                        }
+                                      ],
+                                      "LanguageLines": {
+                                        "Java": 66
+                                      }
+                                    }
+                                  ],
+                                  "LanguageLines": {
+                                    "Java": 66
+                                  }
+                                }
+                              ],
+                              "LanguageLines": {
+                                "Java": 187
+                              }
+                            },
+                            {
+                              "name": "pom.xml",
+                              "code": 22,
+                              "comment": 0,
+                              "blank": 0,
+                              "language": "Maven",
+                              "LanguageLines": {}
+                            }
+                          ],
+                          "LanguageLines": {
+                            "Java": 121,
+                            "Markdown": 3,
+                            "Maven": 22,
+                            "Plain Text": 165
+                          }
+                        }
+                      ],
+                      "LanguageLines": {
+                        "C": 286,
+                        "Go": 1167,
+                        "Java": 121,
+                        "JavaScript": 344,
+                        "Python": 308,
+                        "Rust": 96
+                      }
+                    },
+                    {
+                      "name": "skiapoden",
+                      "code": 515,
+                      "comment": 111,
+                      "blank": 208,
+                      "language": "Python",
+                      "children": [
+                        {
+                          "name": "kurtoid",
+                          "code": 515,
+                          "comment": 111,
+                          "blank": 208,
+                          "language": "Python",
+                          "children": [
+                            {
+                              "name": "requirements.txt",
+                              "code": 0,
+                              "comment": 3,
+                              "blank": 0,
+                              "language": "Plain Text",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "app",
+                              "code": 512,
+                              "comment": 19,
+                              "blank": 177,
+                              "language": "Python",
+                              "children": [
+                                {
+                                  "name": "permutoid.py",
+                                  "code": 53,
+                                  "comment": 2,
+                                  "blank": 18,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "parallel_universe.py",
+                                  "code": 29,
+                                  "comment": 2,
+                                  "blank": 12,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "donat_trump.py",
+                                  "code": 24,
+                                  "comment": 0,
+                                  "blank": 6,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "trumpruloid.py",
+                                  "code": 45,
+                                  "comment": 2,
+                                  "blank": 17,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "kurtoid.py",
+                                  "code": 40,
+                                  "comment": 2,
+                                  "blank": 13,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "simulation.py",
+                                  "code": 40,
+                                  "comment": 0,
+                                  "blank": 11,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "main.py",
+                                  "code": 22,
+                                  "comment": 0,
+                                  "blank": 6,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "trumpcarloid.py",
+                                  "code": 76,
+                                  "comment": 5,
+                                  "blank": 32,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "carloid.py",
+                                  "code": 71,
+                                  "comment": 5,
+                                  "blank": 28,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "rule_based_trump.py",
+                                  "code": 50,
+                                  "comment": 0,
+                                  "blank": 10,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "rule_based_trump_test.py",
+                                  "code": 45,
+                                  "comment": 0,
+                                  "blank": 15,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "kurtutils.py",
+                                  "code": 17,
+                                  "comment": 1,
+                                  "blank": 9,
+                                  "language": "Python",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "Python": 708
+                              }
+                            },
+                            {
+                              "name": "build.sh",
+                              "code": 1,
+                              "comment": 1,
+                              "blank": 1,
+                              "language": "Bourne Shell",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "deploy.sh",
+                              "code": 1,
+                              "comment": 6,
+                              "blank": 1,
+                              "language": "Bourne Shell",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "run.sh",
+                              "code": 1,
+                              "comment": 1,
+                              "blank": 1,
+                              "language": "Bourne Shell",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "README.md",
+                              "code": 0,
+                              "comment": 21,
+                              "blank": 15,
+                              "language": "Markdown",
+                              "LanguageLines": {}
+                            },
+                            {
+                              "name": "doc",
+                              "code": 0,
+                              "comment": 60,
+                              "blank": 13,
+                              "language": "Plain Text",
+                              "children": [
+                                {
+                                  "name": "Makefile",
+                                  "code": 0,
+                                  "comment": 10,
+                                  "blank": 5,
+                                  "language": "Makefile",
+                                  "LanguageLines": {}
+                                },
+                                {
+                                  "name": "kurtoid.txt",
+                                  "code": 0,
+                                  "comment": 50,
+                                  "blank": 8,
+                                  "language": "Plain Text",
+                                  "LanguageLines": {}
+                                }
+                              ],
+                              "LanguageLines": {
+                                "Makefile": 15,
+                                "Plain Text": 58
+                              }
+                            }
+                          ],
+                          "LanguageLines": {
+                            "Bourne Shell": 14,
+                            "Makefile": 15,
+                            "Markdown": 36,
+                            "Plain Text": 3,
+                            "Python": 113
+                          }
+                        }
+                      ],
+                      "LanguageLines": {
+                        "Python": 113
+                      }
+                    }
+                  ],
+                  "LanguageLines": {
+                    "Go": 529,
+                    "Python": 113
+                  }
+                }
+              ],
+              "LanguageLines": {
+                "Go": 1139
+              }
+            }
+          ],
+          "LanguageLines": {
+            "Go": 610
+          }
+        }
+      ],
+      "LanguageLines": {
+        "Go": 610
+      }
+    }
+  ],
+  "LanguageLines": {
+    "Go": 610
+  }
+}

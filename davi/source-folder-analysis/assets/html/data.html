@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Source Code Folder Analysis</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="../css/style.css" media="screen" title="Standard" />
+</head>
+
+<body>
+	<header>
+		<h1>
+			Data
+		</h1>
+		<hr>
+	</header>
+	<div id="navigation">
+		<nav>
+			<ul>
+				<li>
+					<a href="../../index.html">Home</a>
+				</li>
+				<li>
+					<a href="research.html">Research</a>
+				</li>
+				<li>
+					<a href="data.html">Data</a>
+				</li>
+				<li>
+					<a href="visualization.html">Visualization</a>
+				</li>
+				<li>
+					<a href="description.html">Description</a>
+				</li>
+				<li>
+					<a href="references.html">References</a>
+				</li>
+				<li>
+					<a href="about.html">About</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+	<main>
+		<div id="section">
+            <h2>Data Source</h2>
+            <p>The data source is the <span class="tt">code</span> folder of one of the author's laptop: <span class="tt">/home/paedu/code</span>. This folder stores code from different organisations, different projects with different sizes, written in different programming and markup languages. The content of this folder is analyzed using the <span class="tt">gocloc</span> utility.</p>
+			<h2>
+				gocloc
+			</h2>
+			<p>
+				The gocloc utility comes with some command line ﬂags that are very useful for the problem at hand:
+			</p>
+			<ul>
+				<li>
+                    <span class="tt">--by-file</span>: report results for every encountered source file
+				</li>
+				<li>
+                    <span class="tt">--output-type=json</span>: output the report as a JSON data structure
+				</li>
+			</ul>
+			<p>
+            Piped into <span class="tt">jq</span> (a command line tool to format and query JSON data structures), a JSON file called <span class="tt">slocstats.json</span> (short for «source lines of code statistics») for a source folder is created within seconds:
+			</p>
+            <pre class="tt">$ gocloc ~/github.com --by-file --output-type=json | jq > slocstats.json</pre>
+			<p>The (shortened) data structure looks as follows (<span class="tt">slocstats.json</span>) for example:</p>
+            <pre class="tt">{
+  "files": [
+    {
+      "code": 510,
+      "comment": 58,
+      "blank": 42,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/requests/requests.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 509,
+      "comment": 4,
+      "blank": 56,
+      "name": "/home/paedu/code/gitlab.peax.ch/px/cmd/px.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 345,
+      "comment": 1,
+      "blank": 25,
+      "name": "/home/paedu/code/github.com/patrickbucher/revergo/board/board_test.go",
+      "Lang": "Go"
+    },
+    {
+      "code": 314,
+      "comment": 0,
+      "blank": 30,
+      "name": "/home/paedu/code/github.com/patrickbucher/reveal-the-pain/frontend/src/script.js",
+      "Lang": "JavaScript"
+    }
+  ],
+  "total": {
+    "files": 304,
+    "code": 11096,
+    "comment": 14382,
+    "blank": 4414
+  }
+}</pre>
+            <h2>Data Transformation</h2>
+            <p>The data above is in a flat structure: Every entry describes one file in the source code folder tree. In order to visualize the data in a tree map, a hierarchical format is needed. This is achieved with a small utility written in Go, which can be found under <a href="../../data/buildtree.go"><span class="tt">buildtree.go</span></a>. (The script <a href="../../data/run.sh"><span class="tt">run.sh</span></a> shows its usage.)</p>
+            <p>The result is a data structure of the following format, which represents source code files and folders in a hierarchical way (excerpt of <span class="tt">sourcetree.json</span>):</p>
+            <pre class="tt">{
+  "name": "",
+  "code": 11096,
+  "comment": 14382,
+  "blank": 4414,
+  "language": "Go",
+  "children": [
+    {
+      "name": "home",
+      "code": 11096,
+      "comment": 14382,
+      "blank": 4414,
+      "language": "Go",
+      "children": [
+        {
+          "name": "paedu",
+          "code": 11096,
+          "comment": 14382,
+          "blank": 4414,
+          "language": "Go",
+          "children": [
+            {
+              "name": "code",
+              "code": 11096,
+              "comment": 14382,
+              "blank": 4414,
+              "language": "Go",
+              "children": [
+                {
+                  "name": "gitlab.peax.ch",
+                  "code": 2427,
+                  "comment": 922,
+                  "blank": 426,
+                  "language": "Go",
+                  "children": [
+                    {
+                      "name": "px",
+                      "code": 2427,
+                      "comment": 922,
+                      "blank": 426,
+                      "language": "Go",
+                      "children": [
+                        {
+                          "name": "cmd",
+                          "code": 509,
+                          "comment": 4,
+                          "blank": 56,
+                          "language": "Go",
+                          "children": [
+                            {
+                              "name": "px.go",
+                              "code": 509,
+                              "comment": 4,
+                              "blank": 56,
+                              "language": "Go",
+                              "LanguageLines": {}
+                            }
+                          ],
+                          "LanguageLines": {
+                            "Go": 569
+                          }
+                        },
+                        {
+                          "name": "help",
+                          "code": 240,
+                          "comment": 30,
+                          "blank": 106,
+                          "language": "Go",
+                          "children": [
+                            {
+                              "name": "help.go",
+                              "code": 240,
+                              "comment": 30,
+                              "blank": 106,
+                              "language": "Go",
+                              "LanguageLines": {}
+                            }
+                          ],
+                          "LanguageLines": {
+                            "Go": 376
+                          }
+                        },
+
+/* thousands of lines omitted */</pre>
+            <p>For every source code file, the tree is traversed until the right position in the folder hierarchy is found. During traversal, the statistics for every folder are updated, i.e. the file's statistics are added to the folder's statistics. Since a folder does not have a language per se, the language mostly used in the files contained is set as the folder's language. (This mechanism is rather subject matter for a data structure lecture than a data visualization project, and, thus, not further discussed here.)</p>
+            <p>This structure provides all the information needed to build up a tree map. A color map is further used to map programming languages to background colors. (For better recognition, this color map uses the same colors as GitHub does, with some additions.)</p>
+		</div>
+	</main>
+	<footer>
+		<hr>
+		<p>
+			Patrick Bucher | Stefan Christen |
+			<a href="mailto:patrick.bucher@stud.hslu.ch;stefan.christen@stud.hslu.ch">Send Email</a>
+		</p>
+	</footer>
+</body>
+
+</html>

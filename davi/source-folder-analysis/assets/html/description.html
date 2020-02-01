@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Source Code Folder Analysis</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="../css/style.css" media="screen" title="Standard" />
+</head>
+
+<body>
+	<header>
+		<h1>
+			Description
+		</h1>
+		<hr>
+	</header>
+	<div id="navigation">
+		<nav>
+			<ul>
+				<li>
+					<a href="../../index.html">Home</a>
+				</li>
+				<li>
+					<a href="research.html">Research</a>
+				</li>
+				<li>
+					<a href="data.html">Data</a>
+				</li>
+				<li>
+					<a href="visualization.html">Visualization</a>
+				</li>
+				<li>
+					<a href="description.html">Description</a>
+				</li>
+				<li>
+					<a href="references.html">References</a>
+				</li>
+				<li>
+					<a href="about.html">About</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+	<main>
+		<div id="section">
+            <h2>Foundations Visual Design</h2>
+            <p>The tree map uses the following visual variables:</p>
+            <ul>
+            <li><strong>Size</strong> is the most important visual variable in tree map. The size of a tile represents the size of its underlying unit in lines of code.</li>
+            <li><strong>Value</strong> is used to represent the density of the source code, i.e. the ratio between actual code lines and total lines (code + comments + blank).</li>
+            <li><strong>Hue</strong> is used to identify the (main) programming language of a unit. The color mapping was taken from GitHub for better recognition, but is arbitrary in most cases (some notable exceptions are the programming language Ruby and Rust, which imply a certain color, and plain text, for which white is a good match).</li>
+            </ul>
+            <p><strong>Position</strong> is not used in the two-dimensional, but in a hierarchical sense: A file deeply nested in the file hierarchy needs to be found by navigating through its parents.</p>
+            <p>The Gestalt Principles <strong>Similarity</strong> (same color for same programming language), <strong>Closure</strong> (every folder groups sub-folders and files together), and <strong>Common Region</strong> (a folder is first shown as an optical unit) can also be recognized in the tree map.</p>
+            <h2>Fundamental Principles of Analycial Design (Tufte)</h2>
+            <p>The tree map allows for <strong>Comparisons</strong>, and displays the <strong>Structure</strong> of source code folders. The name of every unit (folder, file), line counts, and programming language are integrated in the visualization as an <strong>Integration of Evidence</strong>. The website as a whole is set up as a <strong>Documentation</strong> for the whole project.</p>
+            <h2>Data-Ink Ratio (Tufte)</h2>
+            <p>Since the most important feature of the tree map is the display of relative sizes, virtually all the ink spent is used for visualizing the data. There is nothing that can be erased without corrupting the information provided.</p>
+            <h2>Human Perception</h2>
+            <p>A source code folder is first visualized as a coherent unit. As soon as the user moves the mouse over such a unit, it is previewed as a whole made up of different parts. This is the same experience the user has when navigating through the file system. On every stage, the user needs to re-orient. The user is always focused on the current folder, which is the same principles that many file explorers are based on. The navigation bar on the top provides bread-crumbs, so that the user does not get lost.</p>
+			<h2>Tasks in Data Visualization</h2>
+            <p>In consideration of the <a href="https://queue.acm.org/detail.cfm?id=2146416">taxonomy of interactive dynamics for visual analysis</a> by Heer, J.; Shneidermann, B. (2012), these are some descriptions of our visualization:</p>
+            <p>The treemap chart is probably best suited for the visualization of source code folders to represent as much information as possible. The desired data can be easily filtered out by clicking through the different path levels. The size and color of the rectangles, for example, already derive values from the source data. The manipulation of the visualization is very intuitive and allows a simple and clear manipulation through the folder structures. During the manipulation of the visualization, all legends are adjusted in parallel, which give further information about this path layer. To pass on information, only the path can be specified or shared to get to the discussed information.</p>
+            <h2>Interaction Concept</h2>
+            <p>The user can hover over a folder to see a preview of the underlying structure. On the bottom, and on a tooltip panel, detailed information is shown. A click on that folder opens it in full size, and reveals the items contained. The top bar shows the full hierarchy, denoting the location using the last element. A click on this bar navigates upwards. On the right hand side, a stacked bar shows the proportions of code, comment, and blank lines. Instead of a legend, a tooltip is provided.</p>
+		</div>
+	</main>
+	<footer>
+		<hr>
+		<p>
+			Patrick Bucher | Stefan Christen |
+			<a href="mailto:patrick.bucher@stud.hslu.ch;stefan.christen@stud.hslu.ch">Send Email</a>
+		</p>
+	</footer>
+</body>
+
+</html>

@@ -8,6 +8,8 @@ Dokumente zu meinem Informatik-Studium an der Hochschule Luzern ‒ Informatik (
     - Übungen, fast vollständig
 - `csa` C# in Action
     - Übungen der ersten beiden Wochen
+- `davi`: Datenvisualisierung
+    - Projekt «Source Folder Visualization»
 - `dbs`: Datenbanksysteme
     - Übungen, ca. 50%
 - `dmath`: Diskrete Mathematik

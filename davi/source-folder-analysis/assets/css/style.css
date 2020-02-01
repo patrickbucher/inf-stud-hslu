@@ -1,0 +1,173 @@
+
+/************ Allgemein **************/
+
+body{
+	font: normal 1em Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.3;
+
+	margin-left: auto;
+	margin-right: auto;
+	color: black;
+	padding-right: 1rem;
+	padding-left: 1rem;
+}
+
+header{
+	color: black;
+	text-align: center;
+}
+
+h1{
+	color: black;
+	text-align: center;
+}
+
+h2{
+	color: black;
+	text-align: left;
+    font-size: 22px;
+}
+
+footer{
+	color: black;
+	background-color: white;
+	text-align: center;
+}
+
+.tt {
+    font-family: mono;
+}
+
+
+/************ SwitcherButton **************/
+
+#switcher li.aa a {
+    cursor: default;
+
+}
+
+#switcher a {
+    text-decoration: none;
+    background-color: transparent;
+    color: black;	
+	font-weight: bold;
+}
+
+#switcher li.aa {
+    color: black;
+}
+
+#switcher ul {
+    list-style-type: none;
+    color: black;
+}
+
+#switcher a:focus,
+#switcher a:hover {
+	color: black;
+	background-color: 	#DCdCdC;
+	border-color: 		#DCdCdC;
+}
+
+/************ Navigation **************/
+
+@media (min-width: 70em){
+	#navigation{
+		float: left;
+		width : 15em;
+	}
+}
+
+nav ul {
+	font-size: 20px;
+	padding: 0.8em;
+	background-color: white;
+	color: black;
+}
+
+nav li {
+	list-style: none;
+	margin: 0.4em;
+	color: black;
+}
+
+nav a {
+	display: block;
+	text-decoration: none;
+	font-weight: bold;
+	box-shadow: 0 5px 10px white inset;
+	color: black;
+	background-color: #C0C0C0;
+    padding-left: 0.3em;
+}
+
+nav a:focus,
+nav a:hover {
+	color: black;
+	background-color: 	#DCdCdC;
+	border-color: 		#DCdCdC;
+}
+
+
+/************ Sektion **************/
+#section {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    right: 24%;
+    top: 34%;
+    overflow: auto;
+    border: 10px solid black;
+    border-color: #C0C0C0;
+    background-color: #FFFFFF;
+    padding: 1%;
+}
+
+input.text {
+    border-width: 1px;
+    border-color: #065205;
+    border-style: solid;
+    background-color: #ffffff;
+    background-position: right;
+}
+
+input.submit {
+    background-repeat: no-repeat;
+    background-color: #DCdCdC;
+    background-position: right 50%;
+    height: 30px;
+    width: 150px;
+    font-weight: bold;
+    box-shadow: 0 5px 10px white inset;
+}
+
+div#infopanel {
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+div#infopanel div {
+    display: inline-block;
+    width: 16%;
+}
+
+div#langlegend {
+    width: 100%;
+    font-size: 10pt;
+    font-weight: bold;
+    padding-top: 1em;
+}
+
+div#langlegend div {
+    display: inline-block;
+    width: 160px;
+}
+
+div#langlegend div span.circle {
+    display: inline-block;
+    width: 10pt;
+    height: 10pt;
+    border-radius: 8px;
+    margin-right: 0.5em;
+}
