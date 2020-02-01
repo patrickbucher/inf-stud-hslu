@@ -29,6 +29,9 @@ Dokumente zu meinem Informatik-Studium an der Hochschule Luzern ‒ Informatik (
 - `infkol`: Computer Science Hot Topics
     - Zusammenfassungen, Fragen und Antworten zu fünf Gastvorträgen
     - Paper über OAuth 2
+- `iot`: Internet of Things
+    - Projekt «WellBean»
+    - Übungen und Codebeispiele (in C)
 - `ipcv`: Image Processing & Computer Vision
     - Übungen der ersten vier Wochen
 - `isf`: Information Security Fundamentals
