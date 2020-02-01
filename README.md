@@ -87,3 +87,4 @@ Dokumente zu meinem Informatik-Studium an der Hochschule Luzern ‒ Informatik (
 - [getting-to-philosophy](https://github.com/patrickbucher/getting-to-philosophy): Gruppenarbeit für den «Selenium-Teil» des Moduls SWT (nicht mit Selenium, sondern in Go umgesetzt), zum Simulieren des Spiels [Getting to Philosophy](https://en.wikipedia.org/wiki/Wikipedia:Getting_to_Philosophy) auf Wikipedia.
 - [oauth2-demo](https://github.com/patrickbucher/oauth2-demo): Demoapplikationen für OAuth 2 (ergänzend zum Paper für das Modul INFKOL entwickelt).
 - [statistics-with-python](https://github.com/patrickbucher/statistics-with-python): Persönliche Notizen zu IPython, NumPy, Pandas und Matplotlib
+- [suicide-rates](https://github.com/blemmyes/suicide-rates): Explorative Datenanalyse im Modul Data Science Basics zu einem Datensatz mit Suizidraten
