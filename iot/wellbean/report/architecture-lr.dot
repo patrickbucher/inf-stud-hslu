@@ -1,0 +1,43 @@
+digraph architecture {
+    rankdir="LR";
+	dpi="300";
+	graph [fontname="Lato", nodesep="0.6"];
+	node [fontname="Lato"];
+	edge [fontname="Lato"];
+
+    "SCD30" [shape=rect];
+    "Potentiometer" [shape=rect];
+    "Button" [shape=rect];
+
+    "Arduino" [shape=invhouse];
+
+    "SCD30" -> "Arduino" [label=" CO₂, Humidity, Temperature "];
+    "Potentiometer" -> "Arduino" [label=" Well-being "];
+    "Button" -> "Arduino" [label=" Interruptions "];
+
+	subgraph cluster_raspi {
+		fontname="Lato";
+		label="Raspberry Pi";
+        labeljust="l";
+
+        "Data Collector" [shape=invhouse];
+        "Data Forwarder" [shape=rarrow];
+
+        "Data Collector" -> "Data Forwarder" [label=" ZeroMQ (REQ) "];
+        "Data Forwarder" -> "Data Collector" [label=" ZeroMQ (REP) "];
+    }
+
+    "Arduino" -> "Data Collector";
+
+    subgraph cluster_cloud {
+		fontname="Lato";
+		label="Cloud";
+        labeljust="l";
+
+        "InfluxDB" [shape=cylinder];
+        "Grafana" [shape=egg];
+    }
+
+    "Data Forwarder" -> "InfluxDB" [label=" HTTP "];
+    "InfluxDB" -> "Grafana" [label=" HTTP "];
+}

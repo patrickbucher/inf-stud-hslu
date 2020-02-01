@@ -1,0 +1,11 @@
+\section{Evaluation, Experiments, Results, Discussion}
+
+As for the CO₂ concentration, the different kinds of sensors tested all seem to react very sensitively towards different CO₂ exposure. When leaving a building, the CO₂ drops immediately from 1100-1600 parts per million (ppm) to around 450 ppm. Dedicated CO₂ return a more stable CO₂ concentration in comparison to the ones that infer the CO₂ by measuring Volatile Organic Compounds (VOC). The correlation between subjectively set well-being and CO₂ concentration has to be investigated in a further project, as soon as enough data has been collected. 
+
+The SCD30 worked well on the Arduino, but not so on the Raspberry Pi. After multiple tests with different libraries and approaches, the SCD30 was left on the Arduino bread board.
+
+The pins of the SCD30 have been soldered manually to the sensor at home. This worked fine at the beginning, however, after the transport to the university, the sensor didn't respond any longer. The contacts have been checked positively using a potentiometer, so the sensor was suspected to be dead.
+
+While conducting further experiments with the SCD30 at home, one pin broke off. This pin was now suspected to have caused the problems. When measuring with the potentiometer, pressure is applied to the pin, thus creating contact. After the pin was soldered on back to the sensor, it worked again without any issues.
+
+The SCD30 was run in the office of one team member for a day, with a LCD display attached to the Arduino. The CO₂ concentration used to be around 1000ppm during the day. Opening a single window for half an hour only lead to a drop of about 200ppm. Opening two windows on opposing sides of the office lead to a much sharper drop to around 500ppm within five minutes. It is far better to air an office (or apartment) quickly with multiple windows open than for a long time with only one window open.

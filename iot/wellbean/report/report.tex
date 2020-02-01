@@ -1,0 +1,44 @@
+\documentclass[a4paper,11pt,hidelinks]{scrartcl}
+
+% packages
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\usepackage{apacite}
+\usepackage{multicol} 
+\usepackage{graphicx} 
+\usepackage{fontspec}
+    \setmainfont{Vollkorn}
+    \setsansfont{Lato}
+    \setmonofont{Inconsolata}
+
+% global options
+\renewcommand{\baselinestretch}{1.25}
+\pagestyle{headings}
+
+% own macros
+\newcommand{\imgref}[1]{{\ref{#1}, page \pageref{#1}}}
+
+\begin{document}
+
+
+\input{01-title.tex}
+
+\input{02-intro.tex}
+
+\input{03-related.tex}
+
+\input{04-system.tex}
+
+\input{05-evaluation.tex}
+
+\input{06-application.tex}
+
+\input{07-conclusion.tex}
+
+\input{08-contributions.tex}
+
+\input{09-milestones.tex}
+
+\input{10-references.tex}
+
+\end{document}

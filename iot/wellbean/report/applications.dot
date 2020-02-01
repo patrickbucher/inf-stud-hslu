@@ -1,0 +1,22 @@
+digraph applications {
+    rankdir="LR";
+	dpi="300";
+	graph [fontname="Lato", nodesep="0.6"];
+	node [fontname="Lato"];
+	edge [fontname="Lato"];
+
+    "Employee 1" -> "Arduino 1" [label="input data"];
+    "Arduino 1" -> "Raspberry Pi" [label="gather data"];
+    "Employee 2" -> "Arduino 2" [label="input data"];
+    "Arduino 2" -> "Raspberry Pi" [label="gather data"];
+    "Employee 3" -> "Arduino 3" [label="input data"];
+    "Arduino 3" -> "Raspberry Pi" [label="gather data"];
+    "Employee 4" -> "Arduino 4" [label="input data"];
+    "Arduino 4" -> "Raspberry Pi" [label="gather data"];
+
+    "Raspberry Pi" -> "InfluxDB" [label="collect data"];
+
+    "InfluxDB" -> "Grafana" [label="provide data"];
+
+    "Data Science Team" -> "Grafana" [label="analyze data"];
+}
