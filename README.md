@@ -90,3 +90,4 @@ Dokumente zu meinem Informatik-Studium an der Hochschule Luzern ‒ Informatik (
 - [oauth2-demo](https://github.com/patrickbucher/oauth2-demo): Demoapplikationen für OAuth 2 (ergänzend zum Paper für das Modul INFKOL entwickelt).
 - [statistics-with-python](https://github.com/patrickbucher/statistics-with-python): Persönliche Notizen zu IPython, NumPy, Pandas und Matplotlib
 - [suicide-rates](https://github.com/blemmyes/suicide-rates): Explorative Datenanalyse im Modul Data Science Basics zu einem Datensatz mit Suizidraten
+- [v13r93w1nn7](https://github.com/patrickbucher/v13r93w1nn7): Portfolio-Projekt für das Modul Gamedesign.
