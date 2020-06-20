@@ -1,0 +1,11 @@
+{
+    "identifier": "3c583530-0152-4ed1-b15f-5bb0747e771e",
+    "sides":  {
+        "1": "Sleeping",
+        "2": "Working",
+        "3": "Eating",
+        "4": "Studying",
+        "5": "Relaxing",
+        "6": "Housework"
+    }
+}

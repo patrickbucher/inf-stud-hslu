@@ -1,0 +1,27 @@
+\author{Group 4 (P. Bucher, P. Kiser, B. Kuhn, A. Ruckstuhl)}
+\title{TimeCube}
+\subtitle{HSLU Informatik Department, Switzerland}
+\date{\today}
+\maketitle
+
+\section*{Group Members}
+
+\begin{multicols}{2}
+\noindent
+    Patrick Bucher\\ \href{mailto:patrick.bucher@stud.hslu.ch}{\texttt{patrick.bucher@stud.hslu.ch}}
+
+\noindent
+    Pascal Kiser\\ \href{mailto:pascal.kiser@stud.hslu.ch}{\texttt{pascal.kiser@stud.hslu.ch}}
+
+\noindent
+    Benno Kuhn\\ \href{mailto:benno.kuhn@stud.hslu.ch}{\texttt{benno.kuhn@stud.hslu.ch}}
+
+\noindent
+    André Ruckstuhl\\ \href{mailto:andre.ruckstuhl@stud.hslu.ch}{\texttt{andre.ruckstuhl@stud.hslu.ch}}
+\end{multicols}
+
+\tableofcontents
+
+\section{Abstract}
+
+\textit{TimeCube} is a smart IoT device that allows for easy time tracking. Time tracking devices are often cumbersome to use and require a focus switch on the computer screen. The TimeCube is a physical device that makes it obvious which activity is tracked at any given time, which is indicated on the cube's side pointing upwards. The tracked activity can be changed by turning the cube to another side. The prototypes are made of plywood. A prototype contains an accelerometer to detect the cube's position, an A/D converter to convert the signal, and a Raspberry Pi Zero W that forwards the cube's position to a gateway server. From there, the data is forwarded to an InfluxDB instance running in the cloud. The activities to be tracked can be configured in a web interface and are stored in a Redis key-value store. The web interface, which is implemented in Node.js, Express.js, and D3.js, offers tabular and graphical reporting facilities.

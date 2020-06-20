@@ -1,0 +1,9 @@
+\section{Evaluation, Experiments, Results, Discussion}
+
+The outputs of the accelerometer first needed to be understood in order to map the accelerometer's outputs (three voltage levels, one for every axis) to the respective cube's sides. Since installing the accelerometer upside down in the first prototype turned out to be the best solution for the physical constraints, the cube's sides were only labeled after its construction was finished.
+
+Several tests were conducted to find the best frequency for uploading the data to the cloud database, so that the results are displayed without too much delay. At the same time, the sampling rate has been reduced as much as possible to avoid unreasonable amounts of data being sent to and stored in the database. A lower sampling rate also reduced the number of invalid data points during the rotation of the cube.
+
+After finishing the hardware prototypes, the behavior of the sensors during movement or while being placed in a way, so that no side was clearly facing up, was tested. The results of these tests were used to optimize the interpretation of the sensor data by dismissing faulty values during rotation by filtering them out.
+
+The performance of the reporting could be further improved to allow for larger time\-spans to be queried and displayed at once, or to reduce the size of the database. Currently the data for a single day can be queried and displayed without performance issues, which was deemed sufficient for most use cases of a prototype.

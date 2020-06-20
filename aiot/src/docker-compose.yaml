@@ -1,0 +1,25 @@
+version: '3.7'
+services:
+  redis:
+    image: redis:6.0.2-alpine
+    ports:
+      - '6379:6379'
+    volumes:
+      - ./redis-data:/data
+  web_backend:
+    build: ./web_backend
+    ports:
+      - '8000:8000'
+    environment:
+      - PORT=8000
+      - REDIS=redis:6379
+    depends_on:
+      - redis
+  web_frontend:
+    image: nginx:1.18.0-alpine
+    ports:
+      - '8080:80'
+    volumes:
+      - ./web_frontend/html:/usr/share/nginx/html
+    depends_on:
+      - web_backend

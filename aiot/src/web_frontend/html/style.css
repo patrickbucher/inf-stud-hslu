@@ -1,0 +1,55 @@
+body {
+    margin: 0 auto;
+    width: 1200px;
+    font-family: sans-serif;
+    color: #222;
+    background-color: #eee;
+}
+
+/* Form (from/to) */
+fieldset {
+    border: none;
+}
+
+fieldset div {
+    margin: 0.5em;
+}
+
+label {
+    display: inline-block;
+    width: 8em;
+}
+
+span.color {
+    margin: 0 0.5em;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+/* Report Output */
+div#reportOutput {
+    display: none;
+}
+
+td {
+    padding: 0.5em 1em;
+}
+
+td.nopad {
+    padding: 0;
+}
+
+th {
+    padding: 0.5em 1em;
+    text-align: left;
+}
+
+ol.team li {
+    width: 290px;
+    margin: 0 0 2em 0;
+    padding: 0;
+    float: left;
+    list-style-type: none;
+}

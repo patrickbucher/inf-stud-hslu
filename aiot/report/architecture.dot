@@ -1,0 +1,52 @@
+digraph architecture {
+    rankdir="LR";
+	dpi="300";
+	graph [fontname="Lato", nodesep="0.6"];
+	node [fontname="Lato"];
+	edge [fontname="Lato"];
+
+    subgraph cluster_raspi {
+        label="Cube";
+
+        "A/D Converter" [shape=rect];
+        "Accelerometer" [shape=rect];
+
+        "Raspberry Pi Zero W" [shape=rect];
+
+        "Accelerometer" -> "A/D Converter" [label=" Position (Analog) "];
+        "A/D Converter" -> "Raspberry Pi Zero W" [label=" Position (Digital) "];
+    }
+
+    subgraph cluster_gateway {
+        label="Gateway Server";
+
+        "Subscriber" [shape=rect];
+    }
+
+    subgraph cluster_database {
+        label="Cloud (DB)";
+
+        "InfluxDB" [shape=cylinder];
+    }
+
+    subgraph cluster_website {
+        label="Cloud (Web Server)";
+
+        "Node.js" [shape=rect];
+        "Redis" [shape=cylinder];
+
+        "Node.js" -> "Redis";
+    }
+
+    subgraph cluster_webclient {
+        label="Client (Web Site)";
+
+        "Browser" [shape=rect];
+    }
+
+    "Raspberry Pi Zero W" -> "Subscriber" [label=" PUB/SUB "];
+    "Subscriber" -> "InfluxDB" [label=" HTTP "];
+
+    "Node.js" -> "InfluxDB" [label=" HTTP "];
+    "Browser" -> "Node.js"
+}

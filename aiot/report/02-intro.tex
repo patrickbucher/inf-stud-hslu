@@ -1,0 +1,11 @@
+\section{Introduction}
+
+Keeping track of how much time is spent on a particular project is a problem that everyone has faced numerous times at work, at school or while tinkering on different side projects. Time tracking tools are often cumbersome and usually require the use of a web browser or smartphone app. This can be distracting or inconvenient, especially if you don't want to start up your window manager. Or maybe you are even sitting at your soldering station, and don't want to access a computer just to start working on another one of your IoT projects.
+
+In this case, a real-world, physical device you can put on your desk and even carry around with you would be the preferable solution. Our motivation is to help hard-working people to keep track of the time they have invested without distracting them from their work. You can use the TimeCube to quickly and easily track your activities without the need for a computer and access all relevant data and configurations later via a convenient web interface.
+
+The TimeCube is an IoT device that keeps track of which side of the cube is currently up using an accelerometer, and logs this value in a cloud-based InfluxDB instance. To change the currently tracked project or activity, one only needs to rotate the cube. This eliminates the need to switch to another application and is far less distracting to the user. The user is also not required to pick up the smartphone, which could initiate a whole cascade of distractions.
+
+Using the TimeCube web interface, the six sides of the cube can be mapped to different activities, and the data collected by the TimeCube can be displayed in a convenient manner. The physical sides of the cube could be marked using colors or stickers, to help the user to distinguish the different activities currently configured for the TimeCube.
+
+Within the scope of this project, there were to two different prototypes of the TimeCube device built. The detection of the side pointing upward was developed. Both a gateway server and a persistent storage in the cloud were provided. A web application was built in multiple iterations, which can be used for configuration and reporting.

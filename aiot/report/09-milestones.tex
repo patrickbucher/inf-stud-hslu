@@ -1,0 +1,38 @@
+\section{Major Milestones \& Deliverables}
+
+\subsection{Team and Roles}
+
+\begin{tabular}{p{9cm}p{4cm}}
+\textbf{Project Work Packages} & \textbf{Owner} \\
+\hline
+    Build First Prototype & Patrick Bucher \\
+    Build Second Prototype & Benno Kuhn \\
+    Build Second Prototype & André Ruckstuhl \\
+    Publish Orientation Data & Patrick Bucher \\
+    Evaluate Node Red and Azure & André Ruckstuhl \\
+    Setup InfluxDB & Pascal Kiser \\
+    Setup InfluxDBCloud2 Tests, JS Web Application & André Ruckstuhl \\
+    Interface Evaluation InfluxDBCloud2 to NodeRed & Benno Kuhn \\
+    NodeJS Integration in JS Web Application & Benno Kuhn \\
+    Implemented Gateway & Pascal Kiser \\
+    Develop Web Application & Patrick Bucher \\
+    Design the Logo & Pascal Kiser \\
+\end{tabular}
+
+\subsection{Project Planning, Timelines, Milestones \& Deliverables}
+
+A project meeting was conducted every week after the AIOT class. In that meeting, the activities of the week passed were discussed. Had there been any issues, possible solutions were discussed and assigned to the individual team members, and reviewed in the meeting the following week.
+
+There was no top-level planning conducted at the beginning of the project. The project idea was discussed in the first couple of weeks. The tinkering process with the sensors was also ongoing through that early period of the project.
+
+The two prototypes have been built independently at home, because lessons were no longer held at HSLU in Rotkreuz. The collaboration on the physical devices was thus restricted.
+
+In order to allow the colleagues to work on the software parts of the project (gateway server, persistence, web application), the output of the prototype was simulated using a script. This allowed all team members to fill the data base with demo data. This data was further used to create the queries and web application prototypes.
+
+Unfortunately, Node Red didn't offer a facility to connect to InfluxDB Cloud2.0 instances. The approach of the web application had to be changed. The next idea was to build a single-page JavaScript application that runs entirely in the browser (no backend).
+
+This approach had to be given up quickly, because the facilities for storing persistent data in a browser, which is needed to configure the cube's sides, are very limited, and do not work when using multiple browsers for the same device. Instead, a small web application based on Node.js and Express.js was built, which stores the configuraton in a Redis key-value store.
+
+This web backend also aggregates the data for reporting, which then is displayed by the frontend both as a table and as a bar plot.
+
+At that point, the project was rounded off with a nice logo, and, of course, by finishing the report (this document).

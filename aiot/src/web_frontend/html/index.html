@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TimeCube</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    </head>
+    <body>
+        <h1>TimeCube</h1>
+        <img src="img/logo.png">
+        <h2>Configuration</h2>
+        <form id="configurationForm">
+            <fieldset>
+                <div>
+                    <label for="side1">Side 1</label>
+                    <span class="color" id="colorSide1"></span>
+                    <input type="text" id="side1">
+                </div>
+                <div>
+                    <label for="side2">Side 2</label>
+                    <span class="color" id="colorSide2"></span>
+                    <input type="text" id="side2">
+                </div>
+                <div>
+                    <label for="side3">Side 3</label>
+                    <span class="color" id="colorSide3"></span>
+                    <input type="text" id="side3">
+                </div>
+                <div>
+                    <label for="side4">Side 4</label>
+                    <span class="color" id="colorSide4"></span>
+                    <input type="text" id="side4">
+                </div>
+                <div>
+                    <label for="side5">Side 5</label>
+                    <span class="color" id="colorSide5"></span>
+                    <input type="text" id="side5">
+                </div>
+                <div>
+                    <label for="side6">Side 6</label>
+                    <span class="color" id="colorSide6"></span>
+                    <input type="text" id="side6">
+                </div>
+                <div>
+                    <label for="submitConfig"></label>
+                    <input id="submitConfig" type="button" value="Save Configuration">
+                </div>
+            </fieldset>
+        </form>
+        <h2>Reporting</h2>
+        <form id="periodSelectionForm">
+            <fieldset>
+                <div>
+                    <label for="from">Identifier</label>
+                    <input type="text" id="uuid" value="3c583530-0152-4ed1-b15f-5bb0747e771e">
+                </div>
+                <div>
+                    <label for="from">From</label>
+                    <input type="datetime-local" id="from">
+                </div>
+                <div>
+                    <label for="to">To</label>
+                    <input type="datetime-local" id="to">
+                </div>
+                <div>
+                    <label for="submitPeriod"></label>
+                    <input id="submitPeriod" type="button" value="Show Report">
+                </div>
+            </fieldset>
+        </form>
+        <div id="reportOutput">
+            <h3>Table</h3>
+            <table id="logbook"></table>
+            <h3>Visualization (Minutes per Activity)</h3>
+            <div id="barplot"></div>
+        </div>
+        <h2>Team</h2>
+        <ol class="team">
+            <li class="member"><strong>Patrick Bucher</strong><br/>
+                <a href="mailto:patrick.bucher@stud.hslu.ch">patrick.bucher@stud.hslu.ch</a><br/>
+                I.BSCI.1601<br/>
+                Computer Science
+            </li>
+            <li class="member"><strong>Pascal Kiser</strong><br/>
+                <a href="mailto:pascal.kiser@stud.hslu.ch">pascal.kiser@stud.hslu.ch</a><br/>
+                I.BSCI.1601<br/>
+                Computer Science
+            </li>
+            <li class="member"><strong>Benno Kuhn</strong><br/>
+                <a href="mailto:benno.kuhn@stud.hslu.ch">benno.kuhn@stud.hslu.ch</a><br/>
+                I.BSCI.1501<br/>
+                Computer Science
+            </li>
+            <li class="member"><strong>André Ruckstuhl</strong><br/>
+                <a href="mailto:andre.ruckstuhl@stud.hslu.ch">andre.ruckstuhl@stud.hslu.ch</a><br/>
+                I.BSCWI.1701<br/>
+                Business Informatics
+            </li>
+        </ol>
+        <script src="client.js"></script>
+        <script src="d3.v5.min.js"></script>
+    </body>
+</html>
