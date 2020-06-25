@@ -1,11 +1,13 @@
 # inf-stud-hslu
 
-Dokumente zu meinem Informatik-Studium an der Hochschule Luzern ‒ Informatik (2016-20??)
+Dokumente zu meinem Informatik-Studium an der Hochschule Luzern ‒ Informatik (2016-2020)
 
 ## Inhalt (nach Modulen)
 
 - `ad`: Algorithmen und Datenstrukturen
     - Übungen, fast vollständig
+- `aiot`: Advanced Internet of Things
+    - Projekt «TimeCube»
 - `csa` C# in Action
     - Übungen der ersten beiden Wochen
 - `davi`: Datenvisualisierung
