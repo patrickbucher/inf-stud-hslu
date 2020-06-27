@@ -1,0 +1,12 @@
+\section*{Abstract}
+\addcontentsline{toc}{section}{Abstract}
+
+Die rheumatoide Arthritis ist eine Autoimmunerkrankung, bei der Gelenke angegriffen und irreversibel geschädigt werden. Die Erosion des Gelenkgewebes wird durch medizinisches Fachpersonal anhand von Röntgenbildern ermittelt, was pro Patient mehrere Minuten in Anspruch nimmt.
+
+In einer Vorarbeit haben Janick Rohrbach (ZHAW), Tobias Reinhard (Seantis GmbH), Beate Sick (Universität Zürich) und Oliver Dürr (HTWG Konstanz) diesen Vorgang mithilfe von \textit{Deep Convolutional Neuronal Networks} automatisiert, wodurch eine gleichbleibende Bewertungsqualität gewährleistet wird. Das Ma\-chine-Learn\-ing-Modell wurde mit zehntausenden von klassifizierten Gelenken aus der SCQM-Datenbank (\textit{Swiss Clinical Quality Management in Rheumatic Disease}) trainiert, validiert und getestet.
+
+Die vorliegende Arbeit beschreibt, wie auf Basis dieses und zweier weiterer Ma\-chine-Learn\-ing-Modelle (Erkennung von Körperteilen und Extraktion von Gelenken auf Röntgenbildern) ein Webservice erstellt wird, womit das automatische Scoring von Gelenken anderen Anwendungen zur Verfügung gestellt werden kann. Der resultierende Prototyp ist eine verteilte Anwendung, welche die bestehenden Ma\-chine-Learn\-ing-Modelle mithilfe von Messaging zu einem lose gekoppelten System zusammenfügt. Diese Architektur erlaubt es, mehrere Instanzen pro Modell auszuführen, wodurch die Röntgenbilder schnell und zuverlässig verarbeitet werden können.
+
+Die Qualität des Gesamtsystems wird mit verschiedenen Metriken evaluiert. Damit können Qualitätsverbesserungen des Gesamtsystems beurteilt werden, wenn einzelne Ma\-chine-Learn\-ing-Komponenten durch neuere, verbesserte Versionen ersetzt werden. 
+
+Im Ausblick wird behandelt, welche weiteren Schritte notwendig wären, um das System beim Auftraggeber in den Produktiveinsatz überführen zu können.

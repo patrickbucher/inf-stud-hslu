@@ -1,0 +1,39 @@
+@startuml
+
+skinparam monochrome true
+skinparam defaultFontName Inconsolata
+skinparam dpi 300
+
+class JSONResponse {
+    {field} joint_name
+    {field} joint_image
+}
+
+class JointDetection {
+    {field} connection
+    {field} channel
+    {field} JointDetectionPredictor predictor
+    {method} run()
+    {method} handle(channel, method, properties, payload)
+    {method} JSONResponse detect_joint(image, joint_name, corr_id)
+}
+
+class JointDetectionPredictor {
+    {field} str[] joints
+    {field} JointDetectionModel[str] models
+    {method} __init__(data_dir)
+    {method} image predict(image, joint_name, corr_id)
+}
+
+class JointDetectionModel {
+    {field} hyperparameter
+    {field} session
+    {method} __init__(joint_name, data_dir)
+    {method} image predict(image)
+}
+
+JointDetection --> JSONResponse
+JointDetection o-- JointDetectionPredictor
+JointDetectionPredictor o-- "10" JointDetectionModel
+
+@enduml

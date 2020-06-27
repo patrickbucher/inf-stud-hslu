@@ -1,0 +1,46 @@
+@startuml
+
+skinparam monochrome true
+skinparam defaultFontName Lato
+skinparam dpi 300
+
+component client
+
+interface HTTP as http
+
+client .> http
+
+frame DeepXRay {
+    component orchestrator
+    component body_part
+    component joint_detection
+    component ratingen_score
+
+    interface Queue as q_o_b
+    interface Queue as q_o_j
+    interface Queue as q_j_r
+    interface Queue as q_r_o
+    interface Error as q_err
+
+    orchestrator .up.> q_o_b
+    body_part .left.> q_o_b
+
+    orchestrator .> q_err
+
+    orchestrator .right.> q_o_j
+    joint_detection .left.> q_o_j
+
+    joint_detection .left.> q_err
+
+    joint_detection .> q_j_r
+    ratingen_score .right.> q_j_r
+
+    ratingen_score .up.> q_err
+
+    ratingen_score .left.> q_r_o
+    orchestrator .down.> q_r_o
+}
+
+http - orchestrator 
+
+@enduml

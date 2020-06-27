@@ -1,0 +1,144 @@
+\section{Anhang}
+
+Im Anhang werden folgende Inhalte gesammelt:
+
+\begin{description}
+    \item[Technologieevaluation] Die Wahl der Programmiersprache ‒ bzw. der Programmier\textit{spra\-chen}, da verschiedene zum Einsatz kommen ‒ wird anhand definierter Kriterien für die verschiedenen Einsatzbereiche (Komponenten) begründet. Auch die Wahl des Messaging-Protokolls und des Message-Brokers wird kurz begründet.
+    \item[Schnittstellen] Die Schnittstellen zwischen den verschiedenen Komponenten werden in einem kurzen, tabellarischen Überblick zusammengefasst.
+    \item[Abgabe] Abgegebene Artefakte wie Quellcode und Modelldaten, und weitere Inhalte, die nicht in den Bericht (dieses Dokument) eingefügt worden sind, werden hier aufgeführt.
+\end{description}
+
+\subsection{Wahl der Programmiersprache(n)}
+\label{sec:wahl-der-programmiersprache}
+
+Die Wahl der Programmiersprache ist in der vorliegenden Arbeit durch die vorgegebenen Modelle teilweise eingeschränkt. Bei anderen Komponenten, d.h. beim \texttt{orchestrator} und bei der Evaluation, bestehen grundsätzlich keine solchen Einschränkungen.
+
+Wo eine Programmiersprache gewählt werden kann, soll dies nach den folgenden Kriterien geschehen:
+
+\begin{description}
+    \item[Domäne] Die Programmiersprache muss zum jeweiligen Einsatzbereich passen. \footnote{Bei Projekten mit einem Hintergrund in der Data Science und im Machine Learning wären etwa Python und R sinnvolle Varianten. Bei der Entwicklung hochperformanter Serversysteme kommen eher C, C++, Rust und Go zum Einsatz.}
+    \item[Erfahrung] Der Autor der vorliegenden Arbeit soll bereits Erfahrung mit der jeweiligen Programmiersprache haben, d.h. bereits nicht-triviale Software damit entwickelt haben. Diese Erfahrung sollte nicht zu weit zurückliegen.\footnote{Kandidaten hierfür wären Java, Python, JavaScript, Go und R.}
+    \item[Kompatibilität] Die Programmiersprache muss zu den bereits gesetzten und ausgewählten Technologien kompatibel sein.\footnote{Dies sind je nach Komponente u.a. TensorFlow, HTTP, JSON, Messaging.}
+    \item[Perspektive] Es soll eine Programmiersprache gewählt werden, deren Alter und Popularität darauf hindeuten, dass sie in den nächsten fünf bis zehn Jahren noch gebräuchlich sein wird.\footnote{Der \textit{Lindy Effect} \cite{goldman1964} besagt, dass sich die Lebenserwartung nicht-verderblicher Sachen wie z.B. Technologien proportional zu deren Alter verhält. Rust, das am 15. Mai 2015 in Version 1.0 erschienen ist, und seither an Popularität gewinnt, hätte demnach noch eine Mindestlebenserwartung von fünf Jahren. Bei Go, das am 28. März 2012 in Version 1.0 herausgegeben worden ist, dürften es somit noch mindestens acht Jahre sein. Bei Nim, das am 23. September 2019 in Version 1.0 erschienen ist, darf man hingegen nur mit einer Mindestlebenserwartung von neun Monaten rechnen.} Dadurch kann die Anwendung über längere Zeit gewartet und muss nicht schon bald in grossen Teilen in einer anderen Programmiersprache neu entwickelt werden.
+\end{description}
+
+\subsubsection{Modellkomponenten \texttt{body\_part}, \texttt{joint\_detection}, \texttt{ratingen\_score}}
+\label{sec:wahl-der-programmiersprache-modellkomponenten}
+
+Da die Modelle in älteren Versionen von TensorFlow implementiert worden sind, lassen sich die Modelldaten nicht einfach für die Ausführung in einer anderen Laufzeitumgebung exportierten. Darum sollen sie in einem Container ausgeführt werden, der ihre ursprüngliche Laufzeitumgebung abbildet (siehe \secref{sec:bestehende-modelle} und \secref{sec:austauschbarkeit-von-modellen}).
+
+Der Code zur Beschreibung der Modelle soll darum ebenfalls beibehalten werden. Somit kommt für die Komponenten, welche die Machine-Learning-Modelle anbieten, Python zum Einsatz.\footnote{Die Modelle \texttt{body\_part} und \texttt{joint\_detection} sind in einer Umgebung mit Python 3.6 entwickelt worden. Das neuere Modell \texttt{ratingen\_score} wurde auf einer Umgebung trainiert, welche die etwas ältere Version Python 3.5 erforderte. Python 3.6 unterscheidet sich v.a. durch neue Features von Python 3.5, wovon \textit{PEP 498: formatted string literals} das einzige Feature ist, das der Autor dieser Zeilen regelmässig verwendet (siehe \url{https://docs.python.org/3/whatsnew/3.6.html} für detaillierte Release-Informationen).} Somit ist Python 3.6 für die Komponenten \texttt{body\_part} und \texttt{joint\_detection}; und Python 3.5 für die Komponente \texttt{ratingen\_score} gesetzt.
+
+\subsubsection{Neue Komponente \texttt{orchestrator}}
+\label{sec:wahl-der-programmiersprache-orchestrator}
+
+Für den \texttt{orchestrator} gelten andere Anforderungen als für die Modellkomponenten. Da für diese Komopnente noch kein Code existiert, kann diese komplett von Grund auf und ohne Technologieeinschränkungen aufgrund geleisteter Vorarbeiten entwickelt werden. Als Schnittstelle muss nicht nur eine Message-Queue unterstützt, sondern auch HTTP angeboten werden. Die grösste Schwierigkeit beim \texttt{orchestrator} besteht darin, dass dieser mit mehreren Anfragen gleichzeitig umgehen können muss, ohne dass die nebenläufigen Vorgänge (Gelenkextraktion und -scoring) dabei durcheinander geraten dürfen. Da der \texttt{orchestrator} ohne vorgelagerten Load-Balancer auskommen und nur mit einer einzigen Instanz laufen soll, muss sich dieser selber um die Nebenläufigkeit (Ausführung in mehreren Threads) kümmern ‒ und sollte eine möglichst hohe Laufzeitperformance bieten.
+
+Von den Programmiersprachen, welche die Kriterien von \secref{sec:wahl-der-programmiersprache} erfüllen\footnote{Java, Python, JavaScript, Go, und R}, hat Go im Bezug auf die Anforderungen für den \texttt{orchestrator} am meisten zu bieten. Zum einen verfügt Go über ein mächtiges HTTP-Package (für Client und Server) in der Standardbibliothek\footnote{siehe \url{https://golang.org/pkg/net/http/} (abgerufen am 23.05.2020)}. Viel wichtiger ist allerdings das Concurrency-Modell von Go, das auf dem Konzept von \textit{Communicating Sequential Processes} (CSP) basiert und leichtgewichtige Threads (\textit{goroutines}) als primäres Sprachkonstrukt mit dem Schlüsselwort \texttt{go} starten kann \cite[Kapitel 8]{gopl}. 
+
+CSP kann als prozessinterner Messaging-Mechanismus verstanden werden, bei dem verschiedene Unterprozesse (in Go: \textit{goroutines}) über Queues (in Go: \textit{channels}) Nachrichten untereinander austauschen. Die Vorteile der Messaging-Architektur, die im zweiten und dritten Kapitel besprochen worden sind (siehe \secref{sec:integrationsvarianten}; \secref{sec:variante-3-messaging} und \secref{sec:variante-4-messaging}), können somit auch innerhalb einer einzelnen Komponente genutzt werden. Die Probleme, mit denen man bei der Verwendung von Threads und geteiltem Zustand (\textit{shared state}) zu kämpfen hat, treten beim korrekten Gebrauch von CSP nicht auf, da ein Datenobjekt zu einem bestimmten Zeitpunkt nur auf einer Seite des gemeinsamen Kanals ‒ und damit nur in einem Thread ‒ sein kann.\footnote{Rob Pike bringt diesen Ansatz mit seinem Go-Proverb \textit{«Don't communicate by sharing memory, share memory by communicating.»} auf den Punkt \cite[2:45]{go-proverbs}.}
+
+Das \texttt{select/case}-Statement, das ähnlich wie \texttt{switch/case} aufgebaut ist, erlaubt es verschiedene Kanäle auf eine eingehende Nachricht zu prüfen, und mit entsprechendem Code darauf zu reagieren. Werden die externen Message-Queues intern mit Channels abgebildet, können die eingehenden Ergebnisse der verschiedenen Modellkomponenten so in den richtigen Kontext (HTTP-Anfrage) weitergeleitet werden.
+
+Weiter bietet Go als kompilierte Programmiersprache eine ansprechende Laufzeitperformance, die derjenigen von Skriptsprachen weit überlegen ist.\footnote{Siehe etwa den Vergleich zwischen Go und Python 3 auf \url{https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/go-python3.html} (abgerufen am 23.05.2020).}
+
+Aus diesen Gründen soll Go für die Umsetzung der \texttt{orchestrator}-Komponente verwendet werden.
+
+\subsubsection{Evaluation}
+\label{sec:wahl-der-programmiersprache-evaluation}
+
+Bei der Evaluation werden Röntgenbilder mithilfe des Prototyps gescored. Auf die ermittelten Scores sollen anschliessend verschiedene statistische Metriken angewendet werden. Für solche Aufgaben kommen in der Regel Python oder R zum Einsatz. R hat den Vorteil, dass es eine Vielzahl statistischer Operationen ohne Zusatzpakete unterstützt. Für Python werden Zusatzpackages wie NumPy, Pandas und SciPy benötigt. Letztere haben im Kontext der vorliegenden Arbeit wiederum den Vorteil, dass der Autor schon gut mit ihnen vertraut ist.\footnote{Im HSLU-Pflichtmodul \textit{Statistics for Data Science} kommt Python mit den Libraries NumPy, Pandas und SciPy zum Einsatz. Die Verwendung von R ist nur als Alternative vorgesehen.}
+
+Da Python und NumPy bereits bei den Modellkomponenten zum Einsatz kommen, ist es durchaus angebracht auch die Evaluation mit diesen Werkzeugen zu bewerkstelligen, zumal so bereits von bestehendem Wissen profitiert werden kann.
+
+Somit soll Python für die Evaluation verwendet werden.
+
+\subsection{Wahl der Message-Queue}
+\label{sec:wahl-der-message-queue}
+
+Für Messaging bieten sich verschiedene Protokolle und fertige Softwarelösungen an. AMQP, MQTT, Apache Kafka und ZeroMQ sind allesamt populäre Lösungen, die Anbindungen für verschiedene Programmiersprachen unterstützen. Da eine umfassende Evaluation aller genannter Möglichkeiten den Rahmen der vorliegenden Arbeit sprengen würde, wird hier auf eine systematische Untersuchung verzichtet. Stattdessen soll nur zwischen den beiden (standardisierten) Protokollen AMQP und MQTT abgewägt werden. Die Wahl der spezifischen Implementierung für den Prototyp kann so vor dem Hintergrund erfolgen, dass diese für den Produktiveinsatz bei Bedarf ausgetauscht werden könnte, ohne dass die Schnittstellen dazu umfassend geändert werden müssten.
+
+AMQP wurde als Messaging-Protokoll speziell für die Bedürfnisse der Finanzindustrie ‒ Sicherheit, Zuverlässigkeit, Interoperabilität, Standardisierung, Offenheit \cite{amqp.org} ‒ entwickelt. Es ermöglicht Messaging auf Basis eines \textit{Message Brokers}, der mehrere \textit{Message Queues} anbietet. Der Broker empfängt Nachrichten von einem \textit{Publisher} und leitet diese an einen oder mehrere \textit{Consumer} weiter. Die Weiterleitung (\textit{Routing}) wird mittels \textit{Exchanges} bewerkstelligt \cite{amqp-model-explained}.
+
+MQTT ist ein leichtgewichtiges Messaging-Protokoll, das speziell für die Bedürfnisse in Anwendungen mit schwacher Hardware und unzuverlässigen Netzwerkverbindungen geschaffen worden ist ‒ sprich für Internet-of-Things-Anwendungen. Im Gegensatz zu AMQP, das über Konstrukte auf Protokollebene wie Exchanges und Queues verfügt, beschränkt sich MQTT auf Publish/Subscribe-Mechanismen. \cite[S. 178]{rabbitmq}
+
+RabbitMQ unterstützt sowohl AMQP\footnote{RabbitMQ unterstützt die Version 0.9.1 des AMQP-Protokolls standardmässig, die neuere Version 1.0.0 jedoch nur per Plugin. Auf die Unterschiede zwischen den beiden Protokollversionen soll hier nicht eingegangen werden. Diese scheinen jedoch beträchtlich und von einer Kontroverse geprägt zu sein \cite{hintjens-amqp}, sodass AMQP 0.9.1 sich immer noch grosser Verbreitung erfreut.} als auch MQTT, und bietet somit maximale Flexibilität.  Beschränkungen in der Grösse der Payloads sind weder in AMQP (16 Exabytes), RabbitMQ (2 Gigabytes) noch MQTT (256 Megabyte) für das vorliegende Projekt relevant \cite[S. 180]{rabbitmq}, zumal sich die Dateigrössen der verwendeten Röntgenbilder in einer Grössenordnung von etwa einem Megabyte bewegen. Wird MQTT im Kontext von RabbitMQ verwendet, können auch MQTT-Übertragungen von gewissen AMQP-Fea\-tures profitieren, die von RabbitMQ unterstützt werden. Subtile Unterschiede zwischen den beiden Protokollen können aber dennoch zu Problemen in der Interoperabilität führen, wenn diese in der gleichen Messaging-Architektur eingesetzt werden \cite[S. 179]{rabbitmq}. Da der zu entwickelnde Prototyp eher in einem Rechenzentrum mit zuverlässigem Netzwerk und rechenstarken Servern zum Einsatz kommt als in einem IoT-Setting, dürfte die AMQP-Variante besser für dessen Einsatzbereich geeignet sein. Auch bei den Merkmalen im Bereich der Sicherheit hat AMQP mehr zu bieten als MQTT \cite{amqp-vs-mqtt}.
+
+Für den Prototyp soll darum RabbitMQ zum Einsatz kommen und AMQP als Protokoll verwenden.\footnote{Mögliche AMQP-Alternativen zu RabbitMQ wären etwa OpenAMQ, StormMQ, Apache Qpid und Red Hat Enterprise MRG.}
+
+\subsection{Schnittstellen}
+
+In \tblref{tbl:schnittstellen} sind sämtliche Schnittstellen zwischen den einzelnen Komponenten aufgelistet.
+
+\shorthandoff{"}
+\begin{table}
+    \begin{footnotesize}
+        \begin{tabularx}{\textwidth}{l|l|X|p{4.2cm}}
+            Sender/Empfänger & Channel/Queue & MIME-Type & Struktur \\ \hline
+            \makecell[tl]{\texttt{client} → \\ \texttt{orchestrator}} & HTTP Port 8080 (\texttt{POST})& \texttt{image/jpeg} & Form Field \texttt{'xray'} \\
+            \makecell[tl]{\texttt{orchestrator} → \\ \texttt{body\_part}} & \texttt{body\_part} & \texttt{application/\-octet-stream} & Byte Stream \\
+            \makecell[tl]{\texttt{body\_part} → \\ \texttt{orchestrator}} & \texttt{body\_part\_response} & \texttt{application/json} & \texttt{\{"body\_part": [string], "probability": [float]\}} \\
+            \makecell[tl]{\texttt{orchestrator} → \\ \texttt{joint\_detection}} & \texttt{joint\_detection} & \texttt{application/json} & \texttt{\makecell[tl]{\{"joint\_name": [string], \\ "xray": [jpeg\_b64]\}}} \\
+            \makecell[tl]{\texttt{joint\_detection} → \\ \texttt{orchestrator}} & \texttt{joint\_detection\_\-error} & \texttt{application/json} & \texttt{\makecell[tl]{\{"error": [string], \\ "joint\_name": [string]\}}} \\
+            \makecell[tl]{\texttt{joint\_detection} → \\ \texttt{ratingen\_score}} & \texttt{ratingen\_score} & \texttt{application/json} & \texttt{\{"joint\_name": [string], "joint\_image": [jpeg\_b64]\}} \\
+            \makecell[tl]{\texttt{ratingen\_score} → \\ \texttt{orchestrator}} & \texttt{ratingen\_score\_error} & \texttt{application/json} & \texttt{\{"error": [string], "joint\_name": [string]\}} \\
+            \makecell[tl]{\texttt{ratingen\_score} → \\ \texttt{orchestrator}} & \texttt{scores} & \texttt{application/json} & \texttt{\{"joint\_name": [string], "score": [int] \}} \\
+            \makecell[tl]{\texttt{orchestrator} → \\ \texttt{client}} & HTTP Port 8080 & \texttt{application/json} & \texttt{\makecell[tl]{\{"scores": \{ \\ "mcp1": [int],\\ "mcp2": [int],\\ "mcp3": [int],\\ "mcp4": [int],\\ "mcp5": [int],\\ "pip1": [int],\\ "pip2": [int],\\ "pip3": [int],\\ "pip4": [int],\\ "pip5": [int] \} \\ \} }} \\
+        \end{tabularx}
+    \end{footnotesize}
+    \caption{Die Schnittstellen zwischen den einzelnen Komponenten im Überlick. Der Datentyp \texttt{jpeg\_b64} bezeichnet ein base64-kodiertes JPEG-Bild, der technisch als Zeichenkette abgelegt wird.}
+    \label{tbl:schnittstellen}
+\end{table}
+\shorthandon{"}
+
+\clearpage
+
+\subsection{Abgabe}
+
+Dieser Abschnitt gibt einen Überblick über die abgegebenen Artefakte, die nicht in den Bericht (vorliegendes Dokument) eingefügt worden sind.
+
+Das Deckblatt (\texttt{Zusatz/Deckblatt.pdf}), bzw. die ersten drei Seiten des Berichts, wurden ausgedruckt, unterschrieben (Eidesstattliche Erklärung, Bestätigung der Abgabe) und wieder eingescannt. Auf eine Integration in das Hauptdokument wurde verzichtet, damit Index und Schriftbild erhalten bleiben.
+
+Im Arbeitsjournal (\texttt{Zusatz/Arbeitsjournal.pdf}) sind die einzelnen Aufwände auf halbe Stunden gerundet nach Bereich ‒ Projekt[administation], Recherche, Dokumentation, Umsetzung ‒ rapportiert. Mithilfe eines \texttt{awk}-Skripts können die Aufwände nach Bereich ausgewertet werden. Die Aufwände sind in \tblref{tbl:arbeitsjournal} aufgelistet.
+
+\begin{table}[H]
+    \center
+    \begin{tabular}{l|r}
+        Bereich & Aufwand in Stunden \\ \hline
+        Umsetzung & 118.5 \\
+        Dokumentation & 100.5 \\
+        Recherche & 41.0 \\
+        Projekt & 30.5 \\
+        Präsentation & 6.0 \\
+        Video & 4.0 \\ \hline
+        Total & 300.5 \\ \hline \hline
+    \end{tabular}
+    \caption{Die Aufwände aus dem Arbeitsjournal nach Bereich gegliedert und insgesamt.}
+    \label{tbl:arbeitsjournal}
+\end{table}
+
+Das Web-Abstract (\texttt{Web-Abstract.pdf}) stellt die vorliegende Arbeit zusammengefasst auf drei Seiten vor.
+
+Im Pitching-Video (\texttt{Pitching-Video.mp4}) wird ebenfalls die vorliegende Arbeit vorgestellt, hier im Rahmen eines kurzen Screencasts (Demo des Prototypen über die Web-Oberfläche) mit Erläuterungen zum Projekt in der Tonspur.\footnote{Der verwendete Soundtrack \textit{Microchip} von Jason Farnham ist gemeinfrei. Dies ist auch in den Metadaten der Videodatei vermerkt.}
+
+Das Verzeichnis \texttt{Zusatz/deepxray/} enthält Teile des Quellcoderepositories, das im Verlauf der Umsetzung angewachsen ist und komplett auf dem BitBucket-Server des Auftraggebers vorliegt. Evaluationsdaten (Röntgenbilder und Metadaten) wurden aus Gründen des Datenschutzes für die Abgabe (mit wenigen Ausnahmen) aus diesem entfernt. Das Verzeichnis enthält (in alphabetischer Reihenfolge):
+
+\begin{description}
+    \item[\texttt{archive/}] Code, der zum Kennenlernen, Testen und ‒ im Falle von \texttt{ratingen\_score} ‒ Trainieren der Modelle verwendet worden und nur der Vollständigkeit halber hier abgelegt ist.
+    \item[\texttt{body\_part/}] Die Modellkomponente \texttt{body\_part} inklusive Modelldaten.
+    \item[\texttt{demo\_data/}] In diesem Verzeichnis sind einige ausgesuchte Bilder enthalten, womit der Prototyp getestet werden kann.
+    \item[\texttt{docker-compose.yaml}] Diese Datei enthält die Servicedefinitionen für den Prototyp, der mit \texttt{docker-compose up} aufgestartet werden kann (siehe auch \texttt{README.md}).
+    \item[\texttt{evaluation/}] Hier ist der Code für das Scoring und die Evaluationsmetriken abgelegt. Die Ergebnisse des Scorings sind in einer CSV-Datei enthalten.
+    \item[\texttt{gui/}] Die Web-Oberfläche, die im Pitching-Video gezeigt wird.
+    \item[\texttt{joint\_detection/}] Die Modellkomponente \texttt{joint\_detection} inklusive Modelldaten (für zehn Modelle).
+    \item[\texttt{orchestrator/}] Der Code für die zentrale \texttt{orchestrator/}-Komponente.
+    \item[\texttt{ratingen\_score/}] Die Modellkomponente \texttt{ratingen\_score} inklusive Modelldaten.
+    \item[\texttt{README.md}] Anweisungen, wie der Prototyp gestartet werden kann (knapp gehalten).
+    \item[\texttt{test/}] End-to-End-Testfälle in Go, Python und Bash.
+    \item[\texttt{test\_data/}] Python-Skripts zur Aufbereitung der Evaluationsdaten (eigentliche Testdaten entfernt).
+    \item[\texttt{test\_data\_selection/}] Python-Skripts zur Selektion der Evaluationsdaten (wiederum ohne Testdaten).
+\end{description}
+
+Die Struktur der Verzeichnisse, die Quellcode enthalten, sind in den Kapiteln \secref{sec:realisierung} und \secref{sec:technische-evaluation} erläutert (mit Ausnahme von \texttt{archive/}).
+
+\clearpage

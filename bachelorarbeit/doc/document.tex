@@ -1,0 +1,92 @@
+\documentclass[a4paper,11pt,hidelinks]{scrartcl}
+
+% packages
+\usepackage[ngerman]{babel}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{apacite}
+\usepackage{tabularx}
+\usepackage{makecell}
+\usepackage{listings}
+\usepackage{fontspec}
+    \setmainfont{Vollkorn}
+    \setsansfont{Lato}
+    \setmonofont{Inconsolata}
+\usepackage[htt]{hyphenat}
+\usepackage{multicol}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tabto}
+\usepackage[left=«,right=»]{dirtytalk}
+\usepackage{float}
+\usepackage{metalogo}
+
+% global options
+\renewcommand{\baselinestretch}{1.25}
+\pagestyle{headings}
+
+% macro definitions
+\newcommand{\secref}[1]{{\ref{#1} \textit{\nameref{#1}}}, Seite \pageref{#1}}
+\newcommand{\imgref}[1]{{Abbildung \ref{#1}, Seite \pageref{#1}}}
+\newcommand{\tblref}[1]{{Tabelle \ref{#1}, Seite \pageref{#1}}}
+
+% list of equations
+\newfloat{equation}{H}{for}
+\floatname{equation}{Formel}
+
+% listings
+\lstset{basicstyle=\ttfamily}
+
+\begin{document}
+
+\input{0-title.tex}
+\newpage
+
+\input{0-abstract.tex}
+\newpage
+
+\tableofcontents
+\newpage
+
+\input{1-problem.tex}
+\newpage
+
+\input{2-stand.tex}
+\newpage
+
+\input{3-ideen.tex}
+\newpage
+
+\input{4-methoden.tex}
+\newpage
+
+\input{5-realisierung.tex}
+\newpage
+
+\input{6-evaluation.tex}
+\newpage
+
+\input{7-ausblick.tex}
+\newpage
+
+\input{8-anhang.tex}
+\newpage
+
+\bibliographystyle{apacite}
+\bibliography{document}
+\newpage
+
+\listoffigures
+\addcontentsline{toc}{section}{Abbildungsverzeichnis}
+\newpage
+
+\listoftables
+\addcontentsline{toc}{section}{Tabellenverzeichnis}
+\newpage
+
+\listof{equation}{Formelverzeichnis}
+\addcontentsline{toc}{section}{Formelverzeichnis}
+
+\end{document}

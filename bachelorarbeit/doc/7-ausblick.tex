@@ -1,0 +1,114 @@
+\section{Ausblick}
+
+Nach einem Semester der Recherche, Konzeption, Umsetzung und Dokumentation liegt als Projektergebnis ein lauffähiger, gut dokumentierter und skalierbarer Prototyp vor, der bei weitem noch nicht den Anforderungen für einen Produktiveinsatz genügt. Hierzu wäre noch einiges an Arbeit zu leisten, worauf im Abschnitt \secref{sec:ungeloeste-probleme} näher eingegangen wird. Im Abschnitt \secref{sec:weitere-ideen} sollen weitere Möglichkeiten besprochen werden, wie der entwickelte Prototyp in Zukunft erweitert und verbessert werden könnte.
+
+Zunächst soll aber das im Rahmen der Bachelorarbeit Geleistete reflektiert werden.
+
+\subsection{Reflexion der Arbeit}
+
+Zu Beginn der Arbeit traten einige Schwierigkeiten im Zusammenhang mit den gegebenen Modellen auf. Diese mussten zunächst wieder zum Laufen gebracht und teilweise sogar neu trainiert werden. Der Projekterfolg stand zu diesem Zeitpunkt in Frage. Der definitive Projektauftrag konnte erst zum spätmöglichsten Zeitpunkt erteilt werden.
+
+Die Modelle konnten zudem nicht einfach für eine aktuelle Laufzeitumgebung konvertiert werden. Dies wäre sehr aufwändig gewesen und hätte den zeitlichen Rahmen des Projekts gesprengt. Stattdessen wurde die Entscheidung gefällt, die bestehenden Modelle in einer isolierten Laufzeitumgebung anzubieten. Die verschiedenen Modelle konnten so in der ersten Projektphase doch noch zum Laufen gebracht werden.
+
+In der zweiten Projektphase wurde viel recherchiert und konzipiert. Der Projektfortschritt war in dieser Phase nicht offensichtlich, da die verschiedenen Architekturvarianten v.a. im Kopf des Autors und auf Notizpapier ausgearbeitet worden sind. Um bei der Zwischenpräsentation nicht nur ein reines Theoriekonstrukt demonstrieren zu müssen, wurde ein Prototyp mit simulierten Modellkomponenten entwickelt.\footnote{siehe \url{https://github.com/patrickbucher/fake-x-ray} (abgerufen am 26.05.2020)}
+
+Dieser «Fake-Prototyp» erwies sich als Glücksfall, zumal dessen Architektur grösstenteils für die Entwicklung des \textit{eigentlichen} Prototypen übernommen werden konnte. Die Entwicklung desselben ging dann v.a. während zweier Wochenenden vonstatten, wonach nur noch geringfügige Verbesserungen vorgenommen worden sind.
+
+Die Recherche, Wahl und Umsetzung der Evaluationsmetriken nahm mehr Zeit in Anspruch als erwartet. Auch mussten die Evaluationsdaten in verschiedenen Schritten aufbereitet und selektiert werden. Dank der schnellen Fortschritte beim Prototyp führten diese Aufwände jedoch zu keiner Verzögerung im Projekt.
+
+Auf Basis einer pragmatischen und differenzierten Teststrategie wurden zwar eher wenige und kleine, dafür aber aussagekräftige automatisierte Tests umgesetzt. So kommen bei der Evaluation Unittests (mit hoher Codeabdeckung), bei den Modellkomponenten Integrationstests und für den \texttt{orchestrator} (bzw. für das Gesamtsystem) Systemtests (End-to-End) zum Einsatz.
+
+Die Dokumentation hinkte dem Projektfortschritt über die meiste Zeit etwas hinterher, war aber zum Schluss des Projekts doch recht schnell geschrieben. Hier erwiesen sich die Erfahrungen des Wirtschaftsprojekt (sowie das damals erstellte \LaTeX{}-Template) als sehr nützlich.
+
+Das Projektergebnis ist für den Autor sehr zufriedenstellend ausgefallen und schafft für den Auftraggeber eine solide Basis für die künftige Weiterentwicklung.
+
+\subsubsection{Lessons Learned}
+
+\begin{enumerate}
+    \item Das systematische Nachdenken über Architekturentscheidungen mit verschiedenen Varianten mag in einer Zeit, die «Agilität» als höchstes Ideal preist, als überholt erscheinen und etwas nach V-Modell anmuten. Es kann jedoch wesentlich effektiver und effizienter sein, möglichen Problemen durch ungestörtes Nachdenken auf die Spur zu kommen, als diese erst nach dem Ende mehrerer Sprints (in die falsche Richtung) erkennen zu müssen.
+    \item Eine Software muss zwecks Qualitätsicherung systematisch getestet werden. Systematisch heisst jedoch nicht, dass jeder Aspekt der Software mit dem gleichen (Unittests), sondern mit einem auf das jeweilige Problem passenden Werkzeug (Unittests, Integrationstests, Systemtests, manuelle Tests usw.) Werkzeug getestet werden soll. Ein schlanker End-to-End-Test ist oft aussagekräftiger, stabiler und besser wartbar als eine Ansammlung von Unittests mit Mocks und Test-Doubles.
+    \item Obwohl es sich bei der vorliegenden Arbeit eher um ein Softwareentwicklungs- als um ein Machine-Learning-Projekt  handelt, war ein grundlegendes Verständnis von Machine-Learning-Konzepten nötig, v.a. bei der Evaluation. Auch grundlegende Kenntnisse der Domäne (Scoring von Röntgenbildern, rheumatoide Arthritis) haben sich als extrem wichtig erwiesen, so konnte etwa eine Unstimmigkeit in der Struktur der Evaluationsdaten über die Sichtung einiger Röntgenbilder erkannt und behoben werden.
+\end{enumerate}
+
+\subsubsection{Verwendete Werkzeuge}
+
+Zur Entwicklung des Prototyps wurden die Programmiersprachen Go und Python verwendet. Als wichtige Libraries (die gegebenen Machine-Learning-Frameworks ausgenommen) kamen u.a. AMQP, UUID (Go) sowie NumPy, Pandas, SciPy Stats, Requests, PyTest und Pika (Python) zum Einsatz. Die Werkzeuge \texttt{make}, \texttt{bash} und \texttt{jq} erwiesen sich an verschiedenen Stellen als sehr hilfreich. 
+
+Der Prototyp macht regen Gebrauch von Docker und kann am einfachsten mit Docker Compose ausgeführt werden. RabbitMQ hat sich als sehr robuste und einfach zu handhabende Messaging-Lösung erwiesen.
+
+Der Bericht und das Web-Abstract wurden mit \LaTeX{} bzw. \XeLaTeX{} gesetzt. Für das Arbeitsjournal kamen Markdown und Pandoc zum Einsatz. Die PDF/A-Konformität der Dokumente wurde mit Ghostscript sichergestellt. Die UML-Diagramme wurden mit PlantUML erstellt. Für weitere Grafiken kam Graphviz zum Einsatz.
+
+Das Video wurde mit \texttt{ffmpeg} aufgenommen. Die Tonspur wurde mit Audacity aufgenommen, abgemischt und wiederum mit \texttt{ffmpeg} mit dem Video kombiniert.
+
+Quellcode und Dokumentation wurden ausschliesslich in \texttt{vim} geschrieben. Plugins wie \texttt{vim-go} und \texttt{python-mode} machen diesen flexiblen Texteditor zu einer komfortablen Entwicklungsumgebung.
+
+Sämtliche Quellcode- und Textartefakte wurden mit Git verwaltet und regelmässig zusammen mit Modell- und Testdaten mithilfe von \texttt{restic} auf einen externen Datenträger gesichert.
+
+\subsection{Ungelöste Probleme}
+\label{sec:ungeloeste-probleme}
+
+Obwohl die Projektziele erreicht worden sind (siehe \secref{sec:evaluation-der-zielerreichung}), bleibt noch einiges zu tun, damit der Prototyp dereinst produktiv eingesetzt werden kann. Im Verlauf der Arbeit wurden folgende ungelöste Probleme gesammelt und vom Rahmen der Bachelorarbeit abgegrenzt:
+
+\begin{description}
+    \item[Modelle aktualisieren] Die bestehenden Machine-Learning-Modelle sollen auf eine aktuelle Version von TensorFlow aktualisiert werden. Diese Problematik wird ausführlicher im Abschnitt \secref{sec:aktualisierung-auf-aktuelle-versionen} behandelt.
+    \item [Deployment der Container] Beim Auftraggeber (Seantis GmbH) kommen zwar Container zum Einsatz, die auf Docker-Images basieren. Diese werden jedoch nicht mit der Docker-Runtime, sondern mit \texttt{systemd-nspawn} ausgeführt.\footnote{Die Gründe für und Vorteile dieses Ansatzes sind vielfältig \cite{docker-vs-systemd}.} Auch verfügt der Auftraggeber über ein eigenes Container-Buildsystem, in welches die erstellten Container integriert werden müssten. Der bisherige Ansatz mit Docker Compose ist nur für Test- und Demozwecke geeignet.
+    \item [Continuous Integration] Die verschiedenen Unit-, Integrations- und Systemtests wurden während der Entwicklung des Prototyps jeweils manuell ausgeführt. Für eine produktive Weiterentwicklung der Software wäre die Integration der Test-Pipeline in das CI-System des Auftraggebers angebracht. Dieses basiert auf Buildkite.\footnote{siehe \url{https://buildkite.com/} (abgerufen am 26.05.2020)} Um dieses System effektiv nutzen zu können, wäre wohl auch die Aufteilung des bisherigen Git-Repositories in mehrere Repositories (eines pro Komponente) sinnvoll.
+    \item [Security] Für eine produktive Anwendung, die mit schützenswerten Daten wie Röntgenbildern umgeht, gelten andere Sicherheitsanforderungen als für einen Prototyp. Für die Kommunikation zwischen dem Client und dem \texttt{orchestrator} dürfen keine selbst signierten, sondern nur von einer Zertifizierungsstelle ausgestellten TLS-Zertifikate verwendet werden. Die Message-Queues sind über geeignete Massnahmen zu schützen, indem diese nur intern zugänglich gemacht oder durch zureichende Authentifizierungs- und Autorisierungsmechanismen geschützt werden.
+    \item [i.i.d.-Hypothese] Die Trainings- und Evaluationsdaten müssen der i.i.d.-Hypothese (independent, identically distributed) genügen, das heisst unabhängig voneinander sein und der gleichen Verteilung folgen. Diese Hypothese konnte im Rahmen der Bachelorarbeit nicht geprüft werden. Es gibt mögliche Hinweise darauf, dass diese Hypothese für die verwendeten Röntgenbilder nicht zutreffen könnte. Zum einen sind schwere Krankheitsverläufe der rheumatoiden Arthritis aufgrund verbesserter Früherkennung und Therapiemassnahmen immer seltener. Die betroffenen Patienten sterben zusehends weg, was zu einer laufenden Verschiebung der Ratingen-Scores nach unten führen wird. Andererseits werden in der SCQM-Datenbank auch die Krankheitsverläufe der gleichen Patienten verfolgt, d.h. die stetig fortschreitenden (da irreversiblen) Schädigungen an Gelenken führen im Verlauf der Langzeitstudien zu Ratingen-Scores, die ansteigen oder bestenfalls stagnieren. Ob und inwiefern sich diese Verschiebungen mit der laufenden Aufname von Daten neuer Patienten in die SCQM-Datenbank ausgleicht, kann nur mit einer systematischen statistischen Untersuchung ermittelt werden.
+    \item [Gleichbleibende Predictions] Ein oft genannter Vorteil des automatischen Scorings von Röntgenbildern gegenüber menschlichen Scorern ist, dass der erste Ansatz eine konstante Qualität der Predictions gewährleistet. Dies gilt jedoch nur, solange die Modelle unverändert zum Einsatz kommen. Werden diese durch neuere, verbesserte Versionen ersetzt, würden für bestehende Daten wohl andere Scores resultieren. Bei diesem Zielkonflikt ‒ konstante oder möglichst genaue Scores ‒ gilt es aufseiten des Auftraggebers die Prioritäten festzulegen.
+    \item [Evaluation] In \secref{sec:verschiedene-datentypen} wurde für das Modell \texttt{ratingen\_score} erwähnt, dass die Evaluation nicht nur auf Basis einzelner Gelenke stattfinden soll, sondern dass auch die Anzahl erkannter Gelenke pro Röntgenbild ein mögliches Qualitätskriterium sei. Diese Evaluationsmetrik wurde nicht umgesetzt. Diese Metrik würde Rückschlüsse auf die Qualität des Modells \texttt{joint\_detection} erlauben.
+\end{description}
+
+\subsubsection{Aktualisierung der Modelle}
+\label{sec:aktualisierung-auf-aktuelle-versionen}
+
+Die verschiedenen Machine-Learning-Modelle basieren auf älteren Versionen von TensorFlow und anderen Libraries/Frameworks (hier als \textit{Packages} zusammengefasst). \tblref{tbl:versionen} bietet einen Überblick über die verwendeten und derzeit aktuellen Versionen.
+
+\begin{table}[H]
+    \center
+    \begin{tabular}{l|l|l|l}
+        Modell & Package & eingesetzt & aktuell \\ \hline
+        \texttt{body\_part} & \texttt{tflearn} & \texttt{0.2.1} & \texttt{0.3.2} \\
+        \texttt{joint\_detection} & \texttt{tensorflow} & \texttt{0.12.1} & \texttt{2.2.0} \\
+        \texttt{joint\_detection} & \texttt{scipy} & \texttt{0.18.1} & \texttt{1.4.1} \\
+        \texttt{joint\_detection} & \texttt{Pillow} & \texttt{3.4.2} & \texttt{7.1.2} \\
+        \texttt{ratingen\_score} & \texttt{tensorflow} & \texttt{1.4.0} & \texttt{2.2.0} \\
+        \texttt{ratingen\_score} & \texttt{scikit-learn} & \texttt{0.22.2.post1} & \texttt{0.23.1} \\
+    \end{tabular}
+    \caption{Die verwendeten Versionen verschiedener Machine-Learning-Packages sind grösstenteils veraltet.}
+    \label{tbl:versionen}
+\end{table}
+
+Um das Ausmass der nötigen Änderungen für eine Aktualisierung auf neuere Packages besser abschätzen zu können wurde folgendermassen verfahren:
+
+\begin{enumerate}
+    \item Die Modellkomponenten wurden in ein eigenes Arbeitsverzeichnis kopiert.
+    \item Die \texttt{Dockerfile}s, die auf älteren Versionen von Python basieren, wurden gelöscht. Schliesslich sollen die Modellkomponenten mit einer aktuellen Version von Python, d.h. auch ausserhalb eines Containers, betrieben werden können.
+    \item Stattdessen wurde pro Modellkomponente eine neue virtuelle Python-Umgebung basierend auf Python 3.8.3 erstellt.
+    \item In den \texttt{requirements.txt}-Dateien wurden sämtliche Versionsangaben entfernt, sodass die jeweils neueste Version der Packages installiert wird.
+    \item Damit die Modellkomponenten überhaupt aufgestartet werden können, wurde eine Instanz von RabbitMQ im Hintergrund gestartet.
+    \item Es wurde versucht, die einzelnen Einstiegspunkte der Modellkomponenten (Hauptklasse) aufzustarten. Dabei aufgetretene Fehlermeldungen wurden nachgeschlagen.
+    \item Der Integrationstest im \texttt{tests/}-Unterverzeichnis wurde via \texttt{pytest} (nicht via Docker!) aufgestartet; Fehlermeldungen wiederum nachgeschlagen.
+\end{enumerate}
+
+Für die aufgetretenen Fehlermeldungen werden möglichen Lösungsansätze skizziert. Hierzu sollen pro Modellkomponente höchstens eine Stunde aufgewendet werden. Dieser Ausblick kann nur eine Idee über das Ausmass der anstehenden Arbeiten, jedoch keine ausführlichen Arbeitsanleitungen liefern. Demnach gibt es für die Aktualisierung der Modelle folgendes zu tun:
+
+\begin{description}
+    \item [\texttt{body\_part}] Das Unterpackage \texttt{contrib} wurde für TensorFlow Version 2 entfernt. Dieses kann nur zusammen mit TensorFlow 1 verwendet werden, was nicht im Sinne einer Aktualisierung ist. \texttt{tflearn} bietet derzeit keine Unterstützung für TensorFlow 2.0.\footnote{\url{https://github.com/tflearn/tflearn/issues/1121} (abgerufen am 26.05.2020)} Da diese Situation nun schon seit über einem Jahr besteht, wäre die Umstellung von \texttt{tflearn} auf Keras wohl die bessere Variante als das Warten auf eine neue \texttt{tflearn}-Version mit Unterstützung für TensorFlow 2. Hierfür müsste der Code grösstenteils neu geschrieben und das Modell neu trainiert werden, was auch mit dem bekannten Problem der Modellformate (siehe \secref{sec:modellformate}) zu tun hat. Das zugrundeliegende Modell \textit{Inception V3} kann auch für Keras verwendet werden.\footnote{\url{https://keras.io/api/applications/inceptionv3/} (abgerufen am 26.05.2020)} Die Änderungen beschränken somit auf das Ansprechen der High-Level-API, da das Modell konzeptionell (Definition der Layer) übernommen werden kann.
+    \item [\texttt{joint\_detection}] Hier kommt nicht \texttt{tflearn}, sondern die «rohe» API von TensorFlow zum Einsatz. Es muss somit nicht auf eine komplett andere, sondern bloss auf eine neuere API migriert werden. Rein technisch kommt Version 0.12.1 zum Einsatz. Dies war die letzte Minor-Version vor dem 1.0-Release. Zur Migration von TensorFlow 1 auf 2 gibt es einen offiziellen und umfassenden Guide.\footnote{\url{https://www.tensorflow.org/guide/migrate} (abgerufen am 26.05.2020)}. Ob dieser auch für eine Migration von der Version 0.12.1 auf die aktuelle Version 2.2.0 funktioniert, müsste ausprobiert werden. Hier wäre ein Ausweichen auf die Keras-API wohl einfacher. Die \texttt{joint\_detection}-Modelle basieren auf dem Modell \textit{Inception V1}. Dieses arbeitet weniger genau und langsamer als die aktuelleren Varianten V2 und V3.\footnote{\url{https://towardsdatascience.com/a-simple-guide-to-the-versions-of-the-inception-network-7fc52b863202} (abgerufen am 26.05.2020) bietet einen Vergleich der verschiedenen Versionen.} Dieses Basismodell wird nicht über ein Package, sondern direkt als Code (\texttt{joint\_detection/legacy/utils}) zur Verfügung gestellt. Eine Umstellung auf Inception V3 würde diesen und weiteren Code im \texttt{utils/}-Unterverzeichnis (inklusive einigen C++-Code und die Library \texttt{stitch\_wrapper.so}) obsolet machen. Das Umschreiben des TensorFlow-Codes würde sich so auf die Klasse \texttt{JointDetectionModel} und auf den Trainingscode beschränken. Alternativ kann Inception V3 auch über die Keras-API verwendet werden, was ganz im Sinne der Vereinheitlichung des Modell-Codes wäre.
+    \item [\texttt{ratingen\_score}] Hierbei handelt es sich um das neueste Modell, das dementsprechend auch auf einer aktuelleren API von TensorFlow (Version 1.4.0) basiert. Hier wird TensorFlow über die Keras-API angesprochen, wodurch die Aktualisierung auf TensorFlow 2.2.0 keine grösseren Probleme verursachen sollte. Auch das Inception-Basismodell wird in der aktuellen Version 3 verwendet. Zudem ist diese Modellkomponente die einzige ohne Legacy-Code, wodurch keine zusätzliche Arbeit zum Portieren von Code anfällt. Ein erster Versuch der Aktualisierung auf TensorFlow 2.2.0 verlief vielversprechend. Die Laufzeitumgebung beschwerte sich einzig über den eingesetzten Adam-Optimizer. Die Modellkomponente konnte jedoch ohne diesen zum Laufen gebracht werden. Detaillierte Tests im Bezug auf die Qualität der Predictions und auf die Laufzeitperformance wurden jedoch keine unternommen. Solche könnten jedoch mit den Code-Artefakten aus dem GitHub-Repository\footnote{\url{https://github.com/janickrohrbach/arthritis-net} (abgerufen am 26.05.2020)} ohne grossen Aufwand unternommen werden.
+\end{description}
+
+Fazit: Die beiden Modellkomponenten \texttt{body\_part} und \texttt{joint\_detection} sollten über die Keras-API auf TensorFlow 2 aktualisiert werden. Bei letzterem sollte zusätzlich vom Basismodell Inception V1 auf Inception V3 umgestellt werden. Das Modell \texttt{ratingen\_score} sollte sich problemlos auf TensorFlow 2 aktualisieren lassen, zumal es schon die Keras-API verwendet. (Dieses Modell war schliesslich nicht der Grund dafür, dass die Aktualisierung der Modelle nicht in den Umfang der Bachelorarbeit aufgenommen worden ist.)
+
+\subsection{Weitere Ideen}
+\label{sec:weitere-ideen}
+
+An dieser Stelle sollen noch einige Ideen skizziert werden, die im Verlauf der Arbeit aufgekommen sind, jedoch klar ausserhalb des Projektscopes liegen und für diesen nie in Betracht gezogen worden sind.
+
+\begin{description}
+    \item [Rau-Score] Die Ratingen-Score bezieht sich auf die Schädigung eines einzelnen Gelenks. Mit der Rau-Score werden die Schädigungen verschiedener Gelenke (je elf an den beiden Händen, d.h. MCP 1-5, PIP 1-5 und das Handgelenk; sowie fünf Gelenke pro Fuss) zu einer einzigen Score zusammengefasst, die den Fortschritt der Erkrankung bei einem Patienten in einer einzigen Zahl zusammenfasst. Um diese Rau-Score berechnen zu können, müssten zusätzlich das Handgelenk sowie die Gelenke an den Füssen verarbeitet werden können. Die Berechnung der Rau-Score wäre dann trivial.
+    \item [Optische Aufbereitung] Bei der Web-Oberfläche wäre es sehr hilfreich, wenn die detektierten und gescorten Gelenke direkt mit einem farbigen Rahmen ‒ von grün, keine Schädigung, bis rot, starke Schädigung ‒ hervorgehoben werden könnten. Das Nachschauen an drei Orten ‒ Röntgenbild, Liste der Scores und Legende ‒ könnte so entfallen. Um dies umsetzen zu können, müsste die Modellkomponente \texttt{joint\_detection} zusätzlich die ermittelten Bildkoordinaten der detektierten Gelenk zurückliefern, sodass diese anschliessend umrahmt werden könnten. Hierzu müsste die API erweitert werden. Dies könnte einerseits über einen weiteren Endpoint geschehen, oder mithilfe eines \texttt{Accept}-Headers, womit zwischen \texttt{image/jpeg} (für eine annotierte Grafik) und \texttt{ap\-pli\-ca\-tion/json} (für den bestehenden JSON-Payload) unterschieden würde.
+    \item [Implementierung in Erlang] Recherchen zum Message-Broker RabbitMQ haben den Autor auf dessen zugrundeliegende Programmiersprache \textit{Erlang} aufmerksam gemacht. Zwar konnte der \texttt{orchestrator} dank der hervorragenden Concurrency-Me\-cha\-nis\-men von Go problemlos umgesetzt werden. Mit Erlang, das auf dem \textit{Actor}-Modell basiert, würden sich derlei Orchestrierungsprobleme wohl noch eleganter lösen lassen. So könnten die verschiedenen Modellkomponenten mit ihrer Anbindung an RabbitMQ als Actors abstrahiert werden. Der Nachrichtenfluss könnte dann mit einer deklarativen, auf Prolog basierenden Syntax einfach und übersichtlich zwischen diesen Actors definiert werden. Die Unterstützung dafür benötigter Technologien wie HTTP, JSON usw. wäre über die OTP gewährleistet.\footnote{Weitere Informationen zu Erlang finden sich auf der offiziellen Webseite (\url{https://erlang.org/doc/}, abgerufen am 26.05.2020), sowie in Joe Armstrongs Einführungsbuch \cite{programming-erlang} und Doktorarbeit \cite{armstrong2003}.} Die Reimplementierung der \texttt{orchestrator}-Komponente böte eine schöne Fallstudie zum Vergleich der Concurrency-Modelle von Go (CSP) und Erlang (Actor-Modell) ‒ und ein praxisnahes Erlang-Lernprojekt.
+\end{description}
+

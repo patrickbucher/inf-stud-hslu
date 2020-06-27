@@ -1,0 +1,45 @@
+@startuml
+
+skinparam monochrome true
+skinparam defaultFontName Lato
+skinparam dpi 300
+
+group /score
+
+    client -> score: POST xray.jpg
+    activate score
+
+    score -> handler: scoreBackChan, corr_id
+    activate scoreBackChan
+
+    score -> body_part: xray.jpg
+
+    body_part -> scoreBackChan: part, prob
+
+    scoreBackChan -> score: part, prob
+
+    loop mcp1..5/pip1..5
+        score -> joint_detection: xray.jpg, joint, corr_id
+    end
+
+    note right
+        joint_detection and
+        ratingen_score running
+        in background
+    end note
+
+    loop 1..10
+        ratingen_score -> handler: joint, score, corr_id
+        handler -> scoreBackChan: joint, score
+    end
+
+    score -> client: scores
+
+    score -> handler: corr_id
+    deactivate scoreBackChan
+
+    deactivate score
+
+end
+
+@enduml

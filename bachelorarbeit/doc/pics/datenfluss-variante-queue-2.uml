@@ -1,0 +1,32 @@
+@startuml
+
+skinparam monochrome true
+skinparam defaultFontName Lato
+skinparam dpi 300
+
+client -> orchestrator: POST xray.jpg
+activate orchestrator
+
+group DeepXRay
+
+    orchestrator -> body_part: xray.jpg
+    activate body_part
+
+    body_part -> orchestrator: P(left hand)
+    deactivate body_part
+
+    loop mcp1..5/pip1..5
+        orchestrator -> joint_detection: xray.jpg, mcp[n]/pip[n]
+        activate joint_detection
+        joint_detection -> ratingen_score: mcp[n]/pip[n].jpg
+        activate ratingen_score
+        deactivate joint_detection
+        ratingen_score --> orchestrator: score_mcp[n]/pip[n]
+        deactivate ratingen_score
+    end
+end
+
+orchestrator -> client: scores.json
+deactivate orchestrator
+
+@enduml

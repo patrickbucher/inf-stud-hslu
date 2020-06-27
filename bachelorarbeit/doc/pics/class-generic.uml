@@ -1,0 +1,30 @@
+@startuml
+
+skinparam monochrome true
+skinparam defaultFontName Inconsolata
+skinparam dpi 300
+
+class JSONResponse {
+    {field} result1
+    {field} resultN
+}
+
+class Main {
+    {field} connection
+    {field} channel
+    {field} Predictor predictor
+    {method} run()
+    {method} handle(channel, method, properties, payload)
+    {method} JSONResponse execute_model(input_data, corr_id)
+}
+
+class Predictor {
+    {field} model
+    {method} __init__(model_path)
+    {method} int predict(input_data, corr_id)
+}
+
+Main --> JSONResponse
+Main o-- Predictor
+
+@enduml

@@ -1,0 +1,24 @@
+digraph projektplan {
+
+    rankdir="TD";
+    dpi="300";
+
+    graph [fontname="Lato", nodesep="0.5"];
+    node [fontname="Lato"];
+    edge [fontname="Lato"];
+
+    subgraph cluster_phase1 {
+        fontname="Lato";
+        label="Phase 1 (Modelle)";
+
+        "body_parts importieren" -> "body_parts Prediction" -> "Modelle dokumentieren";
+
+        "joint_detection importieren" -> "joint_detection Prediction" -> "Modelle dokumentieren";
+
+        "ratingen_score traineren" -> "ratingen_score importieren" -> "ratingen_score Prediction" -> "Modelle dokumentieren";
+
+        "MS1" [shape="diamond"];
+
+        "Modelle dokumentieren" -> "Phase 2 planen" -> "MS1";
+    }
+}

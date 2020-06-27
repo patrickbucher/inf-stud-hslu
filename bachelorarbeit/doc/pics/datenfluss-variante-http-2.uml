@@ -1,0 +1,50 @@
+@startuml
+
+skinparam monochrome true
+skinparam defaultFontName Lato
+skinparam dpi 300
+
+client -> orchestrator: POST xray.jpg
+activate orchestrator
+
+group DeepXRay
+
+    orchestrator -> body_part: POST xray.jpg
+    activate body_part
+    orchestrator <- body_part: P(left hand)
+    deactivate body_part
+
+    loop mcp1..5/pip1..5
+        orchestrator -> joint_detection: POST xray.jpg mcp[n]/pip[n]
+        activate joint_detection
+    end
+
+    note right
+        The image is sent
+        asynchronuously ten times
+        with a joint indicator.
+    end note
+
+    loop mcp1..5/pip1..5
+        orchestrator <-- joint_detection: mcp[n]/pip[n].jpg
+        deactivate joint_detection
+
+        orchestrator -> ratingen_score: mcp[n]/pip[n].jpg
+        activate ratingen_score
+        orchestrator <- ratingen_score: mcp[n]/pip[n].json
+        deactivate ratingen_score
+    end
+
+    note right
+        Every incoming
+        joint is collected
+        and scored
+        upon arrival.
+    end note
+
+end
+
+orchestrator -> client: scores.json
+deactivate orchestrator
+
+@enduml

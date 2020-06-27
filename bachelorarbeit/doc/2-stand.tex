@@ -1,0 +1,253 @@
+\section{Stand der Praxis, Forschung und Technik}
+
+In diesem Kapitel geht es um den gegenwärtigen Stand der Praxis, der Forschung und der Technik.
+
+Im Praxisteil werden die bereits bestehenden Machine-Learning-Modelle (siehe \secref{sec:bestehende-modelle}) betrachtet und in ihrer Funktionsweise beschrieben.
+
+Was die Forschung betrifft, werden Metriken zur Evaluation von Machine-Learning-Modellen vorgestellt und dabei im Bezug auf ihre Eignung für das vorliegende Problem besprochen (siehe \secref{sec:evaluationsmetriken}).
+
+Der Technikteil umfasst für diese Arbeit im Engineering-Bereich mehrere Themen: Zunächst soll untersucht werden, was mit dem Begriff des Webservices genau gemeint ist (siehe \secref{sec:web-services}). Anschliessend wird auf verschiedene Varianten eingegangen, wie verschiedene Komponenten zu einem funktionierenden Gesamtsystem kombiniert werden können (siehe \secref{sec:integrationsvarianten}). Konkrete Vorschläge für eine Systemarchitektur werden auf dieser Basis erst im Folgekapitel (siehe \secref{sec:architekturvarianten}) besprochen. Zum Schluss werden verschiedene Formate für Machine-Learning-Modelle untersucht und bewertet (siehe \secref{sec:modellformate}).
+
+\subsection{Bestehende Modelle}
+\label{sec:bestehende-modelle}
+
+Für das Ermitteln der Ratingen-Score anhand eines Röntgenbildes sind mehrere Schritte nötig.
+
+Zunächst muss das auf dem Röntgenbild abgebildete Körperteil erkannt werden. Hierfür ist das Modell \texttt{body\_part} zuständig.\footnote{Die Namen der Modelle in diesem und in den weiteren Kapiteln wurden der Verzeichnisstruktur entnommen, in der die entsprechenden Daten abgelegt worden waren.} Dieses Modell kann verschiedene Körperteile erkennen, u.a. Hände, Füsse (jeweils mit links/rechts-Unterscheidung) und Becken.
+
+Im nächsten Schritt werden aus dem Röntgenbild die relevanten Gelenke extrahiert. Das Modell (bzw. die Modellsammlung) \texttt{joint\_detection} kann neben den proximalen Interphalangealgelenken (PIP) und den Metacarpophalangealgelenken (MCP) auch das Karpalgelenk (vulgo: «Handgelenk») auf einem Röntgenbild erkennen und extrahieren.
+
+Im dritten und letzten Schritt wird das Scoring für ein bestimmtes Gelenk auf einem entsprechenden Bildausschnitt vorgenommen. Hierfür ist das Modell \texttt{ratingen\_score} zuständig.\footnote{Dieser Name wurde nicht anhand einer Verzeichnisstruktur, sondern anhand der Funktionalität des Modells ausgesucht.} Dieses Modell unterstützt nur das Scoring der PIP- und MCP-Gelenke der linken Hand.
+
+Die Menge der möglichen Inputs wird somit in dieser Kette von Modellen wie ein Trichter verengt: Können zu Beginn Hände, Füsse, Becken usw. erkannt werden, ist das Scoring am Schluss nur für zehn Gelenke (PIP 1-5 und MCP 1-5) der linken Hand möglich. 
+
+Dadurch verkommt das recht mächtige Modell \texttt{body\_part} im Rahmen dieser Arbeit zu einer blossen Validierungsengine: Zeigt das Röntgenbild eine linke Hand? Wenn ja, kann der Prozess weitergeführt werden. Wenn nein, kann auf weitere Schritte verzichtet werden, denn ein Scoring wird damit nicht funktionieren.\footnote{Rein technisch könnten erkannte rechte Hände gespiegelt und an die Extraktion weitergeleitet werden. Auch wäre es möglich, etwa Röntgenbilder von Füssen an die Extraktion weiterzuleiten, in der Hoffnung, darauf entsprechende Gelenke zu erkennen. Solche Versuche sollen im Rahmen dieser Arbeit kategorisch unterlassen werden, da das Modell \texttt{ratingen\_score} ausschliesslich mit Gelenken von linken Händen trainiert, evaluiert und getestet worden ist.} Diese Restriktion kann möglicherweise zu einem späteren Zeitpunkt aufgehoben werden, sollten die Downstream-Modelle \texttt{joint\_extraction} und \texttt{ratingen\_score} entsprechend erweitert werden.
+
+\subsubsection{Erkennung von Körperteilen: \texttt{body\_part}}
+\label{sec:modell-body-part}
+
+Das Modell \texttt{body\_part} kann, wie bereits beschrieben, auf Röntgenbildern verschiedene Körperteile erkennen. Im Kontext dieser Arbeit ist jedoch nur relevant, ob ein Röntgenbild (Input) eine linke Hand darstellt oder nicht.
+
+Der Input für das Modell ist eine Liste monochromer Bilder von 144 mal 144 Pixeln. Technisch gesprochen ist dies ein NumPy-Array mit der Dimension \texttt{(n, 144, 144, 1)}, wobei \texttt{n} für die Anzahl der Bilder in der Liste steht.
+
+Im Code zum Trainieren des Modells werden verschiedene Röntgenbilder zunächst auf die entsprechende Auflösung reduziert, d.h. gestaucht. Dieser Schritt ist für den produktiven Einsatz mit Sicherheit nötig, soll der Benutzer Bilder in verschiedenen Auflösungen verwenden können. Eine Seitenverhältnis von 1:1 (quadratische Form) dürfte dabei hilfreich sein, da das Bild ansonsten gestaucht werden muss.
+
+Der Output des Modells ist eine Liste von Wahrscheinlichkeiten ‒ bzw. eine Liste davon, denn für \texttt{n>1} werden mehrere Bilder in einem Prediction-Schritt verarbeitet. Die innere Liste ist ein NumPy-Array mit Fliesskommazahlen im Bereich $[0..1]$. Diese beschreiben, mit welcher Wahrscheinlichkeit ein Bild ein bestimmtes Körperteil zeigt.
+
+Da im Rahmen der vorliegenden Arbeit nur linke Hände von Belang sind, kann das Element mit dem Index 6 (\texttt{left hand} in der Label Map) extrahiert werden. Ein bestimmter Threshold für die Wahrschienlichkeit könnte nachgelagert geprüft werden.
+
+Das Modell wurde mit den Libraries \texttt{tensorflow} (Version 0.12.1) und \texttt{tflearn} (Version 0.2.1) erstellt und im \texttt{tflearn}-Format abgespeichert. Weiter kommt \texttt{scikit-image} in einer dazu kompatiblen Version zum Einsatz. Es ist mit einem Docker-Image basierend auf dem Image \texttt{python:3.6} lauffähig.
+
+\subsubsection{Extraktion von Gelenken: \texttt{joint\_detection}}
+\label{sec:modell-joint-detection}
+
+Wie in der Kapitelanleitung bereits erwähnt, handelt es sich bei \texttt{joint\_detection} um eine ganze Reihe von Modellen, elf an der Zahl: für die zehn Gelenke MCP 1-5 und PIP 1-5, sowie für das Karpalgelenk (Handgelenk). Letzteres ist für die vorliegende Arbeit nicht relevant.
+
+Das Modell extrahiert aus einem Röntgenbild (JPEG-Format), welches über das Dateisystem zur Verfügung gestellt wird, ein bestimmtes Gelenk. Der Gelenkname muss dabei als Parameter mitgegeben werden, z.B. \texttt{mcp3} oder \texttt{pip5}. Der Output ist eine JPEG-Datei der Grösse 150 mal 150 Pixel.\footnote{Strenggenommen hat das Modell zwei Outputs: erstens eine Reihe sogenannter \textit{Boxes}, die je durch vier Gleitkommazahlen definiert sind; zweitens eine Reihe von \textit{Confidences}, bestehend aus je zwei Gleitkommazahlen. Auf die genaue Bedeutung dieser Werte soll hier nicht weiter eingegangen werden, zumal die Modelle nur aus einer High-Level-Sicht zu beschreiben sind (siehe \secref{sec:erwartetes-resultat}). Diese Boxes und Confidences könnten evtl. später auch dazu verwendet werden, die detektieren und gescorten Gelenke auf dem Bild grafisch hervorzuheben (siehe \secref{sec:weitere-ideen}).}
+
+Es wird somit pro Gelenk eine Datei extrahiert. Hierbei fällt auf, dass das Upstream-Modell \texttt{body\_part} mit Bildern von 144 mal 144 Pixeln für das ganze Röntgenbild arbeitet, während in den \texttt{joint\_detection}-Modellen jedes der zehn zu detektierenden Elemente mit einer Auflösung von 150 mal 150 Pixeln ausgegeben wird. Der initiale Bild-Input sollte also möglichst hochauflösend sein.
+
+Die \texttt{joint\_detection}-Modelle wurden ebenfalls mit \texttt{tensorflow} Version 0.12.1 erstellt und im \texttt{tflearn}-Format abgelegt. Als weitere Libraries kommen \texttt{Pillow} (Version 3.4.2) und \texttt{scipy} (Version 0.18.1) zum Einsatz. Das verwendete Docker-Image basiert wiederum auf dem Image \texttt{python:3.6}.
+
+\subsubsection{Scoring von Gelenken: \texttt{ratingen\_score}}
+\label{sec:modell-ratingen-score}
+
+Das Modell \texttt{ratingen\_score}, welches für das eigentliche Scoring zuständig ist, wurde nicht bei Seantis entwickelt, sondern im Rahmen einer Bachelorarbeit \cite{rohrbach2017}. Es ordnet einem extrahierten Bild eines Gelenkes eine Score von 0 bis 5 zu. Ein gesundes Gelenk hat die Score 0. Ein Gelenk mit der Score 1 weist eine Gewebeerosion von maximal 20\% auf. Jede höhere Score deckt einen weiteren Bereich von 20\% ab, sodass eine Score von 5 einer Erosion von 80\% bis 100\% gleichkommt \cite[S. 10]{rohrbach2017}.\footnote{Gelenke mit einer derart starken Schädigung machten einen extrem geringen Teil des Trainingssets aus. Das Problem ist nicht etwa, dass es keine solchen Fälle mit beinahe komplett erodiertem Gelenkgewebe gebe, sondern weil betreffende Patienten kaum ihre Hand flach ausbreiten können, sodass derart erodierte Gelenke auf den Röntgenbildern praktisch nicht auszumachen sind.}
+
+Neben der Ratingen-Score gibt es noch eine weitere Score: die Rau-Score. Beschreibt die Ratingen-Score die Schädigung eines bestimmten Gelenkes, geht es bei der Rau-Score um eine umfassendere Einschätzung: Neben den zehn MCP- und PIP-Gelenken beider Hände werden auch die Karpalgelenke beider Hände sowie fünf Gelenke beider Füsse berücksichtigt. Janick Rohrbach hat das Berechnen dieser Score in seiner Bachelorarbeit beschrieben \cite[S. 10]{rohrbach2017}.
+
+Als Input nimmt das Modell ein NumPy-Array bestehend aus einem oder mehreren RGB-Bildern mit der Auflösung 150 mal 150 Pixel entgegen. Technisch gesprochen sind dies NumPy-Arrays mit der Dimension \texttt{(n, 150, 150, 3)}, wobei \texttt{n} für die Anzahl Bilder steht.
+
+Der Output ist ein NumPy-Array, bei dem jeder Eintrag die Wahrscheinlichkeit für eine bestimmte Score eines Gelenkbildes repräsentiert. So wäre beispielsweise \texttt{[0.68 0.21 0.08 0.02 0.01 0.00]} ein Eintrag mit der Score 0 (höchste Wahrscheinlichkeit), ein Output wie \texttt{[0. 0.12 0.73 0.15 0. 0.]} stünde für einen Eintrag mit der Score 2.
+
+Das Modell wurde mit einer neueren Version von TensorFlow (1.4.0) erstellt. Weitere zur Ausführung benötigte Libraries sind \texttt{pandas}, \texttt{Pillow}, \texttt{h5py}, \texttt{scikit-learn} und \texttt{keras-utils}. Abgespeichert ist es im \texttt{.h5}-Format. Es basiert auf dem Inception-V3-Modell von François Chollet.\footnote{\url{https://github.com/fchollet/deep-learning-models} (abgerufen am 01.05.2020)}
+
+Im Gegensatz zu den bisher beschriebenen Modellen musste das Scoring-Modell neu trainiert werden, da die Modelldaten weder bei Seantis noch auf dem GitHub-Repository\footnote{\url{https://github.com/janickrohrbach/arthritis-net} (abgerufen am 01.05.2020)} der Bachelorarbeit von Janick Rohrbach vorhanden waren. Da auf dem GPU-Server von Seantis (\texttt{perses.seantis.ch}) eine ältere Python-Version (3.5) im Einsatz ist, wurde diese Version auch für den Container verwendet, in dem das Modell ausführbar ist. Da das Scoring-Modell aus technischen Gründen\footnote{CUDA war nach dem Aktualisieren des Grafikkartentreibers nicht mehr funktionstüchtig und erforderte einen Neustart des Servers. Aufgrund einer darauf eingerichteten Volume-Verschlüsselung kann ein solcher Neustart nur vor Ort durchgeführt werden, was aufgrund von verordnetem Home-Office (Covid-19-Krise) nicht sofort möglich war. Nach einem Neustart vor Ort funktionierte CUDA wieder einwandfrei.} nicht auf dem Systsem von Seantis zu Ende trainiert werden konnte, wurde eine GPU-Instanz bei Exoscale verwendet, auf welcher die Linux-Distribution Debian Stretch installiert ist. Aus diesem Grund dient \texttt{python:3.5-stretch} als Base-Image für die Ausführung des Scoring-Modells.
+
+\subsection{Webservices}
+\label{sec:web-services}
+
+Der zu erstellende Prototyp soll als Webservice umgesetzt werden (siehe Kapitel \secref{sec:Problemstellung}). Für den Begriff \textit{Webservice} gibt es verschiedene Definitionen, wovon hier drei exemplarisch erwähnt sind ‒ in der Reihenfolge, in der sie bei der Google-Suche nach «Definition Web Service» beim Autor erschienen sind:
+
+\begin{enumerate}
+\item \say{\textit{A web service is an application or data source that is accessible via a standard web protocol (HTTP or HTTPS). Unlike web applications, web services are designed to communicate with other programs, rather than directly with users.\footnote{Ein Webservice ist eine Applikation oder Datenquelle, die über Standard-Web-Protokolle (HTTP oder HTTPS) erreichbar ist. Im Gegensaz zu Web-Anwendungen sind Webservices dafür ausgelegt mit anderen Programmen zu kommunizieren, nicht direkt mit den Benutzern. (Übersetzung des Autors)}}} \cite{techterms-webservice}
+\item \say{\textit{A Web service is a software service used to communicate between two devices on a network. More specifically, a Web service is a software application with a standardized way of providing interoperability between disparate applications. It does so over HTTP using technologies such as XML, SOAP, WSDL, and UDDI.\footnote{Ein Webservice ist ein Software-Service, der verwendet wird um zwischen zwei Geräten in einem Netzwerk zu kommunizieren. Genauer gesagt ist ein Webservice eine Software-Anwendung mit einer standardisierten Art um Interoperabilität zwischen verschiedenartigen Anwendungen anzubieten. Dies wird über HTTP mithilfe von Technologien wie XML, SOAP, WSDL und UDDI erreicht. (Übersetzung des Autors)}}} \cite{techopedia-webservice}
+\item \say{\textit{Il s'agit d'une technologie permettant à des applications de dialoguer à distance via Internet, et ceci indépendamment des plates-formes et des langages sur lesquelles elles reposent. Pour ce faire, les services Web s'appuient sur un ensemble de protocoles Internet très répandus (XML, HTTP), afin de communiquer. Cette communication est basée sur le principe de demandes et réponses, effectuées avec des messages XML.\footnote{Es handelt sich um eine Technologie, die es Anwendungen ermöglicht über das Internet zu kommunizieren, und zwar unabhängig von Plattformen und Sprachen, auf denen sie basieren. Um dies zu erreichen, stützen sich Webservices auf eine Menge weit verbreiteter Internet-Protokolle (XML, HTTP) für die Kommunikation. Diese Kommunikation basiert auf dem Anfrage-Antwort-Prinzip, was mithilfe von XML-Nachrichten bewerkstelligt wird. (Übersetzung des Autors)}}} \cite{les-services-web}
+\end{enumerate}
+
+Die Auflistung könnte beliebig weitergeführt werden. Allen Definitionen ist gemeinsam, dass HTTP(S) als Protokoll verwendet wird. Erwähnte Technologien wie XML und SOAP sind dabei schon länger auf dem Rückzug und werden zusehends von REST und JSON verdrängt \cite{infoq-soap-rest}.
+
+Für den zu erstellenden Protoyp soll somit eine RESTful-API (via HTTP) angeboten werden. Genauer soll der Protoyp \textit{gegen aussen} eine RESTful-API anbieten. Ob REST auch für die interne Kommunikation zwischen den Komponenten (siehe \secref{sec:bestehende-modelle}) eine gute Wahl ist, soll in der Architekturdiskussion im Folgekapitel (siehe \secref{sec:architekturvarianten}) untersucht werden.
+
+\subsection{Integrationsvarianten}
+\label{sec:integrationsvarianten}
+
+Die gängigsten Methoden zum Integrieren von Anwendungen sind \textit{File Transfer}, \textit{Shared Database}, \textit{Remote Procedure Invocation} und \textit{Messaging} \cite[Introduction, S. xxx]{enterprise-integration-patterns} ‒ und, ergänzend wie gerade besprochen, RESTful-APIs.\footnote{Der Begriff REST und das Konzept der RESTful-APIs sind zwar spätestens seit dem Jahr 2000 bekannt \cite[Kapitel 6]{fielding2000}. Weite Verbreitung fand das Konzept jedoch erst später, gerade mit dem Siegeszug von \textit{Microservices} ‒ ein Begriff, der erst seit dem Jahr 2011 geläufig ist \cite{leanix-microservices}. RESTful-APIs waren beim Erscheinen des erwähten Standardwerks im Jahr 2004 zwar schon bekannt, aber nicht weit verbreitet.} Aufgrund des synchronen Modus können REST und HTTP in diesem Kontext am ehesten mit Remote Procedure Invocation (RPC) verglichen werden, wobei HTTP an Ressourcen und RPC an Funktionen orientiert ist.
+
+Die genannten Arten der Integration bauten aufeinander auf und stellten jeweils eine Verbesserung gegenüber ihrem Vorgänger dar, was jedoch jeweils eine erhöhte Komplexität zur Folge habe \cite[S. 41-42]{enterprise-integration-patterns}. Die einfachste Variante sei der Verzicht auf eine Integration von Anwendungen, indem man sich auf eine einzelne, zusammenhängende (d.h. monolithische) Applikation beschränkt, die gar keine Integration erfordert \cite[S. 39]{enterprise-integration-patterns}. Dies ist oftmals nicht möglich oder nicht sinnvoll, wie z.B. im vorliegenden Projekt, bei dem zueinander inkompatible Laufzeitumgebungen zum Einsatz kommen, die sich nicht in eine monolithische Applikation zwängen lassen. 
+
+Die Vor- und Nachteile der genannten Integrationsvarianten lassen sich folgendermassen zusammenfassen:
+
+\begin{description}
+    \item[File Transfer] Die Dateiübertragung sei die wohl einfachste Integrationsvariante, denn praktisch alle Betriebssysteme unterstützten Dateien und deren Austausch mit anderen Systemen oder Prozessen. Diese Einfachheit bezahle der Entwickler jedoch damit, dass er sich um viele Aspekte der Integration selber kümmern muss: Konventionen für Dateinamen und Verzeichnisse und das Sicherstellen deren Eindeutigkeit; das Löschen alter Dateien und das Feststellen für dessen Notwendigkeit; Sperrmechanismen zum Sicherstellen, dass nicht zwei Anwendungen gleichzeitig auf eine Datei zugreifen; Übertragung der Dateien über ein geeignetes Protokoll auf ein passendes Medium. Ein Hauptproblem stellten dabei die verschiedenen Bedürfnisse der beteiligten Anwendungen für die Synchronisierung der Dateien dar: Manche Applikationen benötigten Aktualisierungen in Sekundenschnelle, während für andere eine nächtliche, wöchentliche oder monatliche Aktualisierung ausreiche. Solche Unterschiede könnten oft zu Inkonsistenzen führen, die sich desto schwerer beheben liessen, je weiter ihr Auftreten von ihrer Kenntnissnahme entfernt sei. \cite[S. 43-46]{enterprise-integration-patterns}
+    \item[Shared Database] Gegenüber der Dateiübertragung biete eine gemeinsame Datenbank einige Vorteile. Zeitliche Lücken träten kaum mehr auf, denn jede Applikation habe stets Zugriff auf den aktuellen Stand. Mithilfe einer Datenbank sei es zudem einfacher, ein bestimmtes Datenformat sicherzustellen. Dank des Transaktionssystems von Datenbanksystemen seien die Daten stets konsistent. Zwar müsse man viel Aufwand betreiben, um bei den verschiedenen Applikationen mit gleicher Datenbank ein Schema auszuarbeiten, mit dem alle Applikationen umgehen können; es sei jedoch besser, diese Probleme direkt anzugehen, statt  ihnen auszuweichen, um sich in der anschliessenden Integrationsphase wieder davon einholen zu lassen. Alle beteiligten Applikationen auf einen gemeinsamen Nenner zu bringen sei jedoch manchmal so schwierig, dass das Ergebnis dieser Übung unbefriedigend ausfalle, und in einem Datenschema resultiere, mit dem nur schwer umzugehen ist. Solche Konflikte könnten dazu führen, dass sich Trennungen aufdrängten.\footnote{Siehe auch Conway's Law: \textit{«Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization's communication structure.»} \cite{conway1968committees}} Der Zugriff von mehreren Applikationen auf eine gemeinsame Datenbank mit dem damit einhergehenden wiederholten Lesen und Schreiben der gleichen Daten könne dazu führen, dass die Datenbank zum Flaschenhals werde, oder dabei gar Deadlocks aufträten. \cite[S. 47-49]{enterprise-integration-patterns}
+    \item[Remote Procedure Invocation] Die beiden genannten Ansätze \textit{File Transfer} und \textit{Shared Database} haben gemeinsam, dass sie Daten verschiedener Applikationen integrieren, nicht aber deren Funktionalität. \cite[S. 49]{enterprise-integration-patterns} Einer der mächtigsten Mechanismen zur Strukturierung von Software sei die Kapselung mittels Funktionen. Mittels \textit{Remote Prodecure Invocation} (RPI) oder \textit{Remote Procedure Call} (RPC) könnten auch zwischen Applikationen Funktionen aufgerufen werden. Daten werden dabei als Funktionsparameter übertragen. Die internen Datenstrukturen der einzelnen Applikationen können dabei frei gestaltet und zu einem späteren Zeitpunkt verändert werden, ohne dass eine andere Applikation davon betroffen sei. Weiter könnten Anwendungen mittels RPI mehrere Schnittstellen auf die gleichen Daten anbieten.\footnote{Dies ist eine Ähnlichkeit zu HTTP, das verschiedene Methoden (\texttt{GET}, \texttt{POST} usw.) bietet, um auf die gleichen Ressourcen zuzugreifen.} Der Funktionsaufruf sei ein für alle Programmierer geläufiges Modell, was einerseits ein Vorteil ist, andererseits problematisch sein kann, zumal sich die Performance zwischen einem lokalen und einem entfernten Funktionsaufruf um mehrere Grössenordnungen unterscheiden kann. Ausserdem verleitet RPI dazu, eine verteilte Applikation wie eine einzelne, zusammenhängende zu gestalten, was zu einer engen Kopplung führe, sich aber angesichts der Performanceeinbussen nicht so anfühle. \cite[S. 50-52]{enterprise-integration-patterns}
+    \item[Messaging] Die grösste Herausforderung bei der Integration von Anwendungen bestehe oft darin, den Zeitverlust beim Austausch zwischen Systemen so gering wie möglich zu halten, ohne die Anwendungen dabei eng aneinander zu koppeln, oder dabei die Weiterentwicklung oder das Laufzeitverhalten der Anwendungen zu beeinträchtigen. Hierzu benötige es einen ähnlichen Mechanismus wie \textit{File Transfer}, womit Datenpakete schnell produziert und einfach transferiert werden können ‒ und darüber hinaus den Empfänger informiere, dass ein Datenpaket zur Verarbeitung anstehe, sowie einen Retry-Mechanismus für gescheiterte Übertragungen biete. Im Gegensatz zur \textit{Shared Database} soll das interne Datenschema einer Anwendung veränderbar bleiben. Im Gegensatz zur \textit{Remote Procedure Invocation} soll die Übertragung asynchron ablaufen, sodass der Aufrufer nicht blockierend auf die Antwort warten muss. Weiter sollen auch Nachrichten verschickt werden können, ohne dass die Gegenseite zu dieser Zeit bereit sein muss. \textit{Messaging} erfülle alle diese Anforderungen, und biete darüber hinaus noch verschiedene Verteilungsmechanismen wie Broadcasting zu allen oder Routing zu verschiedenen Empfängern, oder verschiedene Topologien. Da Nachrichten zeitnah verarbeitet werden können, fallen die Synchronisationsprobleme von \textit{File Transfer} weg. Diese Vorteile erkaufe sich der Entwickler mit einer steilen Lernkurve und einer Reihe neuer Herausforderungen, von denen der Rest des Buches grösstenteils handelt. \cite[S. 53-59]{enterprise-integration-patterns}
+\end{description}
+
+\textit{Messaging} ist somit die mächtigste, aber auch komplizierteste Variante. Wie sich die beschriebenen Machine-Learning Modelle (siehe \secref{sec:bestehende-modelle}) integrieren lassen, ist Thema des nächsten Kapitels (siehe \secref{sec:architekturvarianten}).
+
+\subsection{Evaluation von Modellen}
+\label{sec:evaluation-von-modellen}
+
+Der Projektauftrag erwähnt den \textit{Vorschlag für geeignete Metriken zu Vergleich von Modellen} als erwartetes Resultat (siehe \secref{sec:erwartetes-resultat}). Hierbei soll es nicht um die Evaluation der einzelnen verwendeten Modelle gehen, sondern um eine Evaluation des Gesamtsystems, das zu diesem Zweck wie ein grosses, zusammenhängendes Modell betrachtet wird. Zu einem späteren Zeitpunkt, an dem einzelne, verbesserte Modelle in das System einfliessen, können verschiedene Versionen des Gesamtsystems im Bezug auf ihre Performance miteinander verglichen werden.
+
+\subsubsection{Verschiedene Datentypen}
+\label{sec:verschiedene-datentypen}
+
+Um eine passende Art der Evaluation zu finden, muss man sich zuerst vergegenwärtigen, mit welcher Art von Prediction (Output) man es zu tun hat. Hierbei fällt auf, dass in Wissenschaft und Praxis von verschiedenen Arten von Daten die Rede ist.
+
+Einen guten Überblick über die Thematik bietet der Artikel \textit{7 Data Types: A Better Way to Think about Data Types for Machine Learning} \cite{7-data-types}. So werde im Machine-Learning-Bereich teilweise nur zwischen numerischen und kategorischen Daten unterschieden. Diese Unterscheidung greife aber zu kurz und lasse sich weiter verfeinern und erweitern. Die elf [sic.\footnote{Die ursprünglichen sieben Datentypen wurden in einer späteren Version des Artikels um vier weitere ergänzt.}] Datentypen lassen sich folgendermassen zusammenfassen:
+
+\begin{description}
+    \item[Useless] Daten, oft zufällige und eindeutige wie z.B. eine Kontonummer, die zwar als Identifikation von Datensätzen, aber nicht zum Trainieren eines Modells verwendet werden können.
+    \item[Nominal] Diskrete Werte ohne numerische Beziehung zwischen den Werten, wie z.B. Arten von Tieren, auf die sich keine statistischen Operationen wie mean und median anwenden lassen.
+    \item[Ordinal] Diskrete Werte, die rangiert und sortiert werden können, wobei der Abstand zwischen zwei Zahlen unbekannt ist.
+    \item[Binary] Diskrete Werte, welche in die beiden Kategorien null und eins eingeteilt werden können, und so einen Spezialfall von Nominal-, Ordinal- und/oder Intervalldaten darstellen.
+    \item[Count] Diskrete, positive Zahlen, die eine Anzahl wiedergeben, und auf die statistische Operationen wie mean und median sinnvollerweise angewendet werden können.
+    \item[Time] Zyklische, sich wiederholende, kontinuierliche Daten, die sich auf verschiedene Perioden (Jahr, Monat, Tag usw.) beziehen können.
+    \item[Interval] Daten, bei denen benachbarte Zahlen die gleichen Abstände voneinander haben, aber kein zeitliches Muster repräsentieren.
+    \item[Image] Zweidimensionale Bilder, wie z.B. Röntgenbilder.
+\end{description}
+
+Die drei weiteren vorgeschlagenen Kategorien, die für die vorliegende Arbeit nicht releant sind, lauten: Video, Audio und Text.
+
+\subsubsection{Datentypen der Modelle}
+
+Bei den verschiedenen Modellen kommen unterschiedliche Arten von Daten zum Einsatz. Die Einteilung nach der gerade aufgestellten Taxonomie ist dabei nicht immer klar und eindeutig:
+
+\begin{description}
+    \item[\texttt{body\_part}] Für ein Röntgenbild wird eine Reihe von Wahrscheinlichkeiten erstellt, die beschreiben, welche Art von Körperteil es abbildet. Hierbei handelt es sich um Intervalldaten, denn eine Wahrscheinlichkeit von 0.8 kann als doppelt so wahrscheinlich wie eine Wahrscheinlichkeit von 0.4 interpretiert werden. Für die vorliegende Arbeit ist jedoch nur ein Körperteil (die linke Hand) und somit nur deren Wahrscheinlichkeit relevant (siehe \secref{sec:modell-body-part}), welche mithilfe eines passenden Schwellenwertes zu einer Binärklassifikation regrediert. Ob die Interpretation der Prediction anhand dieses Schwellenwerts Teil der Modellkomponente oder zu den Aufgaben des Aufrufers gehört, oder gar weggelassen werden kann, ist eine Architekturfrage.
+    \item[\texttt{joint\_detection}] Aus einem Röntgenbild einer linken Hand werden bis zu zehn Gelenke extrahiert. Sowohl Input wie Output sind Bilddaten. Für die Evaluation des Modells sind Bilddaten jedoch ungeeignet, da die Definition der Testdaten und der Vergleich mit den Predictions aufwändig (Vergleich von 2D-Matritzen) und fehleranfällig (Verschiebung um einzelne Pixel) ist. Für die Evaluation ist es sinnvoller, die Frage zu stellen, ob ein betreffendes Gelenk (PIP 1, MCP 3, usw.) gefunden worden ist oder nicht, was mit einer Binärklassifikation pro Gelenk bewerkstelligt werden kann. Da pro Bild zehn Gelenke gefunden oder nicht gefunden werden können, ist eine Zählung (Count) im Bereich null bis zehn der geeignete Datentyp, sofern die zehn Extraktionsvorgänge konzeptuell als ein übergeordneter Vorgang betrachtet werden sollen.
+    \item[\texttt{ratingen\_score}] Bei der Ratingen-Score handelt es sich um Intervalldaten von null bis hundert Prozent. In der SCQM-Datenbank werden die einzelnen Gelenkscores als Anteil des geschädigten Gelenkgewebes mit diskreten Prozentzahlen und einer Auflösung von 5\% abgespeichert. Das entsprechende Modell teilt diese Score jedoch in sechs Kategorien ein, wobei die Kategorien 1 bis 5 jeweils für eine Bandbreite von 20\% stehen. Ein Spezielfall ist die Kategorie 0, die für ein gesundes Gelenk mit 0\% Erosion steht. Die Prediction hat damit sowohl Aspekte einer nominalen Kategorisierung als auch von Intervalldaten. Durch die Vermischung der Nominalzahl (Kategorie 0) mit Intervalldaten (Kategorien 1-5) liegen unterschiedlich grosse Abstände zwischen den Kategorien vor, wodurch die Kategorien als Ordinalzahlen betrachtet werden können. Für die Evaluation des Gesamtsystems ist weiter zu beachten, dass pro Vorgang nicht nur eines, sondern (bis zu) zehn Gelenke gescored werden. Die Anzahl der Übereinstimmungen von Prediction und tatsächlichem Wert könnten gezählt werden, also z.B. acht von zehn Gelenken wurden korrekt gescored. Besser ist eine Prozentangabe (Intervalldaten), welche die Anzahl der korrekt gescorten Gelenke der Anzahl vorhandener Gelenke gegenüberstellt, zumal diese Metrik auch bei fehlenden Gliedmassen oder unerkannten Gelenken eine sinnvolle Aussage macht.\footnote{Auf den Röntgenbildern sind statt Gelenke oftmals Metallgegenstände zu sehen, welche im fortgeschrittenen Krankheitsstadium eher als Ersatz denn als Reparatur eines Gelenks zu verstehen sind.}
+\end{description}
+
+Betrachtet man die drei Modelle als Gesamtsystem, besteht der Output aus einer Reihe (null bis zehn) Scores im Intervall $[0..5]$. Zwar sind für die Performance des Gesamtsystems alle drei Modelle ausschlaggebend, der Evaluation stehen jedoch nur die Scores des letzten Modells zur Verfügung.
+
+Für die Evaluation des Gesamtsystems kann pro Vorgang (Röntgenbild) eine Menge von Ordinalzahlen (Output, $[0..5]$) mit einer Reihe von Intervalldaten (Testdaten, $[0..100]$) verglichen werden (im Sinne von \textit{Matching}), wobei auch die Grösse dieser Menge (Intervallzahl, $[0..10]$) aussagekräftig ist.
+
+\subsubsection{Mögliche Evaluationsmetriken}
+\label{sec:evaluationsmetriken}
+
+Für die ermittelten Datentypen gibt es verschiedene Evaluationsmetriken. Die ermittelten Scores für die Gelenke eines oder mehrerer Vorgänge könnten zusammengefasst und auf ihre Genauigkeit (Accuracy) geprüft werden \cite[S. 8]{zheng2015}:
+
+\begin{equation}
+    $$ \text{Global Accuracy} = \frac{\text{Total Correct Predictions}}{\text{Total Predictions}} $$
+    \caption{Global Accuracy}
+    \label{equ:global-accuracy}
+\end{equation}
+
+Eine solche Klassifikation behandle jedoch alle Klassen gleich, was gerade in medizinischen Anwendungen oft problematisch sein könne, zumal \textit{false positives} (gesunden Patient als krank eingestuft) und \textit{false negatives} (kranken Patient als gesund eingestuft) oft stark unterschiedliche Konsequenzen hätten.\footnote{Da der zu erstellende Prototyp nicht in der Diagnostik, sondern für die langfristige Erforschung einer Krankheit eingesetzt wird, ist das genannte Problem für die vorliegende Arbeit weniger relevant.} Eine \textit{Confusion Matrix} schaffe hier Abhilfe, und wäre für die binäre Klassifikation und somit für das Modell \texttt{body\_part} eine sinnvolle Metrik.\footnote{Sofern die Interpretation eines Schwellenwerts Teil des Modells sein soll.} \cite[S. 8]{zheng2015}
+
+Da bei der Evaluation des Gesamtsystems Scores von sechs verschiedenen Klassen relevant sind, und da die einzelnen Klassen mit stark unterschiedlicher Häufigkeit auftreten \cite[S. 16-17]{rohrbach2017}, ist die \textit{Per-Class Accuracy} eine weitere mögliche Metrik. Für Klassen mit kleinen Datenbeständen könne die Varianz jedoch sehr hoch ausfallen, und die Evaluation darum wenig aussagekräftig werden \cite[S. 9]{zheng2015}:
+
+\begin{equation}
+    $$ \text{Per-Class Accuracy}_{\text{Class n}} = \frac{\text{Correct Predictions}_\text{Class n}}{\text{Total Predictions}_\text{Class n}} $$
+    \caption{Per-Class Accuracy}
+    \label{equ:per-class-accuracy}
+\end{equation}
+
+Die Kosten von \textit{false positives} kommen mit der \textit{Precision} zum Tragen. Die Precision ist definiert als \cite{precision-recall-f1}:
+
+\begin{equation}
+    $$ \text{Precision}=\frac{\text{True Positive}}{\text{True Positive} + \text{False Positive}}$$
+    \caption{Precision (berücksichtigt die Kosten von \textit{false positives})}
+    \label{equ:precision}
+\end{equation}
+
+Möchte man die Kosten von \textit{false negatives} abbilden, ist der \textit{Recall} eine geeignete Metrik. Der Recall ist definiert als \cite{precision-recall-f1}:
+
+\begin{equation}
+$$ \text{Recall}=\frac{\text{True Positive}}{\text{True Positive} + \text{False Negative}} $$
+    \caption{Recall (berücksichtigt die Kosten von \textit{false negatives})}
+    \label{equ:recall}
+\end{equation}
+
+Die beiden Metriken Precision und Recall lassen sich mittels \textit{F1 Score} zu einer einzigen Metrik kombinieren, die gegenüber der Accuracy den Vorteil hat, dass sie die «Kosten» von \textit{false positives} und \textit{false negatives} berücksichtigt \cite{precision-recall-f1}:
+
+\begin{equation}
+    $$ \text{F1} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}} $$
+    \caption{F1 Score (bildet die Kosten von \textit{false positives} und \textit{false negatives} ab)}
+    \label{equ:f1score}
+\end{equation}
+
+\textit{Log-Loss} ist eine Metrik, die sich bei der Klassifikation mit Wahrscheinlichkeiten einsetzen lässt. Ihr Vorteil gegenüber der einfachen \textit{Accuracy} bei der Binärklassifikation ist, dass sie \textit{near misses} («knapp daneben») weniger stark bestraft als grobe Abweichungen der Predictions vom eigentlichen Wert \cite[S. 9-10]{zheng2015}. Diese Metrik liesse sich sinnvollerweise zur Evaluation des Modells \texttt{body\_part} einsetzen (sofern dieses eine Wahrscheinlichkeit und keine interpretierte Binärklassifikation liefert), jedoch nicht für das Gesamtsystem.
+
+Mithilfe einer \textit{AUC}-Metrik (\textit{Area under the curve}) liesse sich die Sensitivität eines Klassifikators grafisch aufzeigen, indem die Rate der \textit{true positives} zu der Rate der \textit{false positives} geplottet werde (\textit{ROC}-Kurve, \textit{receiver operating characteristic curve}). Dadurch liesse sich zeigen, wie viele korrekte Klassifikationen erzielt werden können, wenn man mehr \textit{false positives} zulasse. \textit{ROC}-Kurven lassen sich grafisch vergleichen. Mithilfe der berechneten \textit{Area under the curve} lassen sich die verschiedenen Kurven auch einfach numerisch vergleichen. Diese Metrik ist v.a. für die Binärklassifikation geeignet. Dies gilt auch für \textit{Precision Recall}, die nächste vorgeschlagene Metrik, die auch bei der Evaluation von Rankings hilfreich ist \cite[S. 10-14]{zheng2015}.
+
+Für die Evaluation von Scores, die den Output des Gesamtsystems ausmachen, sind Regressionsmetriken sinnvoller. Diese unterscheiden nicht nur zwischen richtig und falsch, sondern gewichten Abweichungen anhand derer betraglichen Verfehlung, sodass grössere Abweichungen stärker bestraft werden als kleinere Abweichungen. 
+
+\textit{RMSE} (\textit{root-mean-square error}) bzw. \textit{RMSD} (\textit{root-mean-square deviation}) ist eine häufig verwendete Metrik, und ist definiert als die Quadratwurzel des Durchschnitts der quadrierten Distanzen zwischen dem tatsächlichen Wert $y_i$ und der Prediction $\hat{y}_i$:
+
+\begin{equation}
+    $$ \text{RMSE}=\sqrt{\frac{{\sum_i(y_i-\hat{y}_i})^2}{n}}  $$
+    \caption{Root-Mean-Square Error (RMSE)/Root-Mean-Square Deviation (RMSD)}
+    \label{equ:rmse}
+\end{equation}
+
+Da diese Metrik auf dem arithmetischen Mittel basiert, sei sie anfällig für sogenannte \textit{Outliers} \cite[S. 15]{zheng2015}. Dies ist für das Scoring der Gelenke unproblematisch, zumal dieses in sechs Klassen erfolgt, und daher keine \textit{Outliers} möglich sind. Es ist dennoch sinnvoll, eine Metrik beizuziehen, die auf dem Median basiert, um ein ausgewogeneres Gesamtbild zu erhalten. Die \textit{median absolute percentage} (\textit{MAPE}) wäre eine solche Metrik:
+
+\begin{equation}
+    $$ \text{MAPE}=\text{median}\Bigg(\Big\lvert \frac{y_i-\hat{y}_i}{y_i} \Big\rvert\Bigg) $$
+    \caption{Median Absolute Percentage (MAPE)}
+    \label{equ:mape}
+\end{equation}
+
+Diese Metrik gebe ein relatives Mass des typischen Fehlers an \cite[S. 15]{zheng2015}. Eine der einfachsten Metrik sei es, die relative Abweichung der Predictions vom eigentlichen Wert in Prozent anzugeben. Die akzeptable Abweichung in Prozent sei dabei von der Natur des jeweiligen Problems abhängig \cite[S. 15]{zheng2015}.
+
+Beim Scoring von Gelenken ist es möglich, dass eine Einschätzung (z.B. 80\% des Gelenkgewebes erodiert) gerade auf die Schwelle zwischen zwei Klassen (4 und 5) fällt. Da es sich um menschliche Einschätzungen, und nicht um präzise, maschinelle Messungen handelt, sei eine Abweichung um eine Klasse nicht als Fehler zu werten \cite[Abschnitt 3.3, S. 476 ff.]{rohrbach2019}. Bei insgesamt sechs Klassen können Predictions als korrekt gewertet werden, die innerhalb eines Fehlers von $16\frac{2}{3}\%$ liegen \cite[S. 16]{zheng2015}:
+
+\begin{equation}
+    $$ \Bigg(\Big\lvert \frac{y_i-\hat{y}_i}{y_i} \Big\rvert\Bigg) < 0.1\overline{6}$$
+    \caption{Almost Correct}
+    \label{equ:almost-correct}
+\end{equation}
+
+Die genannten Metriken gewichten alle Klassen gleich. Dies sei problematisch, wenn es ein Ungleichgewicht zwischen den einzelnen Klassen gäbe, weil die Metrik dann von der Klasse mit den meisten Datenpunkten dominiert werde \cite[S. 17]{zheng2015}, was im vorliegenden Kontext der Fall ist. Eine Kombination verschiedener Metriken sei darum angebracht, um ein möglichst genaues Bild von der Performance zu erhalten \cite[Abschnitt 3.3, S. 476 ff.]{rohrbach2019}.
+
+In der genannten Quelle werden weitere problemspezifische Evaluationsmetriken besprochen, welche eine Prediction mit einer zuvor ermittelten Score vergleichen. Diese Metriken hätten allesamt kein befriedigendes Ergebnis geliefert. Stelle man jedoch mithilfe von \textit{Cohen's Kappa} die Übereinstimmung des Modells mit den durch Menschen ermittelten Scores gegenüber, erhalte man dadurch eine aussagekräftige Metrik, welche zudem das Problem der Unausgewogenheit angemessen behandle \cite[Abschnitt 3.3.3, S. 477]{rohrbach2019}:
+
+\begin{equation}
+    $$ \kappa = \frac{p_{\text{obs}} - p_{\text{chance}}}{1 - p_{\text{chance}}} = 1 - \frac{q_{\text{obs}}}{q_{\text{chance}}} $$
+    \caption{Cohen's Kappa}
+    \label{equ:cohens-kappa}
+\end{equation}
+
+Dabei steht $p_{\text{obs}}$ für die beobachtete Übereinstimmung und $p_{\text{chance}}$ für die Übereistimmung, die von einem Zufallsprozess zu erwarten ist. Diese Zahlen erhalte man von der Confusion Matrix, indem man die Zeilen- mit den Spaltenrändern multipliziere. \textit{Cohen's Kappa} sei gerade dann von Vorteil, wenn die Performance der einzelnen Scorer fraglich ist \cite{interrater-reliability}.
+
+Da die zufällige Übereistimmung von der abgeschätzen Häfugkeit der Klasse abhängig ist, hängt \textit{Cohen's Kappa} auch von der Unausgeglichenheit der Klassen ab.
+
+Um zusätzlich noch grössere Abweichungen stärker zu bestrafen als kleinere, kann \textit{Cohen's Quadratic Kappa} verwendet werden \cite[ebd.]{rohrbach2019}:
+
+\begin{equation}
+    $$ \kappa_{\text{squared}} = 1 - \frac{\sum^k_{i=1} \sum^k_{j=1} \big((i-j)^2 \cdot n_{\text{obs}_{ij}} \big)}{\sum^k_{i=1} \sum^k_{j=1} \big((i-j)^2 \cdot n_{\text{chance}_{ij}} \big)} $$
+    \caption{Cohen's Quadratic Kappa}
+    \label{equ:cohens-quadratic-kappa}
+\end{equation}
+
+Dadurch steige die Bestrafung für Fehler quadratisch mit dem Betrag der Verfehlung. Dabei sind $n_{ij}$ Elemente in der Confusion Matrix, die \textit{nicht} auf der Diagonalen liegen, d.h. die Fehler.
+
+Mithilfe der \textit{Interclass Correlation} könne man das feststellen, wie gross die Übereinstimmung zwischen verschiedenen Scorern ist. Da es sich bei der Ratingen-Score um eine menschliche Einschätzung und nicht um eine mit mathematisch reproduzierbarer Exaktheit ermittelte Grösse handelt, ist die Übereinstimmung zwischen der Modell-Vor\-her\-sage mit den menschlichen Scorern einerseits mit der Übereinstimmung der menschlichen Scorern untereinander andererseits ein gutes Mass für die Performance des Modells \cite[ebd.]{rohrbach2019}. Diese Art der Evaluierung benötige jedoch mehrere unabhängige menschlich ermittelte Scores, welche im Rahmen dieses Projekts nicht zur Verfügung stehen (siehe \secref{sec:evaluationsdaten}).
+
+\subsection{Modellformate}
+\label{sec:modellformate}
+
+Für das Abspeichern von (trainierten) Machine-Learning-Modellen gibt es eine Vielzahl an Formaten. Im vorliegenden Projekt werden beispielsweise das \texttt{tflearn}-Format (für die Modelle \texttt{body\_part} und \texttt{joint\_detection}) und das \texttt{h5}-Format (für das Modell \texttt{ratingen\_score}) verwendet. 
+
+Für neuere Versionen von TensorFlow hat sich das \textit{SavedModel}-Format etabliert \cite[Kapitel 19]{géron2019}. Die Modelle lassen sich dabei nicht ohne weiteres von einem Format in ein anderes übertragen, zumal Modelle, die in älteren Versionen von TensorFlow erstellt worden sind, sich mit neueren Versionen nicht laden lassen.\footnote{Zahlreiche Versuche sind für das Modell \texttt{body\_part} unternommen worden ‒ und gescheitert.} Somit ist die Wahl des Modellformats eine wichtige Fragestellung, gerade im Hinblick auf Vorwärtskompatibilität für künftige Releases von TensorFlow, Keras oder anderer Frameworks und APIs.
+
+Anstrengungen zur Vereinheitlichung von Modellformaten werden im Rahmen der ONNX-Initiative unternommen \cite{onnx}. ONNX ist ein neuer, offener Standard für die Interoperabilität von Machine Learning. Mithilfe von \texttt{tf2onnx}\footnote{\url{https://github.com/onnx/tensorflow-onnx} (abgerufen am 01.05.2020)} können bestehende TensorFlow-Modelle zu ONNX konvertiert werden. Die ONNX-Initiative wird u.a. von Microsoft, Amazon, Facebook, IBM und Intel getragen ‒ sprich \textit{«alle ausser Google»} \cite{linuxjournal-onnx}. Ende 2019 ist das ONNX-Projekt zudem unter den Schirm der Linux Foundation gekommen \cite{heise-onnx}. Das Projekt ist auf GitHub jedoch weiterhin auf dem Microsoft-Account gehostet.\footnote{\url{https://github.com/microsoft/onnxruntime} (abgerufen am 01.05.2020)} Seit Herbst 2019 liegt eine Runtime für ONNX von Microsoft in Version 1.0 vor \cite{cloudblogs-onnx}. Mit dem \textit{ONNX Model Zoo} werden Entwicklern fertige Modelle angeboten, auf denen diese ihre Projekte entwickeln können.\footnote{\url{https://github.com/onnx/models} (abgerufen am 01.05.2020)}
+
+Ob sich ONNX als offener Standard durchsetzen ‒ und sich gegen das SavedModel-Format von TensorFlow (bzw. Google) behaupten kann, ist Stand Frühling 2020 schwer abzuschätzen. Die Unterstützung von ONNX auf Azure, und die Tatsache, dass Google ONNX nicht unterstützt, dürfte eher als Kampfansage von Microsoft an Google verstanden werden, denn als Schritt hin zur Vereinheitlichung von Modellformaten. ONNX wird zwar mit der MIT-Lizenz als OpenSource-Projekt auf GitHub gehostet.\footnote{\url{https://github.com/onnx/onnx} (abgerufen am 01.05.2020)} Bei der Hauptprogrammiersprache des Projekts (PureBasic\footnote{42.7\% Anteil des Codes, Stand 29. April 2020}), handelt es sich jedoch um eine kommerzielle Programmiersprache. Diese ist plattformunabhängig (Windows, Linux, macOS) und \textit{«begrenzt auf kleinere Programme»} frei verfügbar \cite{purebasic}. Für OpenSource-Entwickler dürfte diese Einschränkung ein Hindernis darstellen, zumal das ONNX-Projekt mit seinem Umfang kaum unter die Kategorie \textit{«kleinere Programme»} fallen dürfte.
+
+Im Rahmen des vorliegenden Projekts sind die beiden Kandidaten ‒ Saved\-Model und ONNX ‒ von geringer Relevanz, da die Modelle in ihrem aktuellen Zustand übernommen werden sollen. Für die Weiterentwicklung der beschriebenen Modelle jenseits der Bachelorarbeit sollte die Entwicklung jedoch im Auge behalten werden (siehe auch \secref{sec:aktualisierung-auf-aktuelle-versionen}).

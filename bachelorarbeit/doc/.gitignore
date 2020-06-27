@@ -1,0 +1,12 @@
+document.aux
+document.bbl
+document.blg
+document.lof
+document.log
+document.lol
+document.lot
+document.out
+document.toc
+document.for
+xelatex.out
+bibtex.out

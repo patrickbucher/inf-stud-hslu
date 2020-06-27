@@ -1,0 +1,31 @@
+@startuml
+
+skinparam monochrome true
+skinparam defaultFontName Inconsolata
+skinparam dpi 300
+
+class JSONResponse {
+    {field} body_part
+    {field} probability
+}
+
+class BodyPart {
+    {field} connection
+    {field} channel
+    {field} BodyPartPredictor predictor
+    {method} run()
+    {method} handle(channel, method, properties, payload)
+    {method} JSONResponse detect_body_part(image, corr_id)
+}
+
+class BodyPartPredictor {
+    {field} Map<int, str> label_map
+    {field} model
+    {method} __init__(model_path)
+    {method} Map<str, float> predict(image, corr_id)
+}
+
+BodyPart --> JSONResponse
+BodyPart o-- BodyPartPredictor
+
+@enduml

@@ -1,0 +1,30 @@
+@startuml
+
+skinparam monochrome true
+skinparam defaultFontName Inconsolata
+skinparam dpi 300
+
+class JSONResponse {
+    {field} joint_name
+    {field} score
+}
+
+class RatingenScore {
+    {field} connection
+    {field} channel
+    {field} RatingenScorePredictor predictor
+    {method} run()
+    {method} handle(channel, method, properties, payload)
+    {method} JSONResponse score_joint(image, joint_name, corr_id)
+}
+
+class RatingenScorePredictor {
+    {field} model
+    {method} __init__(model_path)
+    {method} int predict(image, corr_id)
+}
+
+RatingenScore --> JSONResponse
+RatingenScore o-- RatingenScorePredictor
+
+@enduml
