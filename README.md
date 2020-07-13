@@ -8,7 +8,7 @@ Dokumente zu meinem Informatik-Studium an der Hochschule Luzern ‒ Informatik (
     - Übungen, fast vollständig
 - `aiot`: Advanced Internet of Things
     - Projekt «TimeCube»
-- `bachelorarbeit`: Bachelorarbeit «DeepXRax»
+- `bachelorarbeit`: Bachelorarbeit «DeepXRay»
 - `csa` C# in Action
     - Übungen der ersten beiden Wochen
 - `davi`: Datenvisualisierung
