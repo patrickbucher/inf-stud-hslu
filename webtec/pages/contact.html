@@ -1,0 +1,24 @@
+<h2>Kontaktformular</h2>
+<ul id="formError" class="hidden"></ul>
+<form onsubmit="submitForm(); return false;">
+	<fieldset>
+		<ol>
+			<li><label for="yourName">Name</label> <input type="text"
+				id="yourName" /></li>
+			<li><label for="yourEmail">E-Mail</label> <input type="text"
+				id="yourEmail" /></li>
+			<li><label for="yourComplaint">Anfrage</label> <textarea
+					id="yourComplaint" cols="30" rows="4"></textarea></li>
+			<li><label></label><input type="submit" value="Abschicken" /></li>
+			<li><label></label><input type="reset" value="Zurücksetzen" /></li>
+		</ol>
+	</fieldset>
+</form>
+<div id="formFeedback" class="hidden">
+	<p>Wir haben folgende Anfrage erhalten, besten Dank dafür:</p>
+	<ul>
+		<li>Name: <span id="nameFeedback"></span></li>
+		<li>E-Mail: <span id="emailFeedback"></span></li>
+		<li>Anfrage: <span id="complaintFeedback"></span></li>
+	</ul>
+</div>

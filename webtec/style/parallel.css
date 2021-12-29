@@ -1,0 +1,43 @@
+.parallel {
+	font-size: 16px;
+}
+
+.parallel p {
+	text-align: justify;
+}
+
+/* align two paragraphs next to each other */
+@media only screen and (min-width: 800px) {
+	.parallel>* {
+		width: 49%;
+	}
+	.parallel>*:nth-child(odd) {
+		float: left;
+		clear: both;
+		padding: 0 1% 0 0;
+	}
+	.parallel>*:nth-child(even) {
+		float: right;
+	}
+	.parallel:after {
+		clear: both;
+		content: '';
+		display: block;
+	}
+}
+
+/* align paragraphs vertically with bigger spacing after translation */
+@media only screen and (max-width: 800px) {
+	.parallel>p:nth-child(odd) {
+		margin: 1em 0;
+	}
+	.parallel>p:nth-child(even) {
+		margin: 1em 0 2em 0;
+	}
+	.parallel>h2:nth-child(odd) {
+		margin: 2em 0 1em 0;
+	}
+	.parallel>h2:nth-child(even) {
+		margin: 1em 0 2em 0;
+	}
+}

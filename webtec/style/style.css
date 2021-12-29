@@ -1,0 +1,116 @@
+body {
+	font-family: 'Lora', 'Georgia', serif;
+	margin: 0 auto;
+	max-width: 1000px;
+	font-size: 16px;
+	padding: 0 10px;
+}
+
+html {
+	overflow-y: scroll;
+}
+
+canvas {
+	border: 1px solid black;
+	background-color: white;
+}
+
+h2 {
+	margin: 2em 0 1em 0;
+}
+
+h3 {
+	font-size: 100%;
+}
+
+p {
+	margin: 8px 0;
+}
+
+footer {
+	margin: 1em 0;
+}
+
+nav ol {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+nav li a {
+	font-family: 'Open Sans', sans-serif;
+	border-radius: 4px;
+	padding: 4px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+}
+
+h1 {
+	font-variant: small-caps;
+}
+
+footer {
+	font-size: 80%;
+}
+
+.hidden {
+	display: none;
+}
+
+/* form */
+fieldset {
+	border: none;
+}
+
+fieldset li {
+	list-style-type: none;
+	margin: 0.5em 0;
+}
+
+label {
+	display: inline-block;
+	text-align: right;
+	width: 5em;
+	padding: 0 1em;
+}
+
+input[type="text"] {
+	width: 15em;
+}
+
+input[type="reset"], input[type="submit"] {
+	width: 150px;
+}
+
+/* responsive behaviour */
+@media only screen and (max-width: 400px) {
+	nav li {
+		margin: 1em 0;
+	}
+}
+
+@media only screen and (min-width: 400px) {
+	nav li {
+		display: inline-block;
+		margin: 1em 4px 0 0;
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	h1 {
+		font-size: 150%;
+	}
+	h2 {
+		font-size: 120%;
+	}
+}
+
+@media only screen and (min-width: 800px) {
+	h1 {
+		font-size: 200%;
+	}
+	h2 {
+		font-size: 140%;
+	}
+}

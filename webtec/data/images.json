@@ -1,0 +1,7 @@
+{
+	"images": [
+		{"id": "na-ldine", "src": "data/na-ldine.jpg", "alt": "На льдине &ndash; Auf der Eisscholle"},
+	    {"id": "kamen", "src": "data/kamen.jpg", "alt": "Камень &ndash; Der Stein"},
+	    {"id": "druzya", "src": "data/druzya.jpg", "alt": "Друзья &ndash; Freunde"}
+	]
+}

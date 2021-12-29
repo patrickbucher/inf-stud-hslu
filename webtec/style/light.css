@@ -1,0 +1,13 @@
+body.light {
+	background-color: #fafafa;
+	color: #444;
+}
+
+body.light nav a {
+	background-color: #444;
+	color: #fafafa;
+}
+
+body.light a {
+	color: #444;
+}

@@ -1,0 +1,13 @@
+body.dark {
+	background-color: #444;
+	color: #fafafa;
+}
+
+body.dark nav a {
+	background-color: #fafafa;
+	color: #444;
+}
+
+body.dark a {
+	color: #fafafa;
+}
