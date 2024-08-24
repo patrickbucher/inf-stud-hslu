@@ -1,5 +1,5 @@
 PARAMS=--pdf-engine=xelatex -V documentclass=scrartcl -V classoption=smallheadings -V papersize=a4 -V lang=de -V urlcolor=blue
-FONTS=-V mainfont="EB Garamond" -V sansfont="Open Sans"
+FONTS=-V mainfont="Linux Libertine" -V sansfont="Linux Biolinum"
 DATE=-V date="`date +'%d.%m.%Y'`"
 
 all: anfang.pdf deckblatt.pdf innerschweiz.pdf Innerschweiz_Patrick-Bucher.docx korrektur.pdf nachlese.pdf projekt.pdf sorry-story.pdf
